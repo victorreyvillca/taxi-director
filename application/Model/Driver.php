@@ -20,6 +20,21 @@ class Driver extends Person {
      */
     private $note;
 
+    /**
+     * Id of the Taxi this model is associated with.
+     * @Column(type="integer")
+     * @var int
+     */
+    private $taxiId;
+
+    /**
+     * Taxi this model is associated with.
+     * @ManyToOne(targetEntity="Taxi")
+     * @JoinColumn(name="taxiId", referencedColumnName="id")
+     * @var Taxi
+     */
+    private $taxi;
+
 	/**
 	 * @return string
 	 */
@@ -49,6 +64,22 @@ class Driver extends Person {
 	 */
 	public function setNote($note) {
 		$this->note = $note;
+		return $this;
+	}
+
+	/**
+	 * @return Taxi
+	 */
+	public function getTaxi() {
+		return $this->taxi;
+	}
+
+	/**
+	 * @param Taxi $taxi
+	 * @return Driver
+	 */
+	public function setTaxi($taxi) {
+		$this->taxi = $taxi;
 		return $this;
 	}
 }

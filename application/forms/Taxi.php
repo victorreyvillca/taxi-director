@@ -15,13 +15,53 @@ class Dis_Form_Taxi extends Zend_Form {
 	 */
 	private $source;
 
+	/**
+	 * @var string
+	 */
+	private $sourceTaxi;
+
 	public function init() {
 		$this
 			->setAttrib('id', 'formId')
 			->setMethod('post')
 			->setAttrib('enctype', 'multipart/form-data')
 
-			->addElement('Hidden', 'id')
+			->addElement('Hidden', 'driverId')
+			->addElement('Hidden', 'taxiId')
+
+			->addElement('Text', 'firstName', array(
+				'label' => _('Nombres'),
+				'required' => TRUE,
+				'filters' => array(
+					array('StringTrim')
+				)
+			))
+
+			->addElement('Text', 'lastName', array(
+				'label' => _('Apellidos'),
+				'required' => TRUE,
+				'filters' => array(
+                    array('StringTrim')
+				)
+			))
+
+			->addElement('Text', 'ci', array(
+				'label' => _('Cedula de Identidad'),
+				'required' => TRUE,
+				'validators' => array(
+                    array('Digits', false)
+				)
+			))
+
+			->addElement('Radio', 'sex', array(
+				'label' => _('Genero')
+			))
+
+			->addElement('TextArea', 'address', array(
+				'label' => _('Direccion'),
+                'cols' => '20',
+                'rows' => '3',
+			))
 
 			->addElement('Text', 'name', array(
 				'label' => _('Nombre movil'),
@@ -99,6 +139,22 @@ class Dis_Form_Taxi extends Zend_Form {
 	 */
 	public function setSource($source) {
 		$this->source = $source;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSourceTaxi() {
+		return $this->sourceTaxi;
+	}
+
+	/**
+	 * @param string $sourceTaxi
+	 * @return Zend_Form
+	 */
+	public function setSourceTaxi($sourceTaxi) {
+		$this->sourceTaxi = $sourceTaxi;
 		return $this;
 	}
 }

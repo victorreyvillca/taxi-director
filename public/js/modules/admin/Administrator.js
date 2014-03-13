@@ -191,7 +191,7 @@ com.em.Administrator.prototype = {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
 			height: 480,
-			width: 420,
+			width: 720,
 			modal: true,
 			close: function(event, ui) {
 				$(this).remove();

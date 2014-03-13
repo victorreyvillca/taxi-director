@@ -1,6 +1,4 @@
 <?php
-
-use Model\Taxi;
 /**
  * Controller for DIST 3.
  *
@@ -9,6 +7,8 @@ use Model\Taxi;
  * @copyright Copyright (c) 2014 Gisof A/S
  * @license Proprietary
  */
+use Model\Taxi;
+use Model\Driver;
 
 class Admin_TaxiController extends Dis_Controller_Action {
 
@@ -44,6 +44,9 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $src = '/image/profile/female_or_male_default.jpg';
         $form->setSource($src);
 
+        $srcTaxi = '/image/profile/logo-taxi.png';
+        $form->setSourceTaxi($srcTaxi);
+
         $this->view->form = $form;
     }
 
@@ -57,7 +60,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
     		$formData = $this->getRequest()->getPost();
 
     		if ($form->isValid($formData)) {
-
                 $taxi = new Taxi();
                 $taxi
                     ->setName($formData['name'])
@@ -70,14 +72,14 @@ class Admin_TaxiController extends Dis_Controller_Action {
                     ->setState(TRUE)
     			;
 
-    			if ($_FILES['file']['error'] !== UPLOAD_ERR_NO_FILE) {
-    				if ($_FILES['file']['error'] == UPLOAD_ERR_OK) {
-    					$fh = fopen($_FILES['file']['tmp_name'], 'r');
-    					$binary = fread($fh, filesize($_FILES['file']['tmp_name']));
+    			if ($_FILES['filetaxi']['error'] !== UPLOAD_ERR_NO_FILE) {
+    				if ($_FILES['filetaxi']['error'] == UPLOAD_ERR_OK) {
+    					$fh = fopen($_FILES['filetaxi']['tmp_name'], 'r');
+    					$binary = fread($fh, filesize($_FILES['filetaxi']['tmp_name']));
     					fclose($fh);
 
-    					$mimeType = $_FILES['file']['type'];
-    					$fileName = $_FILES['file']['name'];
+    					$mimeType = $_FILES['filetaxi']['type'];
+    					$fileName = $_FILES['filetaxi']['name'];
 
     					$dataVaultMapper = new Dis_Model_DataVaultMapper();
     					$dataVault = new Dis_Model_DataVault();
@@ -89,6 +91,42 @@ class Admin_TaxiController extends Dis_Controller_Action {
     			}
 
     			$this->_entityManager->persist($taxi);
+    			$this->_entityManager->flush();
+
+    			$driver = new Driver();
+    			$driver
+    			     ->setTaxi($taxi)
+                    ->setPhone('phone')
+                    ->setPhonemobil(46546)
+                    ->setDateOfBirth(new DateTime('now'))
+                    ->setAddress($formData['address'])
+                    ->setSex(1)
+                    ->setIdentityCard($formData['ci'])
+                    ->setLastName($formData['lastName'])
+        			->setFirstName($formData['firstName'])
+        			->setCreated(new DateTime('now'))
+        			->setState(TRUE)
+    			;
+
+    			if ($_FILES['filedriver']['error'] !== UPLOAD_ERR_NO_FILE) {
+    				if ($_FILES['filedriver']['error'] == UPLOAD_ERR_OK) {
+    					$fh = fopen($_FILES['filedriver']['tmp_name'], 'r');
+    					$binary = fread($fh, filesize($_FILES['filedriver']['tmp_name']));
+    					fclose($fh);
+
+    					$mimeType = $_FILES['filedriver']['type'];
+    					$fileName = $_FILES['filedriver']['name'];
+
+    					$dataVaultMapper = new Dis_Model_DataVaultMapper();
+    					$dataVault = new Dis_Model_DataVault();
+    					$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
+    					$dataVaultMapper->save($dataVault);
+
+    					$driver->setProfilePictureId($dataVault->getId());
+    				}
+    			}
+
+    			$this->_entityManager->persist($driver);
     			$this->_entityManager->flush();
 
     			$this->_helper->flashMessenger(array('success' => _('Taxi registrado')));
@@ -114,7 +152,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $id = $this->_getParam('id', 0);
         $taxi = $this->_entityManager->find('Model\Taxi', $id);
         if ($taxi != NULL) {
-            $form->getElement('id')->setValue($taxi->getId());
+            $form->getElement('driverId')->setValue($taxi->getId());
             $form->getElement('name')->setValue($taxi->getName());
             $form->getElement('mark')->setValue($taxi->getMark());
             $form->getElement('plaque')->setValue($taxi->getPlaque());
@@ -128,6 +166,25 @@ class Admin_TaxiController extends Dis_Controller_Action {
                 $src = $this->_helper->url('profile-picture', 'Taxi', 'admin', array('id' => $dataVault->getId(), 'timestamp' => time()));
             } else {
                 $src = '/image/profile/male_default.jpg';
+            }
+            $form->setSourceTaxi($src);
+
+            $driverRepo = $this->_entityManager->getRepository('Model\Driver');
+            $driver = $driverRepo->findByTaxi($taxi);
+
+            $form->getElement('taxiId')->setValue($driver->getId());
+            $form->getElement('firstName')->setValue($driver->getFirstName());
+            $form->getElement('lastName')->setValue($driver->getLastName());
+            $form->getElement('ci')->setValue($driver->getIdentityCard());
+            $form->getElement('address')->setValue($driver->getAddress());
+
+            $dataVault = $dataVaultMapper->find($driver->getProfilePictureId());
+//             var_dump($driver);
+//             var_dump($dataVault);
+            if ($dataVault != NULL && $dataVault->getBinary()) {
+            	$src = $this->_helper->url('profile-picture', 'Taxi', 'admin', array('id' => $dataVault->getId(), 'timestamp' => time()));
+            } else {
+            	$src = '/image/profile/male_default.jpg';
             }
             $form->setSource($src);
         } else {

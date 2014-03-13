@@ -4,23 +4,41 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	var result = $('#result'),
+	var resultDriver = $('#pictureDriver'),
+	load = function (e) {
+	e = e.originalEvent;
+	e.preventDefault();
+	window.loadImage(
+		(e.dataTransfer || e.target).files[0],
+		function (img) {
+			resultDriver.children().replaceWith(img);
+		},
+		{
+		maxWidth: resultDriver.children().outerWidth(),
+		canvas: true
+		}
+	);
+    };
+
+    $('#file-input-driver').change(load);
+
+	var resultTaxi = $('#pictureTaxi'),
 		load = function (e) {
 		e = e.originalEvent;
 		e.preventDefault();
 		window.loadImage(
 			(e.dataTransfer || e.target).files[0],
 			function (img) {
-				result.children().replaceWith(img);
+				resultTaxi.children().replaceWith(img);
 			},
 			{
-			maxWidth: result.children().outerWidth(),
+			maxWidth: resultTaxi.children().outerWidth(),
 			canvas: true
 			}
 		);
 	};
 
-	$('#file-input').change(load);
+	$('#file-input-taxi').change(load);
 });
 
 com.em.Administrator.prototype.dialogButtons = {
