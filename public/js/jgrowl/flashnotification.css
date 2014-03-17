@@ -1,0 +1,18 @@
+@CHARSET "ISO-8859-1";
+/*@autor Victor Villca*/
+
+div.jGrowl div.jGrowl-notification.success {
+	background-color: green;
+}
+
+div.jGrowl div.jGrowl-notification.info {
+	background-color: #0C3FE0;
+}
+
+div.jGrowl div.jGrowl-notification.warning {
+	background-color: yellow;
+}
+
+div.jGrowl div.jGrowl-notification.error {
+	background-color: red;
+}

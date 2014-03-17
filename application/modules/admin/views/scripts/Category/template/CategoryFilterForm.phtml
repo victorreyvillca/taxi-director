@@ -1,0 +1,37 @@
+<table class="wireframe" style="width:100%;">
+	<tbody style="height: 60px;">
+		<tr class="odd" id="filter-tr" style="height: 40px;">
+			<td style="width: 72%;"></td>
+			<td style="width: 7%;">
+				<?php echo $this->element->getElement('nameFilter')->renderLabel();?>
+			</td>
+			<td style="width: 20%;" id="name-filter-td">
+				<div class="formInput">
+					<span class="left"></span>
+					<div>
+						<?php echo $this->element->getElement('nameFilter')->renderViewHelper();?>
+					</div>
+					<span class="right"></span>
+				</div>
+			</td>
+			<td style="width:1%;"></td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<div class="buttons right">
+					<a id="resetButton" class="red buttonNg">
+						<span class="left"></span>
+							<div width="100%"><?php echo $this->translate('Reset'); ?></div>
+						<span class="right"></span>
+					</a>
+					<a id="searchButton" class="search buttonNg">
+						<span class="left"></span>
+							<div width="100%"><?php echo $this->translate('Search'); ?></div>
+						<span class="right"></span>
+					</a>
+				<div class="clear"></div>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

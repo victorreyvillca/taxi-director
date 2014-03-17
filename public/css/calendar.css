@@ -1,0 +1,1642 @@
+@charset "UTF-8";
+/**
+ * CSS for Isak 2
+ *
+ * @category Isak
+ * @package CSS\Calendar
+ * @author Jesper Birkestrøm <jb@emini.dk>
+ * @copyright Copyright (c) 2010 Emini A/S
+ * @license Proprietary
+ */
+
+div.calendar {
+/*	overflow: auto;*/
+}
+
+
+/** 
+ * Horizontal day 
+ */
+ 
+div.frameHackCalendarHorizontal {
+	border: 1px solid #CEDEEB;
+	background-color: #ffffff;
+}
+
+div.calendar.day.horizontal {
+	position: relative;
+	width: 100%;
+	background-color: #ffffff;
+}
+
+div.calendar.day.horizontal > div.header {
+	height: 20px;
+	position: relative;
+	left: -6px;
+}
+
+div.calendar.day.horizontal > div.header > div.track {
+	position: absolute;
+	left: 226px;
+	right: 14px;
+	bottom: 0px;
+	top: 0px;
+	border-left: 1px solid #CEDEEB;
+	border-right: 1px solid #CEDEEB;
+}
+
+div.calendar.day.horizontal > div.header > div.track > span.hour-display:first-child{
+	margin-left:0px;
+}
+div.calendar.day.horizontal > div.header > div.track > span.hour-display {
+	position: absolute;
+	font-size: 11px;
+	font-weight: bold;
+	line-height:20px;
+	color:#8395A3;
+	height:20px;
+	padding-left: 2px;
+}
+
+div.calendar.day.horizontal > div.header > div.track > span.minute-display {
+	position: absolute;
+	bottom: 5px;
+	font-size: 10px;
+	color:#8395A3;
+}
+
+div.calendar.day.horizontal > div.track {
+	border-top: 1px solid #CEDEEB;
+	position: relative;
+	min-height: 15px;
+}
+
+div.calendar.day.horizontal > div.track > div.title,
+div.calendar.week.horizontal > table td.legend,
+div.calendar.month.horizontal > table td.legend,
+div.calendar.text.vertical > table > thead > tr > td.legend > div.title,
+div.calendar.day.vertical > div.days > div.day > div.title{
+	position: static;
+	font-size: 11px;
+	padding: 5px;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	color:#8395A3;
+}
+
+div.calendar.day.horizontal > div.track > div.title,
+div.calendar.week.horizontal > table td.legend,
+div.calendar.month.horizontal > table td.legend{
+	width: 185px;
+}
+
+div.calendar.month.horizontal > table td.legend{
+	border: 1px solid #CEDEEB;
+}
+
+div.calendar.day.horizontal > div.track > div.title a.removeCalendar,
+div.calendar.week.horizontal > table td.legend a.removeCalendar,
+div.calendar.month.horizontal > table td.legend a.removeCalendar {
+}
+
+div.calendar.text.vertical > table > thead > tr > td.legend > div.title,
+div.calendar.day.vertical > div.days > div.day > div.title{
+	text-align: center;
+}
+div.calendar.day.horizontal > div.track > div.title a,
+div.calendar.week.horizontal > table td.legend a,
+div.calendar.month.horizontal > table td.legend a,
+div.calendar.text.vertical > table > thead > tr > td.legend > div.title a,
+div.calendar.day.vertical > div.days > div.day > div.title a{
+	font-size: 11px;
+	font-weight: bold;
+	color:#8395A3;
+}
+
+div.calendar.day.horizontal > div.track:hover > div.title,
+div.calendar.day.horizontal > div.track:hover > div.title a,
+div.calendar.week.horizontal tr:hover > td.legend,
+div.calendar.week.horizontal tr:hover > td.legend a,
+div.calendar.month.horizontal tr:hover td.legend,
+div.calendar.month.horizontal tr:hover td.legend a,
+div.calendar.text.vertical > table > thead > tr > td.legend:hover > div.title a,
+div.calendar.day.vertical > div.days > div.day > div.title:hover a{
+	color:#05436F;
+}
+
+div.calendar.day.horizontal > div.track:hover > div.background,
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay:hover > div.time > div.border > div.background {
+	background-color:#FFFFE5;
+}
+div.calendar.day.horizontal > div.header > div.track > div.overflow.before{
+	position: absolute;
+	left: -21px;
+	top: 0px;
+	bottom: 0px;
+	width: 19px;
+	border-left: 1px dashed #CEDEEB;
+}
+div.calendar.day.horizontal > div.track > div.overflow.before {
+	position: absolute;
+	left: 200px;
+	top: 0px;
+	bottom: 0px;
+	width: 20px;
+	border-left: 1px dashed #CEDEEB;
+}
+
+div.calendar.day.horizontal > div.track > div.overflow.before.active,
+div.calendar.day.horizontal > div.track > div.overflow.after.active{
+	background-color: #BCC6CF;
+	background-image:url(../image/main_icons.png);
+}
+
+div.calendar.day.vertical > div.days > div.day > div.legend > div.overflow.before.active,
+div.calendar.day.vertical > div.days > div.day > div.legend > div.overflow.after.active{
+	background-color: #BCC6CF;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.legend > div.overflow.before.active > div,
+div.calendar.day.vertical > div.days > div.day > div.legend > div.overflow.after.active	> div{
+	background-image:url(../image/main_icons.png);
+	background-position: 0px -552px;
+	width:23px;
+	height:10px;
+	margin:0 auto;
+	text-align:center;
+}
+
+div.calendar.day.horizontal > div.track > div.overflow.before.active,
+div.calendar.day.horizontal > div.track > div.overflow.after.active {
+	background-position: 0px -519px;
+}
+
+div.calendar.day.horizontal > div.header > div.track > div.overflow.after {
+	position: absolute;
+	width: 20px;
+	top: 0px;
+	bottom: 0px;
+	right: -21px;
+}
+
+div.calendar.day.horizontal > div.track > div.overflow.after {
+	position: absolute;
+	width: 20px;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+}
+
+div.calendar.day.horizontal > div.track > div.background {
+	position: absolute;
+	left: 220px;
+	top: 0px;
+	bottom: 0px;
+	right: 20px;
+}
+
+div.calendar.day.horizontal > div.track > div.background > div.event {
+	position: absolute;
+	height: 100%;
+}
+
+div.calendar.day.horizontal > div.track > div.background > div.event > div.event-box {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+
+div.calendar.day.horizontal > div.track > div.background > div.event > div.event-content {
+	text-indent: 1px;
+	font-size: 10pt;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: absolute;
+	height:  100%;
+	width: 100%;
+	white-space: nowrap;
+}
+
+div.calendar.day.horizontal > div.track > div.line {
+	position: absolute;
+	left: 220px;
+	top: 0px;
+	bottom: 0px;
+	right: 20px;
+	border-left: 1px solid #CEDEEB;
+	border-right: 1px solid #CEDEEB;
+	z-index:99;
+}
+
+div.calendar.day.horizontal > div.track > div.line.overflowBefore{
+	left: 200px;
+}
+
+div.calendar.day.horizontal > div.track > div.line.overflowAfter{
+	right: 0px;
+}
+
+div.calendar.day.horizontal > div.track > div.line > div.tickers{
+	position: absolute;
+	top:0px;
+	height:24px;
+	left:0px;
+	right:0px;
+}
+div.calendar.day.horizontal > div.track > div.line.overflowBefore > div.tickers{
+	left:20px;	
+}
+div.calendar.day.horizontal > div.track > div.line.overflowAfter > div.tickers{
+	right:20px;	
+}
+div.calendar.day.horizontal > div.track > div.line > div.tickers > div.hour-ticker {
+	position: absolute;
+	width: 0px;
+	border-left: 1px solid #CEDEEB;
+	height: 100%;
+}
+
+div.calendar.day.horizontal > div.track > div.line > div.tickers > div.minute-ticker {
+	position: absolute;
+	width: 0px;
+	border-left: 1px solid #E2E5E9;
+	height: 100%;
+}
+
+div.calendar.day.horizontal > div.track > div.line > div.event {
+	position: absolute;
+	height: 100%;
+}
+
+div.calendar.day.horizontal > div.track > div.line > div.event > div.event-content,
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event > div.event-content {
+	text-indent: 1px;
+	font-size: 11px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: absolute;
+	height:  100%;
+	width: 100%;
+	white-space: nowrap;
+	font-weight: bold;
+}
+div.calendar.day.horizontal > div.track > div.line > div.event > div.event-content > div,
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event > div.event-content div{
+	overflow:hidden;
+	text-overflow: ellipsis;
+}
+
+div.calendar.day.horizontal > div.track > div.line.overflowBefore > div.event > div.event-content > div{
+	margin-left:22px;
+}
+div.calendar.day.horizontal > div.track > div.line.overflowAfter > div.event > div.event-content > div{
+	margin-right:42px;
+}
+/**
+ * Horizontal week 
+ */
+
+div.calendar.week.horizontal {
+	background-color: #ffffff;
+}
+.dialog div.calendar.week.horizontal {
+	border: none;
+} 
+div.calendar.week.horizontal > table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size: 12px;
+}
+
+div.calendar.week.horizontal > table > thead {
+}
+
+div.calendar.week.horizontal > table > thead > tr.header > td {
+	font-weight: bold;
+	height: 30px;
+	text-align: center;
+	vertical-align: top;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div.calendar.week.horizontal > table > thead > tr.date > td {
+	text-align: center;
+	color:#8395A3;
+	font-size:11px;
+	padding:4px 10px;
+	border:1px solid #CEDEEB;
+}
+
+div.calendar.week.horizontal > table > thead > tr.time > td > span.beginTime {
+	position: relative;
+	left: 5px;
+	float: left;
+}
+
+div.calendar.week.horizontal > table > thead > tr.time > td > span.endTime {
+	position: relative;
+	right: 5px;
+	float: right;
+}
+
+div.calendar.week.horizontal > table > thead > tr.date > td > span.weekday {
+	font-weight:bold;
+}
+div.calendar.week.horizontal > table > thead > tr.date > td > span.beginTime {
+	float:left;
+	padding-left:5px;
+}
+
+div.calendar.week.horizontal > table > thead > tr.date > td > span.endTime {
+	float:right;
+	padding-right:5px;
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td{
+	border: 1px solid #CEDEEB;	
+
+}	
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay {
+	width: 100%;
+	height: 20px;
+}
+
+
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.overflow {
+	width:  5%;
+	height: 100%;
+	float: left;
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.overflow.active {
+	background-color: #BCC6CF;
+	background-image:url(../image/main_icons.png);
+	background-position: -4px -521px;
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time {
+	width:  90%;
+	height: 100%;
+	float: left;
+	position: relative;
+	
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.background {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #fff;
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.background > div.event {
+	position: absolute;
+	height: 100%;
+}
+
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.background > div.event > div.event-box {
+	position: absolute;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.background > div.event > div.event-content {
+	position: absolute;
+	padding: 2px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event {
+	position: absolute;
+	height: 100%;
+	min-width:22px;
+}
+
+
+/*div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event > div.event-box {*/
+/*	position: absolute;*/
+/*	opacity: 0.5;*/
+/*	filter: alpha(opacity=50);*/
+/*	left: 0;*/
+/*	right: 0;*/
+/*	top: 0;*/
+/*	bottom: 0;*/
+/*}*/
+
+div.calendar.week.horizontal > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event > div.event-content {
+	position: absolute;
+	left: 0;
+	right: 20px;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	font-size: 11px;
+	white-space: nowrap;
+	color:#05436F;
+}
+
+
+/**
+ * Horizontal week, vertical time
+ * 
+ */
+div.calendar.horizontal.verticaltime.week {
+	background-color: #ffffff;
+	border: 1px solid #CEDEEB;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+}
+ 
+div.calendar.horizontal.verticaltime.week > table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size: 12px;
+	height: 250px; /* this controls the height of the table and of representation of each day */
+}
+
+div.calendar.horizontal.verticaltime.week > div.legend {
+	font-size: 12px;
+	font-weight: bold;
+	white-space: nowrap;
+	text-align: center;
+}
+
+div.calendar.horizontal.verticaltime.week > table > thead > tr.header > td {
+	font-weight: bold;
+	height: 30px;
+	text-align: center;
+	vertical-align: top;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div.calendar.horizontal.verticaltime.week > table > thead > tr.date > td {
+	text-align: center;
+}
+
+
+div.calendar.horizontal.verticaltime.week > table > thead > tr.date > td.weekdayHeaderContainer {
+	width:12.5%;	
+	height:25px;
+}
+
+div.calendar.horizontal.verticaltime.week > table > thead > tr.date > td.weekdayHeaderContainer > div.weekdayHeaderContainer {
+	width:90%;
+}
+
+div.calendar.horizontal.verticaltime.week > table > thead > tr.time > td > span.beginTime {
+	position: relative;
+	left: 5px;
+	float: left;
+}
+
+div.calendar.horizontal.verticaltime.week > table > thead > tr.time > td > span.endTime {
+	position: relative;
+	right: 5px;
+	float: right;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr.firstRow > td > div.weekDay > div.time > div.border {
+	border-top: 1px solid #CEDEEB;	
+}
+
+
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr.firstRow > td.legend {
+	height: 80%;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr.firstRow > td.legend > div {
+	height: 100%;
+	position: relative;
+	vertical-align: middle;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr.firstRow > td.legend > div > span.start {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr.firstRow > td.legend > div > span.stop {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr.firstRow > td.weekdayBodyContainer {
+	width:12.5%;
+				
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr.firstRow > td.weekdayBodyContainer > div.weekDay {
+	width: 100%;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td > div.weekDay {
+	height: 174px;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td > div.weekDay > div.overflow {
+	width:  90%;
+	height: 5%;
+	/*float: left;*/
+}
+
+	
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td.weekdayBodyContainer > div.weekDay > div.overflow.active {
+	background-color: #cccccc;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td.weekdayBodyContainer > div.weekDay > div.time {
+	width:  90%;
+	height: 174px;
+	float: left;
+	position: relative;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td.weekdayBodyContainer > div.weekDay > div.time > div.border {
+	border-left: 1px solid #CEDEEB;
+	border-right: 1px solid #CEDEEB;
+	border-bottom: 1px solid #CEDEEB;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td.weekdayBodyContainer > div.weekDay > div.time > div.border > div.scale {
+	width: 100%;
+	background-color: #fff;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td.weekdayBodyContainer > div.weekDay > div.time > div.border > div.scale > div.event {
+	position: absolute;
+	height: 100%;
+}
+
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td.weekdayBodyContainer > div.weekDay > div.time > div.border > div.scale > div.event > div.event-box {
+	position: absolute;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+div.calendar.horizontal.verticaltime.week > table > tbody > tr > td.weekdayBodyContainer > div.weekDay > div.time > div.border > div.scale > div.event > div.event-content {
+	position: absolute;
+	padding: 2px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+
+
+/**
+ * Horizontal week, registration 
+ */
+div.calendar.horizontal.registration.week {
+	background-color: #ffffff;
+	border: 1px solid #CEDEEB;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+}
+ 
+div.calendar.horizontal.registration.week > table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size: 12px;
+}
+
+div.calendar.horizontal.registration.week > table td.legend {
+	width: 150px;
+	padding-right: 10px;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden	;
+}
+
+div.calendar.horizontal.registration.week > table > thead {
+}
+
+div.calendar.horizontal.registration.week > table > thead > tr.header > td {
+	font-weight: bold;
+	height: 30px;
+	text-align: center;
+	vertical-align: top;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div.calendar.horizontal.registration.week > table > thead > tr.date > td {
+	text-align: center;
+}
+
+div.calendar.horizontal.registration.week > table > thead > tr.time > td > span.beginTime {
+	position: relative;
+	left: 5px;
+	float: left;
+}
+
+div.calendar.horizontal.registration.week > table > thead > tr.time > td > span.endTime {
+	position: relative;
+	right: 5px;
+	float: right;
+}
+
+
+div.calendar.horizontal.registration.week > table > tbody > tr.firstRow > td > div.weekDay > div.time > div.border {
+	border-top: 1px solid #CEDEEB;	
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay {
+	width: 100%;
+	height: 20px;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay > div.overflow {
+	width:  5%;
+	height: 100%;
+	float: left;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay > div.overflow.active {
+	background-color: #cccccc;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.time {
+	width:  90%;
+	height: 100%;
+	float: left;
+	position: relative;
+	
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay> div.time > div.border {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event {
+	position: absolute;
+	height: 100%;
+	
+	cursor: pointer;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event.markEvent {
+	border: 1px solid black;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event > div.event-box {
+	position: absolute;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDay > div.time > div.border > div.scale > div.event > div.event-content {
+	position: absolute;
+	padding: 2px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	font-size: 12px;
+	white-space: nowrap;
+	text-align:center;
+}
+
+
+div.calendar.horizontal.registration.week > table > tbody > tr.firstRow > td > div.weekDayCheckbox > div.time > div.border {
+	border-top: 1px solid #CEDEEB;	
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox {
+	width: 100%;
+	height: 20px;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.overflow {
+	width:  5%;
+	height: 100%;
+	float: left;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.overflow.active {
+	background-color: #cccccc;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.time {
+	width:  90%;
+	height: 100%;
+	float: left;
+	position: relative;
+	
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.time > div.border {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.time > div.border > div.scale {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.time > div.border > div.scale > div.event {
+	position: absolute;
+	height: 100%;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.time > div.border > div.scale > div.event > div.event-box {
+	position: absolute;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+div.calendar.horizontal.registration.week > table > tbody > tr > td > div.weekDayCheckbox > div.time > div.border > div.scale > div.event > div.event-content {
+	position: absolute;
+	padding: 2px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	font-size: 12px;
+	white-space: nowrap;
+	text-align:center;
+}
+
+
+
+
+/** 
+ * Horizontal month 
+ */
+div.calendar.month.horizontal {
+	background-color: #ffffff;
+	padding-top: 10px;
+}
+ 
+div.calendar.month.horizontal > table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size: 12px;
+}
+
+div.calendar.month.horizontal > table td.monthDay {
+	border: 1px solid #CEDEEB;
+	background-color: #fff;
+}
+
+div.calendar.month.horizontal > table td.monthDay.occupied {
+	background-color: #f00;
+}
+
+div.calendar.month.horizontal > table td.weektitle {
+	font-weight: bold;
+	text-align: center;
+	vertical-align: top;
+	height: 20px;
+	text-transform: uppercase;
+	color:#8395A3;
+	font-weight:bold;
+	font-size: 11px;
+}
+
+div.calendar.month.horizontal > table td.weekSpace {
+	border: none;
+	width: 10px;
+}
+
+div.calendar.month.horizontal > table td.dayNumber {
+	text-align: center;
+	font-weight: 11px;
+	color:#8395A3;
+}
+
+div.calendar.month.horizontal > table td.dayNumber div {
+	width: 25px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+
+/** 	
+ * Vertical day
+ */
+div.calendar.day.vertical {
+	background-color: #ffffff;
+	position: relative;
+}
+
+div.calendar.day.vertical > div.addCalendar {
+	border-left:1px solid #CEDEEB;
+	border-bottom:1px solid #E2E5E9;
+	height:22px;
+	text-align:center;
+	width:39px;
+}
+	
+div.calendar.day.vertical > div.timeLegend {
+	padding-top: 22px;
+	float: left;
+	width: 36px;
+	padding-right:3px;
+	border-left:1px solid #CEDEEB;
+	border-bottom:1px solid #CEDEEB;
+}
+
+div.calendar.day.vertical > div.timeLegend > div.time {
+	border: 1px solid transparent;	
+	margin: 1px;
+	text-align: right;
+	position: relative;
+	top: 0px;
+	overflow: hidden;
+	
+	color: #8395A3;
+	
+	-moz-box-sizing:    border-box;
+   	-webkit-box-sizing: border-box;
+    box-sizing:        border-box;
+}
+
+div.calendar.day.vertical > div.timeLegend > div.time.hour {
+	font-size: 11px;
+	font-weight: bold;
+}
+
+div.calendar.day.vertical > div.timeLegend > div.time.minute {
+	font-size: 10px;
+}
+
+div.calendar.day.vertical > div.days {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 40px;
+	right: 0px;
+}
+
+div.calendar.day.vertical > div.days > div.day {
+	position: absolute;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.title {
+	border-left: 1px solid #CEDEEB;
+	border-right:1px solid #CEDEEB;
+}
+div.calendar.day.vertical > div.days > div.day > div.legend {
+	border-left: 1px solid #CEDEEB;
+	border-right: 1px solid #CEDEEB;
+	border-top: 1px solid #E2E5E9;
+
+}
+div.calendar.day.vertical > div.days > div.day > div.legend > div.box {
+	border-top: 1px solid #E2E5E9;
+	background-color: #ffffff;
+}
+
+div.calendar.day.vertical > div.days > div.day:hover > div.legend > div.box{
+	background: #FFFFE5;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.legend > div.box.last {
+	border-bottom: 1px solid #CEDEEB;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.legend > div.box.minute {
+}
+
+div.calendar.day.vertical div.overflow {
+	height: 10px;
+	background: #F7F7F8;
+}
+
+div.calendar.day.vertical div.overflow.after {
+	height: 10px;
+	border-bottom:1px solid #E2E5E9;
+}
+.overflow.before,
+.overflow.after{
+	background: #F7F7F8;
+}
+
+
+div.calendar.day.vertical > div.days > div.day > div.legend > div.overflow.before.active {
+/*	background-color: grey;*/
+}
+
+div.calendar.day.vertical > div.days > div.day > div.legend > div.overflow.after.active {
+/*	background-color: grey;*/
+}
+
+div.calendar.day.vertical > div.days > div.day > div.background {
+	top: 30px;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	position: absolute;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.background > div.event {
+	position: absolute;
+	top: 30x;
+	right: 0;
+	left:  0;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.background > div.event > div.event-box {
+	height: 100%;
+	width: 100%;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+	
+div.calendar.day.vertical > div.days > div.day > div.background > div.event > div.event-text {
+	position: absolute;
+	top: 0;
+	overflow:  hidden;
+	padding: 2px;
+	
+	font-size: 10pt;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.events {
+	top: 33px;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	position: absolute;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.events > div.event {
+	position: absolute;
+	top: 30x;
+	right: 0;
+	left:  0;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.events > div.event.overflowBefore{
+	margin-top:-10px;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.events > div.event.overflowAfter{
+	padding-bottom:20px;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.events > div.event > div.event-box {
+
+}
+	
+div.calendar.day.vertical > div.days > div.day > div.events > div.event > div.event-content {
+	top: 0;
+}
+
+div.calendar.day.vertical > div.days > div.day > div.events > div.event.overflowBefore > div.event-content > div,
+div.calendar.day.vertical > div.days > div.day > div.events > div.event.overflowBefore div.activityTypeStatus{
+	margin-top:10px;
+}
+
+
+/**
+ * Vertical text 
+ */
+div.calendar.vertical.text {
+	background-color: #ffffff;
+}
+
+div.calendar.vertical.text > table {
+	width: 100%;
+	height:100%;
+	border-collapse: collapse;
+}
+div.calendar.vertical.text > table > thead > tr > td,
+div.calendar.vertical.text > table > tbody > tr > td {
+	border: 1px solid #CEDEEB;
+}
+
+
+
+div.calendar.vertical.text > table > tbody > tr > td.date {
+	padding: 5px;
+	font-size:16px;
+	font-weight:bold;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow:#fff 0 1px;
+	color:#8395A3;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.date span.day{
+	padding-bottom: 5px;
+	font-size:10px;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.date span.month{
+	padding-top: 5px;
+	font-size:10px;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell {
+	vertical-align: top;
+	line-height: 16px;
+	min-height: 30px;
+	padding-bottom:24px;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell:hover{
+	background:#FFFFE5;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div.event{
+	position: relative;
+	margin:1px;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div > div.color-block {
+	position: relative;
+	top: 2px;
+	height: 10px;
+	width: 10px;
+	margin: 1px 3px;
+	float: left;	
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div > div.event-box{
+	background: #05436F;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell:hover > div > div.event-box{
+	opacity:.75;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div:hover > div.event-box{
+	opacity:1;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div > div.event-content{
+	font-size:11px;
+	font-weight:bold;
+	position:absolute;
+	white-space: nowrap;
+	overflow: hidden;
+	right: 20px;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div > div.event-content > div{
+	margin-right:20px;
+	overflow:hidden;
+	padding:4px;
+	text-overflow: ellipsis;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div > div.event-content > div.dark{
+	color:#000;
+	opacity: 0.55;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div:hover > div.event-content > div.dark{
+	opacity: 0.75;
+}
+
+div.calendar.vertical.text > table > tbody > tr > td.cell > div > div.event-content > div.bright{
+	color:#fff;
+	opacity: 0.95;
+}
+
+
+ul.datePager {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+ul.datePager > li {
+	display: inline;
+	margin-left: 10px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+ul.datePager > li.current {
+}
+
+ul.datePager > li:first-child {
+	margin-left: 0;
+}
+
+
+/**
+	Week planner
+*/
+div.weekplanner {
+	border: 1px solid #CEDEEB;
+	background-color: #ffffff;
+	padding: 10px;
+	background: blue;
+}
+
+div.weekplanner table {
+	width: 100%;
+	border-collapse: collapse;
+	
+	font-size: 10pt;
+}
+
+div.weekplanner table td {
+	border: 1px solid #CEDEEB;
+	width: 14.285714285714286%;
+}
+
+div.weekplanner table thead td {
+	text-align: center;
+}
+
+div.weekplanner table tbody td div.scale {
+	height: 300px;
+	position: relative;
+}
+
+div.weekplanner table tbody td div.scale div.event {
+	position: absolute;
+	width: 100%;
+}
+
+div.weekplanner table tbody td div.scale div.event div.event-box {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+}
+
+div.weekplanner table tbody td div.scale div.event div.event-text {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+/**
+ * Week course
+ */
+div.calendar.horizontal.course.week {
+	background-color: #ffffff;
+	padding: 5px;
+	font-size: 10pt;
+}
+
+div.calendar.horizontal.course.week > courseCalendar {
+	width: 100%;
+	border-collapse: collapse;
+}
+div.calendar.horizontal.course.week > table.courseCalendar > thead > tr > td{
+	font-size:9px;
+	color: #99A5AC;
+	text-shadow:#ffffff 0 1px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+div.calendar.horizontal.course.week > table.courseCalendar > thead > tr > td.titleAndNameHeader {
+	width:100%;
+	height: 20px;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > thead > tr > td.weekHeader {
+	width:10%;
+	text-align: center;
+}
+div.calendar.horizontal.course.week > table.courseCalendar > thead > tr > td.tpHeader {
+	width:5%;
+	text-align: center;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > thead > tr > td.taHeader {
+	width:5%;
+	text-align: center;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > thead > tr > td.weekViewHeader {
+	width:80%;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > thead > tr > td.weekViewHeader > table.weekdayNames {
+	width:100%;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > thead > tr > td.weekViewHeader > table.weekdayNames td {
+	text-align: center;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td {
+	border: 1px solid #CEDEEB;
+	font-size:11px;
+	color: #4C4C4C;
+	text-shadow:#ffffff 0 1px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekContent {
+	width:10%;
+	text-align: center;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekContent {
+	width:10%;
+	text-align: center;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.tpContent {
+	width:5%;
+	text-align: center;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.taContent {
+	width:5%;
+	text-align: center;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent {
+	width:100%;
+	border-collapse: collapse;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent td {
+	text-align:center;		
+	border-left:1px solid #CEDEEB;
+	border-right:1px solid #CEDEEB;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent td:first-child {
+	border-left:0px;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent td:last-child {
+	border-right:0px;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay {
+	width: 100%;
+	height: 20px;	
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay > div.overflow.active {
+	background-color: #cccccc;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay > div.time {
+	width:  100%;
+	height: 100%;
+	float: left;
+	position: relative;
+			
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay > div.time > div.border {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay > div.time > div.border > div.scale {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay > div.time > div.border > div.scale > div.event {
+	position: absolute;
+	height: 100%;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay > div.time > div.border > div.scale > div.event.markEvent {
+	border:1px solid black;
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay > div.time > div.border > div.scale > div.event > div.event-box {
+	position: absolute;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+				
+}
+
+div.calendar.horizontal.course.week > table.courseCalendar > tbody > tr > td.weekViewContent > table.weekdayContent > thead > tr > td > div.weekDay > div.time > div.border > div.scale > div.event > div.event-content {
+	position: absolute;
+	padding: 2px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	font-size: 12px;
+	white-space: nowrap;
+	text-align:center;
+}
+
+/* GENERAL STYLES */
+div.calendar div.event{
+	min-width:22px;
+	min-height:22px;
+}
+	
+div.calendar div.event > div.event-box{
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	opacity:0.5;
+	filter: alpha(opacity=50);
+	background: #05436F;
+/*	border:2px solid rgba(0,0,0,0.25);*/
+}
+
+div.calendar div.event:hover > div.event-box{
+	opacity:0.75;
+}
+
+div.calendar div.event:hover > div.activityTypeStatus{
+	opacity: 1;
+}
+
+div.calendar div.event > div.event-content{
+	position: absolute;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width:100%;
+	height:100%;
+}	
+div.calendar div.event > div.event-content > div{
+	font-size: 11px;
+	line-height:13px;
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding:5px 4px;
+	right:22px;
+	margin-left:15px;
+}
+
+div.calendar div.event > div.event-content > div.dark{
+	color:#000;
+}
+
+div.calendar div.event:hover > div.event-content > div.dark{
+}
+
+div.calendar div.event > div.event-content > div.bright{
+	color:#fff;
+}
+
+div.calendar div.event > div.event-content > div.bright div{
+	word-wrap: break-word;
+}
+
+/** ICONS **/
+.owner.candidate,
+.owner.consultant,
+.owner.company,
+.entityType.candidate,
+.entityType.consultant,
+.entityType.company,
+a.removeCalendar,
+div.activityTypeStatus,
+div.hasNote,
+a.addActivity, 
+a.addCalendar{
+	position: relative;
+	background: url("../image/main_icons.png") no-repeat;	
+}	
+
+.owner.candidate,
+.owner.consultant,
+.owner.company{
+	padding-left: 20px;
+}
+.owner.candidate{
+	background-position: -2px -412px;
+}
+
+.owner.consultant{
+	background-position: -2px -431px;
+}
+
+.owner.company{
+	background-position: -2px -393px;
+}
+
+.entityType.candidate,
+.entityType.consultant,
+.entityType.company{
+	width:14px;
+	height:14px;
+	float:left;
+}
+.bright .entityType.candidate{
+	background-position: -8px -884px;
+}
+
+.dark .entityType.candidate{
+	background-position: -39px -884px;
+}
+
+.bright .entityType.consultant{
+	background-position: -8px -903px;
+}
+.dark .entityType.consultant{
+	background-position: -39px -903px;
+}
+
+.bright .entityType.company{
+	background-position: -8px -866px;
+}
+.dark .entityType.company{
+	background-position: -39px -866px;
+}
+
+a.removeCalendar{
+	width:10px;
+	height:10px;
+	background-position: -2px -377px;
+	display: inline-block;
+}
+
+a.removeCalendar:hover{
+	background-position: -32px -377px;
+}
+
+div.activityTypeStatus{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:20px;
+	height:20px;
+	opacity:0.65;
+}
+
+div.line.overflowAfter div.activityTypeStatus{
+	right:20px;	
+}
+
+div.activityTypeStatus.dark.default,
+div.activityTypeStatus.bright.default {
+	background: none;
+}
+
+div.activityTypeStatus.bright.Active {
+	background-position: -4px -566px;
+}
+div.activityTypeStatus.bright.Rejected {
+	background-position: -4px -665px;
+}
+div.activityTypeStatus.bright.Completed {
+	background-position: -3px -616px;
+}
+
+div.activityTypeStatus.dark.Active {
+	background-position: -34px -566px;
+}
+div.activityTypeStatus.dark.Rejected {
+	background-position: -34px -665px;
+}
+div.activityTypeStatus.dark.Completed {
+	background-position: -33px -616px;
+}
+div.hasNote.bright,
+div.hasNote.dark{
+	display:inline-block;
+	height:10px;
+	width:10px;
+}
+
+div.hasNote.bright{
+	background-position: -10px -695px;
+}
+div.hasNote.dark{
+	background-position: -39px -695px;
+}
+
+a.addActivity{
+	background-position: -10px -811px;
+	width:12px;
+	height:12px;
+	float:left;
+	margin-top:1px;
+}
+
+a.addActivity:hover{
+	background-position: -39px -811px;
+}
+
+a.addCalendar{
+	background-position: -7px -836px;
+	width:19px;
+	height:19px;
+	display:inline-block;
+}
+
+a.addCalendar:hover{
+	background-position: -39px -836px;
+}
+
+div.calendar div.icon.addCalendar {
+	margin: 3px;
+	
+	width: 17px;
+	height: 17px;
+	background-image:url(../image/main_icons.png);
+	background-position: -12px -838px;	
+}
+
+div.calendar div.icon.addCalendar:hover {
+	background-position: -44px -838px;
+}

@@ -1,0 +1,23 @@
+<form id="<?php echo $this->element->getAttrib('id') ?>">
+	<table>
+		<tbody>
+            <tr class="odd" >
+				<td><?php echo $this->element->getElement('church')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('church')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even" >
+				<td><?php echo $this->element->getElement('area')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('area')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd" >
+				<td><?php echo $this->element->getElement('name')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('name')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even" >
+				<td><?php echo $this->element->getElement('description')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('description')->renderViewHelper() ?></td>
+			</tr>
+		</tbody>
+	</table>
+	<input type="hidden" value="0" id="duplicateName" name="duplicateName"/>
+</form>

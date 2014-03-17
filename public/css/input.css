@@ -1,0 +1,477 @@
+@charset "UTF-8";
+/**
+ * CSS for Isak 2
+ *
+ * Styles related to form elements.
+ *
+ * @category Isak
+ * @package CSS
+ * @media Screen
+ * @author Jesper Birkestrøm <jb@emini.dk>
+ * @copyright Copyright (c) 2009 Emini A/S
+ * @license Proprietary
+ */
+
+
+/*
+input{
+	border: none;
+	background: transparent;
+}
+*/
+
+/* Multi-dropdown */
+div.multiDropDown {
+	height: 20px;
+	font-size: 10px;
+	line-height: 20px;
+	background-repeat: no-repeat;
+	background-position: 100% 0%;
+	font-weight: normal;
+	vertical-align: middle;
+	text-indent: 2px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+div.multiDropDown:hover {
+	background-position: 100% 100%;
+	cursor: pointer;	
+}
+
+
+
+
+div.drawer.colorpicker ul li {
+	cursor: pointer;
+}
+ 
+/* Styled ISAK 2 input */
+div.input {
+	font-size: 10px;
+	vertical-align: middle;
+	margin-right: 4px;
+}
+
+div.error {
+	
+}
+
+div.input > div.formfield > input[type="text"].error,
+div.input > div.formfield > input[type="password"].error,
+div.input > div.formfield > input[type="file"].error {
+	color: #da2d2b;
+}
+
+div.input > div.formfield {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	height: 20px;
+	cursor: inherit;
+	line-height: 20px;
+	vertical-align: middle;
+}
+
+div.input > div.formfield.max {
+	height: 100%;
+}
+
+div.input.readOnly {
+	background: transparent;
+	border-color: transparent;
+}
+
+div.input.readOnly > div.formfield {
+}
+
+div.input.readOnly > div.formfield > input[readonly="readonly"] {
+	background: transparent;
+	border-color: transparent;
+}
+
+div.input > div.formfield > input[type="text"],
+div.input > div.formfield > input[type="password"],
+div.input > div.formfield > input[type="file"] {
+	border: none;
+	width: 95%;
+	height: 100%;
+	display: block;
+	resize: none;
+	outline: none;
+	font-size: 11px;
+	padding: 1px 0 0 2%;
+	margin: 0 0 0 3px;
+}
+
+/* Styled ISAK 2 input with button */
+div.input.inputWithButton {
+	background-image: url('../image/select-box-arrows.png');
+	background-repeat: no-repeat;
+	background-position: 100% 0%;
+}
+
+div.input.inputWithButton:hover {
+	background-position: 100% 100%;
+	cursor: pointer;
+}
+
+div.input.inputWithButtonDisabled {
+	background-color: #ffffff;
+	border:1px solid #CBCBCB;
+}
+
+
+/* Styled textarea */	
+div.input > div.formfield.textarea{
+	min-height: 60px;
+}
+div.input > div.formfield > textarea {
+	border: none;
+	padding: 0;
+	width: 99%;
+	height: 97%;
+	display: block;
+	resize: none;
+	outline: none;
+	font-size: 11px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	min-height: 60px;
+}
+
+/* Labels for the inputs */
+label,
+p.label {
+	padding: 2px;
+	font-size: 9px;
+	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+label.error {
+	color: #f00;
+	cursor: help;
+}
+
+label.warning {
+	color: #dcc34f;
+	cursor: help;
+}
+
+/* Drawer for form elements */
+div.drawer {
+	background-color: #F5FBFC;
+	border: 1px solid #B6C3CE;
+	border-top:none;
+	overflow-x: hidden;
+	overflow-y: auto;
+	max-height: 150px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+}
+
+div.drawer label {
+	font-weight: normal;
+}
+
+/*
+div.drawer.bar {
+	background-color: #6e6e6e;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	color: #ffffff;
+}*/
+
+div.drawer ul {
+	margin: 0px 0px 0px -1px;
+	padding: 0px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	list-style: none;
+}
+
+div.drawer ul li {
+	padding: 5px 2px;
+	text-indent: 5px;
+	font-size: 11px;
+	color: #8395A3;
+	font-weight: bold;
+	white-space: nowrap;
+	text-transform: none;
+	border-bottom: 1px solid #D1E0EE;
+	border-top: 1px solid #ffffff;
+	background-color: #F5FBFC;
+	text-align: left;
+}
+
+div.drawer ul li:first-child{
+	border-top: none;
+}
+
+div.drawer ul li:last-child{
+	border-bottom: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+}
+
+
+div.drawer ul li label {
+	padding: 5px 2px;
+	font-size: 11px;
+	color: #8395A3;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+div.drawer ul li.selected {
+	font-weight: bold;
+}
+
+div.drawer.hover > ul > li:hover,
+div.drawer ul li.hovered,
+div.drawer ul li.hover {
+	background-color: #D6E8F5;
+	cursor: pointer;
+	border-bottom: 1px solid #B1C5D3;
+	color: #375266;
+}
+
+div.drawer.hover > ul > li:last-child:hover,
+div.drawer ul li.hovered:last-child,
+div.drawer ul li.hover:last-child {
+	cursor: pointer;
+	border-bottom: none;
+	
+}
+
+div.drawer.hover > ul > li:hover > label,
+div.drawer ul li.hovered label,
+div.drawer ul li.hover label{
+	font-weight: bold;
+	color: #375266;
+}
+/* Combobox */
+div.drawer.combobox {
+}
+div.drawer > ul > li.group:first-child{
+	border-top: none;
+}
+div.drawer > ul > li.group {
+	text-transform: uppercase;
+	font-weight: bold;
+	background: #ffffff;
+	color: #526A7A; /* #8395A3 */
+	padding:3px 0px 0px 0px;
+	text-indent: 5px;
+	font-size: 10px;
+	border-bottom: none;
+	border-top: 1px solid #D1E0EE;
+}
+div.drawer > ul > li.group > ul{
+	margin-top:2px;
+}
+div.drawer > ul > li.group > ul > li:first-child{
+	border-top: 1px solid #B1C5D3;
+}
+
+div.drawer > ul > li.group > ul > li {
+	font-style: normal;
+	font-weight: bold;
+}
+
+div.drawer > ul > li.group > ul > li.selected {
+	font-weight: bold;
+	background-color: #E4EDF3;
+}
+
+
+.quickDropdown {
+	width:230px;
+	position:absolute; 
+	top:163px; 
+	right:13px;
+	z-index:1000;
+}
+.quickDropdown .content{
+	background: #F5FBFC;
+	border: 0;
+   font-weight: bold;
+   font-size: 11px;
+   color: #526A7B;
+   text-shadow: #fff 0 1px;
+	
+}
+.quickDropdown ul li {
+	padding: 5px 2px;
+	text-indent: 5px;
+	font-size: 11px;
+	color: #526A7B;
+	font-weight: bold;
+	white-space: nowrap;
+	border-bottom: 1px solid #D1E0EE;
+	border-top: 1px solid #ffffff;
+	background-color: #F5FBFC;
+	list-style: none;
+}
+
+.quickDropdown ul li a{
+	font-size: 10px;
+	color: #8395A3;
+	font-weight: bold;
+	white-space: nowrap;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.quickDropdown ul li a:hover{
+	color: #375266;
+}
+
+
+.quickDropdown ul li:first-child{
+	border-top: none;
+}
+.quickDropdown ul li:last-child{
+	border-bottom: none;
+}
+
+.quickDropdown ul li label {
+	padding: 5px 2px;
+	font-size: 11px;
+	color: #8395A3;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+.quickDropdown ul li.selected {
+	font-weight: bold;
+}
+
+.quickDropdown ul li.hovered,
+.quickDropdown ul li:hover {
+	cursor: pointer;
+	color: #375266;
+}
+
+.quickDropdown ul li.hovered:last-child,
+.quickDropdown ul li:hover:last-child {
+	cursor: pointer;
+	border-bottom: none;
+	
+}
+
+.quickDropdown ul li.hovered label,
+.quickDropdown ul li:hover label{
+	font-weight: bold;
+	color: #375266;
+}
+
+
+.quickDropdown > .topLeftEdge, 
+.quickDropdown > .topRightEdge, 
+.quickDropdown > .bottomLeftEdge, 
+.quickDropdown > .bottomRightEdge{
+   width: 9px;
+   height: 9px;
+	z-index:888;
+	position: absolute;
+}
+.quickDropdown > .topLeftEdge{
+   background: url(../image/form/dropdown.png) no-repeat 0 -22px transparent;
+	top:-9px;
+	left:-9px;
+}
+
+.quickDropdown > .topRightEdge{
+   background: url(../image/form/dropdown.png) no-repeat -10px -22px transparent;
+	top:-9px;
+	right:-9px;
+}
+
+.quickDropdown > .bottomLeftEdge{
+   background: url(../image/form/dropdown.png) 0 -32px no-repeat transparent;
+	bottom:-9px;
+	left:-9px;
+}
+
+.quickDropdown > .bottomRightEdge{
+   background: url(../image/form/dropdown.png) -10px -32px no-repeat transparent;
+	bottom:-9px;
+	right:-9px;
+}
+
+.quickDropdown > .leftEdge, .quickDropdown > .rightEdge{
+	position: absolute;
+	top:0px;
+   width: 9px;
+   height:100%;
+	z-index:887;
+}
+
+.quickDropdown > .leftEdge{
+   background: url(../image/form/dropdown_vert.png) repeat-y 0px 0px transparent;
+	top:0px;
+	left:-9px;
+}
+
+.quickDropdown > .rightEdge{
+   background: url(../image/form/dropdown_vert.png) repeat-y -10px 0px transparent;
+	top:0px;
+	right:-9px;
+}
+
+
+.quickDropdown > .topEdge, 
+.quickDropdown > .bottomEdge{
+	position: absolute;
+   height: 9px;
+   width:100%;
+	z-index:887;}
+
+.quickDropdown > .topEdge{
+   background: url(../image/form/dropdown_horiz.png) repeat-x 0 0  transparent;
+	top:-9px;
+	left:0px;
+}
+
+.quickDropdown > .bottomEdge{
+   background: url(../image/form/dropdown_horiz.png) repeat-x 0 -10px  transparent;
+	bottom:-9px;	
+	left:0px;
+}
+
+.quickDropdown > .topPointer{
+   background: url(../image/form/dropdown.png) 0px 0px no-repeat transparent;
+   position: absolute;
+   top:-21px;
+   right:5px;
+	width:32px;
+	height:21px;
+	z-index:900;
+}
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * c-indent-level: 4
+ * End:
+ * vim600: sw=4 ts=4 fdm=marker
+ * vim<600: sw=4 ts=4
+ */
+ 

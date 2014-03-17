@@ -1,0 +1,51 @@
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Picture.js","text/javascript");?>
+
+<div style="margin:20px;">
+	<?php echo $this->tableHeader('filterHeader', _('Filtrar Imagenes de Noticias'))?>
+	<div id="containerFormFilter">
+		<?php echo $this->formFilter?>
+	</div>
+	<br>
+	<?php echo $this->tableHeader('pictureHeader', _('Imagenes de Noticas'));?>
+	<?php echo $this->tableList("tblPicture");?>
+	<div class="buttons right">
+		<?php echo $this->buttonRemove("delete-picture", $this->translate('Eliminar'), $this->url(array('action'=>'remove')));?>
+		<?php echo $this->buttonAdd("create-picture", $this->translate('Adicionar'), $this->url(array('action'=>'add')));?>
+	</div>
+
+	<div id="dialog"><!-- Loads ajax dialog form --></div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	var picture = new com.em.Picture();
+
+	// network
+	picture.setUrl({
+		toTable : '<?php echo $this->url(array('action'=>'ds-picture-entries'));?>',
+		toBase : '<?php echo $this->baseUrl(); ?>',
+		toUpdate : '<?php echo $this->url(array('action'=>'edit')); ?>',
+		toAutocomplete : '<?php echo $this->url(array('action'=>'autocomplete'));?>',
+		toDownload : '/image/upload/news/'
+	});
+
+	var headers = new Object();
+	headers.headerArray = new Array(
+		'<?php echo $this->translate('Titulo'); ?>',
+		'<?php echo $this->translate('Descripcion'); ?>',
+		'<?php echo $this->translate('Descargar'); ?>',
+		'<?php echo $this->translate('Noticia'); ?>',
+		'<?php echo $this->translate('Fecha Creacion'); ?>',
+		'<?php echo $this->translate('Fecha Edicion'); ?>');
+	picture.setHeaders(headers);
+	// configuration of widgets
+	picture.configureTable('#tblPicture', true);
+
+	// CRUD
+	picture.clickToAdd('#create-picture');
+	picture.clickToUpdate('#tblPicture[id^=update-picture-]');
+	picture.clickToDelete('#delete-picture');
+	// Filter
+	picture.configureAuto('input#nameFilter');
+});
+</script>

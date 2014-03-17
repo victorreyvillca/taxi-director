@@ -1,0 +1,1289 @@
+@CHARSET "UTF-8";
+
+/**
+ * NOT FORM
+ */
+
+/* CARD */
+div.card {
+ 	margin: 10px; 
+}
+
+form > div.card {
+	margin-top: 0px;
+}
+	
+div.card div.card {
+	margin:0px;
+}
+div.dialog div.card{
+	margin:0px;
+}
+div.dialog div.card > div{
+	padding:1px;
+}
+
+div.head {
+	position: relative;
+	background: url('../image/horiz_rep.png') repeat-x 0 -471px;
+	height: 25px;
+	color: #375266;
+	font-weight: bold;
+	font-size: 11px;
+	text-shadow: 0 1px #FFFFFF;
+	text-transform: uppercase;
+}
+
+div#content > div.card.head {
+	margin: 10px 10px 0;
+}
+
+div.head > div.left,
+div.head > div.center,
+div.head > div.right {
+	line-height: 19px;
+	padding-top:3px;
+	vertical-align: middle;
+}
+
+div.head > div.left,
+div.head > div.right {
+	position: absolute;
+	top: 0;
+	height: 20px;
+	background: none;
+}
+
+div.card div.head > div.left,
+div.card div.head > div.right {
+	background: url(../image/right3px.png);
+	background-repeat:  no-repeat;
+}
+
+
+div.card div.head > div.left {
+	left: 0;
+	padding-left: 7px;
+	text-align:left;
+	background-position: 0 -170px;
+	width:30%;
+}
+
+div.head > div.center{
+	text-align:center;	
+}
+
+
+.dialog div.head > div.center {
+	display:table;	
+}
+
+.dialog div.head > div.center a{
+	display:table-cell;	
+}
+
+
+div.card div.head > div.right {
+	right:-1px;
+	padding-right: 7px;
+	background-position: right -196px;
+	text-align:right;
+	width:30%;
+}
+
+div.head a {
+	color: #8395A3;	
+	padding: 0 5px;
+	text-decoration: none;
+}
+
+div.head a.disabled {
+	cursor: default;
+}
+
+div.head a:hover {
+	color: #375266;
+}
+
+div.head a.disabled:hover {
+	color: #8395A3;	
+}
+
+div.head a.active {
+	color: #375266;
+}
+
+
+/**
+ * Note icon widget styling.
+ */
+a.noteIcon {
+	display: block;
+	width: 14px;
+	height: 14px;
+	background-image: url("../image/main_icons.png");
+	background-repeat: no-repeat;
+	text-align:center:
+}
+
+a.noteIcon.hasNote {
+	background-position: -8px -747px;
+}
+
+a.noteIcon.noNote {
+	background-image: none;
+}
+
+a.noteIcon.createNote {
+	background-position: -2px -717px;
+}
+
+
+/* TABLEHEADER - ICONS */
+div.card > .head a.preferences,
+div.card > .head a.toolbox,
+div.card > .head a.help,
+div.card > .head a.fullview,
+div.card > .head a.horizontal,
+div.card > .head a.vertical,
+a.delete, 
+a.ownertype.consultant,
+a.ownertype.candidate,
+a.ownertype.company{
+	background-image: url("../image/main_icons.png");
+	background-repeat: no-repeat;
+	padding-left: 6px;
+	padding-right: 7px;
+	margin: 3px 5px;
+	height: 13px;
+	display:inline-block;
+}
+
+/* TABLEHEADER - PREFERENCES ICON */
+div.head a.preferences{
+	background-position: -2px -264px;
+}
+div.head a.preferences:hover{
+	background-position: -31px -264px;
+}
+div.head a.preferences.active,
+div.head a.preferences.current{
+	background-position: -31px -264px;
+}
+
+/* TABLEHEADER - TOOLBOX ICON */
+div.head a.toolbox{
+	background-position: -2px -303px;
+}
+div.head a.toolbox:hover{
+	background-position: -31px -303px;
+}
+div.head a.toolbox.active,
+div.head a.toolbox.current{
+	background-position: -31px -303px;
+}
+
+/* TABLEHEADER - HELP ICON */
+div.head a.help{
+	background-position: -2px -283px;
+}
+div.head a.help:hover{
+	background-position: -31px -283px;
+}
+div.head a.help.active,
+div.head a.help.current{
+	background-position: -31px -283px;
+}
+
+/* TABLEHEADER - FULLVIEW ICON */
+div.head a.fullview{
+	background-position: -2px -326px;
+}
+div.head a.fullview:hover{
+	background-position: -31px -326px;
+}
+div.head a.fullview.active,
+div.head a.fullview.current{
+	background-position: -31px -326px;
+}
+
+/* TABLEHEADER - HORIZONTAL ICON */
+div.head a.horizontal{
+	background-position: -2px -343px;
+}
+div.head a.horizontal:hover{
+	background-position: -31px -343px;
+}
+div.head a.horizontal.active,
+div.head a.horizontal.current{
+	background-position: -31px -343px;
+}
+
+/* TABLEHEADER - VERTICAL ICON */
+div.head a.vertical{
+	background-position: -2px -359px;
+}
+div.head a.vertical:hover{
+	background-position: -31px -359px;
+}
+div.head a.vertical.active,
+div.head a.vertical.current{
+	background-position: -31px -359px;
+}
+
+/* DELETE ICON */
+a.delete{
+	background-position: -2px -376px;
+	margin-left:-10px;
+}
+a.delete:hover{
+	background-position: -32px -376px;
+}
+
+
+a.ownertype.consultant,
+a.ownertype.candidate,
+a.ownertype.company{
+	padding-left:20px;
+}
+
+/* OWNERTYPE CONSULENT ICON */
+a.ownertype.consulent{
+	background-position: -2px -431px;
+}
+
+/* OWNERTYPE CANDIDATE ICON */
+a.ownertype.candidate{
+	background-position: -2px -412px;
+}
+
+/* OWNERTYPE COMPANY ICON */
+a.ownertype.company{
+	background-position: -2px -393px;
+}
+
+/* CARD */
+
+/**
+ * POPUP
+ */
+ 
+/* CARD (popup) */
+/* TABLEHEADER (popup) */
+
+.dialog div.head > div.left,
+.dialog div.head > div.right {
+	width:auto;
+}
+
+/**
+ * FORM
+ */
+form > table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+form > table thead th {
+	border: 1px solid #E6E9EC;
+	
+	color: #99A5AD;
+
+	font-size: 9px;
+	font-weight: bold;
+
+	text-align: left;
+	text-decoration: none;
+	text-transform: uppercase;
+	
+	padding: 3px 6px 2px;
+	
+	white-space: nowrap;
+}
+
+form > table tbody td {
+/*	border: 1px solid #E6E9EC;*/
+	
+	color: #4C4C4C;
+	
+	font-size: 11px;
+	font-weight: bold;
+	
+	padding: 3px 6px 2px;
+}
+
+form > table tbody td.odd {
+	background-color: #EEF4F8;
+}
+
+form > table tbody td a {
+	color: inherit;
+}
+
+p.label,
+label{
+	font-size:9px;
+	color: #99A5AC;
+	text-shadow:#ffffff 0 1px;
+	text-transform: uppercase;
+	font-weight: bold;
+	vertical-align: middle;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+td.label.focus > label{
+	color:#526A7B;
+}
+
+td.label.error > label{
+	color:#F40304;
+}
+
+/** Communication icons on formSelect */
+div.formSelect.Letter > div input,
+div.formSelect.Email > div input,
+div.formSelect.TextMessage > div input { 
+       background-image: url('../image/main_icons.png');
+       height:14px;
+       text-indent: 23px;
+}
+
+/** Letter icon in formSelect */
+div.formSelect.Letter > div input,{ 
+       background-position: 0 -452px;
+}
+
+/** Message icon in formSelect */
+div.formSelect.TextMessage > div input{ 
+       background-position: 0 -496px;
+}
+
+/** Email icon in formSelect */
+div.formSelect.Email > div input{ 
+       background-position: 0 -474px;
+}
+#communicationWriteMenu > div.center{
+	width:100%;	
+	margin-top:-3px;
+}
+
+#communicationWriteMenu > div.center > a{
+       background-image: url('../image/main_icons.png');
+       height:14px;
+       text-indent: 23px;
+       font-size:10px;
+       line-height:16px;
+}
+
+#communicationWriteMenu > div.center > a{
+       background-position: 0 -496px;
+       width:33%;
+}
+
+#innerContainerCommunication table.wireframe > tbody > tr > td.label{
+	width:75px;
+	height:22px;
+}
+
+#innerContainerCommunication table.wireframe > tbody > tr > td .formText{
+	height:140px;
+}
+/**
+ * formInput field
+ */
+div.formInput, div.formPassword {
+	position: relative;
+	height: 20px;
+	min-width:30px;
+}
+
+div.formInput > div, div.formPassword > div {
+	position: absolute;
+	top:0px;
+	left:3px;
+	right:3px;
+	padding-right:3px;
+	height: 20px;
+	background-image: url('../image/horiz_rep.gif');
+	background-position: 0 -310px;
+	background-repeat: repeat-x;
+}
+
+div.formInput > div input, div.formPassword > div input {
+	color: #526A7B;
+	background: transparent;
+	position: absolute;
+	top: 3px;
+	bottom: 1px;
+	width:100%;
+	
+	text-shadow: #fff 0 1px;
+	font-size: 11px;
+	font-weight: bold;	
+	border: none;
+}
+div.formInput > span.left,
+div.formInput > span.right,
+div.formPassword > span.left,
+div.formPassword > span.right{
+	position: absolute;
+	top: 0;
+	background-image: url('../image/form/form.gif');
+	height: 20px;
+	width: 3px;
+}
+
+div.formInput > span.left, div.formPassword > span.left {
+	left: 0px;
+	background-position: 0px 0px;
+}
+div.formInput > span.right, div.formPassword > span.right {
+	right: 0px;
+	background-position: -22px 0px;
+}
+
+
+/** Focus state */
+div.formInput.focus > div { background-position: 0 -370px; }
+div.formInput.focus > span.left { background-position: 0 -60px; }
+div.formInput.focus > div input { color: #375266; }
+div.formInput.focus > span.right { background-position: -22px -60px; }
+
+/** Error state */
+div.formInput.error > div { background-position: 0 -350px } 
+div.formInput.error > span.left { background-position: 0 -40px }
+div.formInput.error > div input { color: #F40304; }
+div.formInput.error > span.right { background-position: -22px -40px; }
+
+/** Disabled state */
+div.formInput.disabled > div { background-position: 0 -330px; } 
+div.formInput.disabled > span.left { background-position: 0 -20px; }
+div.formInput.disabled > div input { color: #e3ebf1; }
+div.formInput.disabled > span.right { background-position: -22px -20px; }
+
+/** Readonly state */
+div.formInput.readonly > div { background: none;} 
+div.formInput.readonly > span.left { background: none; }
+div.formInput.readonly > span.right { background: none; }
+ 
+/** Loading state: TODO */
+div.formInput.loading > span.right { width:22px; background-position: -25px 0px; }
+
+
+div.formInput.date > span.right {
+	width:22px;
+	right: 0px;
+	background-position: -3px -160px;
+}
+
+div.formInput.date.focus > span.right { background-position: -3px -180px; }
+
+/**
+ * formDate field
+ */
+div.formDate {
+	position: relative;
+	height: 20px;
+	min-width:30px;
+}
+
+div.formDate > div {
+	position: absolute;
+	top:0px;
+	left:3px;
+	right:3px;
+	padding-right:3px;
+	height: 20px;
+	background-image: url('../image/horiz_rep.gif');
+	background-position: 0 -310px;
+	background-repeat: repeat-x;
+}
+
+div.formDate > div input {
+	color: #526A7B;
+	background: transparent;
+	position: absolute;
+	top: 3px;
+	bottom: 1px;
+	width:100%;
+	
+	text-shadow: #fff 0 1px;
+	font-size: 11px;
+	font-weight: bold;	
+	border: none;
+}
+div.formDate > span.left,
+div.formDate > span.right{
+	position: absolute;
+	top: 0;
+	background-image: url('../image/form/form.gif');
+	height: 20px;
+	width: 3px;
+}
+
+div.formDate > span.left {
+	left: 0px;
+	background-position: 0px 0px;
+}
+div.formDate > span.right {
+	right: 0px;
+	width: 22px;
+	background-position: -3px -160px;
+	cursor: pointer;
+}
+
+
+/** Focus state */
+div.formDate.focus > div { background-position: 0 -370px; }
+div.formDate.focus > span.left { background-position: 0 -60px; }
+div.formDate.focus > div input { color: #375266; }
+div.formDate.focus > span.right { background-position: -3px -180px; }
+
+/** Error state */
+div.formDate.error > div { background-position: 0 -350px } 
+div.formDate.error > span.left { background-position: 0 -40px }
+div.formDate.error > div input { color: #F40304; }
+div.formDate.error > span.right { background-position: -22px -40px; }
+
+/** Disabled state */
+div.formDate.disabled > div { background-position: 0 -330px; } 
+div.formDate.disabled > span.left { background-position: 0 -20px; }
+div.formDate.disabled > div input { color: #e3ebf1; }
+div.formDate.disabled > span.right { background-position: -22px -20px; }
+
+/** Readonly state */
+div.formDate.readonly > div { background: none;} 
+div.formDate.readonly > span.left { background: none; }
+div.formDate.readonly > span.right { background: none; cursor: default; width: 3px;}
+ 
+/** Loading state */
+div.formDate.loading > span.right { width:22px; background-position: -25px 0px; }
+
+/**
+ * formSelect field
+ */
+div.formSelect,
+div.formColumnSelect {
+	position: relative;
+	height: 20px;
+}
+
+div.formSelect > div, 
+div.formColumnSelect > div {
+	position: absolute;
+	background-image: url('../image/horiz_rep.gif');
+	background-repeat: repeat-x;
+	background-position: 0 -390px;
+	height: 20px;
+	left:3px;
+	right:22px;
+}
+
+
+div.formSelect > div input, 
+div.formColumnSelect > div input {
+	background: transparent;
+	position: absolute;
+	top: 3px;
+	bottom: 1px;
+	color: #526A7B;
+	text-shadow: #fff 0 1px;
+	font-weight: bold;
+	font-size: 11px;
+	border: none;
+	width: 100%;
+}
+
+div.formSelect > span.left,
+div.formColumnSelect > span.left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	background-image: url('../image/form/form.gif');
+	background-position: 0px -80px;
+	height: 20px;
+	width: 3px;
+}
+
+
+div.formSelect > span.right,
+div.formColumnSelect > span.right {
+	position: absolute;
+	top: 0;
+	right: 0;	
+	background-image: url('../image/form/form.gif');
+	background-position: -3px -80px;	
+	height: 20px;
+	width: 22px;
+	cursor: pointer;
+}
+
+/** Focus state */
+div.formSelect.focus > div,
+div.formColumnSelect.focus > div { background-position: 0 -410px; } 
+div.formSelect.focus > span.left,
+div.formColumnSelect.focus > span.left { background-position: 0 -100px; }
+div.formSelect.focus > div > input,
+div.formColumnSelect.focus > div > input { color: #375266; }
+div.formSelect.focus > span.right,
+div.formColumnSelect.focus > span.right { background-position: -3px -100px; }
+
+/** Error state */
+div.formSelect.error > div,
+div.formColumnSelect.error > div { background-position: 0 -430px; } 
+div.formSelect.error > span.left,
+div.formColumnSelect.error > span.left { background-position: 0 -120px; }
+div.formSelect.error > input,
+div.formColumnSelect.error > input { color: #F40304; }
+div.formSelect.error > span.right,
+div.formColumnSelect.error > span.right { background-position: -3px -120px; }
+
+/** Disabled state: TODO */
+div.formSelect.disabled > div,
+div.formColumnSelect.disabled > div { background-position: 0 -450px; }
+div.formSelect.disabled > span.left,
+div.formColumnSelect.disabled > span.left { background-position: 0 -140px; }
+div.formSelect.disabled > input,
+div.formColumnSelect.disabled > input { color: #e3ebf1; }
+div.formSelect.disabled > span.right,
+div.formColumnSelect.disabled > span.right { background-position: -3px -140px; }
+
+/** Readonly state: TODO */
+div.formSelect.readonly > div,
+div.formColumnSelect.readonly > div { background-position: 0 -450px; }
+div.formSelect.readonly > span.left,
+div.formColumnSelect.readonly > span.left { background-position: 0 -140px; }
+div.formSelect.readonly > span.right,
+div.formColumnSelect.readonly > span.right { background-position: -3px -140px; }
+
+/** Loading state: TODO */
+div.formSelect.loading > span.right,
+div.formColumnSelect.loading > span.right { background-position: -25px -80px; }
+
+/* TEMP fix for PC */
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+ul.drawer {
+	background-color: #FFFFFF;
+	border: 1px solid #B1C5D3;
+
+	overflow: auto;
+
+	max-height: 150px;
+	min-width: 150px;
+
+	position:absolute;
+	z-index: 100000;
+	margin: 0;
+}
+
+ul.drawer li {
+	margin: 0;
+	padding: 0;
+
+	border-top: 1px solid #B1C5D3;
+	cursor: pointer;
+
+	background-color: #F5FBFC;
+}
+
+ul.drawer li.option.hovered {
+	background-color: #E5EBEC;
+}
+
+ul.drawer li.option{
+	padding-right:15px;
+}
+
+ul.drawer > li {
+}
+
+ul.drawer > li:first-child {
+	border-top: none;
+}
+
+ul.drawer li > div {
+	padding-left: 5px;
+	padding-right: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	white-space: nowrap;
+	color: #8395A3;
+	font-weight: bold;
+	font-size: 11px;
+	text-shadow: #fff 0 1px;
+	text-transform: capitalize;
+}
+
+ul.drawer input {
+	position: absolute; /* Outside influence from old stylesheet */
+	right:5px;	
+}
+
+ul.drawer.single input {
+	display: none;
+}
+
+ul.drawer li.group {
+	cursor: default;
+}
+
+ul.drawer li.group > div {
+	text-transform: uppercase;
+	padding: 0 5px;
+	color: #526A7A;
+	background: white;
+}
+
+ul.drawer li.selected {
+	background-color: #D6E8F5;
+	color: #375266;
+}
+
+ul.drawer li.hovered {
+	background-color: #E4F0F8;
+	color: #375266;
+}
+
+
+/*  SELECT DRAWER  */
+
+div.formColumnSelect div.wideDrawer{
+   position: absolute;
+   top:20px;
+   z-index: 999;
+   width:200px;
+   background:#fff;
+}
+
+div.formColumnSelect div.wideDrawer div.group{
+   margin-bottom: 1px;
+   position: relative;
+   padding-top:20px;
+	clear:both;
+	float: left;
+	width:100%;
+	overflow: hidden;
+}
+
+div.formColumnSelect div.wideDrawer div.group h5{
+   position: absolute;
+   text-transform: uppercase;
+   text-indent: 5px;
+   line-height: 20px;
+   height:20px;
+   margin: 0;
+   clear: both;
+   font-size: 10px;
+   font-weight:bold;
+   color: #fff;
+   width: 100%;
+   top:0px;
+}
+
+ul.drawer > li.group {
+   text-transform: uppercase;
+   text-indent: 5px;
+   line-height: 20px;
+   margin: 0;
+   clear: both;
+   font-size: 10px;
+   font-weight:bold;
+   color: #fff;
+   top:0px;
+}
+div.formColumnSelect div.wideDrawer div.group.prim h5,
+div.formColumnSelect div.wideDrawer div.group.sec h5,
+ul.drawer > li.group{
+   background-image: url('../image/horiz_rep.png');
+   background-repeat: repeat-x;
+}
+
+
+div.formColumnSelect div.wideDrawer div.group.prim h5,
+ul.drawer > li.group:first-child {
+   background-position: 0 -497px;
+   color: #fff;
+   text-shadow:none;
+}		
+
+div.formColumnSelect div.wideDrawer div.group.sec h5,
+ul.drawer > li.group{
+   
+   background-position: 0 -517px;
+	text-shadow: 0 1px #fff;
+   color: #004570;
+}		
+
+div.formColumnSelect div.wideDrawer div.group ul,
+ul.drawer > li.group > ul{
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   background:#eee;
+}
+
+div.formColumnSelect div.wideDrawer div.group ul li,
+ul.drawer > li.group > ul > li{
+	position: relative;
+   background:#F5FBFC;
+   border-bottom: 1px #ddd solid;
+   text-shadow: #fff 0 1px;
+   font-size: 11px;
+   color: #8395A3;
+   cursor: pointer;
+}
+
+div.formColumnSelect div.wideDrawer div.group ul li:hover,
+ul.drawer li.group > ul > li:hover,
+ul.drawer li.group > ul > li:hover > div{
+   color: #0E5884;
+}
+
+div.formColumnSelect div.wideDrawer div.group ul li input[type=checkbox]{
+   position: absolute;
+   right:10px;
+   width:auto;
+}
+
+div.formColumnSelect div.wideDrawer div.group ul li.selected{
+   color: #0E5884;
+}
+
+
+/* Wide Version of Select Drawer */
+
+div.formColumnSelect div.wideDrawer.wide{
+   width:600px;
+}
+
+div.formColumnSelect div.wideDrawer.wide div.group ul{
+   float: left;
+   background:#ddd;
+}
+
+div.formColumnSelect div.wideDrawer.wide div.group ul li{
+   border-right: 1px #ddd solid;
+   width:184px;
+   float:left;
+}
+
+
+
+/**
+ * formText field
+ */
+div.formText {
+	position: relative;
+	min-height: 64px;
+	padding:0px 5px;
+}
+div.formText > div {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	bottom: 3px;
+	right: 3px;
+	background: #ffffff;
+}
+
+div.formText > div > textarea {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	min-height: 61px;
+	width: 100%;
+	border: none;
+	resize: none;
+	color: #526A7B;
+	font-size:11px;
+	font-weight: bold;
+	text-shadow: #fff 0 1px;
+	background: transparent;
+	height: 100%;
+}
+
+div.formText span.tl,
+div.formText span.tr,
+div.formText span.bl,
+div.formText span.br,
+div.formText span.ml,
+div.formText span.mr,
+div.formText span.bm,
+div.formText span.tm{
+	position: absolute;
+}
+div.formText span.tl,
+div.formText span.tr,
+div.formText span.bl,
+div.formText span.br {
+	background-image: url('../image/form/form.gif');
+   background-repeat: no-repeat;
+	height: 3px;
+	width: 3px;
+}
+
+div.formText span.tl {
+	top: 0;
+	 left: 0px;
+   background-position: 0px 0px;
+}
+
+div.formText span.tr {
+	top: 0;
+	 right: 0px;
+	background-position: -22px 0px;
+}
+
+div.formText span.bl {
+	bottom: 0;
+	 left: 0px;
+   background-position: 0px -17px;
+}
+div.formText span.br {
+	bottom: 0;
+	 right: 0px;
+   background-position: -22px -17px;
+}
+
+div.formText span.tm,
+div.formText span.bm{
+	left: 1px;
+	right: 1px;
+	height: 3px;	
+   background-image: url('../image/horiz_rep.gif');
+   background-repeat: repeat-x;
+}
+
+div.formText span.tm {
+	top: 0;
+   background-position: 0px -310px;
+}
+div.formText span.bm {
+	bottom: 0;
+   background-position:0px -327px;
+}
+
+div.formText span.ml,
+div.formText span.mr{
+	bottom: 3px;
+	top: 3px;
+	width: 3px;
+	background-image: url('../image/form/form.gif');
+   background-repeat: repeat-y;
+}
+
+div.formText span.ml {
+	 left: 0px;
+   background-position: -48px 0px;
+}
+
+div.formText span.mr {
+	 right: 0px;
+   background-position: -62px 0px;
+}
+
+/** Focus state */
+div.formText.focus span.tl { background-position: 0 -100px; }
+div.formText.focus span.tr { background-position: -22px -100px; }
+div.formText.focus span.bl { background-position: 0 -77px; }
+div.formText.focus span.br { background-position: -22px -77px; }
+div.formText.focus span.tm { background-position: 0 -370px; }
+div.formText.focus span.bm { background-position: 0px -387px; }
+div.formText.focus span.ml { background-position: -58px 0px; }
+div.formText.focus span.mr { background-position: -72px 0px; }
+div.formText.focus textarea{ color: #375266;}
+
+/** Error state */
+div.formText.error span.tl { background-position: 0 -120px; }
+div.formText.error span.tr { background-position: -22px -120px; }
+div.formText.error span.bl { background-position: 0 -57px; }
+div.formText.error span.br { background-position: -22px -57px; }
+div.formText.error span.tm { background-position: 0 -350px; }
+div.formText.error span.bm { background-position: 0px -367px; }
+div.formText.error span.ml { background-position: -53px 0px; }
+div.formText.error span.mr { background-position: -67px 0px; }
+div.formText.error textarea{ color: #F40304;}
+
+/** Disabled state: TODO */
+div.formText.disabled span.tl { background-position: 0 -20px; }
+div.formText.disabled span.tr { background-position: -22px -20px; }
+div.formText.disabled span.bl { background-position: 0 -37px; }
+div.formText.disabled span.br { background-position: -22px -37px; }
+div.formText.disabled span.tm { background-position: 0 -330px; }
+div.formText.disabled span.bm { background-position: 0px -347px; }
+div.formText.disabled span.ml { background-position: -76px 0px; }
+div.formText.disabled span.mr { background-position: -80px 0px; }
+div.formText.disabled textarea{ color: #e3ebf1;}
+
+/** Readonly state: TODO */
+div.formText.readonly span.tl { background-position: 0 -20px; }
+div.formText.readonly span.tr { background-position: -22px -20px; }
+div.formText.readonly span.bl { background-position: 0 -37px; }
+div.formText.readonly span.br { background-position: -22px -37px; }
+div.formText.readonly span.tm { background-position: 0 -330px; }
+div.formText.readonly span.bm { background-position: 0px -347px; }
+div.formText.readonly span.ml { background-position: -76px 0px; }
+div.formText.readonly span.mr { background-position: -80px 0px; }
+
+/** Loading state: TODO */
+div.formText.loading span.tl { background-position: 0 0px; }
+div.formText.loading span.tr { background-position: -27px 0px; width:20px; height:18px;z-index:100;}
+div.formText.loading span.bl { background-position: 0 -17px; }
+div.formText.loading span.br { background-position: -22px -17px; }
+div.formText.loading span.tm { background-position: 0 -310px; }
+div.formText.loading span.bm { background-position: 0px -327px; }
+div.formText.loading span.ml { background-position: -48px 0px; }
+div.formText.loading span.mr { background-position: -62px 0px; }
+div.formText.loading textarea{ color: #E3EBF1;}
+
+
+
+/**
+ * Button
+ */
+a.buttonNg div,
+a.buttonNg span.left,
+a.buttonNg span.right{
+	background-image: url('../image/buttons.gif');
+}
+
+a.buttonNg {
+	position: relative;
+	display: block;
+	height: 23px;
+	line-height: 23px;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-shadow:#fff 0 1px;
+	color: #5F7684;
+	
+	margin-left: 10px;
+}
+a.buttonNg div{
+	background-position: 0 0;
+	background-repeat: repeat-x;
+	margin-left:1px;
+	padding: 0 15px;
+}
+a.buttonNg:hover div {	
+	background-position: 0 -23px;
+	color: #3C5665;
+}
+a.buttonNg:active div {	
+	background-position: 0 -46px;
+	line-height: 24px;	
+	color:#5F7684;
+}
+a.buttonNg.disabled div {	
+	background-position: 0 -69px;
+	line-height: 23px;	
+	color: #9DACB7;
+}
+
+a.buttonNg span.left, 
+a.buttonNg span.right{
+	position: absolute;
+	top: 0;
+	background-repeat: no-repeat;
+	width: 7px;
+	height: 23px;
+}
+/* BUTTON LEFT */
+a.buttonNg span.left {
+	left: 0px;
+	background-position: 0 -92px;
+}
+a.buttonNg:hover span.left {
+	background-position: 0 -115px;
+}
+a.buttonNg:active span.left {
+	background-position: 0 -138px;
+}
+a.buttonNg.disabled span.left {
+	background-position: 0 -161px;
+}
+
+/* BUTTON RIGHT */
+a.buttonNg span.right {
+	right: 0px;
+	background-position: -7px -92px;
+}
+a.buttonNg:hover span.right {
+	background-position: -7px -115px;
+}
+a.buttonNg:active span.right {
+	background-position: -7px -138px;
+}
+a.buttonNg.disabled span.right {
+	background-position: -7px -161px;
+}
+
+
+/* RED BUTTON */
+a.buttonNg.red div {
+	margin-left:11px;
+}
+a.buttonNg.red span.left {
+	background-position: -63px -92px;
+	width:25px;
+}
+a.buttonNg.red:hover span.left {
+	background-position: -63px -115px;
+}
+a.buttonNg.red:active span.left {
+	background-position: -63px -138px;
+}
+a.buttonNg.red.disabled span.left {
+	background-position: -63px -161px;
+}
+
+/* GREEN BUTTON */
+a.buttonNg.green div{
+	margin-left:11px;
+}
+a.buttonNg.green span.left {
+	background-position: -38px -92px;
+	width:25px;
+}
+a.buttonNg.green:hover span.left {
+	background-position: -38px -115px;
+}
+a.buttonNg.green:active span.left {
+	background-position: -38px -138px;
+}
+a.buttonNg.green.disabled span.left {
+	background-position: -38px -161px;
+}
+
+/* GREEN SAVE BUTTON */
+a.buttonNg.green.save span.left {
+	background-position: -13px -92px;
+}
+a.buttonNg.green.save:hover span.left {
+	background-position: -13px -115px;
+}
+a.buttonNg.green.save:active span.left {
+	background-position: -13px -138px;
+}
+a.buttonNg.green.save.disabled span.left {
+	background-position: -13px -161px;
+}
+
+/* BLUE BUTTON */
+a.buttonNg.blue div{
+	margin-left:11px;
+}
+a.buttonNg.blue span.left {
+	background-position: -88px -92px;
+	width:25px;
+}
+a.buttonNg.blue:hover span.left {
+	background-position: -88px -115px;
+}
+a.buttonNg.blue:active span.left {
+	background-position: -88px -138px;
+}
+a.buttonNg.blue.disabled span.left {
+	background-position: -88px -161px;
+}
+a.buttonNg.blue.loading span.left {
+	background-position: -113px -92px;
+}
+a.buttonNg.blue.loading div {
+	color: #9DACB7;
+}
+
+/* FILTER BUTTON */
+a.buttonNg.filter div{
+	margin-left:11px;
+}
+a.buttonNg.filter span.left {
+	background-position: -88px -92px;
+	width:25px;
+}
+a.buttonNg.filter:hover span.left {
+	background-position: -88px -115px;
+}
+a.buttonNg.filter:active span.left {
+	background-position: -88px -138px;
+}
+a.buttonNg.filter.disabled span.left {
+	background-position: -88px -161px;
+}
+a.buttonNg.filter.loading span.left {
+	background-position: -113px -92px;
+}
+a.buttonNg.filter.loading div {
+	color: #9DACB7;
+}
+
+/* SEARCH BUTTON */
+a.buttonNg.search div{
+	margin-left:11px;
+}
+a.buttonNg.search span.left {
+	background-position: -139px -92px;
+	width:25px;
+}
+a.buttonNg.search:hover span.left {
+	background-position: -139px -115px;
+}
+a.buttonNg.search:active span.left {
+	background-position: -139px -138px;
+}
+a.buttonNg.search.disabled span.left {
+	background-position: -139px -161px;
+}
+a.buttonNg.search.loading span.left {
+	background-position: -113px -92px;
+}
+a.buttonNg.search.loading div {
+	color: #9DACB7;
+}
+
+/* LOADING BUTTON */
+a.buttonNg .loading div {
+	background-position: 0 0;
+	margin-left:11px;
+}
+a.buttonNg:hover.loading div,
+a.buttonNg:active.loading div{
+	line-height: 23px;
+	background-position: 0 0;
+	color: #5F7684;
+}
+
+a.buttonNg.loading span.left {
+	background-position: -113px -92px;
+	width:25px;
+}
+a.buttonNg:hover.loading span.right,
+a.buttonNg:active.loading span.right {
+	background-position: -7px -92px;
+}
+
+/*  */
+div.card.templateForm h1 {
+	font-size: 10pt;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 2px;
+}
+
+div.card.templateForm p {
+	margin: 4px 0;
+	-font-weight: bold;
+	font-size: 9pt;
+	color:#646464;
+}
+

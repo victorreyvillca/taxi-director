@@ -1,0 +1,66 @@
+<form id="<?php echo $this->element->getAttrib('id')?>" action="<?php echo $this->element->getAction()?>" method="post" enctype="multipart/form-data">
+<?php echo $this->element->getElement('id')->render();?>
+	<div class="row">
+		<div class="span7">
+			<label>Picture profile</label>
+			<div class="well" id="result" style="width: 127px; height: 127px;">
+				<img src="<?php echo $this->element->getSource();?>" id="profile_img" style="width: 127px; height: 127px;"/>
+			</div>
+		</div>
+	</div>
+	<table>
+		<tbody>
+			<tr class="odd">
+				<td><label><?php echo _('Image picture') ?></label></td>
+				<td>
+					<input id="MAX_FILE_SIZE" type="hidden" value="8388608" name="MAX_FILE_SIZE">
+					<input type="file" id="file-input" name="file" class="valid">
+				</td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('firstName')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('firstName')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('lastName')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('lastName')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('ci')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('ci')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('sex')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('sex')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('username')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('username')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('password')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('password')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('passwordConfirm')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('passwordConfirm')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('email')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('email')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('phonemobil')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('phonemobil')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('phone')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('phone')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('role')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('role')->renderViewHelper() ?></td>
+			</tr>
+		</tbody>
+	</table>
+</form>

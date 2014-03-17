@@ -1,0 +1,333 @@
+	.odd td{
+		background-color: #eef4f8;
+	}
+	
+	.even td{
+		background-color: none;
+	}
+	
+	.odd td.spacer{
+		background-color:#eef4f8;
+	}
+	
+	.even td.spacer{
+		background-color:none;
+	}
+
+.formfield{
+   width: 100%;
+   height: 20px;
+   position: relative;
+   float: right;
+}
+
+p.label,
+label{
+	font-size:9px;
+	color: #99A5AC;
+	text-shadow:#ffffff 0 1px;
+	text-transform: uppercase;
+	font-weight: bold;
+	vertical-align: middle;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.select{
+		background: url(../image/horiz_rep.png) repeat-x 0 -390px transparent;
+}
+
+
+.select input{
+   width: 95%;
+   background: transparent;
+   border: none;
+   text-indent: 3px;
+   font-weight: bold;
+   font-size: 11px;
+   color:#526A7B;
+   text-shadow: #fff 0 1px;
+}
+.select .left{
+   background: url(../image/form/input_l.png) no-repeat 0 -80px transparent;
+   border: none;
+   width: 3px;
+   height: 20px;
+   display: block;
+   position: absolute;
+   left: 0;
+}
+
+.select .right{
+   background: url(../image/form/input_r.png) no-repeat right -80px transparent;
+   border: none;
+   width: 21px;
+   height: 20px;
+   display: block;
+   position: absolute;
+   right: 0px;
+   top:0px;
+}
+
+.on > .select{
+	background: url(../image/horiz_rep.png) repeat-x 0 -410px transparent;
+}
+
+.on > .formfield > input{
+	color: #375266;
+}
+.on > .select .left{
+   background: url(../image/form/input_l.png) no-repeat 0 -100px transparent;
+}
+
+.on > .select .right{
+   background: url(../image/form/input_r.png) no-repeat right -100px transparent;
+}
+
+
+.error > .select{
+	background: url(../image/horiz_rep.png) repeat-x 0 -430px transparent;
+}
+.error > .select .left{
+   background: url(../image/form/input_l.png) no-repeat 0 -120px transparent;
+}
+
+.error > .select .right{
+   background: url(../image/form/input_r.png) no-repeat right -120px transparent;
+}
+
+.txtinput{
+		background: url(../image/form/input_m.png) repeat-x transparent;
+}	
+
+.txtinput input{
+   background: transparent;
+   border: none;
+   display: block;
+   height: 16px;
+   width: 98%;
+   padding-top:5px;
+   font-weight: bold;
+   font-size: 11px;
+   color:#526A7B;
+   text-shadow: #fff 0 1px;
+  }
+
+.txtinput .left{
+   background: url(../image/form/input_l.png) no-repeat transparent;
+   border: none;
+   width: 3px;
+   height: 20px;
+   display: block;
+   position: absolute;
+   left: 0;
+}
+.txtinput .right{
+   background: url(../image/form/input_r.png) no-repeat transparent top right;
+   border: none;
+   width: 3px;
+   height: 20px;
+   position: absolute;
+   right: 0;
+	top:0;
+	overflow:hidden;
+}
+.on > .txtinput{
+	background: url(../image/horiz_rep.png) repeat-x 0 -370px transparent;
+
+}
+.on > .txtinput .left{
+   background: url(../image/form/input_l.png) no-repeat 0 -60px transparent;
+}
+
+.on > .txtinput .right{
+   background: url(../image/form/input_r.png) no-repeat right -60px transparent;
+}
+
+.error > .txtinput{
+	background: url(../image/form/input_m.png) repeat-x 0 -40px transparent;
+}
+.error > .txtinput .left{
+   background: url(../image/form/input_l.png) no-repeat 0 -40px transparent;
+}
+
+.error > .txtinput .right{
+   background: url(../image/form/input_r.png) no-repeat right -40px transparent;
+}
+
+.readOnly .txtinput, .readOnly > .select{
+	/* background: url(../image/form/input_m.gif) repeat-x 0 -20px transparent; */
+	background: none;
+}	
+
+.readOnly .txtinput .left, .readOnly > .select .left{
+  /*  background: url(../image/form/input_l.gif) no-repeat 0 -20px transparent; */
+	background: none;
+}
+.readOnly .txtinput .right, .readOnly > .select .right{
+   /* background: url(../image/form/input_r.gif) no-repeat 0 -20px transparent; */
+	background: none;
+}
+.textarea {
+	background: #fff;
+}
+.textarea > textarea {
+	background: #fff;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	font-weight: bold;
+	font-size: 11px;
+	color: #526A7B;
+	text-shadow: #fff 0 1px;
+	margin: 3px;
+}
+.textarea > .top > .left, .textarea > .top > .right, .textarea > .bottom > .left, .textarea > .bottom > .right{
+   border: none;
+   width: 3px;
+   height: 3px;
+   display: block;
+	position: absolute;
+	z-index:888;
+}
+.textarea > .top > .left{
+   background: url(../image/form/input_l.png) no-repeat top left transparent;
+	left:0px;
+	top:0px;
+}
+
+.textarea > .top > .right{
+   background: url(../image/form/input_r.png) no-repeat top right transparent;
+	right:0px;
+	top:0px;
+}
+
+.textarea > .bottom > .left{
+   background: url(../image/form/input_l.png) 0 -17px transparent;
+	left:0px;
+	bottom:0px;
+}
+
+.textarea > .bottom > .right{
+   background: url(../image/form/input_r.png) right -17px transparent;
+	right:0px;
+	bottom:0px;
+}
+
+.textarea > .left, .textarea > .right{
+   border: none;
+   width: 3px;
+   height:100%;
+  	display: block;
+	position: absolute;
+	top:0px;
+	z-index:887;
+}
+
+.textarea > .left{
+   background: url(../image/form/input_l.png) repeat-y -6px 0px transparent;
+	left:0px;
+}
+.textarea > .right{
+   background: url(../image/form/input_r.png) repeat-y 0px 0px transparent;
+	right:0px;
+}
+
+.textarea > .bottom{
+	height:3px;
+	position: absolute;
+	width: 100%;
+	bottom: -3px;
+}
+
+
+.textarea > .top > .middle, .textarea > .bottom > .middle{
+   border: none;
+   height: 3px;
+   display: block;
+	width: 100%;
+}
+
+.textarea > .top > .middle{
+   background: url(../image/form/input_m.png) repeat-x left top transparent;
+	float: left;
+}
+
+.textarea >.bottom > .middle{
+   background: url(../image/form/input_m.png) repeat-x 0 -17px transparent;
+	position: absolute;
+	left:0px;
+	bottom:0px;	
+}
+
+.on > .textarea .top > .left{
+   background: url(../image/form/input_l.png) no-repeat 0 -60px transparent;
+}
+
+.on > .textarea .top > .right{
+   background: url(../image/form/input_r.png) no-repeat right -60px transparent;
+}
+
+.on > .textarea > .bottom > .left{
+   background: url(../image/form/input_l.png) 0 -77px transparent;
+}
+
+.on > .textarea > .bottom > .right{
+   background: url(../image/form/input_r.png) right -77px transparent;
+}
+
+.on > .textarea > .top > .middle{
+   background: url(../image/form/input_m.png) repeat-x 0 -60px transparent;
+}
+
+.on > .textarea > .bottom > .middle{
+   background: url(../image/form/input_m.png) repeat-x 0 -77px transparent;
+}
+
+.on > .textarea > .left{
+   background: url(../image/form/input_l.png) repeat-y -16px 0px transparent;
+	left:0px;
+}
+
+.on > .textarea > .right{
+   background: url(../image/form/input_r.png) repeat-y -10px 0px transparent;
+	right:0px;
+}
+
+.error > .textarea, .error > .textarea > textarea{
+	background: #FFF7F7;
+}
+
+.error > .textarea .top > .left{
+   background: url(../image/form/input_l.png) no-repeat 0 -40px transparent;
+}
+
+.error > .textarea .top > .right{
+   background: url(../image/form/input_r.png) no-repeat right -40px transparent;
+}
+
+.error > .textarea > .bottom > .left{
+   background: url(../image/form/input_l.png) 0 -57px transparent;
+}
+
+.error > .textarea > .bottom > .right{
+   background: url(../image/form/input_r.png) right -57px transparent;
+}
+
+.error > .textarea > .top > .middle{
+   background: url(../image/form/input_m.png) repeat-x 0 -40px transparent;
+}
+
+.error > .textarea > .bottom > .middle{
+   background: url(../image/form/input_m.png) repeat-x 0 -57px transparent;
+}
+
+.error > .textarea > .left{
+   background: url(../image/form/input_l.png) repeat-y -11px 0px transparent;
+	left:0px;
+}
+
+.error > .textarea > .right{
+   background: url(../image/form/input_r.png) repeat-y -5px 0px transparent;
+	right:0px;
+}

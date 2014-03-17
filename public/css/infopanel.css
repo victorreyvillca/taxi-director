@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+div.infopanel {
+	position: fixed;
+	z-index: 120001;
+	top: 40%;
+	background-color: #F5FBFC;
+	color: #375266;
+	border-top-width: 15px;
+	padding: 10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius:5px;
+	text-transform: uppercase;
+	text-shadow:#fff 0 1px;
+	font-weight: bold;
+	font-size:12px;
+	padding:10px;
+	-moz-box-shadow: 0px 0px 10px #333;
+  	-webkit-box-shadow: 0px 0px 10px #333;
+  	box-shadow: 0px 0px 10px #333;
+	
+	max-width: 80%;
+}
+
+div.infopanel > div.text {
+	margin-bottom: 10px;
+}
+
+div.infopanel a.buttonIp {
+	color: #5F7684;
+	cursor: pointer;
+	display: block;
+	
+	float: right;
+	position: relative;
+	
+	text-decoration: none;
+	
+	margin-left: 10px;
+}
+
+div.infopanel a.buttonIp span.left {
+	background-image: url('../image/buttons.gif');
+	background-position: 0px -92px;
+	cursor: inherit;
+	display: block;
+
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	
+	width: 7px;
+	height: 23px;
+}
+
+div.infopanel a.buttonIp span.right {
+	background-image: url('../image/buttons.gif');
+	background-position: -7px -92px;
+	cursor: inherit;
+	display: block;
+
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	
+	width: 7px;
+	height: 23px;
+}
+
+div.infopanel a.buttonIp div {
+	background-image: url('../image/buttons.gif');
+	color: #5F7684;
+	cursor: inherit;
+	display: block;
+	
+	float: none;
+
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	
+	height: 23px;
+	line-height: 23px;
+	
+	padding: 0 10px;
+
+	text-shadow: white 0px 1px 0px;
+	text-transform: uppercase;
+}
+
+div.infopanelOverlay {
+	position: fixed;
+	z-index: 120000;
+	opacity: 0.4;
+	filter: alpha(opacity = 40);
+	background-color: black;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}

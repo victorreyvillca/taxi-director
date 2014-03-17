@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+div.flashmessage {
+	position: fixed;
+	z-index: 120002;
+	left: 5px;
+	background-color: #e8f1f6;
+	border: 2px solid #b7cbdb;
+	padding: 10px;
+}
+
+div.flashmessage > div.close {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	
+	background-image: url('../image/button/cross.png');
+	background-repeat: no-repeat;
+	
+	width: 30px;
+	height: 30px;
+	
+	cursor: pointer;
+}
+
+div.flashmessage > div.text {
+	font-size: 10px;
+	text-shadow: #fff 0 1px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+div.flashmessage.error > div.text {
+	color: red;
+}
+
+div.flashmessage.warning > div.text {
+	color: orange;
+}
+
+div.flashmessage.info > div.text {
+	color: #375266;
+}

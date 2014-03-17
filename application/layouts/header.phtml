@@ -1,0 +1,32 @@
+<div id="menu">
+    <ul class="menu">
+    	<?php
+		$container = $this->navigation()->getContainer();
+		$pages = $container->getPages();
+		foreach ($pages as $menu):?>
+		<li><a href="<?php echo $menu->getHref();?>" class="parent"><span><?php echo $this->translate($menu->getLabel());?></span></a>
+			<?php if ($menu->count() > 1) {?>
+			<div>
+				<ul>
+					<?php $submenus = $menu->getPages(); ?>
+					<?php foreach ($submenus as $submenu):?>
+					<li><a href="<?php echo $submenu->getHref();?>"><span><?php echo $this->translate($submenu->getLabel());?></span></a></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+			<?php }?>
+		</li>
+		<?php endforeach; ?>
+    </ul>
+</div>
+
+<div id="copyright"><a href="http://apycom.com/"></a></div>
+
+<div id="header">
+	<div id="banner">
+		<h1><span>Your</span> Business</h1>
+	</div><!--close banner-->
+	    <h2>Church Slogan Here</h2>
+	<div id="menubar">
+	</div><!--close menubar-->
+</div><!--close header-->

@@ -1,0 +1,61 @@
+<div id="dialog-form" title="<?php echo $this->translate('Editar Club'); ?>" class="header" style="display: none;">
+	<?php echo $this->form; ?>
+</div>
+
+<script type="text/javascript">
+	com.em.Club.prototype.dialogButtons = {
+		'<?php echo $this->translate('Cancelar'); ?>': function() {
+			$(this).dialog("close");
+		},
+		'<?php echo $this->translate('Editar'); ?>': function() {
+			$.ajax({
+				url: '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Club', 'action'=>'edit-save')); ?>',
+				type: "POST",
+				dataType: 'json',
+				data: $('#formId').serialize(),
+				beforeSend: function(XMLHttpRequest) {
+					validator.form();
+					if (!validator.valid()) {
+						com.em.Club.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
+						return false;
+					}
+
+					com.em.Club.prototype.processingDisplay(true);
+					return true;
+				},
+
+				success: function(data, textStatus, XMLHttpRequest) {
+					if (textStatus == 'success') {
+						if (data.success) {
+							dialogForm.dialog('close');
+							table.fnDraw();
+							com.em.Club.prototype.flashSuccess(data.message, {header: com.em.Alert.SUCCESS});
+						} else {
+							if (data.name_duplicate) {
+								$("#name").parent().find('.error').remove();
+								$("#name").parent().append('<label class="error" for="name" generated="true">'+data.message+'</label>');
+							} else {
+								var name = data.messageArray.name;
+
+								if (name != undefined) {
+									$('#name').parent().find('.error').remove();
+									$('#name').parent().append('<label class="error" for="name" generated="true">'+name.isEmpty+'</label>');
+								}
+							}
+							com.em.Club.prototype.flashError(data.message, {header: com.em.Alert.ERROR});
+						}
+					}
+				},
+
+				complete: function(jqXHR, textStatus) {
+					com.em.Club.prototype.processingDisplay(false);
+				},
+
+				error: function(jqXHR, textStatus, errorThrown) {
+					dialogForm.dialog('close');
+					com.em.Club.prototype.flashError(errorThrown, {header: com.em.Alert.ERROR});
+				}
+			});
+		}
+	};
+</script>

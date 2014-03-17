@@ -1,0 +1,885 @@
+@charset "UTF-8";
+/**
+ * CSS for Isak 2
+ *
+ * Main stylesheet for structure on screen.
+ *
+ * @category Isak
+ * @package CSS
+ * @media Screen
+ * @author Jesper Birkestrøm <jb@emini.dk>
+ * @copyright Copyright (c) 2009 Emini A/S
+ * @license Proprietary
+ */
+
+/* Reset all boxmodels */
+* {
+	margin: 0px;
+	padding: 0px;
+ 	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+   -moz-box-sizing: content-box;
+   -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    outline: none;
+ }
+
+/* Frame box for the content */
+body {
+	padding-bottom: 55px;
+	background-color: #FCFCFC;
+}
+
+
+/* Center element */
+.center {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.shadow{
+	box-shadow:0px 0px 15px #000;
+	-webkit-box-shadow:0px -0px 15px #000;
+	-moz-box-shadow:0px -0px 15px #000000;
+}
+
+.roundedCorners{
+	border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
+}
+
+.toproundedCorners{
+	border-radius-topleft:5px; 
+	border-radius-topright:5px; 
+	-moz-border-radius-topright:5px; 
+	-moz-border-radius-topleft:5px; 
+	-webkit-border-radius-topleft:5px;
+	-webkit-border-radius-topright:5px;
+}
+
+a > img {
+	border: none;
+}
+
+table#jsonListSearchResults td:last-child,
+table#jsonListSearchResults th:last-child {
+	text-align: center;
+	width: 30px;
+}
+	
+/* Float a element left */
+.left {
+	float: left;
+}
+
+/* Float a element right */
+.right {
+	float: right;
+}
+
+/* Align text to the left */
+.textLeft {
+	text-align: left;
+}
+
+/* Align text to the right */
+.textRight {
+	text-align: right;
+}
+
+/* Align text in horizontal center */
+.textCenter {
+	text-align: center;
+}
+
+/* Align text in vertical top */
+.textTop {
+	vertical-align: top;
+}
+
+/* Align text to the vertical middle */
+.textMiddle {
+	vertical-align: middle;
+}
+
+.textSizeSmall {
+	font-size: 9px;
+}
+
+.textSizeNormal {
+	font-size: 10px;
+}
+
+.textSizeMedium {
+	font-size: 12px;
+}
+
+.textSizeLarge {
+	font-size: 16px;
+}
+
+.upper {
+	text-transform: uppercase;
+}
+
+.bold {
+	font-weight: bold;
+	height:11px;
+}
+
+/* Clear both sides of a block */
+.clear {
+	clear: both;
+}
+
+/* Remove bullets from a list */
+ul.nobullets {
+	list-style-position: outside;
+	list-style-image: none;
+	list-style-type: none;
+}
+
+/* Heading 1 */
+h1 {
+	font-size: 14px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #8395A3;
+	text-shadow: #ffffff 0 1px;
+}
+
+/* Heading 2 */
+h2 {
+	font-size: 18px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	color: #375266;
+}
+
+/* All anchors should look like a link */
+a {
+	color: #00606B;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+div.tooltip {
+	max-width: 500px;
+}
+
+div.tooltip h1 {
+	color: #375266;
+	padding: 0;
+	margin: 0;
+	font-size: 10pt;
+	margin-top: 5px;
+}
+
+div.tooltip h1:first-child {
+	margin-top: 0;
+}
+
+div.tooltip h2 {
+	color: #375266;
+	padding: 0;
+	margin: 0;
+	font-size: 9pt;
+	margin-top: 5px;
+}
+
+div.tooltip p {
+	color: #375266;
+	padding: 0;
+	margin: 0;
+	font-size: 8pt;
+	font-weight: normal;
+}
+
+div.tooltip > div.content{
+	font-size:11px;
+	font-weight:bold;
+	color:#375266;
+	padding: 5px;
+}
+
+div.tooltip > div.topLeft,
+div.tooltip > div.topRight,
+div.tooltip > div.bottomLeft,
+div.tooltip > div.bottomRight,
+div.tooltip > div.left,
+div.tooltip > div.right,
+div.tooltip > div.top-meta,
+div.tooltip > div.bottom-meta,
+div.tooltip > div.stemTop,
+div.tooltip > div.stemRight,
+div.tooltip > div.stemBottom,
+div.tooltip > div.stemLeft,		
+div.tooltip > div.close{
+	position:absolute;
+	
+}
+
+div.tooltip > div.topLeft,
+div.tooltip > div.top-meta,
+div.tooltip > div.topRight{
+	top:-10px;
+}
+
+div.tooltip > div.bottomLeft,
+div.tooltip > div.bottom-meta,
+div.tooltip > div.bottomRight{
+	bottom:-10px;
+}
+
+div.tooltip > div.topLeft,
+div.tooltip > div.left,
+div.tooltip > div.bottomLeft{
+	left:-10px;
+}
+
+div.tooltip > div.topRight,
+div.tooltip > div.right,
+div.tooltip > div.bottomRight{
+	right:-10px;
+}
+
+div.tooltip > div.topLeft,
+div.tooltip > div.topRight,
+div.tooltip > div.bottomLeft,
+div.tooltip > div.bottomRight,
+div.tooltip > div.stemTop,
+div.tooltip > div.stemRight,
+div.tooltip > div.stemBottom,
+div.tooltip > div.stemLeft,		
+div.tooltip > div.close{
+	background-image:url(../image/form/messagebox_corners.png);
+}
+
+div.tooltip > div.topLeft,
+div.tooltip > div.topRight,
+div.tooltip > div.bottomLeft,
+div.tooltip > div.bottomRight{
+	width:10px;
+	height:10px;
+}
+
+div.tooltip > div.stemTop,
+div.tooltip > div.stemBottom{
+	width:15px;
+	height:10px;
+	display: none;
+}
+
+div.tooltip > div.stemLeft,
+div.tooltip > div.stemRight{
+	width:10px;
+	height:15px;
+}
+
+div.tooltip.right > div.stemLeft {
+	display: none;
+}
+div.tooltip.left > div.stemRight {
+	display: none;
+}
+
+div.tooltip > div.stemLeft {
+	left:-12px;
+}
+div.tooltip > div.stemRight {
+	right:-12px;
+}
+div.tooltip > div.stemTop{
+	top:-13px;
+}
+div.tooltip > div.stemBottom{
+	bottom:-11px;
+}
+div.tooltip > div.close{
+	width:7px;
+	height:7px;
+	top:-3px;
+	right:-2px;
+	cursor:pointer;
+	background-position: 0 -62px;
+	display: none;
+}
+div.tooltip > div.close:hover{
+	background-position: -10px -62px;
+}
+div.tooltip > div.left,
+div.tooltip > div.right{
+	width: 10px;
+	height:100%;
+	top:0px;
+	background-image:url(../image/form/messagebox_leftRight.png);
+	background-repeat: repeat-y;
+}
+
+div.tooltip > div.top-meta,
+div.tooltip > div.bottom-meta{
+	width: 100%;
+	height:10px;
+	background-image: url(../image/form/messagebox_topBottom.png);
+	background-repeat: repeat-x;
+}
+
+/* NOTE */
+div.tooltip.note > div.content{
+	background: #FFFFE9;
+}
+div.tooltip.note > div.topLeft{
+	background-position:-0px 0px;
+}
+div.tooltip.note > div.topRight{
+	background-position:-11px 0px;
+}
+div.tooltip.note > div.bottomLeft{
+	background-position:-0px -11px;
+}
+div.tooltip.note > div.bottomRight{
+	background-position:-11px -11px;
+}
+div.tooltip.note > div.left{
+	background-position:-0px 0px;
+}
+div.tooltip.note > div.right{
+	background-position:-11px 0px;
+}
+div.tooltip.note > div.top-meta{
+	background-position:0px -0px;
+}
+div.tooltip.note > div.bottom-meta{
+	background-position:0px -11px;
+}
+div.tooltip.note > div.stemLeft{
+	background-position:-0px -22px;
+}
+div.tooltip.note > div.stemRight{
+	background-position:-11px -22px;
+}
+div.tooltip.note > div.stemTop{
+	background-position:-0px -38px;
+}
+div.tooltip.note > div.stemBottom{
+	background-position:-0px -49px;
+}
+
+/* MESSAGE */
+div.tooltip.message > div.content{
+	background: #F2F9FF;
+}
+div.tooltip.message > div.topLeft{
+	background-position:-26px 0px;
+}
+div.tooltip.message > div.topRight{
+	background-position:-37px 0px;
+}
+div.tooltip.message > div.bottomLeft{
+	background-position:-26px -11px;
+}
+div.tooltip.message > div.bottomRight{
+	background-position:-37px -11px;
+}
+div.tooltip.message > div.left{
+	background-position:-22px 0px;
+}
+div.tooltip.message > div.right{
+	background-position:-33px 0px;
+}
+div.tooltip.message > div.top-meta{
+	background-position:0px -22px;
+}
+div.tooltip.message > div.bottom-meta{
+	background-position:0px -33px;
+}
+div.tooltip.message > div.stemLeft{
+	background-position:-26px -22px;
+}
+div.tooltip.message > div.stemRight{
+	background-position:-37px -22px;
+}
+div.tooltip.message > div.stemTop{
+	background-position:-26px -38px;
+}
+div.tooltip.message > div.stemBottom{
+	background-position:-26px -49px;
+}
+
+/* ERROR */
+div.tooltip.error > div.content{
+	background: #FFC0C0;
+	text-shadow:#FFE0E0 0 1px;
+}
+div.tooltip.error > div.topLeft{
+	background-position:-52px 0px;
+}
+div.tooltip.error > div.topRight{
+	background-position:-63px 0px;
+}
+div.tooltip.error > div.bottomLeft{
+	background-position:-52px -11px;
+}
+div.tooltip.error > div.bottomRight{
+	background-position:-63px -11px;
+}
+div.tooltip.error > div.left{
+	background-position:-44px 0px;
+}
+div.tooltip.error > div.right{
+	background-position:-55px 0px;
+}
+div.tooltip.error > div.top-meta{
+	background-position:0px -44px;
+}
+div.tooltip.error > div.bottom-meta{
+	background-position:0px -55px;
+}
+div.tooltip.error > div.stemLeft{
+	background-position:-52px -22px;
+}
+div.tooltip.error > div.stemRight{
+	background-position:-63px -22px;
+}
+div.tooltip.error > div.stemTop{
+	background-position:-52px -38px;
+}
+div.tooltip.error > div.stemBottom{
+	background-position:-52px -49px;
+}
+
+
+/* Styles for the pager widget */
+div.pager {
+	font-size: 10px;
+	vertical-align: middle;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #8395A3;
+	float: left;
+	margin-top:5px;
+}
+
+/* The main container for the header */
+body > div#header-meta {
+	width: 100%;
+	height: 84px;
+	min-height: 84px;
+	min-width: 950px;
+	position: relative;
+}
+
+/* The top half inside the header */
+body > div#header-meta > div.top-meta {
+	position: absolute;
+	width: 100%;
+	height: 54px;
+	min-height: 54px;
+	min-width: 950px;
+	background: url(../image/gradientTop.png) top repeat-x;
+}
+
+/* The bottom half inside the header */
+body > div#header-meta > div.bottom-meta {
+	position: absolute;
+	bottom: 0px;
+	height: 30px;
+	min-height: 30px;
+	width: 100%;
+	background: url(../image/gradientTop.png) 0px -54px repeat-x;
+}
+
+/* The bottom half inside the header */
+
+
+/* The Footer at the bottom of the page */
+body > div#footer {
+	z-index: 1000;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 35px;
+	min-height: 35px;
+	min-width: 950px;
+	background: url(../image/footer_bg.png) repeat-x;
+}
+
+/* The main center container. */
+body > div#content{
+	min-width: 950px;
+	min-height: 300px;
+}
+
+/* Position of the module menu */
+div#moduleMenu {
+	position: absolute;
+	width: 100%;
+	bottom: 12px;
+	height:30px;
+}
+
+/* Position of the function menu in the left side */
+ul#functionMenuLeft {
+	position: absolute; 
+	bottom: 0px;
+	left: 5px;
+}
+
+/* Position of the function menu in the right side */
+ul#functionMenuRight {
+	position: absolute; 
+	bottom: 0px;
+	right: 10px;
+}
+
+/* Position of the shotcut list */
+ul#shortcutList {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+/* Container holding the shortcut content */
+div#shortcuts {
+	position: absolute;
+	top: 13px;
+	left: 10px;
+	z-index: 50000;
+}
+
+div#shortcuts .tab{
+	
+}
+div#shortcuts ul{
+	clear: both;
+	background-color: #143B51;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	width:147px;
+	top:26px;
+	position: absolute;
+}
+
+div#shortcuts li:first-child{
+	background: url(../image/navigation/shortcutMenu_top.png) no-repeat left top;
+	height:2px;
+}
+
+div#shortcuts li.seperator{
+	background: url(../image/navigation/dark_horiz_seperator.png) repeat-x center center;
+	height:2px;
+}
+
+div#shortcuts li a{
+	display: block;
+	padding:7px 35px 7px 10px;
+	color:#ccc;
+	font-size:11px;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+div#shortcuts li a:hover{
+	color: #fff;
+}
+
+/* Position of the global list (The one opposit of the shortcut list) */
+ul#globalList {
+	position: absolute;
+	right: 10px;
+	top:  10px;
+}
+
+/* Position of the search field */
+div#searchContainer {
+	position: absolute;
+	bottom: 12px;
+	right: 10px;
+	width: 273px;
+	overflow: hidden;
+}
+
+div#searchContainer > .left {
+	background:url(../image/navigation/search_l.png) no-repeat;
+	width: 30px;
+	height: 27px;
+	display: block;
+	float:left;
+}
+div#searchContainer > div {
+	background:url(../image/navigation/search_m.png) repeat-x;
+	height: 27px;
+	width: 230px;
+	display: block;
+	float:left;
+}
+
+div#searchContainer > .right {
+	background:url(../image/navigation/search_r.png) no-repeat;
+	width: 13px;
+	height: 27px;
+	display: block;
+	float:left;
+}
+
+div#searchContainer.on > .left,
+div#searchContainer.on > div,
+div#searchContainer.on > .right {
+	background-position: 0px -27px;
+}
+
+/* Styling of the input element inside of the search container */
+div#searchContainer input#globalSearch {
+	font-size: 13px;
+	color:#ddd;
+	font-weight: normal;
+	width: 230px;
+	border: none;
+	background: transparent;
+	padding: 7px 40px 4px 0px;
+}
+
+div#searchContainer.on input#globalSearch{
+	color:#666;
+}
+
+
+
+/********** FOOTER TODO: Cleanup **********/
+
+div#footer * {
+	color: #ddd;
+ 	font-size: 10px;
+ 	text-shadow: #000 0 -1px;
+ 	font-weight: bold;
+}
+
+div#footer > div.left {
+	position: absolute;
+	padding:10px;
+}
+
+div#footer ul {
+	list-style-position: outside;
+	list-style-image: none;
+	list-style-type: none;
+}
+
+div#footer > div.left > ul li {
+	padding-left: 25px;
+	float:left;
+	padding-top:2px;
+}
+
+div#footer > div.right {
+	position: absolute;
+	padding:10px;
+	right: 0px;	
+}
+
+div#footer > div.right > ul > li {
+	float: left;
+	text-align: left;
+}
+
+div#footer > div.right > ul li li {
+	padding-top: 4px;
+	margin-bottom: 5px;
+	float:left;
+	padding-left:5px;
+	text-align: left;
+}
+
+div#footer > div.right > ul li.ruler {
+	width: 1px;
+	height: 35px;
+	background-color: #000000;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+div#footer > div.right > ul li.space {
+	width: 2px;
+	height: 35px;
+	padding:0px;
+}
+
+
+div#footer li.divider {
+	background: url('../image/footer/footer_divider.gif') 8px 0px repeat-y;
+	width:10px;
+	height: 35px;
+	padding-left: 10px;
+	margin-top:-10px;
+}
+
+div#footer li.smlDivider {
+	background: url('../image/footer/footer_divider.gif') 8px 0px repeat-y;
+	width:10px;
+	height: 10px;
+	margin-top: 5px;
+}
+
+div#footer li.questionMark {
+	background: url('../image/footer/questionMark.png') right center no-repeat;
+	width:16px;
+	height:16px;
+}
+
+div#footer li.flag {
+	background-image: url('../image/footer/opn_act.png');
+	background-repeat: no-repeat;
+	width:16px;
+	height:16px;
+}
+
+div#footer li.mail {
+	background-image: url('../image/footer/beskeder.png');
+	background-repeat: no-repeat;
+	width:16px;
+	height:16px;
+}
+
+div#footer li.protocol {
+	background: url('../image/footer/protokol.png') center top no-repeat;
+	width:20px;
+	height:16px;
+}
+
+div#footer li.candidate {
+	background: url('../image/candidate.png') center top no-repeat;
+	width:20px;
+	height:16px;
+}
+div#footer li.company {
+	background: url('../image/company.png') center top no-repeat;
+	width:20px;
+	height:16px;
+}
+div#footer li.order {
+	background: url('../image/order.png') center top no-repeat;
+	width:20px;
+	height:16px;
+}
+
+
+/* Button list. Used to arrange buttons horizontally in the page content. */
+ul.buttonlist {
+	list-style-image: none;
+	list-style-type: none;
+	list-style-position: outside;
+	margin: 10px 0 0;
+}
+
+ul.buttonlist > li {
+	float: left;
+	margin-left: 10px;
+}
+
+ul.buttonlist > li:first-child {
+	margin-left: 0px;
+}
+
+/* Table wireframe. Used to arrange form elements on the content page. */
+table.wireframe {
+	border-collapse: collapse;
+}
+
+table.wireframe td {
+	border: none;
+	padding:1px 0;
+	font-size:9px;
+	color: #526A7B;
+	text-shadow:#ffffff 0 1px;
+	text-transform: uppercase;
+	font-weight: bold;
+	height:20px;
+}
+
+table.wireframe td.spacer {
+	border: none;
+	background-image: url(../image/spacer.gif);
+	background-position: center;
+	background-repeat: repeat-y;
+	background-color: transparent;
+	width: 1px;
+	padding: 4px;
+	
+}
+
+table.wireframe td.air {
+	width: 17px;
+	background: transparent;
+}
+
+table.wireframe > tbody > tr > td.label {
+	font-size:9px;
+	text-transform: uppercase;
+	color: #99A5AC;
+	text-shadow:#ffffff 0 1px;
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: middle;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.dialog table.wireframe > tbody > tr > td.label {
+	width:70px;		
+}
+
+table.wireframe > tbody > tr > td.label.on > label{
+	color:#526A7B;
+}
+
+table.wireframe > tbody > tr > td.label.error > label{
+	color:#F40304;
+}
+
+table.wireframe > tbody > tr > td.label > label, table.wireframe > tbody > tr > td.label > p.label{
+	padding-left: 0px;
+	line-height:22px;
+}
+
+div.compositWidget {
+	position: relative;
+	height: 18px;
+}
+
+div.compositWidget > ul {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	list-style: none;
+	list-style-position: outside;
+	margin: 0;
+	padding: 0;
+}
+
+div.compositWidget > ul > li {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+}
+
+div.buttons {
+	margin: 10px 0 0;
+}
+
+div.buttons.right {
+	float: right;
+}
+
+div.buttons * {
+	float:left;
+}
+
+
+
+
+

@@ -1,0 +1,18 @@
+<div id="logo"></div>
+<div id="loginbox">
+	<?php echo $this->form;?>
+	<form method="post" action="<?php $this->url(array('action' => 'login'));?>" id="login">
+		<fieldset>
+			<input type="hidden" name="originalRequest" value="" />
+			<span class="wrap"><input name="username" id="username" type="text" class="input-text inputlabel"/></span>
+			<span class="wrap"><input name="password" id="password" type="password" class="input-text inputlabel"/></span>
+			<div style="float:right; margin-top:-5px;" >
+				<button id="submit" class="submitBtn" type="submit" tabindex="3" name="submit"><span>Login</span></button>
+			</div>
+		</fieldset>
+	</form>
+	<?php if($this->error == 1){
+	echo '	<span class="error" style="padding:5px;color:#ddd; font-style:normal; font-size:11px;text-transform:uppercase; font-weight:bold;">'.$this->translate('Invalid username or password').'</span>
+			<span class="error" style="padding:5px;color:#ddd; font-style:normal; font-size:11px;text-transform:uppercase; font-weight:bold;"></span>';
+	}?>
+</div>

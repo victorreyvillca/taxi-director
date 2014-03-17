@@ -1,0 +1,562 @@
+div.tabs {
+	border-bottom: none;
+	font-size: 12px;
+	background: url('../image/boxes/box_01_m.png') repeat-x;
+	height:20px;
+}
+
+div.card {
+	clear: both;
+}
+
+div.card > .head,
+div.card > .mainCardHead{
+	position: relative;
+	background: url('../image/horiz_rep.png') repeat-x 0 -471px;
+	height: 23px;
+	color: #375266;
+	font-weight: bold;
+	font-size: 11px;
+	text-shadow: 0 1px #FFFFFF;
+	text-transform: uppercase;
+}
+
+.dialog div.card > .head .left,
+.dialog div.card > .mainCardHead > .left,
+.dialog div.card > .head .right,
+.dialog div.card > .mainCardHead > .right{
+	background: none;
+}
+
+div.card > .mainCardHead > .left > ul,
+div.card > .mainCardHead > .center > ul,
+div.card > .mainCardHead > .right > ul{
+	list-style:none;
+}
+
+div.card > .mainCardHead > .right > ul{
+	float:right;
+}
+
+	
+div.card > .mainCardHead > .left > ul > li,
+div.card > .mainCardHead > .right > ul > li{
+	float:left;
+	padding: 6px 7px;
+}
+
+div.card > .mainCardHead > .center > ul > li {
+	display: inline;
+	padding:0 5px;
+}
+
+div.card > .mainCardHead ul li a{
+	text-decoration:none;
+	color: #8395A3;
+	text-indent: -9999px;
+}
+
+div.card > .mainCardHead ul li:hover a{
+	color: #375266;
+}
+
+div.card > .mainCardHead ul li a.current,
+div.card > .mainCardHead ul li.active a{
+	color: #375266;
+}
+
+div.card > .mainCardHead a{
+	text-decoration:none;
+	color: #8395A3;
+	text-indent: -9999px;
+	padding: 0 5px;
+}
+
+div.card > .mainCardHead a:hover{
+	color: #375266;
+}
+
+div.card > .mainCardHead a.current,
+div.card > .mainCardHead a.active{
+	color: #375266;
+}
+
+/* TABLEHEADER - ICONS */
+div.card > .mainCardHead a.preferences,
+div.card > .mainCardHead a.toolbox,
+div.card > .mainCardHead a.help,
+div.card > .mainCardHead a.fullview,
+div.card > .mainCardHead a.horizontal,
+div.card > .mainCardHead a.vertical{
+	background-image: url("../image/main_icons.png");
+	background-repeat: no-repeat;
+	padding-left: 6px;
+	padding-right: 7px;
+	margin: 0px 5px;
+	height: 13px
+}
+
+/* TABLEHEADER - PREFERENCES ICON */
+div.card > .mainCardHead a.preferences{
+	background-position: -2px -264px;
+}
+div.card > .mainCardHead a.preferences:hover{
+	background-position: -31px -264px;
+}
+div.card > .mainCardHead a.preferences.active,
+div.card > .mainCardHead a.preferences.current{
+	background-position: -31px -264px;
+}
+
+/* TABLEHEADER - TOOLBOX ICON */
+div.card > .mainCardHead a.toolbox{
+	background-position: -2px -303px;
+}
+div.card > .mainCardHead a.toolbox:hover{
+	background-position: -31px -303px;
+}
+div.card > .mainCardHead a.toolbox.active,
+div.card > .mainCardHead a.toolbox.current{
+	background-position: -31px -303px;
+}
+
+/* TABLEHEADER - HELP ICON */
+div.card > .mainCardHead a.help{
+	background-position: -2px -283px;
+}
+div.card > .mainCardHead a.help:hover{
+	background-position: -31px -283px;
+}
+div.card > .mainCardHead a.help.active,
+div.card > .mainCardHead a.help.current{
+	background-position: -31px -283px;
+}
+
+/* TABLEHEADER - FULLVIEW ICON */
+div.card > .mainCardHead a.fullview{
+	background-position: -2px -326px;
+}
+div.card > .mainCardHead a.fullview:hover{
+	background-position: -31px -326px;
+}
+div.card > .mainCardHead a.fullview.active,
+div.card > .mainCardHead a.fullview.current{
+	background-position: -31px -326px;
+}
+
+/* TABLEHEADER - HORIZONTAL ICON */
+div.card > .mainCardHead a.horizontal{
+	background-position: -2px -343px;
+}
+div.card > .mainCardHead a.horizontal:hover{
+	background-position: -31px -343px;
+}
+div.card > .mainCardHead a.horizontal.active,
+div.card > .mainCardHead a.horizontal.current{
+	background-position: -31px -343px;
+}
+
+/* TABLEHEADER - VERTICAL ICON */
+div.card > .mainCardHead a.vertical{
+	background-position: -2px -359px;
+}
+div.card > .mainCardHead a.vertical:hover{
+	background-position: -31px -359px;
+}
+div.card > .mainCardHead a.vertical.active,
+div.card > .mainCardHead a.vertical.current{
+	background-position: -31px -359px;
+}
+
+
+
+div.card.box-meta{
+}
+div.card + div.tabs  {
+	margin-top: 10px;
+}
+
+div.tabs ul {
+	position: relative;
+	bottom: -1px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;	
+}
+
+div.tabs > ul > li {
+	float: left;
+	margin-left: 10px;
+}
+
+div.tabs > ul > li > a {
+	display: block;
+	padding: 4px 5px 5px 0px;
+	text-decoration: none;
+	color: #000000;
+	border: none;
+	background: none;
+}
+
+div.tabs > ul > li.active > a {
+	border-bottom-color: none;
+	background-color: none;
+	font-weight: bold;
+	border: none;
+	background: none;
+}
+
+div.tabs > ul > li > a {
+	display: block;
+	padding: 2px 5px 3px 0px;
+	text-decoration: none;
+	color: #8395A3;
+	border: none;
+	background: none;
+	text-transform: uppercase;
+	text-shadow: #fff 0 1px;
+	font-size:11px;
+	font-weight: bold;
+}
+
+div.tabs > ul > li > a:hover {
+	color: #375266;
+}
+
+div.tabs > ul > li.disable > a:hover {
+	color: #8395A3;
+}
+
+div.tabs > ul > li.active > a {
+	border-bottom-color: none;
+	background-color: none;
+	border: none;
+	background: none;
+	color: #375266;
+}
+
+div.tabs > ul > li.active > div.rounded > div {
+	background-color: #f7f7f7;
+}
+
+div#content > div.pageTabs {
+	position: absolute;
+	height: 30px;
+	min-height: 30px;
+	width: 100%;
+	background: url(../image/gradientTop.png) 0px -84px repeat-x;
+	margin-left:-10px;
+	margin-top:-40px;
+	font-size:10px;
+}
+
+#content > div.tabs.pageTabs > ul > li > a {
+	padding: 6px 10px 5px 0px;
+	font-size:10px;
+}
+
+.dialog div.pageTabs {
+	height: 25px;
+	min-height: 25px;
+	width: 100%;
+	background: url(../image/dialogHead.png) 0px -30px repeat-x;
+	font-size:10px;
+}
+
+.dialog div.tabs.pageTabs > ul > li > a {
+	padding: 6px 10px 5px 0px;
+	font-size:10px;
+}
+
+/***					***/
+/*** MODULES BAR 	***/
+/***					***/
+div.modules {
+	background: none;
+	border: none;
+	margin-top: 10px;
+	border-bottom: none;
+	font-size: 12px;
+}
+div.modules ul {
+	position: relative;
+	bottom: -1px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;	
+}
+div.modules > ul > li {
+	float: left;
+	margin-left: 10px;
+}
+
+div.modules > ul > li > a{
+	display: block;
+	float: left;
+	overflow: hidden;
+	border: none;
+	padding: 0px 5px 3px 0px;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-shadow:#000 0 -1px;
+	text-align: left;
+	font-size:10px;
+	font-weight: normal;
+	color: #ccc;
+	line-height:31px;
+}
+
+div.modules > ul > li > a > .left,
+div.modules > ul > li > a > .right,
+div.modules > ul > li > a > .center{
+	float:left;
+	height:30px;
+}
+
+div.modules > ul > li > a > .left {
+	background-image: url(../image/main_icons.png);
+	background-repeat: no-repeat;
+	width: 28px;
+	display: block;
+}
+div.modules > ul > li > a > .center{
+	background: url(../image/horiz_rep.png) 0 -110px repeat-x;
+	padding-right:5px;
+}
+
+div.modules > ul > li > a > .right {
+	background: url(../image/right3px.png) no-repeat;
+	display: block;
+	width: 3px;
+}
+
+div.modules > ul > li > a:hover span.center {
+	background-position: 0px -140px;
+	color: #eeeeee;
+}
+
+div.modules > ul > li > a:active span.center{
+	background-position: 0px -170px;
+	color: #bbbbbb;
+}
+
+div.modules > ul > li.active > a span.center {
+	background-position: 0px -200px;
+	color: #eeeeee;
+}
+div.modules > ul > li > a span.center > span.hotkey {
+	text-decoration: underline;
+}
+div.modules > ul > li > a:hover span.right {
+	background-position: 0px -30px;
+	color: #eeeeee;
+}
+
+div.modules > ul > li > a:active span.right{
+	background-position: 0px -60px;
+	color: #bbbbbb;
+}
+
+div.modules > ul > li.active > a span.right {
+	background-position: 0px -90px;
+	color: #eeeeee;
+}
+
+/*SHORTCUT MENU*/
+div.modules > ul > li.shortcut > a, 
+#shortcuts a.shortcut {
+	background-image: url(../image/main_icons.png);
+	background-repeat: no-repeat;
+	width:30px;
+	height:30px;
+	float: left;
+	padding:0px;
+	background-position: -174px 0px;
+}
+
+div.modules > ul > li > a.shortcut > .left,
+div.modules > ul > li > a.shortcut > .center,
+div.modules > ul > li > a.shortcut > .right {
+	display:none;
+}
+
+div.modules > ul > li > a.shortcut:hover {
+	background-position: -174px -30px;
+}
+div.modules > ul > li > a.shortcut:active {
+	background-position: -174px -60px;
+}
+div.modules > ul > li.active > a.shortcut {
+	background-position: -174px -90px;
+}
+
+#shortcuts a.shortcut.active {
+	background-position: -174px -90px;
+}
+/* CONSULTANT */
+div.modules > ul > li.consultant > a > .left  {
+	background-position: 0px 0px;
+}
+div.modules > ul > li.consultant > a:hover > .left {
+	background-position: 0px -30px;
+}
+div.modules > ul > li.consultant > a:active > .left {
+	background-position: 0px -60px;
+}
+div.modules > ul > li.consultant.active > a > .left {
+	background-position: 0px -90px;
+}
+
+/* CANDIDATE */
+div.modules > ul > li.candidate > a > .left {
+	background-position: -29px 0px;
+}
+div.modules > ul > li.candidate > a:hover > .left {
+	background-position: -29px -30px;
+}
+div.modules > ul > li.candidate > a:active > .left {
+	background-position: -29px -60px;
+}
+div.modules > ul > li.candidate.active > a > .left {
+	background-position: -29px -90px;
+}
+
+/* COMPANY */
+div.modules > ul > li.company > a > .left {
+	background-position: -58px 0px;
+}
+div.modules > ul > li.company > a:hover > .left {
+	background-position: -58px -30px;
+}
+div.modules > ul > li.company > a:active > .left {
+	background-position: -58px -60px;
+}
+div.modules > ul > li.company.active > a > .left {
+	background-position: -58px -90px;
+}
+
+/* PROTOCOL */
+div.modules > ul > li.protocol > a > .left {
+	background-position: -116px 0px;
+}
+div.modules > ul > li.protocol > a:hover > .left {
+	background-position: -116px -30px;
+}
+div.modules > ul > li.protocol > a:active > .left {
+	background-position: -116px -60px;
+}
+div.modules > ul > li.protocol.active > a > .left {
+	background-position: -116px -90px;
+}
+
+/* ADMINISTRATION */
+div.modules > ul > li.administration > a > .left {
+	background-position: -145px 0px;
+}
+div.modules > ul > li.administration > a:hover > .left {
+	background-position: -145px -30px;
+}
+div.modules > ul > li.administration > a:active > .left {
+	background-position: -145px -60px;
+}
+div.modules > ul > li.administration.active > a > .left {
+	background-position: -145px -90px;
+}
+
+/* SYSTEM */
+div.modules > ul > li.system > a > .left {
+	background-position: -87px 0px;
+}
+div.modules > ul > li.system > a:hover > .left {
+	background-position: 87px -30px;
+}
+div.modules > ul > li.system > a:active > .left {
+	background-position: 87px -60px;
+}
+div.modules > ul > li.system.active > a > .left {
+	background-position: 87px -90px;
+}
+
+
+/* Tab theme: actions */
+div.tabs.actions {
+	background: none;
+	border-bottom: 1px solid #3798a6;
+}
+
+div.tabs.actions > ul > li > a {
+	border-left-color: transparent;	
+	border-right-color: transparent;	
+	border-bottom-color: #3798a6;	
+	background-color: transparent;
+	color: #ffffff;
+}
+
+div.tabs.actions > ul > li > div.rounded > div {
+	background-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+div.tabs.actions > ul > li > div.rounded > div > div {
+	background-color: transparent;
+}
+
+div.tabs.actions > ul > li.active > a {
+	border-left-color: #328d97;	
+	border-right-color: #328d97;	
+	border-bottom-color: #fbf9f2;	
+//	background-color: #fbf9f2;
+	color: black;
+}
+
+div.tabs.actions > ul > li.active > div.rounded > div {
+	background-color: #fbf9f2;
+	border-left-color: #328d97;
+	border-right-color: #328d97;
+}
+
+div.tabs.actions > ul > li.active > div.rounded > div > div {
+	background-color: #328d97;
+}
+
+
+/* Tab theme: popup */
+div.tabs.popup {
+}
+
+div.tabs.popup > ul > li > a {
+	border-left-color: transparent;	
+	border-right-color: transparent;	
+	border-bottom-color: transparent;	
+	background-color: transparent;
+	text-decoration: none;
+}
+
+div.tabs.popup > ul > li > div.rounded > div {
+	background-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+div.tabs.popup > ul > li > div.rounded > div > div {
+	background-color: transparent;
+}
+
+div.tabs.popup > ul > li.active > a {
+	display: block;
+	text-decoration: none;
+	color: #375266;
+}
+
+div.tabs.popup > ul > li.active > a {
+	font-weight: bold;
+}
+
+div.tabs.popup > ul > li.active > div.rounded > div {
+	background-color: #f7f7f7;
+}

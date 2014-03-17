@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+
+div#actionbar {
+	position: relative;
+	height: 25px;
+	
+	background: url('../image/actionbar.png') repeat-x;
+}
+
+div#actionbar ul{
+	list-style: none;
+}
+
+div#actionbar ul#leftactiontabs{
+	position: absolute;
+	left: 10px;
+	top: 2px;
+}
+
+div#actionbar ul#rightactiontabs{
+	position: absolute;
+	right: 10px;
+	top: 2px;
+}
+
+div#actionbar ul li {
+	float:left;
+	margin-left: 10px;
+}
+
+div#actionbar ul li:first-child {
+	margin-left: 0;
+}
+
+div#actionbar a {
+	color: #8395A3;
+	cursor: pointer;
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: white 0px 1px 0px;
+	text-transform: uppercase;
+}
+
+div#actionbar a span.hotkey{
+	text-decoration: underline;
+}
+
+div#actionbar a:hover,
+div#actionbar li.active a {
+	color: #375266;
+}
+
+
+ul.appMenu.functionMenu {
+	list-style: none: 
+	list-style-position: outside; 
+}
+
+ul.appMenu.functionMenu > li {
+	position: relative;
+	float: left;
+	z-index: 1000;
+	
+}
+
+ul.appMenu.functionMenu > li ul {
+	position: absolute;
+	list-style-type: none;
+	list-style-position: outside;
+}
+
+ul.appMenu.functionMenu > li ul a {
+	color: inherit;
+	white-space: nowrap;
+}

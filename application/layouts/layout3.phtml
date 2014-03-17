@@ -1,0 +1,117 @@
+<!DOCTYPE  html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>IASD - Distrito Nuevo Palmar</title>
+		<?php $this->headLink()->appendStylesheet("/layoutguest/nova/HTML/css/styled-elements.css");?>
+		<?php $this->headLink()->appendStylesheet("/layoutguest/nova/HTML/css/style.css");?>
+
+		<?php $this->headLink()->appendStylesheet("/layoutguest/nova/HTML/css/tabs.css");?>
+		<?php $this->headScript()->appendFile("/layoutguest/nova/HTML/js/tabs.js","text/javascript");?>
+
+		<!-- JS -->
+		<?php //$this->headScript()->appendFile("/layoutguest/nova/HTML/js/easing.js","text/javascript");?>
+		<?php //$this->headScript()->appendFile("/layoutguest/nova/HTML/js/jquery.scrollTo-1.4.2-min.js","text/javascript");?>
+		<?php //$this->headScript()->appendFile("/layoutguest/nova/HTML/js/jquery.cycle.all.js","text/javascript");?>
+		<?php //$this->headScript()->appendFile("/layoutguest/nova/HTML/js/custom.js","text/javascript");?>
+
+		<!--[if IE 8]>
+			<link rel="stylesheet" type="text/css" media="screen" href="css/ie8-hacks.css" />
+		<![endif]-->
+		<!-- ENDS CSS -->
+
+		<!-- GOOGLE FONTS
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>-->
+
+		<!-- JS -->
+
+		<!--[if IE]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!--[if IE 6]>
+			<script type="text/javascript" src="js/DD_belatedPNG.js"></script>
+			<script>
+				/* EXAMPLE */
+				//DD_belatedPNG.fix('*');
+			</script>
+		<![endif]-->
+		<!-- ENDS JS -->
+
+		<!-- superfish -->
+<!--		<link rel="stylesheet" media="screen" href="css/superfish.css" /> -->
+		<?php $this->headLink()->appendStylesheet("/layoutguest/nova/HTML/css/superfish.css");?>
+
+		<?php
+			//$this->headLink()->appendStylesheet("/css/zebralist.css");
+		?>
+		<?php //echo $this->jQuery(); ?>
+		<?php echo $this->headMeta(); ?>
+		<?php echo $this->headTitle(); ?>
+		<?php echo $this->headLink(); ?>
+		<?php echo $this->headStyle(); ?>
+		<?php echo $this->headScript(); ?>
+
+
+		<style type='text/css'>
+			body{
+/*                 background-image:url(/image/fondo3.jpg); */
+            }
+        </style>
+	</head>
+
+	<body class="home">
+
+			<!-- HEADER -->
+			<div id="header">
+				<?php echo $this->partial('scripts/header.phtml');?>
+			</div>
+			<!-- ENDS HEADER -->
+
+			<?php echo $this->partial('navigation.phtml');?>
+
+			<!-- Slider -->
+
+			<!-- ENDS Slider -->
+
+			<!-- MAIN -->
+			<div id="main">
+
+				<!-- wrapper-main -->
+				<div class="wrapper">
+
+					<!-- content -->
+					<div id="content">
+						<?php echo $this->layout()->content;?>
+					</div>
+					<!-- ENDS content -->
+
+				</div>
+				<!-- ENDS wrapper-main -->
+			</div>
+			<!-- ENDS MAIN -->
+
+			<!-- Twitter -->
+			<div id="twitter">
+				<div class="wrapper">
+					<a href="#" id="prev-tweet"></a>
+					<a href="#" id="next-tweet"></a>
+					<img id="bird" src="/layoutguest/nova/HTML/img/bird.png" alt="Tweets" />
+					<div id="tweets">
+						<ul class="tweet_list"></ul>
+					</div>
+				</div>
+			</div>
+			<!-- ENDS Twitter -->
+
+
+			<!-- FOOTER -->
+			<?php echo $this->partial('footer2.phtml');?>
+			<!-- ENDS FOOTER -->
+
+
+			<!-- Bottom -->
+			<?php echo $this->partial('bottom.phtml');?>
+			<!-- ENDS Bottom -->
+	</body>
+</html>

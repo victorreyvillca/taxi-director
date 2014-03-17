@@ -1,0 +1,206 @@
+* {
+    outline: none;
+}
+body{
+	background: url(../image/login/loginbg.png) #002D55 repeat-x;
+	font-family: Arial;
+	margin:0px;
+}
+
+#wrap{
+	background: url(../image/login/bg_pattern.png) no-repeat 50% 50%;
+	min-width: 500px;
+	min-height: 500px;	
+}
+
+#content{
+	width: 906px;
+	height: 273px;
+	margin: 180px auto 0 auto;
+	padding-top:90px;
+}
+
+#logo{
+	width: 450px;
+	height: 44px;
+	margin: 0 auto;
+	background: url(../image/login/loginlogo.png) no-repeat center center;
+}
+
+#loginbox{
+	width: 450px;
+	height: 50px;
+	margin: 30px auto;
+}
+
+
+#loginbox fieldset { 
+	height:30px;
+	width:430px;
+	padding:13px 10px;
+	background: url(../image/login/overlay.png)no-repeat;
+	position: relative;
+	border: 0;
+	margin: 0 auto;
+}
+
+#loginbox form p { 
+	position:relative; 
+	width: 160px;
+	float:left;
+	padding:0;
+	margin-top:-16px;
+	height:25px;
+}
+
+#loginbox form button { 
+   float:left;	
+}
+
+#loginbox form label  { 
+	position:absolute;
+	z-index: 9999;
+  	font-weight:bold; 
+  	color: #879AA7;
+  	font-size: 10px;
+  	text-shadow: #fff 0 1px;
+  	text-transform: uppercase;
+	top:4px;
+	left:7px;
+}
+
+#loginbox form input {
+	text-transform: none;
+}
+
+
+#loginbox span.wrap {
+	position: relative; 
+	margin-right:8px;
+}
+
+form.awesome span.wrap label span { 
+	position: relative; 
+   top: 1px; 
+   left: 1px; 
+}
+
+label.focus span { opacity: 0.2; }
+label.hastext span { 
+	opacity: 0.0; 
+   -webkit-transition: opacity 0ms linear; 
+}
+
+input.input-text{
+	height: 13px;
+	width: 132px;
+	padding:6px 9px;
+	background: url(../image/login/txtinput_bg.png) transparent no-repeat;
+	border: none;
+  	 position: relative;
+}
+
+.inputfocus{
+  	font-weight:bold; 
+  	color: #0A4466;
+  	font-size: 10px;
+  	text-shadow: #fff 0 1px;
+  	text-transform: uppercase;
+}
+
+.inputlabel{
+  	font-weight:bold; 
+  	color: #879AA7;
+  	font-size: 10px;
+  	text-shadow: #fff 0 1px;
+  	text-transform: uppercase;
+
+}
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: none;
+}
+
+button { 
+	position: relative;
+	border: 0; 
+	padding: 0;
+	cursor: pointer;
+	overflow: visible; /* removes extra side padding in IE */
+}
+
+button::-moz-focus-inner {
+	border: none;  /* overrides extra padding in Firefox */
+}
+
+button span { 
+	position: relative;
+	display: block; 
+	white-space: nowrap;	
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Safari and Google Chrome only - fix margins */
+	button span {
+		margin-top: -1px;
+		
+	}
+}
+
+
+button.submitBtn { 
+  width:100px;
+  padding:0px 10px 0px 0px; 
+  margin-right:5px; 
+  text-align: center;
+  background:url(../image/login/loginbtn_r.png) no-repeat right 0px; 
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Safari and Google Chrome only - fix margins */
+	button.submitBtn {
+	  padding:0px 12px 0px 0px; 
+		
+	}
+}
+
+button.submitBtn span { 
+  height:30px; 
+  padding:0 0 0 12px; 
+  color: #002D55;
+  line-height:30px;
+  font-weight:bold; 
+  font-size: 11px;
+  text-shadow: #fff 0 1px;
+  text-transform: uppercase;
+  background:url(../image/login/loginbtn_l.png) no-repeat left top;
+}submitBtnHover
+
+button.submitBtn:hover {
+	background-position-y: -30px; 
+}
+
+button.submitBtn:hover span {
+	background-position-y: -30px; 
+}
+
+button.submitBtn:focus {
+	background:url(../image/login/loginbtn_r.png) -60px right no-repeat; 
+}
+
+button.submitBtn:focus span {
+	background:url(../image/login/loginbtn_l.png) -60px left no-repeat; 
+}
+
+button.submitBtn:active {
+	background:url(../image/login/loginbtn_r.png) -60px right no-repeat; 
+}
+
+button.submitBtn:active span {
+	background:url(../image/login/loginbtn_l.png) -60px left no-repeat;
+	padding-top:1px; 
+}
+

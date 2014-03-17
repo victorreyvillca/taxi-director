@@ -1,0 +1,14 @@
+<ul class="horizontal navigation" id="leftactiontabs">
+<?php
+	echo $this->navigation()->menu()
+			->setOnlyActiveBranch(TRUE) // I do not want items from other pages
+            ->setRenderParents(FALSE)
+            ->setMinDepth(1)            // Start at the "child" level of the navigation
+            ->setMaxDepth(10)           // Go as far as the 10th generation
+            ->renderMenu();
+?>
+</ul>
+<ul class="horizontal navigation" id="rightactiontabs">
+</ul>
+<div class="clear"></div>
+

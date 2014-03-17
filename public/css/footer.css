@@ -1,0 +1,132 @@
+@CHARSET "ISO-8859-1";
+
+
+/* FOOTER - COLS ------------------------------------------------------------*/
+
+#footer{
+	position: relative;
+	background: #2a2d30 url(../img/footer-glow.png) no-repeat top center;
+	color: #fff;
+}
+
+/* FOOTER - COLS ------------------------------------------------------------*/
+
+#footer-cols{
+	display: block;
+	overflow: hidden;
+	color: #bbbaba;
+	line-height: 1.5em;
+}
+
+#footer-cols li.col{
+	display: block;
+	font-size: 12px;
+	width: 282px;
+	float: left;
+	margin-left: 30px;
+	margin-bottom: 30px;
+}
+
+#footer-cols li.col>h6{
+	color: #d7d7d7;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-shadow: 0px -2px rgba(0, 0, 0, .8);
+}
+
+#footer-cols li.clear-col{ clear:left; }
+
+#footer-cols li.col ul{
+	display: block;
+}
+
+#footer-cols li.col ul li{
+	display: block;
+	line-height: 1.7em;
+}
+
+
+#footer-cols li.col ul li.page_item{
+	display: block;
+	line-height: 2.5em;
+	padding-left: 17px;
+	border-top: 1px solid #4a4a4a;
+	border-bottom: 1px solid #000;
+	background: url(../img/footer-bullet.png) no-repeat 0px 10px;
+}
+
+#footer-cols li.col ul li:first-child{ border-top: none; }
+
+#footer-cols li.col ul li:last-child{ border-bottom: none; }
+
+#footer-cols li.col ul li a{
+	text-decoration: none;
+	color: #bbbaba;
+}
+
+#footer-cols li.col ul li a:hover{
+	color: #fff;
+}
+
+/* FOOTER BOTTOM --------------------------------------------------------*/
+
+#bottom{
+	position: relative;
+	width: 100%;
+	font-size: 12px;
+	line-height: 1.5em;
+	line-height: 60px;
+	color: #868686;
+	background: #222426 url(../img/bottom-shadow.png) repeat-x;
+}
+
+#bottom #bottom-text{
+	width: 600px;
+	overflow: hidden;
+	margin-left: 30px;	
+}
+
+#bottom a{
+	color: #AFEAF9;
+	text-decoration: none;
+}
+
+#bottom #to-top{
+	position: absolute;
+	right: 30px;
+	top: -22px;
+	width: 33px;
+	height: 33px;
+	background: url(../img/to-top.png) no-repeat;
+	cursor: pointer;
+}
+
+/* SOCIAL --------------------------------------------------------*/
+
+.social{
+	position: absolute;
+	top: 15px;
+	right: 0px;
+	display: block;
+	overflow: hidden;
+}
+
+.social li{
+	display: block;
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#bottom .social a{
+	display: block;
+	width: 32px;
+	height: 32px;
+	text-indent: -9000px;
+}
+
+#bottom .social a:hover{
+	background-position: 0px -32px;
+}

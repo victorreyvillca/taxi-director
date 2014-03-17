@@ -1,0 +1,13 @@
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/lib/tinymce/jscripts/tiny_mce/jquery.tinymce.js","text/javascript"); ?>
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/lib/tinymce/jscripts/tiny_mce/tiny_mce.js","text/javascript"); ?>
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/NewsUpdate.js","text/javascript"); ?>
+<div class="card">
+	<?php echo $this->form; ?>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var news = new com.em.NewsUpdate();
+		news.configureTinymce('textarea.contain');
+	});
+</script>

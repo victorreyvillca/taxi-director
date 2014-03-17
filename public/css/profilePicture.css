@@ -1,0 +1,44 @@
+div.profilePicture {
+	width: 110px;
+	position: relative;
+}
+
+div.profilePicture img {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	width: 110px;
+	height: 75px;
+	padding: 1px;
+	
+	background-color: #FCFCFC;
+	border: 1px solid #CEDEEB;
+
+	cursor: inherit;
+}
+
+div.profilePicture div.bar {
+	position: absolute;
+	bottom: 4px;
+	margin: 2px; 
+	padding: 3px; 
+	height: 17px;
+	width: 104px;
+	border: pink 1px;
+	background: url(../image/deletePhoto.png) no-repeat;
+	text-align: center;
+	font-size: 10px; 
+	color: #375266;
+	text-transform: uppercase; 
+	font-weight: bold;
+	line-height: 18px;
+
+}
+div.profilePicture div.bar label{
+	font-size: 10px; 
+	color: #375266;
+	text-transform: uppercase; 
+	font-weight: bold;
+	line-height: 18px;
+}

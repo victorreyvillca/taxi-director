@@ -1,0 +1,60 @@
+<div id="dialog-form" title="<?php echo $this->translate('Add Club Pathfinder'); ?>" class="header" style="display: none;">
+	<?php echo $this->form;?>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var result = $('#result'),
+			load = function (e) {
+			e = e.originalEvent;
+			e.preventDefault();
+			window.loadImage(
+				(e.dataTransfer || e.target).files[0],
+				function (img) {
+					result.children().replaceWith(img);
+				},
+				{
+				maxWidth: result.children().outerWidth(),
+				canvas: true
+				}
+			);
+		};
+
+		$('#file-input').change(load);
+	});
+
+	com.em.Pathfinder.prototype.dialogButtons = {
+		'<?php echo $this->translate('Save'); ?>': function() {
+			$('#formId').submit();
+		},
+
+		'<?php echo $this->translate('Cancel'); ?>': function() {
+			$(this).dialog("close");
+		}
+	};
+</script>
+
+<style type="text/css">
+	div.profile_pic{
+		position:relative;
+		width:125px;
+	}
+	div.change_button{
+		position:absolute;
+		bottom:0px;
+		left:0px;
+		display:none;
+		background-color:black;
+		font-family: 'tahoma';
+		font-size:11px;
+		text-decoration:underline;
+		color:white;
+		width:125px;
+	}
+	div.change_button_text{
+		padding:10px;
+	}
+	#spinner{
+		position:absolute;
+	}
+</style>

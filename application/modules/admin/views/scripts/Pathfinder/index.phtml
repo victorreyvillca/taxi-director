@@ -1,0 +1,48 @@
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/lib/blueimp-Load-Image/load-image.min.js","text/javascript"); ?>
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Pathfinder.js","text/javascript");?>
+<div style="margin:20px;">
+	<?php echo $this->tableHeader('filterHeader', _("Filter Club Pathfinder"));?>
+	<div id="containerFormFilter">
+		<?php echo $this->formFilter; ?>
+	</div>
+	<br>
+	<?php echo $this->tableHeader('pathfinderHeader', _("Club Pathfinders"));?>
+	<?php echo $this->tableList("tblPathfinder");?>
+	<div class="buttons right">
+		<?php echo $this->buttonRemove("delete-pathfinder", $this->translate('Remove'), $this->url(array('action'=>'delete')));?>
+		<?php echo $this->buttonAdd("create-pathfinder", $this->translate('Add'), $this->url(array('action'=>'add')));?>
+	</div>
+
+	<div id="dialog"><!-- Loads ajax dialog form --></div>
+</div>
+<?php //echo $this->imagelogo;?>
+<script type="text/javascript">
+	$(document).ready(function() {
+	var pathfinder = new com.em.Pathfinder();
+
+	// network
+	pathfinder.setUrl({
+		toTable : '<?php echo $this->url(array('action'=>'read-items'));?>',
+		toBase : '<?php echo $this->baseUrl(); ?>',
+		toUpdate : '<?php echo $this->url(array('action'=>'update')); ?>',
+		toAutocomplete : '<?php echo $this->url(array('action'=>'autocomplete'));?>'
+	});
+
+	var headers = new Object();
+	headers.headerArray = new Array(
+		'<?php echo $this->translate('Name'); ?>',
+		'<?php echo $this->translate('Text bible'); ?>',
+		'<?php echo $this->translate('Address'); ?>',
+		'<?php echo $this->translate('Changed'); ?>',
+		'<?php echo $this->translate('Changed'); ?>');
+	pathfinder.setHeaders(headers);
+	// configuration of widgets
+	pathfinder.configureTable('#tblPathfinder', true);
+
+	// CRUD
+	pathfinder.clickToAdd('#create-pathfinder');
+	pathfinder.clickToUpdate('#tblPathfinder a[id^=update-pathfinder-]');
+	pathfinder.clickToDelete('#delete-pathfinder');
+	pathfinder.configureAuto('input#nameFilter');
+});
+</script>

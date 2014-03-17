@@ -1,0 +1,349 @@
+div.allocationTable {
+	font-size: 12px;
+	position: relative;
+}
+
+div.allocationTable > div.calendar {
+	position: relative; 
+	height: 150px;
+}
+
+div.allocationTable > div.pager {
+	text-align: center;
+}
+
+div.allocationTable > div.calendar > div.left {
+	width: 180px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+}
+
+div.allocationTable > div.calendar > div.left > div.head {
+	font-weight: bold;
+}
+
+div.allocationTable > div.calendar > div.left > div.data {	
+}
+	
+div.allocationTable > div.calendar > div.center {
+	position: absolute;
+	left: 185px;
+	right: 235px;
+	top: 0px;
+	bottom: 0px;
+}
+
+div.allocationTable > div.calendar > div.right {
+	position: absolute;
+	right: 0px;
+	width: 230px;
+	top: 0px;
+	bottom: 0px;
+}
+
+div.allocationTable > div.calendar > div.right > div.head {
+	font-weight: bold;
+}
+
+div.allocationTable > div.calendar > div.right > div.data {
+	background-color: #fff;
+	border: 1px solid #cbcbcb;
+	position: absolute;
+	bottom: 0px;
+	overflow-y: scroll; 
+	width: 100%; 
+	top: 18px;
+}
+
+div.allocationTable > div.calendar > div.right > div.data > span.date {
+	font-weight: bold;
+}
+
+div.allocationTable > div.calendar > div.center > div {
+	height: 100%;
+}
+	
+
+div.allocationTable > div.calendar > div.center > div > div.week {
+	position: relative;
+	height: 100%;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.head {
+	font-weight: bold;
+	height: 18px;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days {
+	position: absolute;
+	top: 18px;
+	bottom: 0px;
+	left: 0;
+	right: 0;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer {
+	float: left;
+	position: relative;
+	width: 14.285714285714286%;
+	height: 100%;
+}
+
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.name {
+	height: 30px;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data {
+	position: absolute;
+	border-right: 1px solid #cbcbcb;
+	border-top: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+	background-color: white;
+	bottom: 0px;
+	top: 30px;
+	left: 0px;
+	right: 0px;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer.first > div.data {
+	border-left: 1px solid #cbcbcb;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data > div.legend {
+	position: absolute;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data > div.legend.first {
+	left: -185px; width: 185px; 
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data > div.legend.day {
+	width: 100%; 
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data > div.legend.box {
+	opacity: 0.2;
+	filter: alpha(opacity = 20);
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data > div.legend.text {
+	text-align: left;
+	overflow: hidden;
+	vertical-align: middle;
+	font-size: 11px;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data > div.event {
+	position: absolute;
+	width: 100%;
+	cursor: pointer;
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data > div.event.box {
+}
+
+div.allocationTable > div.calendar > div.center > div > div.week > div.days > div.dayContainer > div.data > div.event.text {
+	overflow: hidden;
+	font-size: 11px;
+}
+
+
+/* Candidate rows container */
+div.allocationCanditateTable {
+	position: absolute;
+	font-size: 12px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	left: 10px;
+	right: 10px;
+	top:300px;
+	bottom:75px;
+}
+
+/* A single candidate container */
+div.allocationCanditateTable > div.singleCanditateContainer {
+	height:150px;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo {
+	width: 100%;
+	border-collapse:collapse;
+	padding:2px;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > thead {
+	font-weight: bold;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > thead tr > td {
+	padding:2px;
+}
+
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td {
+	padding:2px;
+	margin:0px;
+	height:25px;
+	border-top:1px solid #CBCBCB;
+	border-bottom:1px solid #CBCBCB;
+	background-color:#F0F0F0;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.name {
+	width:20%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.avail {
+	width:5%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.status {
+	width:5%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.phone {
+	width:10%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.zipcode {
+	width:5%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.consultant {
+	width:15%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.distance {
+	width:5%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.preffered {
+	width:15%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.rating {
+	width:5%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.candidateResponse {
+	width:15%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateInfo > tbody > tr > td.userCheckbox {
+	width:15px;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer  {
+	width: 100%;
+	height:160px;
+	
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview {
+	width: 100%;
+	height:100px;
+	
+	border-collapse:collapse;
+}
+
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody  {
+	height:100%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr  {
+	height:100%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.label  {
+	height:100%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.label > div.singleCandidateSchedule {
+	position:relative;
+	height:100%;
+	border:1px solid #CBCBCB;
+	overflow-y:auto;
+	overflow-x:auto;	
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer  {
+	text-align: center;
+	height: 100%;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer {
+	width:100%;
+	height:100px;	
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer > thead{
+	width:100%;
+	height:100px;	
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer > thead > tr {
+	width:100%;
+	height:100px;	
+}
+
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer > thead > tr > td.dayContainer {
+	width:100%;
+	height:100%;
+	vertical-align:top;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer > thead > tr > td.dayContainer > table.userWeekData {
+	width:100%;
+	height:100%;	
+	border-collapse:collapse;
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer > thead > tr > td.dayContainer > table.userWeekData > tbody {
+	height:100%;	
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer > thead > tr > td.dayContainer > table.userWeekData > tbody > tr { 
+	height:100%;	
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer > thead > tr > td.dayContainer > table.userWeekData > tbody > tr > td.userWeekDayData {
+	width:14,285714285714286%;
+	height:100%;
+	border:1px solid #CBCBCB;	
+}
+
+div.allocationCanditateTable > div.singleCanditateContainer > table.singleCanditateTimeview > tbody > tr > td.calendarContainer > table.calendarContainer > thead > tr > td.dayContainer > table.userWeekData > tbody > tr > td.userWeekDayData > div.userWeekDayData {
+	width:100%;
+	height:100%;
+	background-color:#fff;
+}
+
+/* Week Pager styles */
+div.allocationTable > div.pager {
+	height:25px;	
+}
+
+div.allocationTable > div.pager > div.weekPagerContainer {
+	width:350px;
+	text-align:center;
+	margin:0 auto;
+}
+
+div.allocationTable > div.pager > div.weekPagerContainer > div.previousWeeks {
+	width:33%;
+	float:left;
+}
+
+div.allocationTable > div.pager > div.weekPagerContainer > div.currentWeeks {
+	width:33%;
+	float:left;
+}
+
+div.allocationTable > div.pager > div.weekPagerContainer > div.nextWeeks {
+	float:right;
+	width:33%
+}

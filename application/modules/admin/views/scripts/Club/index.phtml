@@ -1,0 +1,48 @@
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Club.js","text/javascript");?>
+<div style="margin:20px;">
+	<?php echo $this->tableHeader('filterHeader', _('Filtrar Club'));?>
+	<div id="containerFormFilter">
+		<?php echo $this->formFilter; ?>
+	</div>
+	<br>
+	<?php echo $this->tableHeader('clubHeader', _('Clubes'));?>
+	<?php echo $this->tableList("tblClub");?>
+	<div class="buttons right">
+		<?php echo $this->buttonRemove("delete-club", $this->translate('Eliminar'), $this->url(array('action'=>'remove')));?>
+		<?php echo $this->buttonAdd("create-club", $this->translate('Adicionar'), $this->url(array('action'=>'add')));?>
+	</div>
+
+	<div id="dialog"><!-- Loads ajax dialog form --></div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	var club = new com.em.Club();
+
+	// network
+	club.setUrl({
+		toTable : '<?php echo $this->url(array('action'=>'read-items'));?>',
+		toBase : '<?php echo $this->baseUrl(); ?>',
+		toUpdate : '<?php echo $this->url(array('action'=>'edit')); ?>',
+		toAutocomplete : '<?php echo $this->url(array('action'=>'autocomplete'));?>'
+	});
+
+	var headers = new Object();
+	headers.headerArray = new Array(
+		'<?php echo $this->translate('Nombre'); ?>',
+		'<?php echo $this->translate('Area'); ?>',
+		'<?php echo $this->translate('Iglesia'); ?>',
+		'<?php echo $this->translate('Ubicacion'); ?>',
+		'<?php echo $this->translate('Fecha Creacion'); ?>',
+		'<?php echo $this->translate('Fecha Edicion'); ?>');
+	club.setHeaders(headers);
+	// configuration of widgets
+	club.configureTable('#tblClub', true);
+
+	// CRUD
+	club.clickToAdd('#create-club');
+	club.clickToUpdate('#tblClub a[id^=update-club-]');
+	club.clickToDelete('#delete-club');
+	club.configureAuto('input#nameFilter');
+});
+</script>

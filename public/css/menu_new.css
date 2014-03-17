@@ -1,0 +1,409 @@
+@charset "UTF-8";
+/**
+ * menu.css
+ *
+ * Structur and style for menus
+ *
+ * @author Jesper Birkestrøm <jb@emini.dk>
+ * @media screen
+ * @version 0.2 20090615
+ */
+ 
+/*********** Horizontal menu ***********/
+ul.horizontalList {
+	list-style-image: none;
+	list-style-type: none;
+	list-style-position: outside;
+	position:absolute; 
+	z-index: 2; 
+	right: 5px;
+}
+
+ul.horizontalList > li {
+	font-weight: normal;
+	font-size: 10px;
+	margin-left: 15px;
+	float: left;
+	width: auto;
+	cursor: pointer;
+}
+
+ul.horizontalList.light > li {
+	color: #ffffff;
+}
+
+ul.horizontalList.dark > li {
+	color: #000000;
+}
+
+ul.horizontalList > li:first-child {
+	margin-left: 0px;
+}
+
+ul.horizontalList.light > li:hover a {
+ 	color: #cee6a9;
+}
+
+ul.horizontalList.dark > li:hover a {
+	color:  #000000;
+	text-decoration: underline;
+}
+ul.horizontalList.dark > li a.hover {
+	color:  #000000;
+	text-decoration: underline;
+}
+
+ul.horizontalList > li img {
+	vertical-align: -1px;
+	padding-right: 5px;
+}
+
+ul.horizontalList > li a {
+	text-decoration: none;
+}
+
+ul.horizontalList.light > li a {
+	color: #ffffff;
+}
+
+
+/*********** Module menu ***********/
+ul.moduleMenu > li {
+	margin-right: 6px;
+}
+
+ul.moduleMenu > li a {
+	border-bottom: 1px solid #101012;
+	border-left: 1px solid #101012;
+	border-right: 1px solid #101012;
+	background-color: #101012;	
+	display: block;
+
+	top: 1px;
+	position: relative;
+	padding: 5px 0px 3px;
+		
+	text-decoration: none;	
+	color: #d5cbbb;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+ul.moduleMenu > li > a  span {
+	top: -1px;
+	position: relative;
+	background-color: #101012;
+	
+	font-weight: normal;
+	font-style: normal;
+	padding: 5px 8px 3px;
+}
+
+ul.moduleMenu > li:hover > a,
+ul.moduleMenu > li:hover > a span {
+	color: #ffffff;
+}
+
+ul.moduleMenu > li.disabled > a,
+ul.moduleMenu > li.disabled > a span {
+	color: grey;
+	cursor: default;
+}
+
+ul.moduleMenu > li.active > a,
+ul.moduleMenu > li.active > a span {
+	color: #ffffff;
+	background-color: #379ba6;
+}
+
+/*********** Function menu ***********/
+ul.functionMenu > li {
+	height:24px;
+}
+
+ul.functionMenu > li:first-child {
+	margin-left: 0px;
+}
+
+ul.functionMenu > li > a {
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+	display: block;
+	text-transform: uppercase;	
+	text-decoration: none;	
+	text-shadow:#000000 0 -1px;
+	font-weight: bold;
+	font-size: 10px;
+	cursor: pointer;
+	padding: 0px 0 3px;
+	line-height: 24px;
+}
+
+ul.functionMenu > li > a span {
+	position: relative;
+	padding: 6px 5px 8px 5px;
+	color: #DBE6ED;
+	font-style: normal;
+	white-space: nowrap;
+	line-height: 24px;
+}
+
+ul.functionMenu > li > a span.hotkey {
+	padding: 0;
+	text-decoration: underline;
+}
+
+ul.functionMenu > li > a:hover span{
+	color: #fff;
+
+}
+ul.functionMenu > li.active{
+	background: url(../image/navigation/tab_m.png) transparent repeat-x;
+}
+
+ul.functionMenu > li.active > a {
+	text-shadow:#ffffff 0 1px;
+	border: none;
+	line-height: 24px;
+	background: url(../image/navigation/tab_l.png) top left no-repeat;
+}
+
+ul.functionMenu > li.active > a span {
+	color: #375266;
+	border: none;
+	background: url(../image/navigation/tab_r.png) top right no-repeat;
+	height: 24px;
+	
+}
+
+ul.functionMenu > li.disabled > a {
+	color: grey;
+	cursor: default;
+}
+
+ul.functionMenu > li.disabled > a span {
+	color: grey;
+	cursor: default;
+}
+
+ul.functionMenu ul {
+	background: url(../image/dropdown_bg.png) repeat-x top left #C7CFD6;
+	z-index: 100;
+}
+
+ul.functionMenu ul li {
+	text-decoration: none;	
+	font-size: 11px;
+	color: #375266;
+	font-style: normal;
+	text-shadow:#ffffff 0 1px;
+	text-transform: uppercase;	
+	text-decoration: none;	
+	font-weight: bold;
+	border-bottom: 1px solid #9AA7B3;
+	border-top: 1px solid #D6DCE1;
+}
+
+ul.functionMenu ul li:first-child {
+	border-top: none;
+}
+
+ul.functionMenu ul li:last-child {
+	border-bottom: none;
+}
+
+ul.functionMenu ul li * {
+	color: #375266;
+	text-decoration: none;	
+	font-weight: bold;
+	font-size: 10px;
+}
+
+ul.functionMenu ul li a{
+	padding: 5px;
+	display: block;
+}
+
+ul.functionMenu ul li a,
+ul.functionMenu ul li a span{
+	color: #8395A3;
+}
+
+ul.functionMenu ul li a:hover,
+ul.functionMenu ul li a:hover span{
+	color: #375266;
+}
+
+
+ul.functionMenu ul li.disabled {
+	background-color: transparent;
+	cursor: default;
+}
+
+ul.functionMenu ul li.disabled * {
+	cursor: default;
+	color: grey;
+}
+
+
+/****/
+#header > .page > ul > li {
+	padding:3px 10px;
+}
+
+#header > .page > ul > li > a{
+	font-size:10px;
+	text-transform: uppercase;
+	text-shadow: #fff 0 1px;
+	color:#8395A3;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#header > .page > ul > li > a:hover{
+	color:#375266;
+}
+
+#header > .page > ul > li.active > a{
+	color:#375266;
+}
+
+/****************** local menu ******************/
+ul.localMenu {
+	position: absolute;
+	bottom: 1px;
+}
+
+ul.localMenu > li:first-child {
+	margin-left: 5px;
+}
+
+ul.localMenu > li {
+	margin-left: 10px;
+	position: relative;
+	top: 1px;
+}
+
+ul.localMenu > li a {
+	display: block;
+	padding: 4px 5px 5px 0px;
+
+}
+
+ul.localMenu > li > a span {
+	text-decoration: none;
+	color: #8395A3;
+	border: none;
+	background: none;
+	text-transform: uppercase;
+	text-shadow: #fff 0 1px;
+	font-size:10px;
+	font-weight: bold;
+	font-style: normal;
+}
+ul.localMenu > li > a:hover span{
+	color: #375266;
+
+}
+ul.localMenu > li.active > a {
+	color: #375266;
+
+}
+
+ul.localMenu > li.active > a span {
+	border-bottom-color: none;
+	background-color: none;
+	border: none;
+	background: none;
+	color: #375266;
+	font-style: normal;
+}
+
+/****************** popup menu ******************/
+div.appMenu.popup {
+	background: url("../image/dialogHead.png") repeat-x scroll 0 -30px transparent; 
+	height: 25px; 
+	position: relative;
+}
+
+ul.popupMenu {
+	position: absolute;
+	bottom: -1px;
+}
+
+
+ul.popupMenu > li > a {
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+	display: block;
+
+	padding: 5px 0 3px;
+		
+	text-decoration: none;	
+	font-weight: bold;
+	font-size: 12px;
+	
+	cursor: pointer;
+	
+	color: #d5cbbb;
+	background-color: #101012;
+}
+
+ul.popupMenu > li > a span {
+	font-style: normal;
+}
+
+
+ul.popupMenu > li.disabled > a {
+	color: grey;
+	cursor: default;
+}
+
+ul.popupMenu > li.disabled > a span {
+	color: grey;
+	cursor: default;
+}
+
+ul.popupMenu ul {
+	border-left: 1px solid #94b465;
+	border-right: 1px solid #94b465;
+	border-top: 0;
+	border-bottom: 1px solid #94b465;
+	background-color: #ffffff;
+	z-index: 100;
+}
+
+ul.popupMenu ul li {
+	padding: 5px;
+	text-decoration: none;	
+	font-weight: normal;
+	font-size: 12px;
+	color: #000000;
+	font-style: normal;
+}
+
+ul.popupMenu ul li * {
+	color: #000000;
+	text-decoration: none;	
+	font-weight: normal;
+	font-size: 12px;
+	font-style: normal;
+}
+
+ul.popupMenu ul li.active {
+	background-color: #cee6a9;
+}
+
+ul.popupMenu ul li.disabled {
+	background-color: transparent;
+	cursor: default;
+}
+
+ul.popupMenu ul li.disabled * {
+	cursor: default;
+	color: grey;
+}
+
+ul.popupMenu ul ul {
+	border-top: 1px solid #94b465;
+}

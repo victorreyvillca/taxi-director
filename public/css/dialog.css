@@ -1,0 +1,117 @@
+@charset "UTF-8";
+/**
+ * dialog.css
+ *
+ * All CSS related to the dialog.
+ *
+ * @author Jesper Birkestrøm <jb@emini.dk>
+ * @media screen
+ * @version 0.2 20090615
+ */
+
+div.dialog {
+	border: 4px solid #EDF4FB;
+	background-color: #fcfcfc;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius:5px;
+}
+
+div.dialog > div.header {
+	background-color: #332b20;
+	background: url(../image/dialogHead.png) repeat-x;
+	color: #ffffff;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 8px;
+	height: 14px;
+	text-shadow: #000000 0 -1px;
+	text-transform: uppercase;
+}
+div.dialog.roundedCorners > div.header {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	 -moz-border-radius-topleft: 5px;
+	 -moz-border-radius-topright: 5px;
+	 -webkit-border-top-left-radius: 5px;
+	 -webkit-border-top-right-radius: 5px;
+}
+
+div.dialog > ul.elementList {
+	list-style-image: none;
+	list-style-type: none;
+	list-style-position: outside;
+	position: absolute;
+	right: 10px;
+	top: 6px;
+}
+
+div.dialog > ul.elementList .closeIcon{
+	position:absolute;
+	top:-25px;
+	right:-25px;
+}
+div.dialog .content {
+}
+
+
+div.dialog > ul.elementList > li {
+	float: right;
+}
+
+div.dialog > div.content {
+	background-color: #fcfcfc;
+	/* In order to keep scrollbars in the right corners, you can NOT
+	 * put padding or margin on the element. Spacing should come from 
+	 * the elements inside.
+	 */ 
+}
+
+div.dialog div.bluebar {
+	background: url(../image/bluebar.png) repeat-x;
+	height: 79px;
+	padding: 5px;
+}
+
+div.dialog div.bluebar h2 {
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	margin: 2px 0;
+}
+
+div.dialog div.bluebar p {
+	color: #fff;
+	font-size: 10px;
+	margin: 0;
+	height: 45px;
+	overflow: hidden;
+}
+
+div.dialog div.bluebar img {
+	float: left;
+/*	width: 110px;*/
+	height: 75px;
+	margin-right: 10px;
+}
+
+div.dialogOverlay {
+	background-color: #000000;
+	opacity: .5;
+	filter: alpha(opacity=50);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+#textBoxResumeContainer{
+	background: #fcfcfc;
+}
+#textBoxResume ul li ul li{
+	background: transparent;
+   border: none;
+   display: block;
+   height: 16px;
+   padding-left:5px;
+   font-weight: bold;
+   font-size: 11px;
+   color:#526A7B;
+   text-shadow: #fff 0 1px;
+}

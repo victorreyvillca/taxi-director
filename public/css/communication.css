@@ -1,0 +1,19 @@
+/**
+ * Communication Template style
+ */
+
+table.wireframe > tbody > tr > td > div.input > div.field.max > textarea#textareaContent {
+	height:140px;
+} 
+
+table.wireframe > tbody > tr > td > div.input > div.field.max > textarea#headersection {
+	height:70px;
+}
+
+table.wireframe > tbody > tr > td > div.input > div.field.max > textarea#subjectsection {
+	height:70px;
+} 
+
+table.wireframe > tbody > tr > td > div.input > div.field.max > textarea#contentsection {
+	height:120px;
+} 

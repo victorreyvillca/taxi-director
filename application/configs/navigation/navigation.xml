@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<navigation>
+		<inicio>
+			<id>inicio</id>
+			<label>INICIO</label>
+			<action>index</action>
+			<controller>Index</controller>
+		</inicio>
+
+		<whowe>
+			<id>whowe</id>
+			<label>Quienes Somos?</label>
+			<uri>#</uri>
+			<action>index</action>
+			<controller>whowe</controller>
+			<pages>
+				<history>
+					<label>Nuestra Historia</label>
+					<controller>Whowe</controller>
+					<action>history</action>
+				</history>
+<!-- 				<visionMission> -->
+<!-- 					<label>Vision y Mision</label> -->
+<!-- 					<controller>Whowe</controller> -->
+<!-- 					<action>visionmission</action> -->
+<!-- 				</visionMission> -->
+				<logo>
+					<label>Nuestros Logos</label>
+					<controller>Whowe</controller>
+					<action>logo</action>
+				</logo>
+				<belief>
+					<label>Nuestras Creencias</label>
+					<controller>Whowe</controller>
+					<action>belief</action>
+				</belief>
+			</pages>
+		</whowe>
+
+		<news>
+			<id>guest.news</id>
+			<label>Noticias</label>
+			<controller>News</controller>
+			<action>index</action>
+		</news>
+
+		<registration>
+			<id>guest.registration</id>
+			<label>Registro</label>
+			<controller>Club</controller>
+			<action>index</action>
+			<pages>
+				<club>
+					<label>Registro Club</label>
+					<controller>Club</controller>
+					<action>index</action>
+				</club>
+				<directive>
+					<label>Registro Directivo</label>
+					<controller>Registration</controller>
+					<action>index</action>
+				</directive>
+			</pages>
+		</registration>
+
+<!-- 		<config> -->
+<!-- 			<id>configuration</id> -->
+<!-- 			<label>Configuracion</label> -->
+<!-- 			<action>index</action> -->
+<!-- 			<controller>Mission</controller> -->
+<!-- 			<pages> -->
+<!-- 				<mission> -->
+<!-- 					<label>Mision</label> -->
+<!-- 					<action>index</action> -->
+<!-- 					<controller>Mission</controller> -->
+<!-- 				</mission> -->
+<!-- 				<region> -->
+<!-- 					<label>Region</label> -->
+<!-- 					<action>index</action> -->
+<!-- 					<controller>Region</controller> -->
+<!-- 				</region> -->
+<!-- 				<district> -->
+<!-- 					<label>Distrito</label> -->
+<!-- 					<action>index</action> -->
+<!-- 					<controller>District</controller> -->
+<!-- 				</district> -->
+<!-- 				<church> -->
+<!-- 					<label>Iglesia</label> -->
+<!-- 					<action>index</action> -->
+<!-- 					<controller>Church</controller> -->
+<!-- 				</church> -->
+<!-- 				<position> -->
+<!-- 					<label>Cargo Liderazgo</label> -->
+<!-- 					<action>index</action> -->
+<!-- 					<controller>Position</controller> -->
+<!-- 				</position> -->
+<!-- 			</pages> -->
+<!-- 		</config> -->
+	</navigation>
+</config>

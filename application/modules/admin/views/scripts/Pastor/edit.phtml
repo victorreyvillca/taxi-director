@@ -1,0 +1,15 @@
+<div id="dialog-form" title="<?php echo $this->translate('Editar Pastor'); ?>" class="header" style="display: none;">
+	<?php echo $this->form;?>
+</div>
+
+<script type="text/javascript">
+	com.em.Pastor.prototype.dialogButtons = {
+		'<?php echo $this->translate('Editar'); ?>': function() {
+			$('#formId').submit();
+		},
+
+		'<?php echo $this->translate('Cancelar'); ?>': function() {
+			$(this).dialog("close");
+		}
+	};
+</script>

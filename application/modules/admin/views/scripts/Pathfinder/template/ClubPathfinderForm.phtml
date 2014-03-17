@@ -1,0 +1,46 @@
+<form id="<?php echo $this->element->getAttrib('id')?>" action="<?php echo $this->element->getAction()?>" method="post" enctype="multipart/form-data">
+<?php echo $this->element->getElement('id')->render();?>
+	<!-- // Container -->
+	<div class='profile_pic'>
+	<!-- // Spinner -->
+	<div id="spinner" style="display:none">
+		<img src="spinner_large.gif" border="0">
+	</div>
+		<!-- // Profile picture -->
+		<div id="result">
+		<img src="<?php echo $this->element->getSource();?>" id="profile_img" style="width: 127px; height: 127px;" />
+		</div>
+		<!-- // Button Container -->
+		<div class='change_button' id='change_button'>
+			<!-- // Button -->
+			<div class='change_button_text'>Change my logo</div>
+		</div>
+	</div>
+	<table>
+		<tbody>
+			<tr class="odd">
+				<td><label><?php echo _('Image picture') ?></label></td>
+				<td>
+					<input id="MAX_FILE_SIZE" type="hidden" value="8388608" name="MAX_FILE_SIZE">
+					<input type="file" id="file-input" name="file" class="valid">
+				</td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('name')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('name')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('textbible')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('textbible')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('address')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('address')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('church')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('church')->renderViewHelper() ?></td>
+			</tr>
+		</tbody>
+	</table>
+</form>

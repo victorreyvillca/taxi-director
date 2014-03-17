@@ -1,0 +1,31 @@
+<!-- Menu -->
+<div id="menu">
+	<!-- ENDS menu-holder -->
+	<div id="menu-holder">
+		<!-- wrapper-menu -->
+		<div class="wrapper">
+			<!-- Navigation -->
+			<ul id="nav" class="sf-menu">
+			<?php
+			$container = $this->navigation()->getContainer();
+			$pages = $container->getPages();
+			foreach ($pages as $menu):?>								
+				<li <?php ?>><a href="<?php echo $menu->getHref();?>"><?php echo $this->translate($menu->getLabel());?></a>
+				<?php if ($menu->count() > 1) {?>
+					<ul>
+					<?php $submenus = $menu->getPages(); ?>
+					<?php foreach ($submenus as $submenu):?>
+						<li><a href="<?php echo $submenu->getHref();?>"><span><?php echo $this->translate($submenu->getLabel());?></span></a></li>
+					<?php endforeach; ?>
+					</ul>
+				<?php }?>
+				</li>
+			<?php endforeach; ?>
+			</ul>
+			<!-- Navigation -->
+		</div>
+		<!-- wrapper-menu -->
+	</div>
+	<!-- ENDS menu-holder -->
+</div>
+<!-- ENDS Menu -->
