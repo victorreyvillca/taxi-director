@@ -38,7 +38,7 @@ class User_AuthController extends Dis_Controller_Action {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
                 if ($this->verify($formData)) {
-                    $this->_helper->redirector('index', 'index', 'admin');
+                    $this->_helper->redirector('index', 'Index', 'admin');
                 } else {
                     $this->view->error = 1;
                 }
@@ -65,8 +65,9 @@ class User_AuthController extends Dis_Controller_Action {
             $data = $adapter->getResultRowObject(NULL, array('password', 'created'));
 
             $account = $this->_entityManager->find('Model\Account', (int)$data->id);
-            $administratorRepo = $this->_entityManager->getRepository('Model\Administrator');
+            $administratorRepo = $this->_entityManager->getRepository('Model\Operator');
             $administrator = $administratorRepo->findByAccount($account);
+
             $data->id = $administrator->getId();
 
             $auth->getStorage()->write($data);

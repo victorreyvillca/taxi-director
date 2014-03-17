@@ -24,6 +24,7 @@ class Dis_Controller_Plugin_Acl extends Zend_Controller_Plugin_Abstract {
 // 	    $acl = new My_Acl();
         $session = new Zend_Session_Namespace('admin');
 
+//         var_dump($session->role);
         if($auth->hasIdentity() && $session->role = 'admin') {
             return TRUE;
         } else {//die('else');

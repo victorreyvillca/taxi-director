@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<navigation>
+		<user-management>
+			<id>um</id>
+			<label>Users Management</label>
+			<module>user</module>
+			<controller>user</controller>
+			<action>read</action>
+			<params>
+				<type>um</type>
+			</params>
+			<pages>
+				<users>
+					<label>Users</label>
+					<module>user</module>
+					<controller>user</controller>
+					<action>read</action>
+					<params>
+						<type>um</type>
+					</params>
+				</users>
+				<roles>
+					<label>Roles</label>
+					<module>user</module>
+					<controller>role</controller>
+					<action>read</action>
+					<params>
+						<type>um</type>
+					</params>
+				</roles>
+				<privileges>
+					<label>IDM Wizard</label>
+					<module>user</module>
+					<controller>wizard</controller>
+					<action>read</action>
+					<params>
+						<type>um</type>
+					</params>
+				</privileges>
+			</pages>
+		</user-management>
+	</navigation>
+</config>
