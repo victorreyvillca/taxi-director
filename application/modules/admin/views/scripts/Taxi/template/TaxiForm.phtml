@@ -1,0 +1,46 @@
+<form id="<?php echo $this->element->getAttrib('id')?>" action="<?php echo $this->element->getAction()?>" method="post" enctype="multipart/form-data">
+<?php echo $this->element->getElement('id')->render();?>
+	<div class="row">
+		<div class="span7">
+			<label><?php echo _('Fotografia')?></label>
+			<div class="well" id="result" style="width: 127px; height: 127px;">
+				<img src="<?php echo $this->element->getSource();?>" id="profile_img" style="width: 127px; height: 127px;"/>
+			</div>
+		</div>
+	</div>
+	<table>
+		<tbody>
+			<tr class="odd">
+				<td><label><?php echo _('Fotografia del Movil') ?></label></td>
+				<td>
+					<input id="MAX_FILE_SIZE" type="hidden" value="8388608" name="MAX_FILE_SIZE">
+					<input type="file" id="file-input" name="file" class="valid">
+				</td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('name')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('name')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('mark')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('mark')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('plaque')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('plaque')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('typeMark')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('typeMark')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('model')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('model')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="odd">
+				<td><?php echo $this->element->getElement('color')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('color')->renderViewHelper() ?></td>
+			</tr>
+		</tbody>
+	</table>
+</form>

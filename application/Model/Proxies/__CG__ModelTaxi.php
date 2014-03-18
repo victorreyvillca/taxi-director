@@ -64,10 +64,10 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'name', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+            return array('__isInitialized__', 'name', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
         }
 
-        return array('__isInitialized__', 'name', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+        return array('__isInitialized__', 'name', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
     }
 
     /**
@@ -325,6 +325,28 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
 
         return parent::setStatus($status);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPictureId()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPictureId', array());
+
+        return parent::getPictureId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPictureId($pictureId)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPictureId', array($pictureId));
+
+        return parent::setPictureId($pictureId);
     }
 
     /**

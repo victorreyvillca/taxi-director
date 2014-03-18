@@ -164,6 +164,7 @@ CREATE TABLE IF NOT EXISTS `tblTaxi` (
 	`color`			VARCHAR(50) 	NULL,
 	`plaque`		VARCHAR(50) 	NULL,
 	`status`		BOOL 			DEFAULT 0,
+	`pictureId`		INT(11) 		DEFAULT NULL,
 	`created`		DATETIME 		NOT NULL,
 	`changed`		DATETIME 		DEFAULT NULL,
 	`createdBy`		INT(11)			DEFAULT NULL,
@@ -173,7 +174,14 @@ CREATE TABLE IF NOT EXISTS `tblTaxi` (
 		PRIMARY KEY (`id`),
 
 	KEY `i_tblTaxi_id` (`id`),
-	INDEX `i_tblTaxi_state_id` (`state`, `id`)
+	INDEX `i_tblTaxi_state_id` (`state`, `id`),
+	INDEX `i_tblTaxi_pictureId` (`pictureId`),
+	
+	CONSTRAINT `fk_tblTaxi_pictureId`
+		FOREIGN KEY (`pictureId`)
+		REFERENCES `tblDatavault` (`id`)
+		ON DELETE RESTRICT
+		ON UPDATE CASCADE
 ) ENGINE = INNODB;
 
 

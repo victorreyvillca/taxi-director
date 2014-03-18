@@ -5,6 +5,7 @@ use Model\Passenger;
 use Model\Driver;
 use Model\Account;
 use Model\Role;
+use Model\Taxi;
 
 class IndexController extends Dis_Controller_Action {
 
@@ -78,5 +79,9 @@ class IndexController extends Dis_Controller_Action {
 //         $this->_entityManager->persist($account);
 //         $this->_entityManager->flush();
 
+//         $taxi = new Taxi();
+//         $taxi->setName('movil 2')->setMark('dfafd')->setPlaque('fdafd')->setModel(4564)->setColor('white')->setState(TRUE)->setCreated(new DateTime('now'));
+//         $this->_entityManager->persist($taxi);
+//         $this->_entityManager->flush();
     }
 }

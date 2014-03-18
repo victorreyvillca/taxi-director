@@ -25,122 +25,33 @@
 
 		<information>
 			<id>information</id>
-			<label>Informacion</label>
+			<label>Taxi</label>
 			<module>admin</module>
-			<controller>Picture</controller>
+			<controller>Taxi</controller>
 			<action>index</action>
 			<params>
 				<type>information</type>
 			</params>
 			<pages>
 				<picture>
-					<label>Imagenes Noticias</label>
+					<label>Taxi</label>
 					<module>admin</module>
-					<controller>Picture</controller>
+					<controller>taxi</controller>
 					<action>index</action>
 					<params>
 						<type>information</type>
 					</params>
 				</picture>
 				<news>
-					<label>Noticias</label>
+					<label>Driver</label>
 					<module>admin</module>
-					<controller>news</controller>
+					<controller>driver</controller>
 					<action>index</action>
 					<params>
 						<type>information</type>
 					</params>
 				</news>
-				<category>
-					<label>Categorias</label>
-					<module>admin</module>
-					<controller>category</controller>
-					<action>index</action>
-					<params>
-						<type>information</type>
-					</params>
-				</category>
 			</pages>
 		</information>
-
-		<organization>
-			<id>organization</id>
-			<label>Organizacion</label>
-			<module>admin</module>
-			<controller>Administrator</controller>
-			<action>index</action>
-			<params>
-				<type>organization</type>
-			</params>
-			<pages>
-				<managerial>
-					<label>Administrador</label>
-					<module>admin</module>
-					<controller>Administrator</controller>
-					<action>index</action>
-					<params>
-						<type>organization</type>
-					</params>
-				</managerial>
-				<pastor>
-					<label>Pastores</label>
-					<module>admin</module>
-					<controller>Pastor</controller>
-					<action>index</action>
-					<params>
-						<type>organization</type>
-					</params>
-				</pastor>
-				<club>
-					<label>Club</label>
-					<module>admin</module>
-					<controller>Club</controller>
-					<action>index</action>
-					<params>
-						<type>organization</type>
-					</params>
-				</club>
-				<role>
-					<label>Roles</label>
-					<module>admin</module>
-					<controller>Role</controller>
-					<action>index</action>
-					<params>
-						<type>organization</type>
-					</params>
-				</role>
-			</pages>
-		</organization>
-
-		<security>
-			<id>security</id>
-			<label>Seguridad</label>
-			<module>admin</module>
-			<controller>usergroup</controller>
-			<action>read</action>
-			<params>
-				<type>security</type>
-			</params>
-			<pages>
-				<userGroup>
-					<label>Grupo de Usuarios</label>
-					<module>admin</module>
-					<controller>usergroup</controller>
-					<action>read</action>
-					<params>
-						<type>security</type>
-					</params>
-				</userGroup>
-				<privilege>
-					<label>Privilegios</label>
-					<module>admin</module>
-					<controller>privilege</controller>
-					<action>read</action>
-					<params>
-						<type>security</type>
-					</params>
-				</privilege>
-			</pages>
-		</security>
 	</navigation>
 </config>

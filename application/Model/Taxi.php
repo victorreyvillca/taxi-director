@@ -50,6 +50,12 @@ class Taxi extends DomainObject {
      */
     private $status;
 
+    /**
+     * @Column(type="integer")
+     * @var int
+     */
+    private $pictureId;
+
 	/**
 	 * @return string
 	 */
@@ -159,6 +165,22 @@ class Taxi extends DomainObject {
 	 */
 	public function setStatus($status) {
 		$this->status = $status;
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPictureId() {
+		return $this->pictureId;
+	}
+
+	/**
+	 * @param int $pictureId
+	 * @return Taxi
+	 */
+	public function setPictureId($pictureId) {
+		$this->pictureId = $pictureId;
 		return $this;
 	}
 }
