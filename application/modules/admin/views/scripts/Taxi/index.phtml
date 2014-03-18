@@ -2,13 +2,13 @@
 <?php $this->headScript()->appendFile($this->baseUrl() . "/js/lib/blueimp-Load-Image/load-image.min.js","text/javascript"); ?>
 
 <div style="margin:20px;">
-	<?php echo $this->tableHeader('filterHeader', _('Filtrar Administradores'));?>
+	<?php echo $this->tableHeader('filterHeader', _('Filtrar Taxis'));?>
 	<?php echo $this->formFilter;?>
 	<div id="containerFormFilter">
 
 	</div>
 	<br>
-	<?php echo $this->tableHeader('administratorHeader', _('Administradores'));?>
+	<?php echo $this->tableHeader('administratorHeader', _('Taxis'));?>
 	<?php echo $this->tableList('tblAdministrator');?>
 	<div class="buttons right">
 		<?php echo $this->buttonRemove("delete-administrator", $this->translate('Eliminar'), $this->url(array('action'=>'delete')));?>
@@ -17,7 +17,7 @@
 
 	<div id="dialog"><!-- Loads ajax dialog form --></div>
 </div>
-<?php //echo $this->imagelogo;?>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 	var administrator = new com.em.Administrator();
@@ -33,11 +33,11 @@
 	var headers = new Object();
 	headers.headerArray = new Array(
 		'<?php echo $this->translate('Nombre')?>',
-		'<?php echo $this->translate('Position')?>',
-		'<?php echo $this->translate('Celular')?>',
-		'<?php echo $this->translate('Telf. Fijo')?>',
-		'<?php echo $this->translate('Correo')?>',
-		'<?php echo $this->translate('Cedula de Identidad')?>',
+		'<?php echo $this->translate('Marca')?>',
+		'<?php echo $this->translate('Placa')?>',
+		'<?php echo $this->translate('Tipo')?>',
+		'<?php echo $this->translate('Color')?>',
+		'<?php echo $this->translate('Modelo')?>',
 		'<?php echo $this->translate('Fecha Creacion')?>',
 		'<?php echo $this->translate('Fecha Edicion')?>');
 	administrator.setHeaders(headers);

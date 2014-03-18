@@ -298,11 +298,11 @@ class Admin_TaxiController extends Dis_Controller_Action {
 			$row = array();
 			$row[] = $directive->getId();
 			$row[] = $directive->getName();
+			$row[] = $directive->getMark();
 			$row[] = $directive->getPlaque();
+			$row[] = $directive->getType();
 			$row[] = $directive->getColor();
-			$row[] = '';
-			$row[] = '';
-			$row[] = '';
+			$row[] = $directive->getModel();
 			$row[] = $directive->getCreated()->format('d.m.Y');
 			$row[] = $changed;
 			$row[] = '[]';
