@@ -152,7 +152,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $id = $this->_getParam('id', 0);
         $taxi = $this->_entityManager->find('Model\Taxi', $id);
         if ($taxi != NULL) {
-            $form->getElement('driverId')->setValue($taxi->getId());
+            $form->getElement('taxiId')->setValue($taxi->getId());
             $form->getElement('name')->setValue($taxi->getName());
             $form->getElement('mark')->setValue($taxi->getMark());
             $form->getElement('plaque')->setValue($taxi->getPlaque());
@@ -165,22 +165,20 @@ class Admin_TaxiController extends Dis_Controller_Action {
             if ($dataVault != NULL && $dataVault->getBinary()) {
                 $src = $this->_helper->url('profile-picture', 'Taxi', 'admin', array('id' => $dataVault->getId(), 'timestamp' => time()));
             } else {
-                $src = '/image/profile/male_default.jpg';
+                $src = '/image/profile/logo-taxi.png';
             }
             $form->setSourceTaxi($src);
 
             $driverRepo = $this->_entityManager->getRepository('Model\Driver');
             $driver = $driverRepo->findByTaxi($taxi);
 
-            $form->getElement('taxiId')->setValue($driver->getId());
+            $form->getElement('driverId')->setValue($driver->getId());
             $form->getElement('firstName')->setValue($driver->getFirstName());
             $form->getElement('lastName')->setValue($driver->getLastName());
             $form->getElement('ci')->setValue($driver->getIdentityCard());
             $form->getElement('address')->setValue($driver->getAddress());
 
             $dataVault = $dataVaultMapper->find($driver->getProfilePictureId());
-//             var_dump($driver);
-//             var_dump($dataVault);
             if ($dataVault != NULL && $dataVault->getBinary()) {
             	$src = $this->_helper->url('profile-picture', 'Taxi', 'admin', array('id' => $dataVault->getId(), 'timestamp' => time()));
             } else {
@@ -205,7 +203,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
             $form = new Dis_Form_Taxi();
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
-                $id = $this->_getParam('id', 0);
+                $id = $this->_getParam('taxiId', 0);
                 $taxi = $this->_entityManager->find('Model\Taxi', $id);
                 if ($taxi != NULL) {
                    $taxi
@@ -218,14 +216,14 @@ class Admin_TaxiController extends Dis_Controller_Action {
                         ->setChanged(new DateTime('now'))
                     ;
 
-                    if ($_FILES['file']['error'] !== UPLOAD_ERR_NO_FILE) {
-                        if ($_FILES['file']['error'] == UPLOAD_ERR_OK) {
-                            $fh = fopen($_FILES['file']['tmp_name'], 'r');
+                    if ($_FILES['filetaxi']['error'] !== UPLOAD_ERR_NO_FILE) {
+                        if ($_FILES['filetaxi']['error'] == UPLOAD_ERR_OK) {
+                            $fh = fopen($_FILES['filetaxi']['tmp_name'], 'r');
                             $binary = fread($fh, filesize($_FILES['file']['tmp_name']));
                             fclose($fh);
 
-                            $mimeType = $_FILES['file']['type'];
-                            $fileName = $_FILES['file']['name'];
+                            $mimeType = $_FILES['filetaxi']['type'];
+                            $fileName = $_FILES['filetaxi']['name'];
 
                             $dataVaultMapper = new Dis_Model_DataVaultMapper();
 
@@ -244,6 +242,66 @@ class Admin_TaxiController extends Dis_Controller_Action {
                     }
 
                     $this->_entityManager->persist($taxi);
+                    $this->_entityManager->flush();
+
+                    $driverRepo = $this->_entityManager->getRepository('Model\Driver');
+                    $driver = $driverRepo->findByTaxi($taxi);
+                    $driver
+                        ->setTaxi($taxi)
+                        ->setPhone('phone')
+                        ->setPhonemobil(46546)
+                        ->setAddress($formData['address'])
+                        ->setSex(1)
+                        ->setIdentityCard($formData['ci'])
+                        ->setLastName($formData['lastName'])
+                        ->setFirstName($formData['firstName'])
+                        ->setChanged(new DateTime('now'))
+                    ;
+
+//                     if ($_FILES['filedriver']['error'] !== UPLOAD_ERR_NO_FILE) {
+//                     	if ($_FILES['filedriver']['error'] == UPLOAD_ERR_OK) {
+//                     		$fh = fopen($_FILES['filedriver']['tmp_name'], 'r');
+//                     		$binary = fread($fh, filesize($_FILES['filedriver']['tmp_name']));
+//                     		fclose($fh);
+
+//                     		$mimeType = $_FILES['filedriver']['type'];
+//                     		$fileName = $_FILES['filedriver']['name'];
+
+//                     		$dataVaultMapper = new Dis_Model_DataVaultMapper();
+//                     		$dataVault = new Dis_Model_DataVault();
+//                     		$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
+//                     		$dataVaultMapper->save($dataVault);
+
+//                     		$driver->setProfilePictureId($dataVault->getId());
+//                     	}
+//                     }
+
+                    if ($_FILES['filedriver']['error'] !== UPLOAD_ERR_NO_FILE) {
+                    	if ($_FILES['filedriver']['error'] == UPLOAD_ERR_OK) {
+                    		$fh = fopen($_FILES['filedriver']['tmp_name'], 'r');
+                    		$binary = fread($fh, filesize($_FILES['filedriver']['tmp_name']));
+                    		fclose($fh);
+
+                    		$mimeType = $_FILES['filedriver']['type'];
+                    		$fileName = $_FILES['filedriver']['name'];
+
+                    		$dataVaultMapper = new Dis_Model_DataVaultMapper();
+
+                    		if ($driver->getProfilePictureId() != NULL) {// if it has image profile update
+                    			$dataVault = $dataVaultMapper->find($driver->getProfilePictureId(), FALSE);
+                    			$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
+                    			$dataVaultMapper->update($driver->getProfilePictureId(), $dataVault);
+                    		} elseif ($driver->getProfilePictureId() == NULL) {// if it don't have image profile create
+                    			$dataVault = new Dis_Model_DataVault();
+                    			$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
+                    			$dataVaultMapper->save($dataVault);
+
+                    			$driver->setProfilePictureId($dataVault->getId());
+                    		}
+                    	}
+                    }
+
+                    $this->_entityManager->persist($driver);
                     $this->_entityManager->flush();
 
                     $this->_helper->flashMessenger(array('success' => _('Taxi editado')));
