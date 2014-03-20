@@ -1,43 +1,119 @@
-<style>
-    a:link,
-    a:visited
-    {
-        color: #0398CA;
-    }
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+html {
+	height: 500px
+}
 
-    span#zf-name
-    {
-        color: #91BE3F;
-    }
+body {
+	height: 500px;
+	margin: 0;
+	padding: 0
+}
 
-    div#welcome
-    {
-        color: #FFFFFF;
-        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
-        width:  600px;
-        height: 400px;
-        border: 2px solid #444444;
-        overflow: hidden;
-        text-align: center;
-    }
-
-    div#more-information
-    {
-        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
-        height: 100%;
-    }
+#map-canvas {
+	height: 500px
+}
 </style>
-<div id="welcome">
-    <h1>Welcome to the <span id="zf-name">Zend Framework!</span></h1>
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBADa-A2Jqkq2C4ZlgOdZs98dFE0q00_N0&sensor=true">
+</script>
+<script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-17.760458, -63.131776),
+          zoom: 15
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
 
-    <h3>This is your project's main page</h3>
+        setMarkers(map,beaches);
+      }
 
-    <div id="more-information">
-        <p><img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
-        <p>
-            Helpful Links: <br />
-            <a href="http://framework.zend.com/">Zend Framework Website</a> |
-            <a href="http://framework.zend.com/manual/en/">Zend Framework Manual</a>
-        </p>
-    </div>
-</div>
+
+      /**
+       * Data for the markers consisting of a name, a LatLng and a zIndex for
+       * the order in which these markers should display on top of each
+       * other.
+       */
+      var beaches = [
+        ['Movil 4', -17.760458, -63.139776, 4],
+        ['Movil 5', -17.761858, -63.131896, 5],
+        ['Movil 3', -17.762159, -63.151789, 3],
+        ['Movil 2', -17.763786, -63.155456, 2],
+        ['Movil 1', -17.764666, -63.191555, 1]
+      ];
+
+      function setMarkers(map, locations) {
+        // Add markers to the map
+
+        // Marker sizes are expressed as a Size of X,Y
+        // where the origin of the image (0,0) is located
+        // in the top left of the image.
+
+        // Origins, anchor positions and coordinates of the marker
+        // increase in the X direction to the right and in
+        // the Y direction down.
+        var image = {
+          url: 'img/home32.png',
+          // This marker is 20 pixels wide by 32 pixels tall.
+          size: new google.maps.Size(32, 32),
+          // The origin for this image is 0,0.
+          origin: new google.maps.Point(0,0),
+          // The anchor for this image is the base of the flagpole at 0,32.
+          anchor: new google.maps.Point(0, 32)
+        };
+        // Shapes define the clickable region of the icon.
+        // The type defines an HTML &lt;area&gt; element 'poly' which
+        // traces out a polygon as a series of X,Y points. The final
+        // coordinate closes the poly by connecting to the first
+        // coordinate.
+        var shape = {
+            coord: [32, 32, 32, 20, 18, 20, 18 , 1],
+            type: 'poly'
+        };
+        for (var i = 0; i < locations.length; i++) {
+          var beach = locations[i];
+          var myLatLng = new google.maps.LatLng(beach[1], beach[2]);
+          var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              icon: image,
+              //shape: shape,
+              title: beach[0],
+              zIndex: beach[3]
+          });
+          attachSecretMessage(marker,beach[3],beach[0]);
+        }
+      }
+      // The five markers show a secret message when clicked
+      // but that message is not within the marker's instance data
+
+
+      function attachSecretMessage(marker, num,text) {
+
+          var infowindow = new google.maps.InfoWindow({
+              content: text
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+              infowindow.open(marker.get('map'), marker);
+          });
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+	<div id="map-canvas" />
+</body>
+</html>
