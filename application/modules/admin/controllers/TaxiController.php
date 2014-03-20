@@ -219,7 +219,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
                     if ($_FILES['filetaxi']['error'] !== UPLOAD_ERR_NO_FILE) {
                         if ($_FILES['filetaxi']['error'] == UPLOAD_ERR_OK) {
                             $fh = fopen($_FILES['filetaxi']['tmp_name'], 'r');
-                            $binary = fread($fh, filesize($_FILES['file']['tmp_name']));
+                            $binary = fread($fh, filesize($_FILES['filetaxi']['tmp_name']));
                             fclose($fh);
 
                             $mimeType = $_FILES['filetaxi']['type'];
@@ -257,24 +257,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
                         ->setFirstName($formData['firstName'])
                         ->setChanged(new DateTime('now'))
                     ;
-
-//                     if ($_FILES['filedriver']['error'] !== UPLOAD_ERR_NO_FILE) {
-//                     	if ($_FILES['filedriver']['error'] == UPLOAD_ERR_OK) {
-//                     		$fh = fopen($_FILES['filedriver']['tmp_name'], 'r');
-//                     		$binary = fread($fh, filesize($_FILES['filedriver']['tmp_name']));
-//                     		fclose($fh);
-
-//                     		$mimeType = $_FILES['filedriver']['type'];
-//                     		$fileName = $_FILES['filedriver']['name'];
-
-//                     		$dataVaultMapper = new Dis_Model_DataVaultMapper();
-//                     		$dataVault = new Dis_Model_DataVault();
-//                     		$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
-//                     		$dataVaultMapper->save($dataVault);
-
-//                     		$driver->setProfilePictureId($dataVault->getId());
-//                     	}
-//                     }
 
                     if ($_FILES['filedriver']['error'] !== UPLOAD_ERR_NO_FILE) {
                     	if ($_FILES['filedriver']['error'] == UPLOAD_ERR_OK) {
@@ -315,7 +297,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
                 $this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
             }
         } else {
-            $this->_helper->redirector('index', 'Administrator', 'admin', array('type'=>'information'));
+            $this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
         }
     }
 
