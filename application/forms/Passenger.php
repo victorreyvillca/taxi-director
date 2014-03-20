@@ -18,8 +18,6 @@ class Dis_Form_Passenger extends Zend_Form {
 	public function init() {
 		$this
 			->setAttrib('id', 'formId')
-// 			->setMethod('post')
-// 			->setAttrib('enctype', 'multipart/form-data')
 
 			->addElement('Hidden', 'id')
 
@@ -32,14 +30,6 @@ class Dis_Form_Passenger extends Zend_Form {
 
 			->addElement('Text', 'firstName', array(
 				'label' => _('Nombres'),
-				'required' => TRUE,
-				'filters' => array(
-					array('StringTrim')
-				)
-			))
-
-			->addElement('Text', 'lastName', array(
-				'label' => _('Apellidos'),
 				'required' => TRUE,
 				'filters' => array(
 					array('StringTrim')
