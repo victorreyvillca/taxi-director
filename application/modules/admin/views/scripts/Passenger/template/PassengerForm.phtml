@@ -10,6 +10,16 @@
 				<td><?php echo $this->element->getElement('firstName')->renderViewHelper() ?></td>
 			</tr>
 			<tr class="even" >
+                <td><?php echo $this->element->getElement('lastName')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('lastName')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even" >
+                <td><?php echo $this->element->getElement('label')->renderLabel() ?></td>
+                <td><?php echo $this->element->getElement('label')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even" >
+                <td><?php echo $this->element->getElement('address')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('address')->renderViewHelper() ?></td>
 			</tr>
 		</tbody>
 	</table>

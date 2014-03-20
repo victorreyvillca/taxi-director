@@ -1,15 +1,15 @@
-<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Category.js","text/javascript");?>
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Passenger.js","text/javascript");?>
 <div style="margin:20px;">
-	<?php echo $this->tableHeader('filterHeader', _('Filtrar Categorias'));?>
+	<?php echo $this->tableHeader('filterHeader', _('Filtrar Pasajeros'));?>
 	<div id="containerFormFilter">
 		<?php echo $this->formFilter; ?>
 	</div>
 	<br>
-	<?php echo $this->tableHeader('categoryHeader', _('Categorias'));?>
-	<?php echo $this->tableList("tblCategory");?>
+	<?php echo $this->tableHeader('passengerHeader', _('Pasajeros'));?>
+	<?php echo $this->tableList("tblPassenger");?>
 	<div class="buttons right">
-		<?php echo $this->buttonRemove("delete-category", $this->translate('Eliminar'), $this->url(array('action'=>'remove')));?>
-		<?php echo $this->buttonAdd("create-category", $this->translate('Adicionar'), $this->url(array('action'=>'add')));?>
+		<?php echo $this->buttonRemove("delete-passenger", $this->translate('Eliminar'), $this->url(array('action'=>'remove')));?>
+		<?php echo $this->buttonAdd("create-passenger", $this->translate('Adicionar'), $this->url(array('action'=>'add')));?>
 	</div>
 
 	<div id="dialog"><!-- Loads ajax dialog form --></div>
@@ -17,10 +17,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-	var category = new com.em.Category();
+	var passenger = new com.em.Passenger();
 
 	// network
-	category.setUrl({
+	passenger.setUrl({
 		toTable : '<?php echo $this->url(array('action'=>'read-items'));?>',
 		toBase : '<?php echo $this->baseUrl(); ?>',
 		toUpdate : '<?php echo $this->url(array('action'=>'edit')); ?>',
@@ -33,14 +33,14 @@
 		'<?php echo $this->translate('Descripcion'); ?>',
 		'<?php echo $this->translate('Fecha Creacion'); ?>',
 		'<?php echo $this->translate('Fecha Edicion'); ?>');
-	category.setHeaders(headers);
+	passenger.setHeaders(headers);
 	// configuration of widgets
-	category.configureTable('#tblCategory', true);
+	passenger.configureTable('#tblPassenger', true);
 
 	// CRUD
-	category.clickToAdd('#create-category');
-	category.clickToUpdate('#tblCategory a[id^=update-category-]');
-	category.clickToDelete('#delete-category');
-	category.configureAuto('input#nameFilter');
+	passenger.clickToAdd('#create-passenger');
+	passenger.clickToUpdate('#tblPassenger a[id^=update-passenger-]');
+	passenger.clickToDelete('#delete-passenger');
+	passenger.configureAuto('input#nameFilter');
 });
 </script>

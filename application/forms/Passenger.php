@@ -55,7 +55,9 @@ class Dis_Form_Passenger extends Zend_Form {
 			))
 
 			->addElement('TextArea', 'address', array(
-                'label' => _('Dire')
+                'label' => _('Dire'),
+                'cols' =>'30',
+                'rows' =>'4',
 			))
 		;
 	}
