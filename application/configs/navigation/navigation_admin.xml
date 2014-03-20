@@ -36,16 +36,16 @@
 				<picture>
 					<label>Taxi</label>
 					<module>admin</module>
-					<controller>taxi</controller>
+					<controller>Taxi</controller>
 					<action>index</action>
 					<params>
 						<type>information</type>
 					</params>
 				</picture>
 				<news>
-					<label>Driver</label>
+					<label>Passenger</label>
 					<module>admin</module>
-					<controller>driver</controller>
+					<controller>Passenger</controller>
 					<action>index</action>
 					<params>
 						<type>information</type>
