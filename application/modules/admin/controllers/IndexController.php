@@ -8,6 +8,9 @@ use Model\Church;
 use Model\Club;
 use Model\Picture;
 use Model\PictureNews;
+use Model\Label;
+use Model\Address;
+use Model\Passenger;
 
 
 
@@ -96,5 +99,24 @@ class Admin_IndexController extends Dis_Controller_Action {
 //         $this->_entityManager->persist($directive);
 //         $this->_entityManager->flush();
 
+// 	    $label = new Label();
+// 	    $label->setName('fdafda')->setDescription('fdfsd')->setCreated(new DateTime('now'))->setState(TRUE);
+// 	    $this->_entityManager->persist($label);
+// 	    $this->_entityManager->flush();
+
+// 	    $pa = new Passenger();
+// 	    $pa->setState(TRUE)->setCreated(new DateTime('now'))->setPhonemobil(456465)->setPhone('5465')->setDateOfBirth(new DateTime('now'))->setSex(1)->setAddress('fdfads')->setIdentityCard(35423)->setLastName('fdaf')->setFirstName('dffd');
+// 	    $this->_entityManager->persist($pa);
+// 	    $this->_entityManager->flush();
+
+// 	    $label = new Label();
+// 	    $label->setName('fdafda')->setCreated(new DateTime('now'))->setState(TRUE);
+// 	    $this->_entityManager->persist($label);
+// 	    $this->_entityManager->flush();
+
+// 	    $address = new Address();
+// 	    $address->setName('fdafda')->setPassenger($pa)->setLabel($label)->setCreated(new DateTime('now'))->setState(TRUE);
+// 	    $this->_entityManager->persist($address);
+// 	    $this->_entityManager->flush();
 	}
 }

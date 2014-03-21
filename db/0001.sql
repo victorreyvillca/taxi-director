@@ -195,7 +195,7 @@ CREATE  TABLE IF NOT EXISTS `tblDriver` (
 		PRIMARY KEY (`id`),
 
 	KEY `i_tblDriver_id` (`id`),
-	INDEX `i_tblDirective_taxiId` (`taxiId`),
+	INDEX `i_tblDriver_taxiId` (`taxiId`),
 	
 	CONSTRAINT `fk_tblDriver_taxiId`
 	FOREIGN KEY (`taxiId`)
