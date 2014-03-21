@@ -7,7 +7,8 @@ class ClientController extends Zend_Controller_Action {
     }
 
     public function indexAction() {
-        $client = new Zend_XmlRpc_Client('http://localhost/taxi-director/public/server');
+//         $client = new Zend_XmlRpc_Client('http://localhost/taxi-director/public/server');
+        $client = new Zend_XmlRpc_Client('http://localhost/server');
 
         try {
 //         	$data = $client->call('cf.test');
@@ -27,7 +28,8 @@ class ClientController extends Zend_Controller_Action {
 
     public function jsonAction()
     {
-    	$this->view->serverUrl = 'http://localhost/taxi-director/public/server/json';
+//     	$this->view->serverUrl = 'http://localhost/taxi-director/public/server/json';
+    	$this->view->serverUrl = 'http://localhost/server/json';
     	$this->view->dataNumber = 200;
     }
 }

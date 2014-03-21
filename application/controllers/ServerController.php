@@ -22,7 +22,8 @@ class ServerController extends Zend_Controller_Action {
 
     	if ('GET' == $_SERVER['REQUEST_METHOD']) {
     		$server
-    		->setTarget('http://localhost/taxi-director/public/server/json')
+//     		->setTarget('http://localhost/taxi-director/public/server/json')
+    		->setTarget('http://localhost/server/json')
     		->setEnvelope(Zend_Json_Server_Smd::ENV_JSONRPC_2);
     		$smd = $server->getServiceMap();
 
