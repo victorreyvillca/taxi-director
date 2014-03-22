@@ -10,6 +10,7 @@
 	<div class="buttons right">
 		<?php echo $this->buttonRemove("delete-passenger", $this->translate('Eliminar'), $this->url(array('action'=>'remove')));?>
 		<?php echo $this->buttonAdd("create-passenger", $this->translate('Adicionar'), $this->url(array('action'=>'add')));?>
+		<?php echo $this->buttonAdd("search-passenger", $this->translate('Search'), $this->url(array('action'=>'search')));?>
 	</div>
 
 	<div id="dialog"><!-- Loads ajax dialog form --></div>
@@ -24,7 +25,8 @@
 		toTable : '<?php echo $this->url(array('action'=>'read-items'));?>',
 		toBase : '<?php echo $this->baseUrl(); ?>',
 		toUpdate : '<?php echo $this->url(array('action'=>'edit')); ?>',
-		toAutocomplete : '<?php echo $this->url(array('action'=>'autocomplete'));?>'
+		toAutocomplete : '<?php echo $this->url(array('action'=>'autocomplete'));?>',
+		toAutocompleteLabel : '<?php echo $this->url(array('action'=>'autocomplete-label'));?>'
 	});
 
 	var headers = new Object();
@@ -42,5 +44,8 @@
 	passenger.clickToUpdate('#tblPassenger a[id^=update-passenger-]');
 	passenger.clickToDelete('#delete-passenger');
 	passenger.configureAuto('input#nameFilter');
+	passenger.configureLabelAuto('input#label');
+
+	passenger.clickToAdd('#search-passenger');
 });
 </script>

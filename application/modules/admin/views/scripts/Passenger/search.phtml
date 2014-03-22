@@ -1,11 +1,8 @@
-<div id="dialog-form" title="<?php echo $this->translate('Adicionar Pasajero'); ?>" class="header" style="display: none;">
+<div id="dialog-form" title="<?php echo $this->translate('Buscar Pasajero'); ?>" class="header" style="display: none;">
 	<?php echo $this->form; ?>
 </div>
 
 <script type="text/javascript">
-com.em.Passenger.prototype.setUrl({
-	toAutocompleteLabel : '<?php echo $this->url(array('action'=>'autocomplete-label'));?>'
-});
 com.em.Passenger.prototype.configureLabelAuto('input#label');
 	com.em.Passenger.prototype.dialogButtons = {
 		'<?php echo $this->translate('Cancelar'); ?>': function() {

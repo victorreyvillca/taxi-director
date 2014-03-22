@@ -104,4 +104,25 @@ class PassengerRepository extends EntityRepository {
 
     	return (int)$query->getQuery()->getSingleScalarResult();
     }
+
+    /**
+     * Verifies if the phone already exist it.
+     * @param string $phone
+     * @return boolean
+     */
+    public function verifyExistPhone($phone) {
+        $object = $this->findOneBy(array('phone' => $phone, 'state' => TRUE));
+        return $object != NULL? TRUE : FALSE;
+    }
+
+    /**
+     *
+     * Verifies if the id and phone already exist it.
+     * @param int $id
+     * @param string $name
+     */
+    public function verifyExistIdAndPhone($id, $phone) {
+        $object = $this->findOneBy(array('id' => $id, 'phone' => $phone, 'state' => TRUE));
+        return $object != NULL? TRUE : FALSE;
+    }
 }

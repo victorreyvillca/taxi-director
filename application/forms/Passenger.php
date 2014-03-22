@@ -36,7 +36,7 @@ class Dis_Form_Passenger extends Zend_Form {
 				)
 			))
 
-			->addElement('Text', 'label', array(
+			->addElement('Select', 'label', array(
 				'label' => _('Direccion'),
 				'required' => TRUE,
 				'filters' => array(
@@ -45,7 +45,7 @@ class Dis_Form_Passenger extends Zend_Form {
 			))
 
 			->addElement('TextArea', 'address', array(
-                'label' => _('Dire'),
+                'label' => _('Descrpcion de la Direccion'),
                 'cols' =>'30',
                 'rows' =>'4',
 			))

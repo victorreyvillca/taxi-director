@@ -1,4 +1,6 @@
 <?php
+use Model\Passenger;
+use Model\Address;
 /**
  * Controller for DIST 3.
  *
@@ -35,7 +37,11 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	public function addAction() {
 		$this->_helper->layout()->disableLayout();
 
+		$labelRepo = $this->_entityManager->getRepository('Model\Label');
+
 		$form = new Dis_Form_Passenger();
+		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
+
 		$this->view->form = $form;
 	}
 
@@ -46,30 +52,55 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	public function addSaveAction() {
 		$this->_helper->viewRenderer->setNoRender(TRUE);
 
-		$form = new Admin_Form_Category();
+		$labelRepo = $this->_entityManager->getRepository('Model\Label');
+
+		$form = new Dis_Form_Passenger();
+		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
 
 		$formData = $this->getRequest()->getPost();
 		if ($form->isValid($formData)) {
-// 			if (!$categoryMapper->verifyExistName($formData['name'])) {
-				$category = new Model\Category();
-				$category
-                    ->setName($formData['name'])
-                    ->setDescription($formData['description'])
-                    ->setCreated(new DateTime('now'))
-                    ->setCreatedBy(Zend_Auth::getInstance()->getIdentity()->id)
-                    ->setState(TRUE)
+            $passengerRepo = $this->_entityManager->getRepository('Model\Passenger');
+			if (!$passengerRepo->verifyExistPhone($formData['phone'])) {
+
+				$passenger = new Passenger();
+				$passenger
+				    ->setSex(1)
+				    ->setLastName('Lastname passenger')
+				    ->setAddress($formData['address'])
+				    ->setDateOfBirth(new DateTime('now'))
+				    ->setCreated(new DateTime('now'))
+				    ->setState(TRUE)
+				    ->setIdentityCard(10)
+                    ->setPhonemobil(100)
+				    ->setPhone($formData['phone'])
+                    ->setFirstName($formData['firstName'])
                 ;
-                $this->_entityManager->persist($category);
+
+                $this->_entityManager->persist($passenger);
+                $this->_entityManager->flush();
+
+                $label = $this->_entityManager->find('Model\Label', (int)$formData['label']);
+
+                $address = new Address();
+                $address
+                    ->setName($formData['address'])
+                    ->setPassenger($passenger)
+                    ->setLabel($label)
+                    ->setState(TRUE)
+                    ->setCreated(new DateTime('now'))
+                ;
+
+                $this->_entityManager->persist($address);
                 $this->_entityManager->flush();
 
                 $this->stdResponse = new stdClass();
 				$this->stdResponse->success = TRUE;
-				$this->stdResponse->message = _('Category saved');
-// 			} else {
-// 				$this->stdResponse->success = FALSE;
-// 				$this->stdResponse->name_duplicate = TRUE;
-// 				$this->stdResponse->message = _("The Category already exists");
-// 			}
+				$this->stdResponse->message = _('Pasajero registrado');
+			} else {
+				$this->stdResponse->success = FALSE;
+				$this->stdResponse->phone_duplicate = TRUE;
+				$this->stdResponse->message = _('El Telefono ya existe');
+			}
 		} else {
             $this->stdResponse = new stdClass();
 			$this->stdResponse->success = FALSE;
@@ -78,6 +109,21 @@ class Admin_PassengerController extends Dis_Controller_Action {
 		}
 		// sends response to client
 		$this->_helper->json($this->stdResponse);
+	}
+
+	/**
+	 * This action shows a form in create mode
+	 * @access public
+	 */
+	public function searchAction() {
+		$this->_helper->layout()->disableLayout();
+
+// 		$labelRepo = $this->_entityManager->getRepository('Model\Label');
+
+		$form = new Dis_Form_Passenger();
+// 		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
+
+		$this->view->form = $form;
 	}
 
 	/**
@@ -273,5 +319,42 @@ class Admin_PassengerController extends Dis_Controller_Action {
 		$this->stdResponse = new stdClass();
 		$this->stdResponse->items = $data;
 		$this->_helper->json($this->stdResponse);
+	}
+
+	/**
+	 * Outputs an XHR response, loads the names of the categories.
+	 */
+	public function autocompleteLabelAction() {
+		$filterParams['name'] = $this->_getParam('name_auto', NULL);
+		$filters = $this->getFilters($filterParams);
+
+		$labelRepo = $this->_entityManager->getRepository('Model\Label');
+		$labels = $labelRepo->findByCriteria($filters);
+
+		$data = array();
+		foreach ($labels as $label) {
+			$data[] = $label->getName();
+		}
+
+		$this->stdResponse = new stdClass();
+		$this->stdResponse->items = $data;
+		$this->_helper->json($this->stdResponse);
+	}
+
+	public function dsPassengerAddressAction() {
+	    $this->_helper->viewRenderer->setNoRender(TRUE);
+
+	    $labelId = (int)$this->_getParam('labelId', 0);
+
+	    $passenger = $this->_entityManager->find('Model\Passenger', 23);
+	    $label = $this->_entityManager->find('Model\Label', $labelId);
+
+	    $addressRepo = $this->_entityManager->getRepository('Model\Address');
+	    $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
+
+	    $this->stdResponse = new stdClass();
+	    $this->stdResponse->name = $address->getName();
+
+	    $this->_helper->json($this->stdResponse);
 	}
 }
