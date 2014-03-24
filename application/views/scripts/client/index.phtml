@@ -6,3 +6,36 @@
 	<?php endforeach;?>
 </ul>
 <?php endif; ?>
+
+<?php echo $this->buttonAdd("update-button", $this->translate('Adicionar'));?>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+
+	$('#update-button').click(function() {
+		// Sends request by ajax
+		$.ajax({
+		url: '<?php echo $this->url(array('controller'=>'server', 'action'=>'call'));?>',
+		type: "POST",
+		dataType: 'json',
+		data: {'value' : 1 },
+		beforeSend: function(XMLHttpRequest) {
+			return true;
+		},
+
+		success: function(data, textStatus, XMLHttpRequest) {
+			// Removes all options for the select box
+			  console.log(data);
+		},
+
+		complete: function(jqXHR, textStatus) {},
+
+		error: function(jqXHR, textStatus, errorThrown) {}
+	    });
+
+	    });
+});
+
+</script>

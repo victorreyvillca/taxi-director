@@ -37,8 +37,8 @@ class ServerController extends Zend_Controller_Action
 
     public function recibirdatoAction ()
     {
-        $this->_helper->viewRenderer->setNoRender();
-        $this->_helper->layout()->disableLayout();
+//         $this->_helper->viewRenderer->setNoRender();
+//         $this->_helper->layout()->disableLayout();
 
         $server = new Zend_Json_Server();
         $server->setClass('Dis_Model_Taxi', 'cf');
@@ -57,5 +57,20 @@ class ServerController extends Zend_Controller_Action
         // $latitud = $this->_request->getParam("longitud");
         // $latitud = $this->_request->getParam("time");
         echo $server->handle();
+    }
+
+    public function callAction() {
+        $this->_helper->layout()->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+
+        $server = new Zend_XmlRpc_Server();
+        $server->setClass('Dis_Model_Data');
+
+        $this->stdResponse = new stdClass();
+        $this->stdResponse->data = array('uno' => 1, 'dos' => 2, 'tres' => 3);
+        $this->stdResponse->message = _("The Category does not exists");
+
+        // sends response to client
+        $this->_helper->json($this->stdResponse);
     }
 }

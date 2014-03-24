@@ -36,7 +36,7 @@ class ClientController extends Zend_Controller_Action
         // 'http://localhost/taxi-director/public/server/json';
 //         $this->view->serverUrl = 'http://localhost/server/json';
         $this->view->serverUrl = 'http://localhost/server/json';
-        $this->view->dataNumber = 5;
+        $this->view->dataNumber = 15;
     }
 
     public function pintarAction ()
@@ -55,16 +55,21 @@ class ClientController extends Zend_Controller_Action
     }
 
     public function drawAction() {
-        $data = array(array('value' => 1,'value2' => 2, 'value3' => 3));
-        $this->stdResponse = new stdClass();
-        $this->stdResponse->passenger = array(1,3,4);
-        $this->_helper->json($this->stdResponse);
+        $client = new Zend_XmlRpc_Client('http://localhost/server');
 
-        foreach ($data as $value) {
-        	$this->stdResponse = new stdClass();
-        	$this->stdResponse->passenger =$value;
-        	$this->_helper->json($this->stdResponse);;
-        	sleep(1000);
+        try {
+            // $data = $client->call('cf.test');
+            $data = $client->call('getData', 3);
+            $this->view->data = $data;
+            $httpClient = $client->getHttpClient();
+            $response = $httpClient->getLastResponse();
+            echo (strlen($response->getRawBody()) / 1024);
+        } catch (Zend_XmlRpc_Client_HttpException $e) {
+            require_once 'Zend/Exception.php';
+            throw new Zend_Exception($e);
+        } catch (Zend_XmlRpc_Client_FaultException $e) {
+            require_once 'Zend/Exception.php';
+            throw new Zend_Exception($e);
         }
     }
 }
