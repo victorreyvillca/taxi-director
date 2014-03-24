@@ -1,6 +1,6 @@
 <html>
 <head>
-
+<script src="js/jquery-jsonrpc-master/jquery.jsonrpc.js"></script>
 <?php
     echo $this->headScript()
 //     	->appendFile($this->baseUrl('/js/soa/jquery-1.3.min.js'))
@@ -11,7 +11,11 @@
 	$(document).ready(function(){
 		var testClient = jQuery.Zend.jsonrpc({url: '<?php echo $this->serverUrl; ?>'});
 
+		console.log('<?php echo $this->serverUrl; ?>');
+
 		var data1 = testClient.cf.test();
+
+		console.log(data1);
 		if ('' != data1) {
 			$('#result1').html(data1);
 		}

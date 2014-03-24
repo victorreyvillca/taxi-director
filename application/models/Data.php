@@ -2,35 +2,42 @@
 
 class Dis_Model_Data
 {
-	/**
-	 * Fetches data
-	 *
-	 * @param integer $num
-	 * @return array
-	 */
-	public function getData($num)
-	{
-		$data = array();
 
-		for ($a = 0; $a < $num; $a++) {
-			$data[] = array(
-				'title' => 'Codeforest.net from taxi-radio',
-				'number' => $a + 1,
-				'datetime' => date('Y-m-d H:i:s')
-			);
-		}
+    /**
+     * Fetches data
+     *
+     * @param integer $num
+     * @return array
+     */
+    public function getData ($num)
+    {
+        $data = array();
 
-		return $data;
-	}
+        for ($a = 0; $a < $num; $a ++) {
+            $data[] = array(
+                    'title' => 'Codeforest.net from taxi-radio',
+                    'number' => $a + 1,
+                    'datetime' => date('Y-m-d H:i:s')
+            );
+        }
 
-	/**
-	 * Test method
-	 *
-	 * @return string
-	 */
-	public function test()
-	{
-		return 'Hello XMLRPC!';
-	}
+        return $data;
+    }
+
+    /**
+     * Test method
+     *
+     * @return string
+     */
+    public function test ()
+    {
+        return 'Hello XMLRPC victor!';
+    }
+
+    public function add($x, $y)
+    {
+    	return array('result' => $x + $y);
+    }
+
 }
 
