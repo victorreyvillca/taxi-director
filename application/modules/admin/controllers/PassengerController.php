@@ -131,6 +131,8 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	 * @access public
 	 */
 	public function dsSearchAction() {
+	    $this->_helper->viewRenderer->setNoRender(TRUE);
+
         $phone = $this->_getParam('phone', NULL);
 
 	    $passengerRepo = $this->_entityManager->getRepository('Model\Passenger');
@@ -140,7 +142,7 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	    if ($passenger != NULL) {
             $data = array(
                 'id' => $passenger->getId(),
-                'name' => $passenger->getFirstName(),
+                'name' => $passenger->getName(),
             );
 
             $this->stdResponse = new stdClass();

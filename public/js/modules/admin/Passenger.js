@@ -28,6 +28,9 @@ com.em = com.em ||{};
 	};
 com.em.Passenger.prototype = {
 
+	getForm: function() {
+		return this.dialogForm;
+	},
 	/**
 	 *
 	 * Initializes JQuery flash message component
@@ -184,31 +187,15 @@ com.em.Passenger.prototype = {
 		settings.oApi._fnProcessingDisplay(settings, bShow);
 	},
 
-//	processingDisplay : function(bShow) {
-//		if(bShow)
-//			$.blockUI({ css:{ 
-//				border					: 'none', 
-//				padding					: '15px', 
-//				backgroundColor			: '#000', 
-//				'-webkit-border-radius'	: '10px', 
-//				'-moz-border-radius'	: '10px', 
-//				opacity					: .5, 
-//				color					: '#fff' 
-//			} }); 
-//		else
-//			$.unblockUI();
-//	},
-
 	/**
-	 *
 	 * Configures the form
 	 * @param selector (dialog of form)	 
 	 * */
 	configureDialogForm: function(selector) {with (this) {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
-			height: 260,
-			width: 420,
+			height: 120,
+			width: 450,
 			modal: true,
 			close: function(event, ui) {
 				$(this).remove();
@@ -224,7 +211,6 @@ com.em.Passenger.prototype = {
 	}},
 
 	/**
-	 * 
 	 * Opens dialog and manages the creation of new register
 	 * @param selector
 	 */

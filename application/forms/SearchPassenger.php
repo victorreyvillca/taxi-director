@@ -48,6 +48,11 @@ class Dis_Form_SearchPassenger extends Zend_Form {
                 'cols' => 20,
                 'rows' => 4,
 			))
+
+            ->addElement('Button', 'searchButton', array(
+                'label' => _('Buscar'),
+                'attribs' => array('onclick' => 'search()')
+			));
 		;
 	}
 

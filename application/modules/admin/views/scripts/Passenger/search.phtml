@@ -3,98 +3,58 @@
 </div>
 
 <script type="text/javascript">
-com.em.Passenger.prototype.configureLabelAuto('input#label');
-	com.em.Passenger.prototype.dialogButtons = {
-		'<?php echo $this->translate('Buscar'); ?>': function() {
-			this.phone = $("#phone").val();
-			$.ajax({
-				url: '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Passenger', 'action'=>'ds-search'));?>',
-				type: "POST",
-				dataType: 'json',
-				data: {'phone' : this.phone},
-				beforeSend: function(XMLHttpRequest) {
-					validator.form();
-					if (!validator.valid()) {
-						com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
-						return false;
-					}
-
-					com.em.Passenger.prototype.processingDisplay(true);
-					return true;
-				},
-
-				success: function(data, textStatus, XMLHttpRequest) {
-					if (data.success) {
-						$("#rowname")[0].style.visibility = 'visible';
-						$("#rowlabel")[0].style.visibility = 'visible';
-						$("#rowaddress")[0].style.visibility = 'visible';
-
-						$('#id').val(data.data.id);
-						$('#firstName').val(data.data.name);
-					} else {
-						$("#rowname")[0].style.visibility = 'hidden';
-						$("#rowlabel")[0].style.visibility = 'hidden';
-						$("#rowaddress")[0].style.visibility = 'hidden';
-						com.em.Passenger.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
-					}
-				},
-
-				complete: function(jqXHR, textStatus) {
-					com.em.Passenger.prototype.processingDisplay(false);
-				},
-
-				error: function(jqXHR, textStatus, errorThrown) {
-					dialogForm.dialog('close');
-					com.em.Passenger.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
+    function search() {
+		this.phone = $("#phone").val();
+		$.ajax({
+			url: '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Passenger', 'action'=>'ds-search'));?>',
+			type: "POST",
+			dataType: 'json',
+			data: {'phone' : this.phone},
+			beforeSend: function(XMLHttpRequest) {
+				validator.form();
+				if (!validator.valid()) {
+					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
+					return false;
 				}
-			});
-		}
-	};
+
+				com.em.Passenger.prototype.processingDisplay(true);
+				return true;
+			},
+
+			success: function(data, textStatus, XMLHttpRequest) {
+				if (data.success) {
+					$('#dialog-form')[0].style.height = '180px';
+
+					$("#rowname")[0].style.visibility = 'visible';
+					$("#rowlabel")[0].style.visibility = 'visible';
+					$("#rowaddress")[0].style.visibility = 'visible';
+
+					$('#id').val(data.data.id);
+					$('#firstName').val(data.data.name);
+				} else {
+					$('#dialog-form')[0].style.height = '51px';
+
+					$("#rowname")[0].style.visibility = 'hidden';
+					$("#rowlabel")[0].style.visibility = 'hidden';
+					$("#rowaddress")[0].style.visibility = 'hidden';
+					com.em.Passenger.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
+				}
+			},
+
+			complete: function(jqXHR, textStatus) {
+				com.em.Passenger.prototype.processingDisplay(false);
+			},
+
+			error: function(jqXHR, textStatus, errorThrown) {
+				dialogForm.dialog('close');
+				com.em.Passenger.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
+			}
+		});
+    }
 
 	$("#phone").bind('keydown', function(e) {
 		if (e.type == 'keydown' && e.which == '13') {
-			this.phone = $("#phone").val();
-			$.ajax({
-				url: '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Passenger', 'action'=>'ds-search'));?>',
-				type: "POST",
-				dataType: 'json',
-				data: {'phone' : this.phone},
-				beforeSend: function(XMLHttpRequest) {
-					validator.form();
-					if (!validator.valid()) {
-						com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
-						return false;
-					}
-
-					com.em.Passenger.prototype.processingDisplay(true);
-					return true;
-				},
-
-				success: function(data, textStatus, XMLHttpRequest) {
-					if (data.success) {
-						$("#rowname")[0].style.visibility = 'visible';
-						$("#rowlabel")[0].style.visibility = 'visible';
-						$("#rowaddress")[0].style.visibility = 'visible';
-
-						$('#id').val(data.data.id);
-						$('#firstName').val(data.data.name);
-					} else {
-						$("#rowname")[0].style.visibility = 'hidden';
-						$("#rowlabel")[0].style.visibility = 'hidden';
-						$("#rowaddress")[0].style.visibility = 'hidden';
-						com.em.Passenger.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
-					}
-				},
-
-				complete: function(jqXHR, textStatus) {
-					com.em.Passenger.prototype.processingDisplay(false);
-				},
-
-				error: function(jqXHR, textStatus, errorThrown) {
-					dialogForm.dialog('close');
-					com.em.Passenger.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
-				}
-			});
+			search();
 		}
 	});
 
