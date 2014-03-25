@@ -100,12 +100,12 @@ class Admin_IndexController extends Dis_Controller_Action {
 //         $this->_entityManager->flush();
 
 // 	    $label = new Label();
-// 	    $label->setName('fdafda')->setDescription('fdfsd')->setCreated(new DateTime('now'))->setState(TRUE);
+// 	    $label->setName('Casa')->setDescription('La Etiqueta corresponde a la casa')->setCreated(new DateTime('now'))->setState(TRUE);
 // 	    $this->_entityManager->persist($label);
 // 	    $this->_entityManager->flush();
 
 // 	    $pa = new Passenger();
-// 	    $pa->setState(TRUE)->setCreated(new DateTime('now'))->setPhonemobil(456465)->setPhone('5465')->setDateOfBirth(new DateTime('now'))->setSex(1)->setAddress('fdfads')->setIdentityCard(35423)->setLastName('fdaf')->setFirstName('dffd');
+// 	    $pa->setState(TRUE)->setCreated(new DateTime('now'))->setPhonemobil(456465)->setPhone('700167')->setDateOfBirth(new DateTime('now'))->setSex(1)->setAddress('fdfads')->setIdentityCard(35423)->setLastName('fdaf')->setFirstName('dffd');
 // 	    $this->_entityManager->persist($pa);
 // 	    $this->_entityManager->flush();
 

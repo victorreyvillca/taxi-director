@@ -125,4 +125,17 @@ class PassengerRepository extends EntityRepository {
         $object = $this->findOneBy(array('id' => $id, 'phone' => $phone, 'state' => TRUE));
         return $object != NULL? TRUE : FALSE;
     }
+
+    /**
+     * Returns models according the filters
+     * @param array $filters
+     * @param int $limit
+     * @param int $offset
+     * @param int $sortColumn
+     * @param string $sortDirection
+     * @return Array Objects
+     */
+    public function findByPhone($phone) {
+    	return $this->findOneBy(array('phone' => $phone, 'state' => TRUE));
+    }
 }

@@ -8,7 +8,7 @@
  * @license Proprietary
  */
 
-class Dis_Form_Passenger extends Zend_Form {
+class Dis_Form_SearchPassenger extends Zend_Form {
 
 	/**
 	 * @var string
@@ -30,7 +30,6 @@ class Dis_Form_Passenger extends Zend_Form {
 
 			->addElement('Text', 'firstName', array(
 				'label' => _('Nombres'),
-				'required' => TRUE,
 				'filters' => array(
 					array('StringTrim')
 				)
@@ -46,7 +45,7 @@ class Dis_Form_Passenger extends Zend_Form {
 
 			->addElement('TextArea', 'address', array(
                 'label' => _('Descrpcion de la Direccion'),
-                'cols' => 30,
+                'cols' => 20,
                 'rows' => 4,
 			))
 		;
@@ -59,6 +58,6 @@ class Dis_Form_Passenger extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Passenger/template/PassengerForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/Passenger/template/SearchPassengerForm.phtml');
 	}
 }

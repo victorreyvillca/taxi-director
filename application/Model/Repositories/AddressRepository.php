@@ -123,4 +123,12 @@ class AddressRepository extends EntityRepository {
     public function findByPassengerAndLabel(Passenger $passenger, Label $label) {
         return $this->findOneBy(array('state' => TRUE, 'passengerId' => $passenger->getId(), 'labelId' => $label->getId()));
     }
+
+    /**
+     * @param Passenger $passenger
+     * @return array The objects.
+     */
+    public function findByPassenger(Passenger $passenger) {
+        return $this->findBy(array('state' => TRUE, 'passengerId' => $passenger->getId()));
+    }
 }

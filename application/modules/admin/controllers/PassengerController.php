@@ -112,18 +112,46 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	}
 
 	/**
-	 * This action shows a form in create mode
+	 * This action shows a form to search passengers
 	 * @access public
 	 */
 	public function searchAction() {
 		$this->_helper->layout()->disableLayout();
 
-// 		$labelRepo = $this->_entityManager->getRepository('Model\Label');
+		$labelRepo = $this->_entityManager->getRepository('Model\Label');
 
-		$form = new Dis_Form_Passenger();
-// 		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
+		$form = new Dis_Form_SearchPassenger();
+		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
 
 		$this->view->form = $form;
+	}
+
+	/**
+	 * Searchs the Passenger by number phone
+	 * @access public
+	 */
+	public function dsSearchAction() {
+        $phone = $this->_getParam('phone', NULL);
+
+	    $passengerRepo = $this->_entityManager->getRepository('Model\Passenger');
+	    $passenger = $passengerRepo->findByPhone($phone);
+
+	    $data = NULL;
+	    if ($passenger != NULL) {
+            $data = array(
+                'id' => $passenger->getId(),
+                'name' => $passenger->getFirstName(),
+            );
+
+            $this->stdResponse = new stdClass();
+            $this->stdResponse->success = TRUE;
+	    } else {
+	        $this->stdResponse = new stdClass();
+	        $this->stdResponse->success = FALSE;
+	    }
+
+	    $this->stdResponse->data = $data;
+	    $this->_helper->json($this->stdResponse);
 	}
 
 	/**
@@ -322,7 +350,8 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	}
 
 	/**
-	 * Outputs an XHR response, loads the names of the categories.
+	 * Outputs an XHR response, loads the names of passengers.
+	 * @access public
 	 */
 	public function autocompleteLabelAction() {
 		$filterParams['name'] = $this->_getParam('name_auto', NULL);
@@ -341,19 +370,27 @@ class Admin_PassengerController extends Dis_Controller_Action {
 		$this->_helper->json($this->stdResponse);
 	}
 
+	/**
+	 * Outputs an XHR response, the name address of the passengers.
+	 * @access public
+	 */
 	public function dsPassengerAddressAction() {
-	    $this->_helper->viewRenderer->setNoRender(TRUE);
+	    $passengerId = (int)$this->_getParam('passengerId', 0);
+        $labelId = (int)$this->_getParam('labelId', 0);
 
-	    $labelId = (int)$this->_getParam('labelId', 0);
-
-	    $passenger = $this->_entityManager->find('Model\Passenger', 23);
-	    $label = $this->_entityManager->find('Model\Label', $labelId);
+        $label = $this->_entityManager->find('Model\Label', $labelId);
+	    $passenger = $this->_entityManager->find('Model\Passenger', $passengerId);
 
 	    $addressRepo = $this->_entityManager->getRepository('Model\Address');
 	    $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
 
+	    $nameAddress = '';
+	    if ($address != NULL) {
+	    	$nameAddress = $address->getName();;
+	    }
+
 	    $this->stdResponse = new stdClass();
-	    $this->stdResponse->name = $address->getName();
+	    $this->stdResponse->nameAddress = $nameAddress;
 
 	    $this->_helper->json($this->stdResponse);
 	}

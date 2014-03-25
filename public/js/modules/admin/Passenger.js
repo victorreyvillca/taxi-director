@@ -59,9 +59,8 @@ com.em.Passenger.prototype = {
 			table.oApi._fnAjaxUpdate(table.fnSettings());
 		});
 	}},
-
+	
 	/**
-	 *
 	 * Initializes Display start of datatable
 	 */
 	initDisplayStart: function() {with(this) {
@@ -254,6 +253,55 @@ com.em.Passenger.prototype = {
 							configureDialogForm('#dialog-form', 'insert');
 							// Sets validator
 							setValidatorForm("#formId");
+							// Opens dialog
+							dialogForm.dialog('open');
+							// Loads buttons for dialog. dialogButtons is defined by ajax
+							dialogForm.dialog( "option" , 'buttons', dialogButtons);
+						}
+					} 
+				},
+
+				complete: function(jqXHR, textStatus) {
+					processingDisplay(false);
+				},
+
+				error: function(jqXHR, textStatus, errorThrown) {
+					dialogForm.dialog('close');
+					alert.flashError(errorThrown,{header : com.em.Alert.ERROR});
+				}
+			});
+		});
+	}},
+
+	/**
+	 * Opens dialog and manages the creation of new register
+	 * @param selector
+	 */
+	clickToSearch: function(selector) {with (this) {
+		$(selector).bind('click',function(event) {
+			event.preventDefault();
+			// Begins to get data
+			var action = $(this).attr('href');
+			// Sends request by ajax
+			$.ajax({
+				url: action ,
+				type: "GET",
+				beforeSend : function(XMLHttpRequest) {
+					processingDisplay(true);
+				},
+
+				success: function(data, textStatus, XMLHttpRequest) {
+					if (textStatus == 'success') {
+						var contentType = XMLHttpRequest.getResponseHeader('Content-Type');
+						if (contentType == 'application/json') {
+							alert.show(data.message, {header: com.em.Alert.FAILURE});
+						} else {
+							// Getting html dialog
+							$('#dialog').html(data);
+							// Configs dialog
+							configureDialogForm('#dialog-form', 'insert');
+							// Sets validator
+							//setValidatorForm("#formId");
 							// Opens dialog
 							dialogForm.dialog('open');
 							// Loads buttons for dialog. dialogButtons is defined by ajax
