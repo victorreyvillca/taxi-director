@@ -194,8 +194,8 @@ com.em.Passenger.prototype = {
 	configureDialogForm: function(selector) {with (this) {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
-			height: 120,
-			width: 450,
+			height: 150,
+			width: 460,
 			modal: true,
 			close: function(event, ui) {
 				$(this).remove();

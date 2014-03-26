@@ -52,7 +52,22 @@ class Dis_Form_SearchPassenger extends Zend_Form {
             ->addElement('Button', 'searchButton', array(
                 'label' => _('Buscar'),
                 'attribs' => array('onclick' => 'search()')
-			));
+			))
+
+            ->addElement('Button', 'changeNameButton', array(
+            		'label' => _('Cambiar'),
+            		'attribs' => array('onclick' => 'changeName()')
+            ))
+
+            ->addElement('Button', 'deleteLabelButton', array(
+            		'label' => _('Borrar'),
+            		'attribs' => array('onclick' => 'deleteLabel()')
+            ))
+
+             ->addElement('Button', 'changeAddressButton', array(
+            		'label' => _('Cambiar'),
+            		'attribs' => array('onclick' => 'changeAddress()')
+            ));
 		;
 	}
 

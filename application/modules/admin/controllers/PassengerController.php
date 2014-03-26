@@ -140,13 +140,31 @@ class Admin_PassengerController extends Dis_Controller_Action {
 
 	    $data = NULL;
 	    if ($passenger != NULL) {
+	        $addressRepo = $this->_entityManager->getRepository('Model\Address');
+	        $addresses = $addressRepo->findByPassenger($passenger);
+
+	        $addressArray = array();
+	        $addressName = '';
+	        $swName = TRUE;
+	        foreach ($addresses as $address) {
+	            if ($swName) {
+                    $addressName = $address->getName();
+                    $swName = FALSE;
+	            }
+                $label = $address->getLabel();
+                if ($label != NULL) {
+                	$addressArray[$label->getId()] = $label->getName();
+                }
+	        }
             $data = array(
                 'id' => $passenger->getId(),
-                'name' => $passenger->getName(),
+                'name' => $passenger->getFirstName(),
+                'address' => $addressName
             );
 
             $this->stdResponse = new stdClass();
             $this->stdResponse->success = TRUE;
+            $this->stdResponse->addressArray = $addressArray;
 	    } else {
 	        $this->stdResponse = new stdClass();
 	        $this->stdResponse->success = FALSE;
@@ -395,5 +413,137 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	    $this->stdResponse->nameAddress = $nameAddress;
 
 	    $this->_helper->json($this->stdResponse);
+	}
+
+	/**
+	 * Changes the name for the passenger
+	 * @access public
+	 */
+	public function dsChangeNameAction() {
+		$formData = $this->_getAllParams();
+		$passenger = $this->_entityManager->find('Model\Passenger', (int)$formData['id']);
+		if ($passenger != NULL) {
+			$passenger
+                ->setFirstName($formData['firstName'])
+                ->setPhone($formData['phone'])
+                ->setChanged(new DateTime('now'))
+			;
+
+			$this->_entityManager->persist($passenger);
+			$this->_entityManager->flush();
+
+			$this->stdResponse = new stdClass();
+			$this->stdResponse->success = TRUE;
+			$this->stdResponse->message = _('Cambio realizado');
+		} else {
+		    $this->stdResponse->message = _('Cambio No realizado Pasajero no entrado');
+		    $this->stdResponse = new stdClass();
+		    $this->stdResponse->success = FALSE;
+		}
+
+		$this->_helper->json($this->stdResponse);
+	}
+
+	/**
+	 * Deletes label for the Address
+	 * @access public
+	 */
+	public function dsDeleteLabelAction() {
+		$formData = $this->_getAllParams();
+		$passenger = $this->_entityManager->find('Model\Passenger', (int)$formData['id']);
+		$label = $this->_entityManager->find('Model\Label', (int)$formData['label']);
+		if ($passenger != NULL && $label != NULL) {
+
+		    $addressRepo = $this->_entityManager->getRepository('Model\Address');
+		    $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
+            $address
+                ->setState(FALSE)
+                ->setChanged(new DateTime('now'))
+            ;
+
+			$this->_entityManager->persist($address);
+			$this->_entityManager->flush();
+
+			$addresses = $addressRepo->findByPassenger($passenger);
+
+			$addressArray = array();
+			$addressName = '';
+			$swName = TRUE;
+			foreach ($addresses as $add) {
+				if ($swName) {
+					$addressName = $add->getName();
+					$swName = FALSE;
+				}
+				$label = $add->getLabel();
+				if ($label != NULL) {
+					$addressArray[$label->getId()] = $label->getName();
+				}
+			}
+			$data = array(
+                'address' => $addressName
+			);
+
+			$this->stdResponse = new stdClass();
+			$this->stdResponse->success = TRUE;
+			$this->stdResponse->addressArray = $addressArray;
+// 			$this->stdResponse->message = _('Etiqueta Eliminado');
+		} else {
+			$this->stdResponse = new stdClass();
+			$this->stdResponse->success = FALSE;
+// 			$this->stdResponse->message = _('Cambio No realizado Pasajero no entrado');
+		}
+
+		$this->_helper->json($this->stdResponse);
+	}
+
+	/**
+	 * Deletes label for the Address
+	 * @access public
+	 */
+	public function dsChangeAddressAction() {
+		$formData = $this->_getAllParams();
+		$passenger = $this->_entityManager->find('Model\Passenger', (int)$formData['id']);
+		$label = $this->_entityManager->find('Model\Label', (int)$formData['label']);
+		if ($passenger != NULL && $label != NULL) {
+
+			$addressRepo = $this->_entityManager->getRepository('Model\Address');
+			$address = $addressRepo->findByPassengerAndLabel($passenger, $label);
+			$address
+    			->setName($formData['address'])
+    			->setChanged(new DateTime('now'))
+			;
+
+			$this->_entityManager->persist($address);
+			$this->_entityManager->flush();
+
+			$addresses = $addressRepo->findByPassenger($passenger);
+
+			$addressArray = array();
+			$addressName = '';
+			$swName = TRUE;
+			foreach ($addresses as $address) {
+				if ($swName) {
+					$addressName = $address->getName();
+					$swName = FALSE;
+				}
+				$label = $address->getLabel();
+				if ($label != NULL) {
+					$addressArray[$label->getId()] = $label->getName();
+				}
+			}
+			$data = array(
+				'address' => $addressName
+			);
+
+			$this->stdResponse = new stdClass();
+			$this->stdResponse->success = TRUE;
+			$this->stdResponse->message = _('Cambio realizado');
+		} else {
+		    $this->stdResponse = new stdClass();
+		    $this->stdResponse->success = FALSE;
+		    $this->stdResponse->message = _('Cambio No realizado Pasajero no entrado');
+		}
+
+		$this->_helper->json($this->stdResponse);
 	}
 }
