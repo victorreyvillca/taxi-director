@@ -1,0 +1,22 @@
+<form id="<?php echo $this->element->getAttrib('id') ?>">
+	<table>
+		<tbody>
+			<tr class="odd" >
+				<td><?php echo $this->element->getElement('phone')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('phone')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even">
+				<td><?php echo $this->element->getElement('firstName')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('firstName')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even" >
+                <td><?php echo $this->element->getElement('label')->renderLabel() ?></td>
+                <td><?php echo $this->element->getElement('label')->renderViewHelper() ?></td>
+			</tr>
+			<tr class="even" >
+                <td><?php echo $this->element->getElement('address')->renderLabel() ?></td>
+				<td><?php echo $this->element->getElement('address')->renderViewHelper() ?></td>
+			</tr>
+		</tbody>
+	</table>
+</form>

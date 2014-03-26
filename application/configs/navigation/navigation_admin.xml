@@ -53,5 +53,14 @@
 				</news>
 			</pages>
 		</information>
+		
+		<taxiride>
+			<id>ride</id>
+			<label>Carrera</label>
+			<module>admin</module>
+			<controller>Ride</controller>
+			<action>index</action>
+		</taxiride>
+
 	</navigation>
 </config>

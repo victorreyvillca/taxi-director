@@ -9,6 +9,8 @@ use Model\Club;
 use Model\Picture;
 use Model\PictureNews;
 
+
+
 /**
  * Controller for DIST 2.
  *
@@ -93,7 +95,6 @@ class Admin_IndexController extends Dis_Controller_Action {
 
 //         $this->_entityManager->persist($directive);
 //         $this->_entityManager->flush();
-
 
 	}
 }

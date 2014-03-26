@@ -1,0 +1,51 @@
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Ride.js","text/javascript");?>
+<div style="margin:20px;">
+	<?php echo $this->tableHeader('filterHeader', _('Filtrar carreras'));?>
+	<div id="containerFormFilter">
+		<?php echo $this->formFilter; ?>
+	</div>
+	<br>
+	<?php echo $this->tableHeader('rideHeader', _('Carreras'));?>
+	<?php echo $this->tableList("tblRide");?>
+	<div class="buttons right">
+		<?php echo $this->buttonRemove("delete-ride", $this->translate('Eliminar'), $this->url(array('action'=>'remove')));?>
+		<?php echo $this->buttonAdd("create-ride", $this->translate('Adicionar'), $this->url(array('action'=>'add')));?>
+		<?php echo $this->buttonAdd("search-ride", $this->translate('Search'), $this->url(array('action'=>'search')));?>
+	</div>
+
+	<div id="dialog"><!-- Loads ajax dialog form --></div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	var ride = new com.em.Ride();
+
+	// network
+	ride.setUrl({
+		toTable : '<?php echo $this->url(array('action'=>'ds-ride-entries'));?>',
+		toBase : '<?php echo $this->baseUrl(); ?>',
+		toUpdate : '<?php echo $this->url(array('action'=>'edit')); ?>',
+		toAutocomplete : '<?php echo $this->url(array('action'=>'autocomplete'));?>',
+		toAutocompleteLabel : '<?php echo $this->url(array('action'=>'autocomplete-label'));?>'
+	});
+
+	var headers = new Object();
+	headers.headerArray = new Array(
+		'<?php echo $this->translate('Nota'); ?>',
+		'<?php echo $this->translate('Descripcion'); ?>',
+		'<?php echo $this->translate('Fecha Creacion'); ?>',
+		'<?php echo $this->translate('Fecha Edicion'); ?>');
+	ride.setHeaders(headers);
+	// configuration of widgets
+	ride.configureTable('#tblRide', true);
+
+	// CRUD
+	ride.clickToAdd('#create-ride');
+	ride.clickToUpdate('#tblRide a[id^=update-ride-]');
+	ride.clickToDelete('#delete-ride');
+	ride.configureAuto('input#nameFilter');
+	ride.configureLabelAuto('input#label');
+
+	ride.clickToAdd('#search-ride');
+});
+</script>
