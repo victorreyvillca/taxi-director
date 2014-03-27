@@ -8,7 +8,7 @@
  * @license Proprietary
  */
 
-class Dis_Form_SearchPassenger extends Zend_Form {
+class Dis_Form_Ride extends Zend_Form {
 
 	/**
 	 * @var string
@@ -28,7 +28,7 @@ class Dis_Form_SearchPassenger extends Zend_Form {
 				)
 			))
 
-			->addElement('Text', 'firstName', array(
+			->addElement('Text', 'name', array(
 				'label' => _('Nombres'),
 				'filters' => array(
 					array('StringTrim')
@@ -36,17 +36,23 @@ class Dis_Form_SearchPassenger extends Zend_Form {
 			))
 
 			->addElement('Select', 'label', array(
-				'label' => _('Direccion'),
-				'required' => TRUE,
-				'filters' => array(
-					array('StringTrim')
-				)
+				'label' => _('Direccion')
 			))
 
 			->addElement('TextArea', 'address', array(
                 'label' => _('Descrpcion de la Direccion'),
-                'cols' => 20,
-                'rows' => 4,
+                'cols' => 18,
+                'rows' => 2
+			))
+
+			->addElement('TextArea', 'note', array(
+                'label' => _('Note'),
+				'cols' => 18,
+				'rows' => 2
+			))
+
+			->addElement('Select', 'taxi', array(
+                'label' => _('Taxi')
 			))
 		;
 	}

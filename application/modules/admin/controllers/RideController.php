@@ -39,7 +39,7 @@ class Admin_RideController extends Dis_Controller_Action {
 
 		$labelRepo = $this->_entityManager->getRepository('Model\Label');
 
-		$form = new Dis_Form_Passenger();
+		$form = new Dis_Form_Ride();
 		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
 
 		$this->view->form = $form;

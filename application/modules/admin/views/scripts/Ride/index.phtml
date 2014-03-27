@@ -10,7 +10,6 @@
 	<div class="buttons right">
 		<?php echo $this->buttonRemove("delete-ride", $this->translate('Eliminar'), $this->url(array('action'=>'remove')));?>
 		<?php echo $this->buttonAdd("create-ride", $this->translate('Adicionar'), $this->url(array('action'=>'add')));?>
-		<?php echo $this->buttonAdd("search-ride", $this->translate('Search'), $this->url(array('action'=>'search')));?>
 	</div>
 
 	<div id="dialog"><!-- Loads ajax dialog form --></div>
@@ -45,7 +44,5 @@
 	ride.clickToDelete('#delete-ride');
 	ride.configureAuto('input#nameFilter');
 	ride.configureLabelAuto('input#label');
-
-	ride.clickToAdd('#search-ride');
 });
 </script>

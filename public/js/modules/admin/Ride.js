@@ -194,7 +194,7 @@ com.em.Ride.prototype = {
 	configureDialogForm: function(selector) {with (this) {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
-			height: 150,
+			height: 300,
 			width: 460,
 			modal: true,
 			close: function(event, ui) {
