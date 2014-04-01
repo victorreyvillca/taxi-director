@@ -2,6 +2,7 @@
 use Model\Passenger;
 use Model\Address;
 use Model\Taxi;
+use Model\Ride;
 /**
  * Controller for DIST 3.
  *
@@ -32,79 +33,85 @@ class Admin_RideController extends Dis_Controller_Action {
 	}
 
 	/**
-	 * This action shows a form in create mode
+	 * This action shows a form to save Ride
 	 * @access public
 	 */
 	public function addAction() {
 		$this->_helper->layout()->disableLayout();
 
-		$labelRepo = $this->_entityManager->getRepository('Model\Label');
-
 		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
 		$taxisArray = $taxiRepo->findByStatusArray(Taxi::ONGOING);
 
 		$form = new Dis_Form_Ride();
-		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
 		$form->getElement('taxi')->setMultiOptions($taxisArray);
 
 		$this->view->form = $form;
 	}
 
 	/**
-	 * Creates a new Category
+	 * Saves a new Ride
 	 * @access public
 	 */
 	public function addSaveAction() {
 		$this->_helper->viewRenderer->setNoRender(TRUE);
 
 		$labelRepo = $this->_entityManager->getRepository('Model\Label');
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
 
-		$form = new Dis_Form_Passenger();
+		$form = new Dis_Form_Ride();
 		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
+		$form->getElement('taxi')->setMultiOptions($taxiRepo->findByStatusArray(Taxi::ONGOING));
 
-		$formData = $this->getRequest()->getPost();
-		if ($form->isValid($formData)) {
+        $formData = $this->getRequest()->getPost();
+        if ($form->isValid($formData)) {
             $passengerRepo = $this->_entityManager->getRepository('Model\Passenger');
-			if (!$passengerRepo->verifyExistPhone($formData['phone'])) {
-
-				$passenger = new Passenger();
-				$passenger
-				    ->setSex(1)
-				    ->setLastName('Lastname passenger')
-				    ->setAddress($formData['address'])
-				    ->setDateOfBirth(new DateTime('now'))
-				    ->setCreated(new DateTime('now'))
-				    ->setState(TRUE)
-				    ->setIdentityCard(10)
-                    ->setPhonemobil(100)
-				    ->setPhone($formData['phone'])
-                    ->setFirstName($formData['firstName'])
-                ;
-
-                $this->_entityManager->persist($passenger);
-                $this->_entityManager->flush();
-
+            if ($passengerRepo->verifyExistPhone($formData['phone'])) {
                 $label = $this->_entityManager->find('Model\Label', (int)$formData['label']);
+                $passenger = $this->_entityManager->find('Model\Passenger', (int)$formData['id']);
+                $taxi = $this->_entityManager->find('Model\Taxi', (int)$formData['taxi']);
 
-                $address = new Address();
-                $address
-                    ->setName($formData['address'])
-                    ->setPassenger($passenger)
-                    ->setLabel($label)
-                    ->setState(TRUE)
-                    ->setCreated(new DateTime('now'))
-                ;
+                $addressRepo = $this->_entityManager->getRepository('Model\Address');
+                $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
+                $address->setName($formData['address']);
 
                 $this->_entityManager->persist($address);
                 $this->_entityManager->flush();
 
+                $ride = new Ride();
+                $ride
+                    ->setTaxi($taxi)
+                    ->setPassenger($passenger)
+                    ->setNotAssignedTime(1)
+                    ->setNote($formData['note'])
+                    ->setStatus(1)
+                    ->setState(TRUE)
+                    ->setCreated(new DateTime('now'))
+                ;
+
+                $this->_entityManager->persist($ride);
+                $this->_entityManager->flush();
+
+//                 $label = $this->_entityManager->find('Model\Label', (int)$formData['label']);
+
+//                 $address = new Address();
+//                 $address
+//                     ->setName($formData['address'])
+//                     ->setPassenger($passenger)
+//                     ->setLabel($label)
+//                     ->setState(TRUE)
+//                     ->setCreated(new DateTime('now'))
+//                 ;
+
+//                 $this->_entityManager->persist($address);
+//                 $this->_entityManager->flush();
+
                 $this->stdResponse = new stdClass();
 				$this->stdResponse->success = TRUE;
-				$this->stdResponse->message = _('Pasajero registrado');
+				$this->stdResponse->message = _('Carrera registrado');
 			} else {
 				$this->stdResponse->success = FALSE;
 				$this->stdResponse->phone_duplicate = TRUE;
-				$this->stdResponse->message = _('El Telefono ya existe');
+				$this->stdResponse->message = _('El Telefono No existe');
 			}
 		} else {
             $this->stdResponse = new stdClass();
@@ -185,13 +192,22 @@ class Admin_RideController extends Dis_Controller_Action {
 	 */
 	public function editAction() {
 		$this->_helper->layout()->disableLayout();
-		$form = new Admin_Form_Category();
+		$form = new Dis_Form_Ride();
+		$form->setOnlyRead(TRUE);
 
 		$id = $this->_getParam('id', 0);
-		$category = $this->_entityManager->find('Model\Category', $id);
-		if ($category != NULL) {//security
-			$form->getElement('name')->setValue($category->getName());
-			$form->getElement('description')->setValue($category->getDescription());
+		$ride = $this->_entityManager->find('Model\Ride', $id);
+		if ($ride != NULL) {//security
+		    $phone = $ride->getPassenger()->getPhone();
+		    $name = $ride->getPassenger()->getFirstName();
+
+		    $form->getElement('phone')->setValue($phone);
+		    $form->getElement('name')->setValue($name);
+		    $form->setPhone($phone);
+		    $form->setName($name);
+
+
+// 			$form->getElement('description')->setValue($category->getDescription());
 		} else {
 			// response to client
             $this->stdResponse = new stdClass();
