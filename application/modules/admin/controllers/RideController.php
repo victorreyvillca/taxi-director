@@ -79,6 +79,7 @@ class Admin_RideController extends Dis_Controller_Action {
 
                 $ride = new Ride();
                 $ride
+                    ->setLabel($label)
                     ->setTaxi($taxi)
                     ->setPassenger($passenger)
                     ->setNotAssignedTime(1)
@@ -198,19 +199,70 @@ class Admin_RideController extends Dis_Controller_Action {
 		$id = $this->_getParam('id', 0);
 		$ride = $this->_entityManager->find('Model\Ride', $id);
 		if ($ride != NULL) {//security
-		    $phone = $ride->getPassenger()->getPhone();
-		    $name = $ride->getPassenger()->getFirstName();
+            $passenger = $ride->getPassenger();
+		    $phone = $passenger->getPhone();
+		    $name = $passenger->getFirstName();
+		    $label = $ride->getLabel();
+		    $taxi = $ride->getTaxi();
+
+		    $addressRepo = $this->_entityManager->getRepository('Model\Address');
+		    $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
 
 		    $form->getElement('phone')->setValue($phone);
 		    $form->getElement('name')->setValue($name);
-		    $form->setPhone($phone);
-		    $form->setName($name);
 
-
-// 			$form->getElement('description')->setValue($category->getDescription());
+            $form
+                ->setPhone($phone)
+                ->setName($name)
+                ->setLabel($label->getName())
+                ->setAddress($address->getName())
+                ->setNote($ride->getNote())
+                ->setTaxi($taxi->getName())
+            ;
 		} else {
 			// response to client
             $this->stdResponse = new stdClass();
+			$this->stdResponse->success = FALSE;
+			$this->stdResponse->message = _('The requested record was not found.');
+			$this->_helper->json($this->stdResponse);
+		}
+
+		$this->view->form = $form;
+	}
+
+	/**
+	 * This action shows the form in update mode for Category.
+	 * @access public
+	 */
+	public function resumeAction() {
+		$this->_helper->layout()->disableLayout();
+		$form = new Dis_Form_Ride();
+		$form->setOnlyRead(TRUE);
+
+		$id = $this->_getParam('id', 0);
+		$ride = $this->_entityManager->find('Model\Ride', $id);
+		if ($ride != NULL) {//security
+			$passenger = $ride->getPassenger();
+			$label = $ride->getLabel();
+			$taxi = $ride->getTaxi();
+
+			$addressRepo = $this->_entityManager->getRepository('Model\Address');
+			$address = $addressRepo->findByPassengerAndLabel($passenger, $label);
+
+			$form->getElement('phone')->setValue($passenger->getPhone());
+			$form->getElement('name')->setValue($passenger->getFirstName());
+
+			$form
+    			->setPhone($passenger->getPhone())
+    			->setName($passenger->getFirstName())
+    			->setLabel($label->getName())
+    			->setAddress($address->getName())
+    			->setNote($ride->getNote())
+    			->setTaxi($taxi->getName())
+			;
+		} else {
+			// response to client
+			$this->stdResponse = new stdClass();
 			$this->stdResponse->success = FALSE;
 			$this->stdResponse->message = _('The requested record was not found.');
 			$this->_helper->json($this->stdResponse);

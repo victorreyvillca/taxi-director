@@ -72,6 +72,21 @@ class Ride extends DomainObject {
 	private $passenger;
 
 	/**
+	 * Id of the Label this model is associated with.
+	 * @Column(type="integer")
+	 * @var int
+	 */
+	private $labelId;
+
+	/**
+	 * Label this model is associated with.
+	 * @ManyToOne(targetEntity="Label")
+	 * @JoinColumn(name="labelId", referencedColumnName="id")
+	 * @var Label
+	 */
+	private $label;
+
+	/**
 	 * @return string
 	 */
 	public function getNote() {
@@ -116,6 +131,22 @@ class Ride extends DomainObject {
 	 */
 	public function setPassenger($passenger) {
 		$this->passenger = $passenger;
+		return $this;
+	}
+
+	/**
+	 * @return Label
+	 */
+	public function getLabel() {
+		return $this->label;
+	}
+
+	/**
+	 * @param Label $label
+	 * @return Ride
+	 */
+	public function setLabel($label) {
+		$this->label = $label;
 		return $this;
 	}
 

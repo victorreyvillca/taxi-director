@@ -64,10 +64,10 @@ class Ride extends \Model\Ride implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'note', 'notAssignedTime', 'ongoingTime', 'status', 'taxiId', 'taxi', 'passengerId', 'passenger', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+            return array('__isInitialized__', 'note', 'notAssignedTime', 'ongoingTime', 'status', 'taxiId', 'taxi', 'passengerId', 'passenger', 'labelId', 'label', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
         }
 
-        return array('__isInitialized__', 'note', 'notAssignedTime', 'ongoingTime', 'status', 'taxiId', 'taxi', 'passengerId', 'passenger', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+        return array('__isInitialized__', 'note', 'notAssignedTime', 'ongoingTime', 'status', 'taxiId', 'taxi', 'passengerId', 'passenger', 'labelId', 'label', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
     }
 
     /**
@@ -237,6 +237,28 @@ class Ride extends \Model\Ride implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassenger', array($passenger));
 
         return parent::setPassenger($passenger);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLabel()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLabel', array());
+
+        return parent::getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLabel($label)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLabel', array($label));
+
+        return parent::setLabel($label);
     }
 
     /**

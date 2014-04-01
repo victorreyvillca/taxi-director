@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class RideRepository extends EntityRepository {
+
     /**
      * @var string
      */
