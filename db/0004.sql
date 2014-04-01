@@ -7,7 +7,7 @@ INSERT INTO `tblLabel` ( `name`, `description`, `created`, `changed`, `createdBy
 	('Tienda Comercial', 'La Etiqueta corresponde a la Tienda Comercial del Pasajero', NOW(), NULL, 1, NULL, 1);
 	
 INSERT INTO `tblPerson`(`identityCard`,`firstName`,`lastName`,`dateOfBirth`,`phone`,`phonework`,`phonemobil`,`sex`,`type`,`created`,`changed`,`createdBy`,`changedBy`,`state`,`profilePictureId`) VALUES
-	(5938782,'Victor','Villca',NOW(),'70016783',NULL,70016783,1,'passenger',NOW(),NULL,NULL,NULL,1,NULL);
+	(59387823,'Adan','Condori',NOW(),'700167834',NULL,700167834,1,'passenger',NOW(),NULL,NULL,NULL,1,NULL);
 	
 INSERT INTO `tblPassenger` ( `id`, `address`, `description`) VALUES
 	(2, 'Direccion del Pasajero Victor', 'Urbanizacion Los Penocos');
@@ -16,6 +16,6 @@ INSERT INTO `tblAddress`(`name`, `labelId`, `passengerId`, `created`, `changed`,
 	('Urbanizacion los Penocos', 1, 2, NOW(), NULL, 1, NULL, 1),
 	('Roca y Coronado', 2, 2, NOW(), NULL, 1, NULL, 1),
 	('Master Gym', 3, 2, NOW(), NULL, 1, NULL, 1);
-	
+
 INSERT INTO `tblLabel` ( `name`, `description`, `created`, `changed`, `createdBy`, `changedBy`, `state`) VALUES
 	('Tienda Comercial', 'La Etiqueta corresponde a la Tienda Comercial del Pasajero', NOW(), NULL, 1, NULL, 1);

@@ -17,8 +17,8 @@ com.em.Passenger.prototype.dialogButtons = {
 			dataType: 'json',
 			data: {'phone' : this.phone},
 			beforeSend: function(XMLHttpRequest) {
-				validator.form();
-				if (!validator.valid()) {
+				validatorSearch.form();
+				if (!validatorSearch.valid()) {
 					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
 					return false;
 				}
@@ -102,8 +102,8 @@ com.em.Passenger.prototype.dialogButtons = {
 			dataType: 'json',
 			data: $('#formId').serialize(),
 			beforeSend: function(XMLHttpRequest) {
-				validator.form();
-				if (!validator.valid()) {
+				validatorSearch.form();
+				if (!validatorSearch.valid()) {
 					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede cambiar');?>', {header: com.em.Alert.ERROR});
 					return false;
 				}
@@ -138,8 +138,8 @@ com.em.Passenger.prototype.dialogButtons = {
 			dataType: 'json',
 			data: $('#formId').serialize(),
 			beforeSend: function(XMLHttpRequest) {
-				validator.form();
-				if (!validator.valid()) {
+				validatorSearch.form();
+				if (!validatorSearch.valid()) {
 					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede eliminar la Etiqueta');?>', {header: com.em.Alert.ERROR});
 					return false;
 				}
@@ -181,8 +181,8 @@ com.em.Passenger.prototype.dialogButtons = {
 			dataType: 'json',
 			data: $('#formId').serialize(),
 			beforeSend: function(XMLHttpRequest) {
-				validator.form();
-				if (!validator.valid()) {
+				validatorSearch.form();
+				if (!validatorSearch.valid()) {
 					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede cambiar');?>', {header: com.em.Alert.ERROR});
 					return false;
 				}

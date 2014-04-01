@@ -287,7 +287,8 @@ com.em.Passenger.prototype = {
 							// Configs dialog
 							configureDialogForm('#dialog-form', 'insert');
 							// Sets validator
-							//setValidatorForm("#formId");
+//							console.log('hello');
+							setValidatorSearchForm("#formId");
 							// Opens dialog
 							dialogForm.dialog('open');
 							// Loads buttons for dialog. dialogButtons is defined by ajax
@@ -459,7 +460,7 @@ com.em.Passenger.prototype = {
 			}
 		});
 	}},
-	
+
 	/**
 	 *
 	 * Validates Passenger form
@@ -468,9 +469,28 @@ com.em.Passenger.prototype = {
 	setValidatorForm : function(selector) {
 		validator = $(selector).validate({
 			rules:{
-				'name':{
+				'phone':{
+					required: true,
+					maxlength: 15
+				},
+				'firstName':{
 					required: true,
 					maxlength: 100
+				}
+			}
+		});
+	},
+
+	/**
+	 * Validates Search Passenger form
+	 * @param selector
+	 */
+	setValidatorSearchForm : function(selector) {
+		validatorSearch = $(selector).validate({
+			rules:{
+				'phone':{
+					required: true,
+					maxlength: 15
 				}
 			}
 		});

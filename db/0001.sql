@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `tblTaxi` (
 	`model`			INT 			NULL,
 	`color`			VARCHAR(50) 	NULL,
 	`plaque`		VARCHAR(50) 	NULL,
-	`status`		BOOL 			DEFAULT 0,
+	`status`		TINYINT(4) 		DEFAULT 0,
 	`pictureId`		INT(11) 		DEFAULT NULL,
 	`created`		DATETIME 		NOT NULL,
 	`changed`		DATETIME 		DEFAULT NULL,

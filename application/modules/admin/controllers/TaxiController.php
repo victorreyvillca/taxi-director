@@ -63,6 +63,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
                 $taxi = new Taxi();
                 $taxi
                     ->setName($formData['name'])
+                    ->setStatus(Taxi::WITHOUT_CAREER)
                     ->setMark($formData['mark'])
                     ->setPlaque($formData['plaque'])
                     ->setType($formData['typeMark'])

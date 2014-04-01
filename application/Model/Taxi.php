@@ -8,6 +8,10 @@ namespace Model;
  */
 class Taxi extends DomainObject {
 
+    const WITHOUT_CAREER = 0;
+    const ONGOING = 1;
+    const OFF = 2;
+
     /**
      * @Column(type="string")
      * @var string
@@ -46,7 +50,7 @@ class Taxi extends DomainObject {
 
     /**
      * @Column(type="integer")
-     * @var bool
+     * @var int
      */
     private $status;
 
@@ -153,14 +157,14 @@ class Taxi extends DomainObject {
 	}
 
 	/**
-	 * @return boolean
+	 * @return int
 	 */
 	public function getStatus() {
 		return $this->status;
 	}
 
 	/**
-	 * @param boolean $status
+	 * @param int $status
 	 * @return Taxi
 	 */
 	public function setStatus($status) {

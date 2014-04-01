@@ -468,9 +468,9 @@ com.em.Ride.prototype = {
 	setValidatorForm : function(selector) {
 		validator = $(selector).validate({
 			rules:{
-				'name':{
+				'phone':{
 					required: true,
-					maxlength: 100
+					maxlength: 10
 				}
 			}
 		});

@@ -73,7 +73,7 @@ com.em.Passenger.prototype.configureLabelAuto('input#label');
 		url: '<?php echo $this->url(array('controller'=>'Passenger', 'action'=>'ds-passenger-address'));?>',
 		type: "POST",
 		dataType: 'json',
-		data: {'labelId' : this.missionId },
+		data: {'labelId' : this.labelId },
 		beforeSend: function(XMLHttpRequest) {
 			return true;
 		},

@@ -1,6 +1,7 @@
 <?php
 use Model\Passenger;
 use Model\Address;
+use Model\Taxi;
 /**
  * Controller for DIST 3.
  *
@@ -39,8 +40,12 @@ class Admin_RideController extends Dis_Controller_Action {
 
 		$labelRepo = $this->_entityManager->getRepository('Model\Label');
 
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$taxisArray = $taxiRepo->findByStatusArray(Taxi::ONGOING);
+
 		$form = new Dis_Form_Ride();
 		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
+		$form->getElement('taxi')->setMultiOptions($taxisArray);
 
 		$this->view->form = $form;
 	}

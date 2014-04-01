@@ -62,9 +62,61 @@
 
 	$("#phone").bind('keydown', function(e) {
 		if (e.type == 'keydown' && e.which == '13') {
-			alert('se');
+			search();
 		}
 	});
+
+	function search() {
+// 		alert('pepe ds Search');
+		this.phone = $("#phone").val();
+		$.ajax({
+			url: '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Ride', 'action'=>'ds-search'));?>',
+			type: "POST",
+			dataType: 'json',
+			data: {'phone' : this.phone},
+			beforeSend: function(XMLHttpRequest) {
+				validator.form();
+				if (!validator.valid()) {
+					com.em.Ride.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
+					return false;
+				}
+
+				com.em.Ride.prototype.processingDisplay(true);
+				return true;
+			},
+
+			success: function(data, textStatus, XMLHttpRequest) {
+				if (data.success) {
+					$('#id').val(data.data.id);
+					$('#name').val(data.data.name);
+					$('#address').val(data.data.address);
+
+					$('#label option').remove();
+					$.each(data.addressArray, function(i) {
+						$('#label').append($("<option></option>")
+							.attr('value', i)
+							.text(data.addressArray[i]));
+					});
+				} else {
+					$('#id').val('');
+					$('#name').val('');
+					$('#address').val('');
+
+					$('#label option').remove();
+					com.em.Ride.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
+				}
+			},
+
+			complete: function(jqXHR, textStatus) {
+				com.em.Ride.prototype.processingDisplay(false);
+			},
+
+			error: function(jqXHR, textStatus, errorThrown) {
+				dialogForm.dialog('close');
+				com.em.Ride.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
+			}
+		});
+    }
 
 	$("#label").change(function () {
 		this.labelId = $("#label").val();
@@ -74,7 +126,7 @@
 		url: '<?php echo $this->url(array('controller'=>'Ride', 'action'=>'ds-ride-address'));?>',
 		type: "POST",
 		dataType: 'json',
-		data: {'labelId' : this.missionId },
+		data: {'labelId' : this.labelId },
 		beforeSend: function(XMLHttpRequest) {
 			return true;
 		},
