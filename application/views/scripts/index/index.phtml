@@ -1,26 +1,82 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<?php $this->headLink()->appendStylesheet($this->baseUrl() . "/css/style-menu.css");?>
 <style type="text/css">
-html {
-	height: 500px
-}
-
-body {
-	height: 500px;
-	margin: 0;
-	padding: 0
-}
-
 #map-canvas {
 	height: 500px
 }
 </style>
+
+<div style="margin:10px;">
+    <div id="cssmenu" style="width: 10%; float: left;">
+        <ul>
+            <li><a href='#'><span>Carreras</span></a>
+            <ul>
+                <li style="background: #83ACFF;"><a href="">Nueva</a></li>
+                <li style="background: #FFA347;"><a href="">No Asignada</a></li>
+                <li style="background: #FF94B8;"><a href='#'>En Espera</a></li>
+                <li style="background: #75FF75;"><a href='#'>En Curso</a></li>
+            </ul>
+            </li>
+
+            <li><a href='#'><span>Pasajeros</span></a>
+            <ul>
+                <li style="background: #83ACFF;"><a href='#'>Nuevo</a></li>
+                <li style="background: #FFA347;"><a href='#'>Buscar</a></li>
+            </ul>
+            </li>
+
+            <li><a href='#'><span>Taxis</span></a>
+            <ul>
+                <li style="background: #83ACFF;"><a href='#'>Sin Carrera</a></li>
+                <li style="background: #75FF75;"><a href='#'>En Curso</a></li>
+                <li style="background: #FFFF66;"><a href='#'>Apagados</a></li>
+                <li style="background: #9999FF;"><a href='#'>Alta/Baja</a></li>
+            </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="map-canvas" style=" width: 90%; right: 0px;"></div>
+</div>
+
 <script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBADa-A2Jqkq2C4ZlgOdZs98dFE0q00_N0&sensor=true">
 </script>
+
 <script type="text/javascript">
+$(document).ready(function(){
+
+	  $('#cssmenu > ul > li:has(ul)').addClass("has-sub");
+
+	  $('#cssmenu > ul > li > a').click(function() {
+	    var checkElement = $(this).next();
+
+	    $('#cssmenu li').removeClass('active');
+	    $(this).closest('li').addClass('active');
+
+
+	    if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+	      $(this).closest('li').removeClass('active');
+	      checkElement.slideUp('normal');
+	    }
+
+	    if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+	      $('#cssmenu ul ul:visible').slideUp('normal');
+	      checkElement.slideDown('normal');
+	    }
+
+	    if (checkElement.is('ul')) {
+	      return false;
+	    } else {
+	      return true;
+	    }
+	  });
+
+	});
+$(function() {
+    $( "#cssmenu" ).accordion({
+      collapsible: true
+    });
+  });
 var flightPath;
 var map;
 
@@ -235,12 +291,5 @@ function initialize() {
 			}
 		}
 
-	////////////////////////////////////////////////
   google.maps.event.addDomListener(window, 'load', initialize);
-
 </script>
-</head>
-<body>
-	<div id="map-canvas" />
-</body>
-</html>

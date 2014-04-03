@@ -1,32 +1,63 @@
-<div id="menu">
-    <ul class="menu">
-    	<?php
-		$container = $this->navigation()->getContainer();
-		$pages = $container->getPages();
-		foreach ($pages as $menu):?>
-		<li><a href="<?php echo $menu->getHref();?>" class="parent"><span><?php echo $this->translate($menu->getLabel());?></span></a>
-			<?php if ($menu->count() > 1) {?>
-			<div>
-				<ul>
-					<?php $submenus = $menu->getPages(); ?>
-					<?php foreach ($submenus as $submenu):?>
-					<li><a href="<?php echo $submenu->getHref();?>"><span><?php echo $this->translate($submenu->getLabel());?></span></a></li>
-					<?php endforeach; ?>
-				</ul>
-			</div>
-			<?php }?>
-		</li>
-		<?php endforeach; ?>
-    </ul>
+<div class="top-meta" style="z-index:2;">
+	<div class="tabs modules" id="moduleMenu">
+		<ul>
+			<li></li>
+			<li class="shortcut">
+				<a href="javascript: (function() {$('#shortcuts').css('display','');})()" class="shortcut">
+					<span class="left shortcut"></span>
+					<span class="center shortcut"></span>
+					<span class="right shortcut"></span>
+				</a>
+			</li>
+			<li class="consultant <?php echo (isset($this->layout()->activeAdmin)) ? 'active' : ''; ?>">
+				<a href="<?php echo $this->url(array('module'=>'admin', 'controller'=>'index', 'action'=>'index', 'type'=>'home')); ?>" class="consultant">
+					<span class="left consultant"></span>
+					<span class="center consultant"><?php echo $this->translate('Administracion'); ?></span>
+					<span class="right consultant"></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<!-- Hidden drawer for the shotcuts. -->
+	<div id="shortcuts" style="display: none;" class="noprint" >
+		<a class="shortcut active" href="javascript: (function() {$('#shortcuts').css('display','none');})()"></a>
+		<ul class="nobullets">
+			<li></li>
+			<li class="logout">
+					<a href="<?php echo $this->url(array('action'=>'logout', 'controller'=>'Auth', 'module'=>'user')); ?>">
+					<span class="left"></span>
+					<?php echo _('Finalizar')?>
+					<span class="right"></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+
 </div>
-
-<div id="copyright"><a href="http://apycom.com/"></a></div>
-
-<div id="header">
-	<div id="banner">
-		<h1><span>Your</span> Business</h1>
-	</div><!--close banner-->
-	    <h2>Church Slogan Here</h2>
-	<div id="menubar">
-	</div><!--close menubar-->
-</div><!--close header-->
+<div class="bottom-meta noprint" style="z-index:1;">
+	<ul class="appMenu functionMenu" id="functionMenuLeft" style="list-style-type: none; list-style-position: initial; list-style-image: initial;">
+		<?php
+		$firstGroup = $this->navigation()->getContainer(); ?>
+		<?php $menus = $firstGroup->getPages(); ?>
+		<?php foreach ($menus as $menu) : echo $this->type?>
+			<li class="<?php echo $menu->isActive() ? "active" : ''; ?>">
+				<a href="<?php echo $menu->getHref();?>"><span><?php echo $this->translate($menu->getLabel()); ?></span></a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<ul class="appMenu functionMenu" id="functionMenuRight" style="list-style-type: none; list-style-position: initial; list-style-image: initial;">
+		<li class="">
+			<a href="<?php echo $this->url(array('lang' => 'en')); ?>" style="float: left;">
+				<img title="<?php echo $this->translate('Language English'); ?>" alt="<?php echo $this->translate('Language English'); ?>" src="/image/flags/en.png">&nbsp;
+			</a>
+			<a href="<?php echo $this->url(array('lang' => 'da')); ?>" style="float: left;">
+				<img title="<?php echo $this->translate('Language Danish'); ?>" alt="<?php echo $this->translate('Language Danish'); ?>" src="/image/flags/da.png">&nbsp;
+			</a>
+			<a href="<?php echo $this->url(array('lang' => 'es')); ?>" style="float: left;">
+				<img title="<?php echo $this->translate('Language Spanish'); ?>" alt="<?php echo $this->translate('Language Spanish'); ?>" src="/image/flags/es.png">&nbsp;
+			</a>
+		</li>
+	</ul>
+	<div class="clear"></div>
+</div>
