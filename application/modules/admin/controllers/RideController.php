@@ -27,9 +27,6 @@ class Admin_RideController extends Dis_Controller_Action {
 	 * @access public
 	 */
 	public function indexAction() {
-		$formFilter = new Admin_Form_SearchFilter();
-		$formFilter->getElement('nameFilter')->setLabel(_('Nombre de categoria'));
-		$this->view->formFilter = $formFilter;
 	}
 
 	/**
@@ -617,5 +614,8 @@ class Admin_RideController extends Dis_Controller_Action {
 		}
 
 		$this->_helper->json($this->stdResponse);
+	}
+
+	public function notassignedAction() {
 	}
 }

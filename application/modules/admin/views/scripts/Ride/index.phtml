@@ -1,22 +1,79 @@
+<?php $this->headLink()->appendStylesheet($this->baseUrl() . "/css/style-menu.css");?>
 <?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Ride.js","text/javascript");?>
-<div style="margin:20px;">
-	<?php echo $this->tableHeader('filterHeader', _('Filtrar carreras'));?>
-	<div id="containerFormFilter">
-		<?php echo $this->formFilter; ?>
-	</div>
-	<br>
-	<?php echo $this->tableHeader('rideHeader', _('Carreras'));?>
-	<?php echo $this->tableList("tblRide");?>
-	<div class="buttons right">
-		<?php echo $this->buttonRemove("delete-ride", $this->translate('Eliminar'), $this->url(array('action'=>'remove')));?>
-		<?php echo $this->buttonAdd("create-ride", $this->translate('Adicionar'), $this->url(array('action'=>'add')));?>
-	</div>
+<style type="text/css">
+#map-canvas {
+	height: 500px
+}
+</style>
+<div style="margin:10px;">
+<div id="cssmenu" style="width: 10%; float: left;">
+       <ul>
+            <li><a href='#'><span>Inicio</span></a>
+            <li><a href='#'><span>Carreras</span></a>
+            <ul>
+                <li style="background: #83ACFF;">
+                    <a href="/admin/Ride/add" id="create-ride">Nuevo</a>
+                </li>
+                <li style="background: #FFA347;"><a href="">No Asignada</a></li>
+                <li style="background: #FF94B8;"><a href='#'>En Espera</a></li>
+                <li style="background: #75FF75;"><a href='#'>En Curso</a></li>
+            </ul>
+            </li>
 
-	<div id="dialog"><!-- Loads ajax dialog form --></div>
+            <li><a href='#'><span>Pasajeros</span></a>
+            <ul>
+                <li style="background: #83ACFF;"><a href='#'>Nuevo</a></li>
+                <li style="background: #FFA347;"><a href='#'>Buscar</a></li>
+            </ul>
+            </li>
+
+            <li><a href='#'><span>Taxis</span></a>
+            <ul>
+                <li style="background: #83ACFF;"><a href='#'>Sin Carrera</a></li>
+                <li style="background: #75FF75;"><a href='#'>En Curso</a></li>
+                <li style="background: #FFFF66;"><a href='#'>Apagados</a></li>
+                <li style="background: #9999FF;"><a href='#'>Alta/Baja</a></li>
+            </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="map-canvas" style=" width: 90%; right: 0px;">
+</div>
+    <div id="dialog"><!-- Loads ajax dialog form --></div>
 </div>
 
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBADa-A2Jqkq2C4ZlgOdZs98dFE0q00_N0&sensor=true">
+</script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		 $('#cssmenu > ul > li:has(ul)').addClass("has-sub");
+
+		  $('#cssmenu > ul > li > a').click(function() {
+		    var checkElement = $(this).next();
+
+		    $('#cssmenu li').removeClass('active');
+		    $(this).closest('li').addClass('active');
+
+
+		    if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+		      $(this).closest('li').removeClass('active');
+		      checkElement.slideUp('normal');
+		    }
+
+		    if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+		      $('#cssmenu ul ul:visible').slideUp('normal');
+		      checkElement.slideDown('normal');
+		    }
+
+		    if (checkElement.is('ul')) {
+		      return false;
+		    } else {
+		      return true;
+		    }
+		  });
+
 	var ride = new com.em.Ride();
 
 	// network
@@ -34,7 +91,7 @@
 		'<?php echo $this->translate('Descripcion'); ?>',
 		'<?php echo $this->translate('Fecha Creacion'); ?>',
 		'<?php echo $this->translate('Fecha Edicion'); ?>');
-	ride.setHeaders(headers);
+	//ride.setHeaders(headers);
 	// configuration of widgets
 	ride.configureTable('#tblRide', true);
 
@@ -42,7 +99,224 @@
 	ride.clickToAdd('#create-ride');
 	ride.clickToUpdate('#tblRide a[id^=update-ride-]');
 	ride.clickToDelete('#delete-ride');
-	ride.configureAuto('input#nameFilter');
+	//ride.configureAuto('input#nameFilter');
 	ride.configureLabelAuto('input#label');
 });
+
+	var flightPath;
+	var map;
+
+	function initialize() {
+		var mapOptions = {center: new google.maps.LatLng(-17.760458, -63.131776),	zoom: 15};
+		map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+		setMarkers(map,beaches);
+		addLine();
+		addpuntoalmapa();
+	}
+
+
+	  /**
+	   * Data for the markers consisting of a name, a LatLng and a zIndex for
+	   * the order in which these markers should display on top of each
+	   * other.
+	   */
+	  var beaches = [
+	    ['Movil 4', -17.760458, -63.139776, 4],
+	    ['Movil 5', -17.761858, -63.131896, 5],
+	    ['Movil 3', -17.762159, -63.151789, 3],
+	    ['Movil 2', -17.763786, -63.155456, 2],
+	    ['Movil 1', -17.764666, -63.191555, 1]
+	  ];
+
+	  function setMarkers(map, locations) {
+	    // Add markers to the map
+
+	    // Marker sizes are expressed as a Size of X,Y
+	    // where the origin of the image (0,0) is located
+	    // in the top left of the image.
+
+	    // Origins, anchor positions and coordinates of the marker
+	    // increase in the X direction to the right and in
+	    // the Y direction down.
+	    var image = {
+	      url: 'img/home32.png',
+	      // This marker is 20 pixels wide by 32 pixels tall.
+	      size: new google.maps.Size(32, 32),
+	      // The origin for this image is 0,0.
+	      origin: new google.maps.Point(0,0),
+	      // The anchor for this image is the base of the flagpole at 0,32.
+	      anchor: new google.maps.Point(0, 32)
+	    };
+	    // Shapes define the clickable region of the icon.
+	    // The type defines an HTML &lt;area&gt; element 'poly' which
+	    // traces out a polygon as a series of X,Y points. The final
+	    // coordinate closes the poly by connecting to the first
+	    // coordinate.
+	    var shape = {
+	        coord: [32, 32, 32, 20, 18, 20, 18 , 1],
+	        type: 'poly'
+	    };
+	    for (var i = 0; i < locations.length; i++) {
+	      var beach = locations[i];
+	      var myLatLng = new google.maps.LatLng(beach[1], beach[2]);
+	      var marker = new google.maps.Marker({
+	          position: myLatLng,
+	          map: map,
+	          icon: image,
+	          //shape: shape,
+	          title: beach[0],
+	          zIndex: beach[3]
+	      });
+	      attachSecretMessage(marker,beach[3],beach[0]);
+	    }
+	  }
+	  // The five markers show a secret message when clicked
+	  // but that message is not within the marker's instance data
+
+
+	  function attachSecretMessage(marker, num,text) {
+
+	      var infowindow = new google.maps.InfoWindow({
+	          content: text
+	      });
+
+	      google.maps.event.addListener(marker, 'click', function() {
+	          infowindow.open(marker.get('map'), marker);
+	      });
+	  }
+
+
+		//dibuja lineas DES DE AKI
+		var flightPlanCoordinates = [
+			new google.maps.LatLng(-17.760458, -63.139776),
+			new google.maps.LatLng(-17.761858, -63.131896),
+			new google.maps.LatLng(-17.762159, -63.151789),
+			new google.maps.LatLng(-17.763786, -63.155456),
+			new google.maps.LatLng(-17.764666, -63.191555)
+		];
+	  flightPath = new google.maps.Polyline({
+			path: flightPlanCoordinates,
+			strokeColor: '#FF0000',
+			strokeOpacity: 1.0,
+			strokeWeight: 2
+		});
+		function addLine() {
+			flightPath.setMap(map);
+		}
+		/*Remueve todas las lineas de flightPath*/
+		function removeLine() {
+			flightPath.setMap(null);
+		}
+		///////////////////////////////////////////////
+		//Create a meausure object to store our markers, MVCArrays, lines and polygons
+		var measure = {
+			mvcLine: new google.maps.MVCArray(),
+			mvcPolygon: new google.maps.MVCArray(),
+			mvcMarkers: new google.maps.MVCArray(),
+			line: null,
+			polygon: null
+		};
+		var markerini;
+		var markerfin;
+
+		function addpuntoalmapa(){
+			//When the document is ready, create the map and handle clicks on it
+			jQuery(document).ready(function() {
+
+					google.maps.event.addListener(map, "click", function(evt) {
+			// When the map is clicked, pass the LatLng obect to the measureAdd function
+						measureAdd(evt.latLng);
+					});
+			});
+		};
+		function measureAdd(latLng) {
+
+			//Add a draggable marker to the map where the user clicked
+				var marker = new google.maps.Marker({
+				map: map,
+				position: latLng,
+				draggable: true,
+				raiseOnDrag: false,
+				title: "Drag me to change shape adan",
+				icon: new google.maps.MarkerImage("img/home32.png", new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(5, 5))
+				});
+
+				//Add this LatLng to our line and polygon MVCArrays
+				//Objects added to these MVCArrays automatically update the line and polygon shapes on the map
+				measure.mvcLine.push(latLng);
+				measure.mvcPolygon.push(latLng);
+
+				//Push this marker to an MVCArray
+				//This way later we can loop through the array and remove them when measuring is done
+				measure.mvcMarkers.push(marker);
+
+			//Get the index position of the LatLng we just pushed into the MVCArray
+			//We'll need this later to update the MVCArray if the user moves the measure vertexes
+				var latLngIndex = measure.mvcLine.getLength() - 1;
+				//When the user mouses over the measure vertex markers, change shape and color to make it obvious they can be moved
+					google.maps.event.addListener(marker, "mouseover", function() {
+					marker.setIcon(new google.maps.MarkerImage("img/home32.png", new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(8, 8)));
+				});
+
+			//Change back to the default marker when the user mouses out
+				google.maps.event.addListener(marker, "mouseout", function() {
+					marker.setIcon(new google.maps.MarkerImage("img/home32.png", new google.maps.Size(32, 32), new google.maps.Point(0, 0), new google.maps.Point(5, 5)));
+				});
+
+			//When the measure vertex markers are dragged, update the geometry of the line and polygon by resetting the
+			//LatLng at this position
+				google.maps.event.addListener(marker, "drag", function(evt) {
+					measure.mvcLine.setAt(latLngIndex, evt.latLng);
+					measure.mvcPolygon.setAt(latLngIndex, evt.latLng);
+				});
+
+			//When dragging has ended and there is more than one vertex, measure length, area.
+				google.maps.event.addListener(marker, "dragend", function() {
+				if (measure.mvcLine.getLength() > 1) {
+					measureCalc();
+				}
+				});
+
+			//If there is more than one vertex on the line
+			if (measure.mvcLine.getLength() > 1) {
+				// If the line hasn't been created yet
+				if (!measure.line) {
+
+				   // Create the line (google.maps.Polyline)
+				   measure.line = new google.maps.Polyline({
+				       map: map,
+				       clickable: false,
+				       strokeColor: "#FF0000",
+				       strokeOpacity: 1,
+				       strokeWeight: 3,
+				       path:measure. mvcLine
+				   });
+
+				}
+			// If there is more than two vertexes for a polygon
+				if (measure.mvcPolygon.getLength() > 2) {
+					   // If the polygon hasn't been created yet
+					   if (!measure.polygon) {
+					       // Create the polygon (google.maps.Polygon)
+					       /*measure.polygon = new google.maps.Polygon({
+					           clickable: false,
+					           map: map,
+					           fillOpacity: 0.25,
+					           strokeOpacity: 0,
+					           paths: measure.mvcPolygon
+					       });*/
+
+					   }
+				}
+
+			}
+
+			//If there's more than one vertex, measure length, area.
+				if (measure.mvcLine.getLength() > 1) {
+					measureCalc();
+				}
+			}
+
+		////////////////////////////////////////////////
+	  google.maps.event.addDomListener(window, 'load', initialize);
 </script>
