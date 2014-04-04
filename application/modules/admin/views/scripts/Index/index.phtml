@@ -1,5 +1,6 @@
 <?php $this->headLink()->appendStylesheet($this->baseUrl() . "/css/style-menu.css");?>
 <?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/RideAdd.js","text/javascript");?>
+<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/PassengerAdd.js","text/javascript");?>
 <style type="text/css">
 #map-canvas {
 	height: 500px
@@ -22,8 +23,8 @@
 
             <li><a href='#'><span>Pasajeros</span></a>
             <ul>
-                <li style="background: #83ACFF;"><a href="/admin/Passenger/add">Nuevo</a></li>
-                <li style="background: #FFA347;"><a href='#'>Buscar</a></li>
+                <li style="background: #83ACFF;"><a id="create-passenger" href="/admin/Passenger/add">Nuevo</a></li>
+                <li style="background: #FFA347;"><a id="search-passenger" href="/admin/Passenger/search">Buscar</a></li>
             </ul>
             </li>
 
@@ -101,6 +102,37 @@
 	ride.clickToDelete('#delete-ride');
 	//ride.configureAuto('input#nameFilter');
 	ride.configureLabelAuto('input#label');
+
+	//----------------------------------------PASSENGER------------------------------------------
+	var passenger = new com.em.PassengerAdd();
+
+	// network
+	passenger.setUrl({
+		toTable : '<?php echo $this->url(array('action'=>'read-items'));?>',
+		toBase : '<?php echo $this->baseUrl(); ?>',
+		toUpdate : '<?php echo $this->url(array('action'=>'edit')); ?>',
+		toAutocomplete : '<?php echo $this->url(array('action'=>'autocomplete'));?>',
+		toAutocompleteLabel : '<?php echo $this->url(array('action'=>'autocomplete-label'));?>'
+	});
+
+	var headers = new Object();
+	headers.headerArray = new Array(
+		'<?php echo $this->translate('Nombre'); ?>',
+		'<?php echo $this->translate('Descripcion'); ?>',
+		'<?php echo $this->translate('Fecha Creacion'); ?>',
+		'<?php echo $this->translate('Fecha Edicion'); ?>');
+	passenger.setHeaders(headers);
+	// configuration of widgets
+	passenger.configureTable('#tblPassenger', true);
+
+	// CRUD
+	passenger.clickToAdd('#create-passenger');
+	passenger.clickToUpdate('#tblPassenger a[id^=update-passenger-]');
+	passenger.clickToDelete('#delete-passenger');
+	passenger.configureAuto('input#nameFilter');
+	passenger.configureLabelAuto('input#label');
+
+	passenger.clickToSearch('#search-passenger');
 });
 
 	var flightPath;

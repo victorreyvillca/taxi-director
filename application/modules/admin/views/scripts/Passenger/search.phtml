@@ -3,7 +3,7 @@
 </div>
 
 <script type="text/javascript">
-com.em.Passenger.prototype.dialogButtons = {
+com.em.PassengerAdd.prototype.dialogButtons = {
 		'<?php echo $this->translate('Cancelar')?>': function() {
 			$(this).dialog("close");
 		}
@@ -19,11 +19,11 @@ com.em.Passenger.prototype.dialogButtons = {
 			beforeSend: function(XMLHttpRequest) {
 				validatorSearch.form();
 				if (!validatorSearch.valid()) {
-					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
 					return false;
 				}
 
-				com.em.Passenger.prototype.processingDisplay(true);
+				//com.em.PassengerAdd.prototype.processingDisplay(true);
 				return true;
 			},
 
@@ -51,17 +51,17 @@ com.em.Passenger.prototype.dialogButtons = {
 					$("#rowname")[0].style.visibility = 'hidden';
 					$("#rowlabel")[0].style.visibility = 'hidden';
 					$("#rowaddress")[0].style.visibility = 'hidden';
-					com.em.Passenger.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
 				}
 			},
 
 			complete: function(jqXHR, textStatus) {
-				com.em.Passenger.prototype.processingDisplay(false);
+				//com.em.PassengerAdd.prototype.processingDisplay(false);
 			},
 
 			error: function(jqXHR, textStatus, errorThrown) {
 				dialogForm.dialog('close');
-				com.em.Passenger.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
+				com.em.PassengerAdd.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
 			}
 		});
     }
@@ -104,29 +104,29 @@ com.em.Passenger.prototype.dialogButtons = {
 			beforeSend: function(XMLHttpRequest) {
 				validatorSearch.form();
 				if (!validatorSearch.valid()) {
-					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede cambiar');?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede cambiar');?>', {header: com.em.Alert.ERROR});
 					return false;
 				}
 
-				com.em.Passenger.prototype.processingDisplay(true);
+				//com.em.PassengerAdd.prototype.processingDisplay(true);
 				return true;
 			},
 
 			success: function(data, textStatus, XMLHttpRequest) {
 				if (data.success) {
-					com.em.Passenger.prototype.flashError('<?php echo _('Cambio realizado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('Cambio realizado')?>', {header: com.em.Alert.ERROR});
 				} else {
-					com.em.Passenger.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
 				}
 			},
 
 			complete: function(jqXHR, textStatus) {
-				com.em.Passenger.prototype.processingDisplay(false);
+				//com.em.PassengerAdd.prototype.processingDisplay(false);
 			},
 
 			error: function(jqXHR, textStatus, errorThrown) {
 				dialogForm.dialog('close');
-				com.em.Passenger.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
+				com.em.PassengerAdd.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
 			}
 		});
     }
@@ -140,11 +140,11 @@ com.em.Passenger.prototype.dialogButtons = {
 			beforeSend: function(XMLHttpRequest) {
 				validatorSearch.form();
 				if (!validatorSearch.valid()) {
-					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede eliminar la Etiqueta');?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede eliminar la Etiqueta');?>', {header: com.em.Alert.ERROR});
 					return false;
 				}
 
-				com.em.Passenger.prototype.processingDisplay(true);
+// 				com.em.PassengerAdd.prototype.processingDisplay(true);
 				return true;
 			},
 
@@ -157,19 +157,19 @@ com.em.Passenger.prototype.dialogButtons = {
 							.attr("value", i)
 							.text(data.addressArray[i]));
 					});
-					com.em.Passenger.prototype.flashError('<?php echo _('Etiqueta Eliminado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('Etiqueta Eliminado')?>', {header: com.em.Alert.ERROR});
 				} else {
-					com.em.Passenger.prototype.flashError('<?php echo _('La Etiqueta no se pudo Eliminar')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('La Etiqueta no se pudo Eliminar')?>', {header: com.em.Alert.ERROR});
 				}
 			},
 
 			complete: function(jqXHR, textStatus) {
-				com.em.Passenger.prototype.processingDisplay(false);
+// 				com.em.PassengerAdd.prototype.processingDisplay(false);
 			},
 
 			error: function(jqXHR, textStatus, errorThrown) {
 				dialogForm.dialog('close');
-				com.em.Passenger.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
+				com.em.PassengerAdd.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
 			}
 		});
     }
@@ -183,29 +183,29 @@ com.em.Passenger.prototype.dialogButtons = {
 			beforeSend: function(XMLHttpRequest) {
 				validatorSearch.form();
 				if (!validatorSearch.valid()) {
-					com.em.Passenger.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede cambiar');?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('El Formulario tiene errores y no se puede cambiar');?>', {header: com.em.Alert.ERROR});
 					return false;
 				}
 
-				com.em.Passenger.prototype.processingDisplay(true);
+// 				com.em.Passenger.prototype.processingDisplay(true);
 				return true;
 			},
 
 			success: function(data, textStatus, XMLHttpRequest) {
 				if (data.success) {
-					com.em.Passenger.prototype.flashError('<?php echo _('Cambio realizado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('Cambio realizado')?>', {header: com.em.Alert.ERROR});
 				} else {
-					com.em.Passenger.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
 				}
 			},
 
 			complete: function(jqXHR, textStatus) {
-				com.em.Passenger.prototype.processingDisplay(false);
+// 				com.em.PassengerAdd.prototype.processingDisplay(false);
 			},
 
 			error: function(jqXHR, textStatus, errorThrown) {
 				dialogForm.dialog('close');
-				com.em.Passenger.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
+				com.em.PassengerAdd.prototype.flashError(errorThrown,{header: com.em.Alert.ERROR});
 			}
 		});
     }
