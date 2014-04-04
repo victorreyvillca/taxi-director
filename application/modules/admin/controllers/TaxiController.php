@@ -31,6 +31,30 @@ class Admin_TaxiController extends Dis_Controller_Action {
     }
 
     /**
+     * Lists all the taxis off
+     * @access public
+     */
+    public function offAction() {
+
+    }
+
+    /**
+     * Lists all the taxis on going
+     * @access public
+     */
+    public function ongoingAction() {
+
+    }
+
+    /**
+     * Lists all the taxis without career
+     * @access public
+     */
+    public function withoutcareerAction() {
+
+    }
+
+    /**
      *
      * This action shows a form in create mode
      * @access public
@@ -396,14 +420,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
 			$row = array();
 			$row[] = $directive->getId();
 			$row[] = $directive->getName();
-			$row[] = $directive->getMark();
-			$row[] = $directive->getPlaque();
-			$row[] = $directive->getType();
-			$row[] = $directive->getColor();
-			$row[] = $directive->getModel();
-			$row[] = $directive->getCreated()->format('d.m.Y');
-			$row[] = $changed;
-			$row[] = '[]';
 			$data[] = $row;
 			$posRecord++;
 		}

@@ -5,20 +5,17 @@
 	height: 500px
 }
 table.zebralist > tbody > tr {
-	background-color: #9999FF;
+	background-color: #75FF75;
 }
 
 table.zebralist > tbody > tr > td {
-	background-color: #9999FF;
+	background-color: #75FF75;
 }
 </style>
 
 <div style="margin:10px;">
     <div id="cssmenu" style="width: 10%; float: left;">
         <a href="/admin" >Volver</a>
-        <br>
-        <br>
-        <?php echo $this->buttonAdd("create-taxi", $this->translate('Nuevo'), $this->url(array('action'=>'add')));?>
         <?php echo $this->tableList('tblTaxi');?>
     </div>
 
