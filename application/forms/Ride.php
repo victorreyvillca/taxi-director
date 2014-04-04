@@ -17,6 +17,11 @@ class Dis_Form_Ride extends Zend_Form {
     private $onlyRead;
 
     /**
+     * @var bool
+     */
+    private $isResume;
+
+    /**
      * @var string
      */
 	private $phone;
@@ -48,6 +53,7 @@ class Dis_Form_Ride extends Zend_Form {
 
 	public function init() {
 	    $this->onlyRead = FALSE;
+	    $this->isResume = FALSE;
 
 		$this
 			->setAttrib('id', 'formId')
@@ -209,6 +215,22 @@ class Dis_Form_Ride extends Zend_Form {
 	 */
 	public function setOnlyRead($onlyRead) {
 		$this->onlyRead = $onlyRead;
+		return $this;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getIsResume() {
+		return $this->isResume;
+	}
+
+	/**
+	 * @param boolean $onlyRead
+	 * @return Dis_Form_Ride
+	 */
+	public function setIsResume($isResume) {
+		$this->isResume = $isResume;
 		return $this;
 	}
 }

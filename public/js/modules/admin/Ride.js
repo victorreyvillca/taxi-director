@@ -93,22 +93,10 @@ com.em.Ride.prototype = {
 			$("#datatable-headers").append('<th>'+headers[i]+'</th>');
 		}
 
-		$("#datatable-headers").append('<th><input type="checkbox" id="check-master" value="0"></th>');
-		$("#datatable-headers").prepend('<th >Id</th>');
-
-		//Adding the event to check-master because it was removed
-		$("#check-master").bind('click', function() {
-			var checked = $("#check-master").attr('checked');
-			if (checked) {
-				$('#tblRide input[id^=check-slave-]').attr('checked', true);
-			} else {
-				$('#tblRide input[id^=check-slave-]').attr('checked', false);
-			}
-		});		
+		$("#datatable-headers").prepend('<th >Id</th>');	
 	}},
 
 	/**
-	 *
 	 * Configures the table and elements
 	 * @param selector
 	 */
@@ -116,13 +104,12 @@ com.em.Ride.prototype = {
 		table = $(selector).dataTable({
 			"bProcessing"	: true,
 			"bFilter"		: false,
-			"bSort"			: true,
-			"bInfo"			: true, 
+			"bSort"			: false,
+			"bInfo"			: false, 
 			"bLengthChange" : false,
 			"bServerSide"	: true,
 			"sAjaxSource"	: url.toTable,
 			"aoColumns"		: getColumns(),
-			"sPaginationType" : "full_numbers",
 			"oLanguage": {
 				"sUrl": "/js/lib/jquery-datatables/languages/dataTables.spanish.txt"
 			},
@@ -131,14 +118,6 @@ com.em.Ride.prototype = {
 			},
 
 			"fnServerData": function (sSource, aoData, fnCallback ) { 
-				//applying filter_name
-				var position = getPosition(aoData, 'filter_name');
-
-				if (position == -1)
-					aoData.push({"name": "filter_name","value": $('#nameFilter').attr('value')});
-				else
-					aoData[position].value=$('#nameFilter').attr('value');
-
 				$.getJSON(sSource, aoData, function (json) {
 					fnCallback(json);
 				} );
@@ -163,18 +142,7 @@ com.em.Ride.prototype = {
 				return '<a id="update-ride-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
 				}
 			});
-		columns.push({"sWidth": "53%"});
-		columns.push({"sWidth": "10%"});
-		columns.push({"sWidth": "10%"});
-		columns.push({
-			"bSortable": false,
-			"sWidth": "2%",
-			"sClass": "checkColumn",
-			fnRender : function (oObj){
-			   return '<input type="checkbox" name="itemIds[]" id="check-slave-'+oObj.aData[0]+'" value="'+oObj.aData[0]+'">';
-			}
-		});
-	
+		
 		return columns;
 	}},
 

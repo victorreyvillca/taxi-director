@@ -200,7 +200,6 @@ class Admin_RideController extends Dis_Controller_Action {
 		    $phone = $passenger->getPhone();
 		    $name = $passenger->getFirstName();
 		    $label = $ride->getLabel();
-		    $taxi = $ride->getTaxi();
 
 		    $addressRepo = $this->_entityManager->getRepository('Model\Address');
 		    $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
@@ -208,14 +207,18 @@ class Admin_RideController extends Dis_Controller_Action {
 		    $form->getElement('phone')->setValue($phone);
 		    $form->getElement('name')->setValue($name);
 
+		    $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		    $taxisArray = $taxiRepo->findByStatusArray(Taxi::ONGOING);
+
             $form
                 ->setPhone($phone)
                 ->setName($name)
                 ->setLabel($label->getName())
                 ->setAddress($address->getName())
                 ->setNote($ride->getNote())
-                ->setTaxi($taxi->getName())
             ;
+
+            $form->getElement('taxi')->setMultiOptions($taxisArray);
 		} else {
 			// response to client
             $this->stdResponse = new stdClass();
@@ -235,6 +238,7 @@ class Admin_RideController extends Dis_Controller_Action {
 		$this->_helper->layout()->disableLayout();
 		$form = new Dis_Form_Ride();
 		$form->setOnlyRead(TRUE);
+		$form->setIsResume(TRUE);
 
 		$id = $this->_getParam('id', 0);
 		$ride = $this->_entityManager->find('Model\Ride', $id);
@@ -355,19 +359,18 @@ class Admin_RideController extends Dis_Controller_Action {
 	 * @xhrParam int iDisplayStart
 	 * @xhrParam int iDisplayLength
 	 */
-	public function dsRideEntriesAction() {
-		$sortCol = $this->_getParam('iSortCol_0', 1);
-		$sortDirection = $this->_getParam('sSortDir_0', 'asc');
-
+	public function dsRideEntriesNotAssignedAction() {
 		$filterParams['name'] = $this->_getParam('filter_name', NULL);
-		$filters = $this->getFilters($filterParams);
+
+		$filters = array();
+		$filters[] = array('field' => 'status', 'filter' => 0, 'operator' => '=');
 
 		$start = $this->_getParam('iDisplayStart', 0);
 		$limit = $this->_getParam('iDisplayLength', 10);
 		$page = ($start + $limit) / $limit;
 
 		$rideRepo = $this->_entityManager->getRepository('Model\Ride');
-		$rides = $rideRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
+		$rides = $rideRepo->findByCriteria($filters, $limit, $start);
 		$total = $rideRepo->getTotalCount($filters);
 
 		$posRecord = $start+1;
@@ -381,10 +384,48 @@ class Admin_RideController extends Dis_Controller_Action {
 			$row = array();
 			$row[] = $ride->getId();
 			$row[] = $ride->getNote();
-			$row[] = '';
-			$row[] = $ride->getCreated()->format('d.m.Y');
-			$row[] = $changed;
-			$row[] = '[]';
+			$data[] = $row;
+			$posRecord++;
+		}
+		// response
+		$this->stdResponse = new stdClass();
+		$this->stdResponse->iTotalRecords = $total;
+		$this->stdResponse->iTotalDisplayRecords = $total;
+		$this->stdResponse->aaData = $data;
+		$this->_helper->json($this->stdResponse);
+	}
+
+	/**
+	 * Outputs an XHR response containing all entries in rides.
+	 * @xhrParam int filter_name
+	 * @xhrParam int iDisplayStart
+	 * @xhrParam int iDisplayLength
+	 */
+	public function dsRideEntriesOnGoingAction() {
+		$filterParams['name'] = $this->_getParam('filter_name', NULL);
+
+		$filters = array();
+		$filters[] = array('field' => 'status', 'filter' => 1, 'operator' => '=');
+
+		$start = $this->_getParam('iDisplayStart', 0);
+		$limit = $this->_getParam('iDisplayLength', 10);
+		$page = ($start + $limit) / $limit;
+
+		$rideRepo = $this->_entityManager->getRepository('Model\Ride');
+		$rides = $rideRepo->findByCriteria($filters, $limit, $start);
+		$total = $rideRepo->getTotalCount($filters);
+
+		$posRecord = $start+1;
+		$data = array();
+		foreach ($rides as $ride) {
+			$changed = $ride->getChanged();
+			if ($changed != NULL) {
+				$changed = $changed->format('d.m.Y');
+			}
+
+			$row = array();
+			$row[] = $ride->getId();
+			$row[] = $ride->getNote();
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -617,5 +658,10 @@ class Admin_RideController extends Dis_Controller_Action {
 	}
 
 	public function notassignedAction() {
+
+	}
+
+	public function ongoingAction() {
+
 	}
 }

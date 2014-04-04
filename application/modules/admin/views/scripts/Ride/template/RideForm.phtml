@@ -51,7 +51,11 @@
 			</tr>
 			<tr class="even" >
 				<td><?php echo $this->element->getElement('taxi')->renderLabel()?></td>
-				<td><?php echo $this->element->getTaxi()?></td>
+				<?php if ($this->element->getIsResume()) {?>
+                    <td><?php echo $this->element->getTaxi()?></td>
+				<?php } else {?>
+                    <td><?php echo $this->element->getElement('taxi')->renderViewHelper()?></td>
+				<?php }?>
 			</tr>
             <?php }?>
 		</tbody>

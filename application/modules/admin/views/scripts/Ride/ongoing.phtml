@@ -5,11 +5,11 @@
 	height: 500px
 }
 table.zebralist > tbody > tr {
-	background-color: #FFA347;
+	background-color: #75FF75;
 }
 
 table.zebralist > tbody > tr > td {
-	background-color: #FFA347;
+	background-color: #75FF75;
 }
 
 </style>
@@ -34,9 +34,9 @@ table.zebralist > tbody > tr > td {
 
     	// network
 	    ride.setUrl({
-	        toTable : '<?php echo $this->url(array('action'=>'ds-ride-entries-not-assigned'))?>',
+	        toTable : '<?php echo $this->url(array('action'=>'ds-ride-entries-on-going'))?>',
 	        toBase : '<?php echo $this->baseUrl()?>',
-    		toUpdate : '<?php echo $this->url(array('action'=>'edit'))?>'
+	        toUpdate : '<?php echo $this->url(array('action'=>'resume'))?>'
     	});
 
     	var headers = new Object();

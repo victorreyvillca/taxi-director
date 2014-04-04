@@ -1,13 +1,10 @@
-<div id="dialog-form" title="<?php echo $this->translate('Editar Pasajero'); ?>" class="header" style="display: none;">
+<div id="dialog-form" title="<?php echo $this->translate('Editar Carrera'); ?>" class="header" style="display: none;">
 	<?php echo $this->form; ?>
 </div>
 
 <script type="text/javascript">
 	com.em.Ride.prototype.dialogButtons = {
-		'<?php echo $this->translate('Cancelar'); ?>': function() {
-			$(this).dialog("close");
-		},
-		'<?php echo $this->translate('Editar'); ?>': function() {
+		'<?php echo $this->translate('Aceptar'); ?>': function() {
 			$.ajax({
 				url: '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Ride', 'action'=>'edit-save')); ?>',
 				type: "POST",
@@ -56,6 +53,9 @@
 					com.em.Ride.prototype.flashError(errorThrown, {header: com.em.Alert.ERROR});
 				}
 			});
+		},
+		'<?php echo $this->translate('Borrar Carrera'); ?>': function() {
+			$(this).dialog("close");
 		}
 	};
 </script>
