@@ -17,6 +17,9 @@ namespace Model;
  */
 class Ride extends DomainObject {
 
+    const NOT_ASSIGNED = 0;
+    const ONGOING = 1;
+
 	/**
 	 * @Column(type="string")
 	 * @var string

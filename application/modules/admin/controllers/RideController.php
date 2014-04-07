@@ -363,7 +363,7 @@ class Admin_RideController extends Dis_Controller_Action {
 		$filterParams['name'] = $this->_getParam('filter_name', NULL);
 
 		$filters = array();
-		$filters[] = array('field' => 'status', 'filter' => 0, 'operator' => '=');
+		$filters[] = array('field' => 'status', 'filter' => Ride::NOT_ASSIGNED, 'operator' => '=');
 
 		$start = $this->_getParam('iDisplayStart', 0);
 		$limit = $this->_getParam('iDisplayLength', 10);
@@ -405,7 +405,7 @@ class Admin_RideController extends Dis_Controller_Action {
 		$filterParams['name'] = $this->_getParam('filter_name', NULL);
 
 		$filters = array();
-		$filters[] = array('field' => 'status', 'filter' => 1, 'operator' => '=');
+		$filters[] = array('field' => 'status', 'filter' => Ride::ONGOING, 'operator' => '=');
 
 		$start = $this->_getParam('iDisplayStart', 0);
 		$limit = $this->_getParam('iDisplayLength', 10);

@@ -387,6 +387,47 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		}
 	}
 
+	/**
+	 * Outputs an XHR response containing all entries in directives.
+	 * This action serves as a datasource for the read/index view
+	 * @xhrParam int filter_name
+	 * @xhrParam int iDisplayStart
+	 * @xhrParam int iDisplayLength
+	 */
+	public function dsTaxiEntriesAction() {
+		$sortCol = $this->_getParam('iSortCol_0', 1);
+		$sortDirection = $this->_getParam('sSortDir_0', 'asc');
+
+		$start = $this->_getParam('iDisplayStart', 0);
+		$limit = $this->_getParam('iDisplayLength', 10);
+		$page = ($start + $limit) / $limit;
+
+		$administratorRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$administrators = $administratorRepo->findByCriteria(array(), $limit, $start, $sortCol, $sortDirection);
+		$total = $administratorRepo->getTotalCount(array());
+
+		$posRecord = $start+1;
+		$data = array();
+		foreach ($administrators as $directive) {
+			$changed = $directive->getChanged();
+			if ($changed != NULL) {
+				$changed = $changed->format('d.m.Y');
+			}
+
+			$row = array();
+			$row[] = $directive->getId();
+			$row[] = $directive->getName();
+			$data[] = $row;
+			$posRecord++;
+		}
+		// response
+		$this->stdResponse = new stdClass();
+		$this->stdResponse->iTotalRecords = $total;
+		$this->stdResponse->iTotalDisplayRecords = $total;
+		$this->stdResponse->aaData = $data;
+		$this->_helper->json($this->stdResponse);
+	}
+
     /**
 	 * Outputs an XHR response containing all entries in directives.
 	 * This action serves as a datasource for the read/index view
