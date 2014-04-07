@@ -32,15 +32,16 @@ class TaxiRepository extends EntityRepository {
 
     	$condName = "";
     	foreach ($filters as $filter) {
-    		$condName = "$this->_alias.name LIKE :name AND ";
+    		$condName = "$this->_alias.status = :status AND ";
     		$query->setParameter($filter['field'], $filter['filter']);
     	}
 
     	$query->select($this->_alias)
-    	->from($this->_entityName, $this->_alias)
-    	->where("$condName $this->_alias.state = TRUE")
-    	->setFirstResult($offset)
-    	->setMaxResults($limit);
+        	->from($this->_entityName, $this->_alias)
+        	->where("$condName $this->_alias.state = TRUE")
+        	->setFirstResult($offset)
+        	->setMaxResults($limit)
+    	;
 
     	$sort = '';
     	switch ($sortColumn) {
