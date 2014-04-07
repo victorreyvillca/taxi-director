@@ -20,6 +20,11 @@ class Dis_Form_Taxi extends Zend_Form {
 	 */
 	private $sourceTaxi;
 
+    /**
+     * @var int
+     */
+	private $tabIndex = 1;
+
 	public function init() {
 		$this
 			->setAttrib('id', 'formId')
@@ -31,6 +36,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'firstName', array(
 				'label' => _('Nombres'),
+                'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
 				'filters' => array(
 					array('StringTrim')
@@ -39,6 +45,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'lastName', array(
 				'label' => _('Apellidos'),
+                'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
 				'filters' => array(
                     array('StringTrim')
@@ -47,24 +54,23 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'ci', array(
 				'label' => _('Cedula de Identidad'),
+                'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
 				'validators' => array(
                     array('Digits', false)
 				)
 			))
 
-			->addElement('Radio', 'sex', array(
-				'label' => _('Genero')
-			))
-
 			->addElement('TextArea', 'address', array(
 				'label' => _('Direccion'),
+                'tabIndex' => $this->tabIndex++,
                 'cols' => '20',
                 'rows' => '3',
 			))
 
 			->addElement('Text', 'name', array(
 				'label' => _('Nombre movil'),
+                'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
 				'filters' => array(
 					array('StringTrim')
@@ -73,6 +79,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'mark', array(
 				'label' => _('Marca'),
+                'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
 				'filters' => array(
 					array('StringTrim')
@@ -81,6 +88,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'plaque', array(
 				'label' => _('Placa'),
+                'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
 				'filters' => array(
                     array('StringTrim')
@@ -89,6 +97,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'typeMark', array(
 				'label' => _('Tipo'),
+                'tabIndex' => $this->tabIndex++,
 				'filters' => array(
 					array('StringTrim')
 				)
@@ -96,19 +105,18 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'model', array(
                 'label' => _('Modelo'),
-                'required' => TRUE,
+                'tabIndex' => $this->tabIndex++,
 				'filters' => array(
                     array('StringTrim')
                 ),
 				'validators' => array(
 				array('Digits', false)
-				),
-				'attribs' => array('class' => 'form-poshytip', 'title' => _('Ingrese su nro de Celular'), 'required' => '', 'autofocus' => ''),
-				'decorators' => array(array('ViewHelper'), array('label'), array('HtmlTag', array('tag' => 'div')))
+				)
 			))
 
 			->addElement('Text', 'color', array(
 				'label' => _('Color'),
+                'tabIndex' => $this->tabIndex++,
 				'filters' => array(
                     array('StringTrim')
 				)

@@ -150,8 +150,8 @@ com.em.Taxi.prototype = {
 	configureDialogForm: function(selector) {with (this) {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
-			height: 480,
-			width: 720,
+			height: 550,
+			width: 900,
 			modal: true,
 			close: function(event, ui) {
 				$(this).remove();
@@ -344,17 +344,40 @@ com.em.Taxi.prototype = {
 		validator = $(selector).validate({
 			rules:{
 				'firstName':{
-					///required: true,
+					required: true,
 					maxlength: 45
 				},
 				'lastName':{
-					//required: true,
+					required: true,
 					maxlength: 45
 				},
 				'ci':{
-					//required: true,
+					number: true,
+					required: true,
 					number: true
 				},
+				'name':{
+					required: true,
+					maxlength: 45
+				},
+				'mark':{
+					required: true,
+					maxlength: 45
+				},
+				'plaque':{
+					required: true,
+					maxlength: 45
+				},
+				'typeMark':{
+					maxlength: 45
+				},
+				'model':{
+					number: true,
+					maxlength: 45
+				},
+				'color':{
+					maxlength: 45
+				}
 			}
 		});
 	},

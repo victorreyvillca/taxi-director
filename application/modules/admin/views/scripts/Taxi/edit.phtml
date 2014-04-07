@@ -43,6 +43,12 @@ $(document).ready(function() {
 
 com.em.Taxi.prototype.dialogButtons = {
 	'<?php echo $this->translate('Editar'); ?>': function() {
+		validator.form();
+		if (!validator.valid()) {
+			com.em.Taxi.prototype.flashError('<?php echo _('El Formulario tiene errores y no se ha guardado');?>', {header: com.em.Alert.ERROR});
+			return false;
+		}
+
 		$('#formId').submit();
 	},
 
