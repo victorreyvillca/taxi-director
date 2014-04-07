@@ -211,6 +211,24 @@ com.em.PassengerAdd.prototype = {
 	}},
 
 	/**
+	 * Configures the form
+	 * @param selector (dialog of form)	 
+	 * */
+	configureDialogAddForm: function(selector) {with (this) {
+		dialogForm = $(selector).dialog({
+			autoOpen: false,
+			height: 240,
+			width: 460,
+			modal: true,
+			close: function(event, ui) {
+				$(this).remove();
+			}
+		});
+
+		$(selector).parent().css('font-size','0.7em');
+	}},
+
+	/**
 	 * Opens dialog and manages the creation of new register
 	 * @param selector
 	 */
@@ -236,7 +254,7 @@ com.em.PassengerAdd.prototype = {
 							// Getting html dialog
 							$('#dialog').html(data);
 							// Configs dialog
-							configureDialogForm('#dialog-form', 'insert');
+							configureDialogAddForm('#dialog-form', 'insert');
 							// Sets validator
 							setValidatorForm("#formId");
 							// Opens dialog
@@ -470,6 +488,7 @@ com.em.PassengerAdd.prototype = {
 		validator = $(selector).validate({
 			rules:{
 				'phone':{
+					number: true,
 					required: true,
 					maxlength: 15
 				},

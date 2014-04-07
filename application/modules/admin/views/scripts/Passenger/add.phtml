@@ -24,7 +24,6 @@ com.em.PassengerAdd.prototype.configureLabelAuto('input#label');
 						return false;
 					}
 
-					//com.em.Passenger.prototype.processingDisplay(true);
 					return true;
 				},
 
@@ -32,7 +31,6 @@ com.em.PassengerAdd.prototype.configureLabelAuto('input#label');
 					if (textStatus == 'success') {
 						if (data.success) {
 							dialogForm.dialog('close');
-							table.fnDraw();
 							com.em.PassengerAdd.prototype.flashSuccess(data.message, {header: com.em.Alert.SUCCESS});
 						} else {
 							if (data.phone_duplicate) {
