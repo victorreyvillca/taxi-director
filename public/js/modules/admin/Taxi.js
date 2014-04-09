@@ -356,9 +356,10 @@ com.em.Taxi.prototype = {
 					required: true,
 					number: true
 				},
-				'name':{
+				'number':{
+					number: true,
 					required: true,
-					maxlength: 45
+					maxlength: 10
 				},
 				'mark':{
 					required: true,

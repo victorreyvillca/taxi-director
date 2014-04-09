@@ -37,10 +37,10 @@ class TaxiRepository extends EntityRepository {
     	}
 
     	$query->select($this->_alias)
-        	->from($this->_entityName, $this->_alias)
-        	->where("$condName $this->_alias.state = TRUE")
-        	->setFirstResult($offset)
-        	->setMaxResults($limit)
+    	->from($this->_entityName, $this->_alias)
+    	->where("$condName $this->_alias.state = TRUE")
+    	->setFirstResult($offset)
+    	->setMaxResults($limit)
     	;
 
     	$sort = '';
@@ -119,13 +119,13 @@ class TaxiRepository extends EntityRepository {
      * @return array
      */
     public function findByStatusArray($status) {
-        $items = $this->findBy(array('state' => TRUE, 'status' => $status));
+    	$items = $this->findBy(array('state' => TRUE, 'status' => $status));
 
-        $itemArray = array();
-        foreach ($items as $item) {
-        	$itemArray[$item->getId()] = $item->getName();
-        }
+    	$itemArray = array();
+    	foreach ($items as $item) {
+    		$itemArray[$item->getId()] = $item->getName();
+    	}
 
-        return $itemArray;
+    	return $itemArray;
     }
 }

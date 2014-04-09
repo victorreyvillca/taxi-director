@@ -64,10 +64,10 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'name', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+            return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
         }
 
-        return array('__isInitialized__', 'name', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+        return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
     }
 
     /**
@@ -347,6 +347,28 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPictureId', array($pictureId));
 
         return parent::setPictureId($pictureId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNumber()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNumber', array());
+
+        return parent::getNumber();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNumber($number)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNumber', array($number));
+
+        return parent::setNumber($number);
     }
 
     /**

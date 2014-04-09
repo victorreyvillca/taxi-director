@@ -19,6 +19,12 @@ class Taxi extends DomainObject {
     private $name;
 
     /**
+     * @Column(type="integer")
+     * @var int
+     */
+    private $number;
+
+    /**
      * @Column(type="string")
      * @var string
      */
@@ -185,6 +191,22 @@ class Taxi extends DomainObject {
 	 */
 	public function setPictureId($pictureId) {
 		$this->pictureId = $pictureId;
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getNumber() {
+		return $this->number;
+	}
+
+	/**
+	 * @param int $number
+	 * @return Taxi
+	 */
+	public function setNumber($number) {
+		$this->number = $number;
 		return $this;
 	}
 }

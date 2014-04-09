@@ -9,3 +9,7 @@ ALTER TABLE `tblRide`
 		REFERENCES `tblLabel` (`id`)
 		ON DELETE RESTRICT
 		ON UPDATE CASCADE;
+		
+		
+ALTER TABLE `tblTaxi`
+	ADD COLUMN `number`		INT(11)		NOT NULL;

@@ -86,7 +86,8 @@ class Admin_TaxiController extends Dis_Controller_Action {
     		if ($form->isValid($formData)) {
                 $taxi = new Taxi();
                 $taxi
-                    ->setName($formData['name'])
+                    ->setNumber($formData['number'])
+                    ->setName(_('Movil'))
                     ->setStatus(Taxi::WITHOUT_CAREER)
                     ->setMark($formData['mark'])
                     ->setPlaque($formData['plaque'])
@@ -178,7 +179,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $taxi = $this->_entityManager->find('Model\Taxi', $id);
         if ($taxi != NULL) {
             $form->getElement('taxiId')->setValue($taxi->getId());
-            $form->getElement('name')->setValue($taxi->getName());
+            $form->getElement('number')->setValue($taxi->getNumber());
             $form->getElement('mark')->setValue($taxi->getMark());
             $form->getElement('plaque')->setValue($taxi->getPlaque());
             $form->getElement('typeMark')->setValue($taxi->getType());
@@ -232,7 +233,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
                 $taxi = $this->_entityManager->find('Model\Taxi', $id);
                 if ($taxi != NULL) {
                    $taxi
-                        ->setName($formData['name'])
+                        ->setNumber($formData['number'])
                         ->setMark($formData['mark'])
                         ->setPlaque($formData['plaque'])
                         ->setType($formData['typeMark'])
@@ -416,7 +417,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 			$row = array();
 			$row[] = $directive->getId();
-			$row[] = $directive->getName();
+			$row[] = $directive->getName().' '.$directive->getNumber();
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -460,7 +461,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 			$row = array();
 			$row[] = $directive->getId();
-			$row[] = $directive->getName();
+			$row[] = $directive->getName().' '.$directive->getNumber();
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -504,7 +505,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 			$row = array();
 			$row[] = $directive->getId();
-			$row[] = $directive->getName();
+			$row[] = $directive->getName().' '.$directive->getNumber();
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -548,7 +549,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 			$row = array();
 			$row[] = $directive->getId();
-			$row[] = $directive->getName();
+			$row[] = $directive->getName().' '.$directive->getNumber();
 			$data[] = $row;
 			$posRecord++;
 		}
