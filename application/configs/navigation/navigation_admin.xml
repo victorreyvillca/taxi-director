@@ -10,6 +10,57 @@
 			<params>
 				<type>home</type>
 			</params>
+			<pages>
+				<about>
+					<label>Acerca de</label>
+					<module>admin</module>
+					<controller>Index</controller>
+					<action>index</action>
+					<params>
+						<type>home</type>
+					</params>
+				</about>
+			</pages>
 		</home>
+
+		<information>
+			<id>information</id>
+			<label>Taxi</label>
+			<module>admin</module>
+			<controller>Taxi</controller>
+			<action>index</action>
+			<params>
+				<type>information</type>
+			</params>
+			<pages>
+				<picture>
+					<label>Taxi</label>
+					<module>admin</module>
+					<controller>Taxi</controller>
+					<action>index</action>
+					<params>
+						<type>information</type>
+					</params>
+				</picture>
+				<news>
+					<label>Passenger</label>
+					<module>admin</module>
+					<controller>Passenger</controller>
+					<action>index</action>
+					<params>
+						<type>information</type>
+					</params>
+				</news>
+			</pages>
+		</information>
+		
+		<taxiride>
+			<id>ride</id>
+			<label>Carrera</label>
+			<module>admin</module>
+			<controller>Ride</controller>
+			<action>index</action>
+		</taxiride>
+
 	</navigation>
 </config>
