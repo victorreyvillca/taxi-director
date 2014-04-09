@@ -122,8 +122,8 @@ class Admin_TaxiController extends Dis_Controller_Action {
     			$driver = new Driver();
     			$driver
     			     ->setTaxi($taxi)
-                    ->setPhone('phone')
-                    ->setPhonemobil(46546)
+                    ->setPhone('132')
+                    ->setPhonemobil(123)
                     ->setDateOfBirth(new DateTime('now'))
                     ->setAddress($formData['address'])
                     ->setSex(1)
@@ -274,8 +274,8 @@ class Admin_TaxiController extends Dis_Controller_Action {
                     $driver = $driverRepo->findByTaxi($taxi);
                     $driver
                         ->setTaxi($taxi)
-                        ->setPhone('phone')
-                        ->setPhonemobil(46546)
+                        ->setPhone('123')
+                        ->setPhonemobil(123)
                         ->setAddress($formData['address'])
                         ->setSex(1)
                         ->setIdentityCard($formData['ci'])

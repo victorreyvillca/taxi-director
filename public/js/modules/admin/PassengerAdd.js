@@ -508,6 +508,7 @@ com.em.PassengerAdd.prototype = {
 		validatorSearch = $(selector).validate({
 			rules:{
 				'phone':{
+					number: true,
 					required: true,
 					maxlength: 15
 				}

@@ -70,8 +70,8 @@ class Admin_PassengerController extends Dis_Controller_Action {
 				    ->setDateOfBirth(new DateTime('now'))
 				    ->setCreated(new DateTime('now'))
 				    ->setState(TRUE)
-				    ->setIdentityCard(10)
-                    ->setPhonemobil(100)
+				    ->setIdentityCard(123)
+                    ->setPhonemobil(123)
 				    ->setPhone($formData['phone'])
                     ->setFirstName($formData['firstName'])
                 ;
