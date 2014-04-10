@@ -186,6 +186,13 @@ class Admin_TaxiController extends Dis_Controller_Action {
             $form->getElement('model')->setValue($taxi->getModel());
             $form->getElement('color')->setValue($taxi->getColor());
 
+            $form->setNumber($taxi->getNumber());
+            $form->setMark($taxi->getMark());
+            $form->setPlaque($taxi->getPlaque());
+            $form->setTypeMark($taxi->getType());
+            $form->setModel($taxi->getModel());
+            $form->setColor($taxi->getColor());
+
             $dataVaultMapper = new Dis_Model_DataVaultMapper();
             $dataVault = $dataVaultMapper->find($taxi->getPictureId());
             if ($dataVault != NULL && $dataVault->getBinary()) {

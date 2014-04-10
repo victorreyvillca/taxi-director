@@ -35,6 +35,46 @@ class Dis_Form_Taxi extends Zend_Form {
 	 */
 	private $lastName;
 
+	/**
+	 * @var int
+	 */
+	private $ci;
+
+	/**
+	 * @var string
+	 */
+	private $address;
+
+	/**
+	 * @var string
+	 */
+	private $number;
+
+	/**
+	 * @var string
+	 */
+	private $mark;
+
+	/**
+	 * @var string
+	 */
+	private $plaque;
+
+	/**
+	 * @var string
+	 */
+	private $typeMark;
+
+	/**
+	 * @var int
+	 */
+	private $model;
+
+	/**
+	 * @var string
+	 */
+	private $color;
+
 	public function init() {
 		$this
 			->setAttrib('id', 'formId')
@@ -176,6 +216,166 @@ class Dis_Form_Taxi extends Zend_Form {
 	 */
 	public function setSourceTaxi($sourceTaxi) {
 		$this->sourceTaxi = $sourceTaxi;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFirstName() {
+		return $this->firstName;
+	}
+
+	/**
+	 * @param string $firstName
+	 * @return Zend_Form
+	 */
+	public function setFirstName($firstName) {
+		$this->firstName = $firstName;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLastName() {
+		return $this->lastName;
+	}
+
+	/**
+	 * @param string $lastName
+	 * @return Zend_Form
+	 */
+	public function setLastName($lastName) {
+		$this->lastName = $lastName;
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCi() {
+		return $this->ci;
+	}
+
+	/**
+	 * @param int $ci
+	 * @return Zend_Form
+	 */
+	public function setCi($ci) {
+		$this->ci = $ci;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAddress() {
+		return $this->address;
+	}
+
+	/**
+	 * @param string $address
+	 * @return Zend_Form
+	 */
+	public function setAddress($address) {
+		$this->address = $address;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getNumber() {
+		return $this->number;
+	}
+
+	/**
+	 * @param string $number
+	 * @return Zend_Form
+	 */
+	public function setNumber($number) {
+		$this->number = $number;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getMark() {
+		return $this->mark;
+	}
+
+	/**
+	 * @param string $mark
+	 * @return Zend_Form
+	 */
+	public function setMark($mark) {
+		$this->mark = $mark;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPlaque() {
+		return $this->plaque;
+	}
+
+	/**
+	 * @param string $plaque
+	 * @return Zend_Form
+	 */
+	public function setPlaque($plaque) {
+		$this->plaque = $plaque;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTypeMark() {
+		return $this->typeMark;
+	}
+
+	/**
+	 * @param string $typeMark
+	 * @return Zend_Form
+	 */
+	public function setTypeMark($typeMark) {
+		$this->typeMark = $typeMark;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getModel() {
+		return $this->model;
+	}
+
+	/**
+	 * @param int $model
+	 * @return Zend_Form
+	 */
+	public function setModel($model) {
+		$this->model = $model;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getColor() {
+		return $this->color;
+	}
+
+	/**
+	 * @param string $color
+	 * @return Zend_Form
+	 */
+	public function setColor($color) {
+		$this->color = $color;
 		return $this;
 	}
 }
