@@ -3,7 +3,7 @@
 CREATE  TABLE IF NOT EXISTS `tblRide` (
 	`id`			INT				NOT NULL AUTO_INCREMENT,
 	`note`			TEXT 			NOT NULL,
-	`notAssignedTime`	INT(11)			DEFAULT NULL,
+	`notAssignedTime`	INT(11)		DEFAULT NULL,
 	`ongoingTime`	INT(11)			DEFAULT NULL,
 	`status`		TINYINT			DEFAULT 0,
 	`passengerId`	INT(11)			DEFAULT NULL,

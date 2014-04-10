@@ -12,4 +12,4 @@ ALTER TABLE `tblRide`
 		
 		
 ALTER TABLE `tblTaxi`
-	ADD COLUMN `number`		INT(11)		NOT NULL;
+	ADD COLUMN `number`		INT(11)		NOT NULL DEFAULT 0;

@@ -25,6 +25,16 @@ class Dis_Form_Taxi extends Zend_Form {
      */
 	private $tabIndex = 1;
 
+	/**
+	 * @var string
+	 */
+	private $firstName;
+
+	/**
+	 * @var string
+	 */
+	private $lastName;
+
 	public function init() {
 		$this
 			->setAttrib('id', 'formId')
