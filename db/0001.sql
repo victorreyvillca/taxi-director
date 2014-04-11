@@ -68,36 +68,30 @@ CREATE TABLE IF NOT EXISTS `tblDataVault` (
 ) ENGINE=INNODB;
 
 
-CREATE TABLE IF NOT EXISTS `tblPerson` (
-	`id` 				INT(11) 	NOT NULL AUTO_INCREMENT,
-	`identityCard`		INT(11) 	NOT NULL,
-	`firstName`			VARCHAR(45) NOT NULL,
-	`lastName`			VARCHAR(45) NOT NULL,
-	`dateOfBirth`		DATETIME 	DEFAULT NULL,
-	`phone`				VARCHAR(45) DEFAULT NULL,
-	`phonework`			VARCHAR(45) DEFAULT NULL,
-	`phonemobil`		INT(11) 	DEFAULT NULL,
-	`sex`				TINYINT(4)	NOT NULL,
-	`type` 				VARCHAR(15) NOT NULL,
-	`created` 			DATETIME NOT NULL,
-	`changed` 			DATETIME DEFAULT NULL,
-	`createdBy`			INT(11) DEFAULT NULL,
-	`changedBy`			INT(11) DEFAULT NULL,
-	`state`				TINYINT(1) NOT NULL DEFAULT '1',
-	`profilePictureId`	INT(11) DEFAULT NULL,
-
-	CONSTRAINT `pk_tblPerson`
-	PRIMARY KEY (`id`) ,
-
-	KEY `i_tblPerson_id` (`id`) ,
-	INDEX `i_tblPerson_state_id` (`state`, `id`),
-	INDEX `i_tblPerson_profilePictureId` (`profilePictureId`),
-
-	CONSTRAINT `fk_tblPerson_profilePictureId`
-		FOREIGN KEY (`profilePictureId`)
-		REFERENCES `tblDatavault` (`id`)
-		ON UPDATE CASCADE
-) ENGINE=INNODB;
+CREATE TABLE `tblPerson` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identityCard` int(11) NOT NULL,
+  `firstName` varchar(45) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `dateOfBirth` datetime DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `phonework` varchar(45) DEFAULT NULL,
+  `phonemobil` int(11) DEFAULT NULL,
+  `sex` tinyint(4) NOT NULL,
+  `type` varchar(15) NOT NULL,
+  `created` datetime NOT NULL,
+  `changed` datetime DEFAULT NULL,
+  `createdBy` int(11) DEFAULT NULL,
+  `changedBy` int(11) DEFAULT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT '1',
+  `profilePictureId` int(11) DEFAULT NULL,
+  CONSTRAINT `pk_tblPerson`
+  PRIMARY KEY (`id`),
+  KEY `i_tblPerson_id` (`id`),
+  KEY `i_tblPerson_state_id` (`state`,`id`),
+  KEY `i_tblPerson_profilePictureId` (`profilePictureId`),
+  CONSTRAINT `fk_tblPerson_profilePictureId` FOREIGN KEY (`profilePictureId`) REFERENCES `tblDataVault` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `tblAccount` (
@@ -155,34 +149,29 @@ CREATE  TABLE IF NOT EXISTS `tblPassenger` (
 ) ENGINE = INNODB;
 
 
-CREATE TABLE IF NOT EXISTS `tblTaxi` (
-	`id`			INT				NOT NULL AUTO_INCREMENT,
-	`name`			VARCHAR(50) 	NOT NULL,
-	`mark`			VARCHAR(50) 	NULL,
-	`type`			VARCHAR(50) 	NULL,
-	`model`			INT 			NULL,
-	`color`			VARCHAR(50) 	NULL,
-	`plaque`		VARCHAR(50) 	NULL,
-	`status`		TINYINT(4) 		DEFAULT NULL,
-	`pictureId`		INT(11) 		DEFAULT NULL,
-	`created`		DATETIME 		NOT NULL,
-	`changed`		DATETIME 		DEFAULT NULL,
-	`createdBy`		INT(11)			DEFAULT NULL,
-	`changedBy`		INT(11)			DEFAULT NULL,
-	`state`			TINYINT(1)		NOT NULL DEFAULT '1',
-	CONSTRAINT `pk_tblTaxi`
-		PRIMARY KEY (`id`),
+CREATE TABLE `tblTaxi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `mark` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `model` int(11) DEFAULT NULL,
+  `color` varchar(50) DEFAULT NULL,
+  `plaque` varchar(50) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  `pictureId` int(11) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `changed` datetime DEFAULT NULL,
+  `createdBy` int(11) DEFAULT NULL,
+  `changedBy` int(11) DEFAULT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT '1',
 
-	KEY `i_tblTaxi_id` (`id`),
-	INDEX `i_tblTaxi_state_id` (`state`, `id`),
-	INDEX `i_tblTaxi_pictureId` (`pictureId`),
-	
-	CONSTRAINT `fk_tblTaxi_pictureId`
-		FOREIGN KEY (`pictureId`)
-		REFERENCES `tblDatavault` (`id`)
-		ON DELETE RESTRICT
-		ON UPDATE CASCADE
-) ENGINE = INNODB;
+  CONSTRAINT `pk_tblTaxi`
+  PRIMARY KEY (`id`),
+  KEY `i_tblTaxi_id` (`id`),
+  KEY `i_tblTaxi_state_id` (`state`,`id`),
+  KEY `i_tblTaxi_pictureId` (`pictureId`),
+  CONSTRAINT `fk_tblTaxi_pictureId` FOREIGN KEY (`pictureId`) REFERENCES `tblDataVault` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 
 CREATE  TABLE IF NOT EXISTS `tblDriver` (
