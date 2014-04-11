@@ -354,7 +354,7 @@ com.em.Taxi.prototype = {
 				'ci':{
 					number: true,
 					required: true,
-					number: true
+					maxlength: 15
 				},
 				'number':{
 					number: true,
@@ -378,6 +378,15 @@ com.em.Taxi.prototype = {
 				},
 				'color':{
 					maxlength: 45
+				}
+			},
+			messages: {
+				'firstName': 'Ingrese su nombre',
+				'lastName': 'Ingrese su apellido',
+				'ci': {
+					required: 'Ingrese su cedula de Identidad',
+					number: 'Ingrese un numero valido',
+					maxlength: 'Por favor, introduzca un maximo de 15 caracteres.'
 				}
 			}
 		});
