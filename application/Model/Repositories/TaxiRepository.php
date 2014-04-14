@@ -128,4 +128,24 @@ class TaxiRepository extends EntityRepository {
 
     	return $itemArray;
     }
+
+    /**
+     * Verifies if the number already exist it.
+     * @param int $number
+     * @return boolean
+     */
+    public function verifyExistNumber($number) {
+        $object = $this->findOneBy(array('number' => $number, 'state' => TRUE));
+        return $object != NULL? TRUE : FALSE;
+    }
+
+    /**
+     * Verifies if the id and number already exist it.
+     * @param int $id
+     * @param int $number
+     */
+    public function verifyExistIdAndNumber($id, $number) {
+        $object = $this->findOneBy(array('id' => $id, 'number' => $number, 'state' => TRUE));
+        return $object != NULL? TRUE : FALSE;
+    }
 }
