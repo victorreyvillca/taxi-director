@@ -37,7 +37,7 @@ class Admin_RideController extends Dis_Controller_Action {
 		$this->_helper->layout()->disableLayout();
 
 		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
-		$taxisArray = $taxiRepo->findByStatusArray(Taxi::ONGOING);
+		$taxisArray = $taxiRepo->findByStatusArrayNumber(Taxi::WITHOUT_CAREER);
 
 		$form = new Dis_Form_Ride();
 		$form->getElement('taxi')->setMultiOptions($taxisArray);
@@ -57,7 +57,7 @@ class Admin_RideController extends Dis_Controller_Action {
 
 		$form = new Dis_Form_Ride();
 		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
-		$form->getElement('taxi')->setMultiOptions($taxiRepo->findByStatusArray(Taxi::ONGOING));
+		$form->getElement('taxi')->setMultiOptions($taxiRepo->findByStatusArrayNumber(Taxi::WITHOUT_CAREER));
 
         $formData = $this->getRequest()->getPost();
         if ($form->isValid($formData)) {
@@ -208,7 +208,8 @@ class Admin_RideController extends Dis_Controller_Action {
 		    $form->getElement('name')->setValue($name);
 
 		    $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
-		    $taxisArray = $taxiRepo->findByStatusArray(Taxi::ONGOING);
+
+		    $taxisArray = $taxiRepo->findByStatusArrayNumber(Taxi::WITHOUT_CAREER);
 
             $form
                 ->setPhone($phone)
@@ -259,7 +260,7 @@ class Admin_RideController extends Dis_Controller_Action {
     			->setLabel($label->getName())
     			->setAddress($address->getName())
     			->setNote($ride->getNote())
-    			->setTaxi($taxi->getName())
+    			->setTaxi($taxi->getNumber())
 			;
 		} else {
 			// response to client

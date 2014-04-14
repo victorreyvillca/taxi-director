@@ -24,7 +24,7 @@
 					if (textStatus == 'success') {
 						if (data.success) {
 							dialogForm.dialog('close');
-							table.fnDraw();
+							//table.fnDraw();
 							com.em.RideAdd.prototype.flashSuccess(data.message, {header: com.em.Alert.SUCCESS});
 						} else {
 							if (data.phone_duplicate) {
@@ -133,7 +133,7 @@
 			//$('#region option').remove();
 			// .each loops through the array
 			$.each(data.name, function(i) {
-				console.log(data.name);
+				//console.log(data.name);
 // 				$('#region').append($("<option></option>")
 // 					.attr("value", i)
 // 					.text(data.regionsArray[i]));

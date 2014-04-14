@@ -62,6 +62,7 @@ class Dis_Form_Ride extends Zend_Form {
 
 			->addElement('Text', 'phone', array(
                 'label' => _('Telefono'),
+                'required' => TRUE,
 				'filters' => array(
 					array('StringTrim')
 				)
@@ -69,6 +70,7 @@ class Dis_Form_Ride extends Zend_Form {
 
 			->addElement('Text', 'name', array(
 				'label' => _('Pasajero'),
+                'required' => TRUE,
 				'filters' => array(
 					array('StringTrim')
 				)
@@ -91,7 +93,17 @@ class Dis_Form_Ride extends Zend_Form {
 			))
 
 			->addElement('Select', 'taxi', array(
-                'label' => _('Taxi')
+                'label' => _('Numero de Taxi')
+			))
+
+			->addElement('Text', 'number', array(
+				'label' => _('Numero de Taxi'),
+				'filters' => array(
+					array('StringTrim')
+				),
+				'validators' => array(
+                    array('Digits', false)
+                )
 			))
 		;
 	}

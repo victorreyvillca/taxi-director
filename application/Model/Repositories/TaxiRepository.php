@@ -130,6 +130,22 @@ class TaxiRepository extends EntityRepository {
     }
 
     /**
+     * Returns the taxi models by status
+     * @param int $status
+     * @return array
+     */
+    public function findByStatusArrayNumber($status) {
+        $items = $this->findBy(array('state' => TRUE, 'status' => $status));
+
+        $itemArray = array();
+        foreach ($items as $item) {
+            $itemArray[$item->getId()] = $item->getNumber();
+        }
+
+        return $itemArray;
+    }
+
+    /**
      * Verifies if the number already exist it.
      * @param int $number
      * @return boolean

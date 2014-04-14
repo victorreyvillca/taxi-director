@@ -183,8 +183,8 @@ com.em.RideAdd.prototype = {
 	 * @param bShow boolean
 	 */
 	processingDisplay: function(bShow) {
-		var settings = table.fnSettings();
-		settings.oApi._fnProcessingDisplay(settings, bShow);
+//		var settings = table.fnSettings();
+//		settings.oApi._fnProcessingDisplay(settings, bShow);
 	},
 
 	/**

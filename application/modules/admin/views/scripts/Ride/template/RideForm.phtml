@@ -25,7 +25,10 @@
 			</tr>
 			<tr class="even" >
                 <td><?php echo $this->element->getElement('taxi')->renderLabel()?></td>
-                <td><?php echo $this->element->getElement('taxi')->renderViewHelper()?></td>
+                <td>
+                    <?php echo $this->element->getElement('taxi')->renderViewHelper()?>
+                    <?php echo $this->element->getElement('number')->renderViewHelper()?>
+                </td>
 			</tr>
 			<?php
             } else {?>
