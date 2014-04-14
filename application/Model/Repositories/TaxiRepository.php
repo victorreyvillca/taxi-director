@@ -138,6 +138,7 @@ class TaxiRepository extends EntityRepository {
         $items = $this->findBy(array('state' => TRUE, 'status' => $status));
 
         $itemArray = array();
+        $itemArray[-1] = _('--Seleccione--');
         foreach ($items as $item) {
             $itemArray[$item->getId()] = $item->getNumber();
         }

@@ -77,7 +77,6 @@ class Admin_RideController extends Dis_Controller_Action {
                 $ride = new Ride();
                 $ride
                     ->setLabel($label)
-                    ->setTaxi($taxi)
                     ->setPassenger($passenger)
                     ->setNotAssignedTime(1)
                     ->setNote($formData['note'])
@@ -85,6 +84,12 @@ class Admin_RideController extends Dis_Controller_Action {
                     ->setState(TRUE)
                     ->setCreated(new DateTime('now'))
                 ;
+                if ($taxi != NULL) {
+                	$ride->setStatus(Ride::ONGOING);
+                	$ride->setTaxi($taxi);
+                } else {
+                    $ride->setStatus(Ride::NOT_ASSIGNED);
+                }
 
                 $this->_entityManager->persist($ride);
                 $this->_entityManager->flush();
@@ -190,6 +195,7 @@ class Admin_RideController extends Dis_Controller_Action {
 	 */
 	public function editAction() {
 		$this->_helper->layout()->disableLayout();
+
 		$form = new Dis_Form_Ride();
 		$form->setOnlyRead(TRUE);
 
@@ -204,8 +210,12 @@ class Admin_RideController extends Dis_Controller_Action {
 		    $addressRepo = $this->_entityManager->getRepository('Model\Address');
 		    $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
 
+		    $form->getElement('id')->setValue($ride->getId());
 		    $form->getElement('phone')->setValue($phone);
 		    $form->getElement('name')->setValue($name);
+
+            $form->getElement('phone')->setRequired(FALSE);
+            $form->getElement('name')->setRequired(FALSE);
 
 		    $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
 
@@ -280,42 +290,44 @@ class Admin_RideController extends Dis_Controller_Action {
 	public function editSaveAction() {
 		$this->_helper->viewRenderer->setNoRender(TRUE);
 
-		$form = new Admin_Form_Category();
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$taxisArray = $taxiRepo->findByStatusArrayNumber(Taxi::WITHOUT_CAREER);
+
+		$form = new Dis_Form_Ride();
+		$form->setOnlyRead(TRUE);
+		$form->getElement('phone')->setRequired(FALSE);
+		$form->getElement('name')->setRequired(FALSE);
+		$form->getElement('taxi')->setMultiOptions($taxisArray);
 
 		$formData = $this->getRequest()->getPost();
 		if ($form->isValid($formData)) {
 			$id = $this->_getParam('id', 0);
-			$category = $this->_entityManager->find('Model\Category', $id);
-			if ($category != NULL) {
-// 				if (!$categoryMapper->verifyExistName($formData['name']) || $categoryMapper->verifyExistIdAndName($id, $formData['name'])) {
-				$category
-                    ->setName($formData['name'])
-                    ->setDescription($formData['description'])
-                    ->setChanged(new DateTime('now'))
-                    ->setChangedBy(Zend_Auth::getInstance()->getIdentity()->id)
-                ;
+			$ride = $this->_entityManager->find('Model\Ride', $id);
+			if ($ride != NULL) {
+                $taxi = $this->_entityManager->find('Model\Taxi', (int)$formData['taxi']);
+                $ride->setChanged(new DateTime('now'));
 
-				$this->_entityManager->persist($category);
+                if ($taxi != NULL) {
+                    $ride->setStatus(Ride::ONGOING);
+                    $ride->setTaxi($taxi);
+                }
+
+				$this->_entityManager->persist($ride);
 				$this->_entityManager->flush();
 
 				$this->stdResponse = new stdClass();
 				$this->stdResponse->success = TRUE;
-				$this->stdResponse->message = _('Category updated');
-// 				} else {
-// 					$this->stdResponse->success = FALSE;
-// 					$this->stdResponse->name_duplicate = TRUE;
-// 					$this->stdResponse->message = _("The Category already exists");
-// 				}
+				$this->stdResponse->message = _('Carrera Actulizado');
 			} else {
                 $this->stdResponse = new stdClass();
 				$this->stdResponse->success = FALSE;
-				$this->stdResponse->message = _('The Category does not exists');
+				$this->stdResponse->message = _('No existe la Carrera');
 			}
 		} else {
             $this->stdResponse = new stdClass();
-			$this->stdResponse->success = FALSE;
+            $this->stdResponse->success = FALSE;
 			$this->stdResponse->messageArray = $form->getMessages();
-			$this->stdResponse->message = _('The form contains error and is not saved');
+			$this->stdResponse->message = _('El Formulario contiene Errores');
 		}
 		// sends response to client
 		$this->_helper->json($this->stdResponse);
