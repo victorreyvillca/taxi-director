@@ -86,6 +86,7 @@ class Admin_RideController extends Dis_Controller_Action {
                 ;
                 if ($taxi != NULL) {
                 	$ride->setStatus(Ride::ONGOING);
+                	$taxi->setStatus(Taxi::ONGOING);
                 	$ride->setTaxi($taxi);
                 } else {
                     $ride->setStatus(Ride::NOT_ASSIGNED);
@@ -309,6 +310,7 @@ class Admin_RideController extends Dis_Controller_Action {
 
                 if ($taxi != NULL) {
                     $ride->setStatus(Ride::ONGOING);
+                    $taxi->setStatus(Taxi::ONGOING);
                     $ride->setTaxi($taxi);
                 }
 
