@@ -119,4 +119,48 @@ class Admin_IndexController extends Dis_Controller_Action {
 // 	    $this->_entityManager->persist($address);
 // 	    $this->_entityManager->flush();
 	}
+
+// 	public function actionViewdraw($id) {
+
+// 		$criteria = new CDbCriteria();
+// 		$criteria->condition = "linId = $id";
+// 		$dataProvider = new CActiveDataProvider('rutas', array('criteria' => $criteria));
+// 		$data = array();
+// 		$i = 0;
+// 		$iterator = new CDataProviderIterator($dataProvider);
+// 		foreach ($iterator as $user) {
+// 			//            echo $user->rutLatitud . "\n";
+// 			$aux["latitud"] = $user->rutLatitud;
+// 			$aux["longitud"] = $user->rutLongitud;
+// 			$data[$i] = $aux; //CJavaScript::jsonEncode($aux);
+
+// 			$i = $i + 1;
+// 		}
+// 		//        print_r($data);
+
+// 		echo CJavaScript::jsonEncode($data);
+// 		Yii::app()->end();
+// 	}
+
+	/**
+	 * Draws the position of the taxis
+	 * @access public
+	 */
+	public function drawAction() {
+	    $this->_helper->viewRenderer->setNoRender(TRUE);
+
+	    $taxiId = $this->_getParam('taxiId', 0);
+
+	    $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+	    $taxi = $this->_entityManager->find('Model\Taxi', $taxiId);
+
+	    $data = array();
+	    if ($taxi != NULL) {
+	    	$data[] = array('dsdsa', 'dsadsaa');
+	    }
+
+	    $this->stdResponse = new stdClass();
+	    $this->stdResponse->data = $data;
+	    $this->_helper->json($this->stdResponse);
+	}
 }
