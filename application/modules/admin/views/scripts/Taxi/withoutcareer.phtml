@@ -25,6 +25,9 @@ table.zebralist > tbody > tr > td {
 	<div id="dialog"><!-- Loads ajax dialog form --></div>
 </div>
 
+<p id="demo"></p>
+<input id="drawButton" type="button" value="nameButton" name="yt0" onclick="drawTaxis();"/>
+
 <script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBADa-A2Jqkq2C4ZlgOdZs98dFE0q00_N0&sensor=true">
 </script>
@@ -58,7 +61,55 @@ table.zebralist > tbody > tr > td {
 	function initialize() {
 		var mapOptions = {center: new google.maps.LatLng(-17.760458, -63.131776),	zoom: 15};
 		map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+
+		var control = setInterval(function(){myTimer()},1000);
+        var painter = setInterval(function(){paintTimer()},5000);
+	}
+
+	function myTimer() {
+		var d = new Date();
+		var t = d.toLocaleTimeString();
+		document.getElementById('demo').innerHTML = t;
+	}
+
+	function paintTimer() {
+		drawTaxis();
 	}
 
     google.maps.event.addDomListener(window, 'load', initialize);
+
+    function drawTaxis() {
+        var ur = '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Taxi', 'action'=>'draw-taxis'));?>';
+        $.ajax({
+            url: ur,
+            type: "POST",
+			dataType: 'json',
+			data: {'taxiId' : 1},
+            success: function(data, textStatus, XMLHttpRequest) {
+                if (data !== null) {
+                    var out = new Array();
+                    var i = 0;
+                    $(data).each(function() {
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];
+                            //out[i] = new google.maps.LatLng(parseFloat(item.latitud), parseFloat(item.longitud));
+                            var myLatLng = new google.maps.LatLng(parseFloat(item.latitud), parseFloat(item.longitud));
+
+                            var marker = new google.maps.Marker({
+                                title: "fdaf",
+                                position: myLatLng,
+                                map: map,
+                                icon: new google.maps.MarkerImage("/img/hometaxi.png", new google.maps.Size(32, 40), new google.maps.Point(0, 0), new google.maps.Point(5, 5))
+                            });
+                        }
+                    });
+
+                }
+            },
+            error: function(data) {
+                alert('error');
+            }
+        });
+
+    }
 </script>

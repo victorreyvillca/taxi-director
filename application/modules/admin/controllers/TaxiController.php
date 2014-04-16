@@ -628,11 +628,30 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		return $filters;
 	}
 
-    /**
-     * Returns the genders of a person
-     * @return array
-     */
-    private function getGenders() {
-        return array(Model\Person::SEX_MALE => _('Masculino'), Model\Person::SEX_FEMALE => _('Femenino'));
+
+    public function drawTaxisAction() {
+    	$this->_helper->viewRenderer->setNoRender(TRUE);
+
+    	$status = $this->_getParam('status', -1);
+
+    	$backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
+
+    	$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+    	$taxis = $taxiRepo->findByStatus(Taxi::WITHOUT_CAREER);
+
+    	$data = array();
+    	foreach ($taxis as $taxi) {
+    		$route = $backtrackRepo->findLastPositionByTaxi($taxi);
+    		if ($route != NULL) {
+    			$row = array();
+    			$row['latitud'] = $route->getLatitud();
+    			$row['longitud'] = $route->getLongitud();
+    			$data[] = $row;;
+    		}
+    	}
+
+    	$this->stdResponse = new stdClass();
+    	$this->stdResponse = $data;
+    	$this->_helper->json($this->stdResponse);
     }
 }
