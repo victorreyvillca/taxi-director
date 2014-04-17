@@ -1,0 +1,4 @@
+-- #timestamp <20140417094100>
+
+ALTER TABLE `tblTaxi`
+	ADD COLUMN `number`		INT(11)		NOT NULL DEFAULT 0;

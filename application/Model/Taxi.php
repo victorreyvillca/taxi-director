@@ -62,6 +62,12 @@ class Taxi extends DomainObject {
 
     /**
      * @Column(type="integer")
+     * @var boolean
+     */
+    private $active;
+
+    /**
+     * @Column(type="integer")
      * @var int
      */
     private $pictureId;
@@ -207,6 +213,22 @@ class Taxi extends DomainObject {
 	 */
 	public function setNumber($number) {
 		$this->number = $number;
+		return $this;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getActive() {
+		return $this->active;
+	}
+
+	/**
+	 * @param boolean $active
+	 * @return Taxi
+	 */
+	public function setActive($active) {
+		$this->active = $active;
 		return $this;
 	}
 }

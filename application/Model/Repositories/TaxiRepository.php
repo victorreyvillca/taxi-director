@@ -144,15 +144,15 @@ class TaxiRepository extends EntityRepository {
      * @return array
      */
     public function findByStatusArrayNumber($status) {
-        $items = $this->findBy(array('state' => TRUE, 'status' => $status));
+    	$items = $this->findBy(array('state' => TRUE, 'status' => $status));
 
-        $itemArray = array();
-        $itemArray[-1] = _('--Seleccione--');
-        foreach ($items as $item) {
-            $itemArray[$item->getId()] = $item->getNumber();
-        }
+    	$itemArray = array();
+    	$itemArray[-1] = _('--Seleccione--');
+    	foreach ($items as $item) {
+    		$itemArray[$item->getId()] = $item->getNumber();
+    	}
 
-        return $itemArray;
+    	return $itemArray;
     }
 
     /**
@@ -161,8 +161,8 @@ class TaxiRepository extends EntityRepository {
      * @return boolean
      */
     public function verifyExistNumber($number) {
-        $object = $this->findOneBy(array('number' => $number, 'state' => TRUE));
-        return $object != NULL? TRUE : FALSE;
+    	$object = $this->findOneBy(array('number' => $number, 'state' => TRUE));
+    	return $object != NULL? TRUE : FALSE;
     }
 
     /**
@@ -171,7 +171,7 @@ class TaxiRepository extends EntityRepository {
      * @param int $number
      */
     public function verifyExistIdAndNumber($id, $number) {
-        $object = $this->findOneBy(array('id' => $id, 'number' => $number, 'state' => TRUE));
-        return $object != NULL? TRUE : FALSE;
+    	$object = $this->findOneBy(array('id' => $id, 'number' => $number, 'state' => TRUE));
+    	return $object != NULL? TRUE : FALSE;
     }
 }
