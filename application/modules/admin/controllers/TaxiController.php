@@ -51,7 +51,16 @@ class Admin_TaxiController extends Dis_Controller_Action {
      * @access public
      */
     public function withoutcareerAction() {
+        $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+        $taxis = $taxiRepo->findByStatus(Taxi::WITHOUT_CAREER);
+        foreach ($taxis as $taxiObjetc) {
+            $taxiObjetc
+                ->setChanged(new DateTime('now'))
+                ->setActive(FALSE);
 
+            $this->_entityManager->persist($taxiObjetc);
+            $this->_entityManager->flush();
+        }
     }
 
     /**
@@ -650,6 +659,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
                 $row['latitud'] = $route->getLatitud();
                 $row['longitud'] = $route->getLongitud();
                 $row['name'] = sprintf('Movil %d', $taxi->getNumber());
+                $row['active'] = $taxi->getActive();
                 $data[] = $row;
             }
         }
@@ -675,9 +685,29 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
         $data = NULL;
         if ($route != NULL) {
+            $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+            $taxis = $taxiRepo->findByStatus(Taxi::WITHOUT_CAREER);
+            foreach ($taxis as $taxiObjetc) {
+                $taxiObjetc
+                    ->setChanged(new DateTime('now'))
+                    ->setActive(FALSE);
+
+                $this->_entityManager->persist($taxiObjetc);
+                $this->_entityManager->flush();
+            }
+
+            $taxi
+                ->setChanged(new DateTime('now'))
+                ->setActive(TRUE);
+
+            $this->_entityManager->persist($taxi);
+            $this->_entityManager->flush();
+
             $data = array();
             $data['latitud'] = $route->getLatitud();
             $data['longitud'] = $route->getLongitud();
+            $data['name'] = sprintf('Movil %d', $taxi->getNumber());
+            $data['active'] = (int)$taxi->getActive();
         }
 
         $this->stdResponse = new stdClass();

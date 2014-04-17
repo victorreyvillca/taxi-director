@@ -48,7 +48,7 @@ table.zebralist > tbody > tr > td {
 		'<?php echo $this->translate('Sin Carrera')?>');
 	taxi.setHeaders(headers);
 	// configuration of widgets
-	taxi.configureTable('#tblTaxi', true);
+	taxi.configureTable2('#tblTaxi', true);
 
 	// CRUD
 	taxi.clickToAdd('#create-taxi');
@@ -71,7 +71,7 @@ table.zebralist > tbody > tr > td {
 
 
 		var control = setInterval(function(){myTimer()},1000);
-        var painter = setInterval(function(){paintTimer()},5000);
+        var painter = setInterval(function(){paintTimer()},4000);
 
 
 //         google.maps.event.addListener(map, 'center_changed', function() {
@@ -97,7 +97,7 @@ table.zebralist > tbody > tr > td {
 	}
 
 	// Add a marker to the map and push to the array.
-	function addMarker(location, title) {
+	function addMarker(location, title, active) {
 // 		http://maps.google.com/mapfiles/ms/icons/blue-dot.png
 // 		    http://maps.google.com/mapfiles/ms/icons/red-dot.png
 // 			http://maps.google.com/mapfiles/ms/icons/purple-dot.png
@@ -112,6 +112,9 @@ table.zebralist > tbody > tr > td {
 //	    icon: new google.maps.MarkerImage("/img/hometaxi.png", new google.maps.Size(32, 40), new google.maps.Point(0, 0), new google.maps.Point(5, 5))
 	    icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
 	    });
+	    if (active == 1) {
+	    	marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+	    }
 	    markers.push(marker);
 	}
 
@@ -167,14 +170,14 @@ table.zebralist > tbody > tr > td {
                         for (var i = 0; i < data.length; i++) {
                             var item = data[i];
                             var position = new google.maps.LatLng(parseFloat(item.latitud), parseFloat(item.longitud));
-                            addMarker(position, item.name);
+                            addMarker(position, item.name, item.active);
                             //map.panTo(position);
                             }
                     });
                 }
             },
             error: function(data) {
-                alert('error');
+                console.log('error');
             }
         });
     }
@@ -190,12 +193,13 @@ table.zebralist > tbody > tr > td {
                 if (data !== null) {
                     var position = new google.maps.LatLng(parseFloat(data.latitud), parseFloat(data.longitud));
                     //map.panTo(position);
-                    map.setZoom(20);
+                    //map.setZoom(20);
                     map.setCenter(position);
+                    addMarker(position, data.name, data.active);
                 }
             },
             error: function(data) {
-                alert('error');
+            	console.log('error');
             }
         });
     }

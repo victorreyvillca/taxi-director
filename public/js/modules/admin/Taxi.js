@@ -95,6 +95,33 @@ com.em.Taxi.prototype = {
 				"sUrl": "/js/lib/jquery-datatables/languages/dataTables.spanish.txt"
 			},
 			"fnDrawCallback": function() {
+				clickToUpdate('#tblTaxi a[id^=update-taxi-]');
+			},
+
+			"fnServerData": function (sSource, aoData, fnCallback ) {
+				$.getJSON(sSource, aoData, function (json) {
+					fnCallback(json);
+				});
+			}
+		});
+		$(selector).width("100%");
+	}},
+
+	configureTable2: function(selector, pdestroy) { with (this) {
+		table = $(selector).dataTable({
+			"bProcessing"   : true,
+			"bFilter"       : false,
+			"bSort"         : false,
+			"bInfo"         : false, 
+			"bLengthChange" : false,
+			"bServerSide"   : true,
+			"sAjaxSource"   : url.toTable,
+			"aoColumns"     : getColumns2(),
+//			"sPaginationType" : "full_numbers",
+			"oLanguage": {
+				"sUrl": "/js/lib/jquery-datatables/languages/dataTables.spanish.txt"
+			},
+			"fnDrawCallback": function() {
 				//clickToShowTaxi('#tblTaxi a[id^=update-taxi-]');
 			},
 
@@ -119,7 +146,22 @@ com.em.Taxi.prototype = {
 			"sWidth": "15%",
 			"bSercheable": "true",
 			fnRender : function (oObj){
-				//return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
+				return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
+				//return '<a id="update-taxi-'+oObj.aData[0]+'" href="#" onclick="centerTaxi('+oObj.aData[0]+');return false;">'+oObj.aData[1]+'</a>';
+				}
+			});
+		return columns;
+	}},
+
+	getColumns2: function() {with (this) {
+		var columns = new Array;
+		//Sets every element of the table headers
+		columns.push({bVisible:false});
+		columns.push({
+			"sWidth": "15%",
+			"bSercheable": "true",
+			fnRender : function (oObj){
+//				return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
 				return '<a id="update-taxi-'+oObj.aData[0]+'" href="#" onclick="centerTaxi('+oObj.aData[0]+');return false;">'+oObj.aData[1]+'</a>';
 				}
 			});
