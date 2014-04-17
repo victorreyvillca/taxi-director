@@ -95,18 +95,10 @@ com.em.Taxi.prototype = {
 				"sUrl": "/js/lib/jquery-datatables/languages/dataTables.spanish.txt"
 			},
 			"fnDrawCallback": function() {
-				clickToUpdate('#tblTaxi a[id^=update-taxi-]');
+				//clickToShowTaxi('#tblTaxi a[id^=update-taxi-]');
 			},
 
 			"fnServerData": function (sSource, aoData, fnCallback ) {
-				//applying filter_name
-//				var position = getPosition(aoData, 'filter_name');
-//
-//				if (position == -1)
-//					aoData.push({"name": "filter_name","value": $('#nameFilter').attr('value')});
-//				else
-//					aoData[position].value=$('#nameFilter').attr('value');
-
 				$.getJSON(sSource, aoData, function (json) {
 					fnCallback(json);
 				});
@@ -127,7 +119,8 @@ com.em.Taxi.prototype = {
 			"sWidth": "15%",
 			"bSercheable": "true",
 			fnRender : function (oObj){
-				return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
+				//return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
+				return '<a id="update-taxi-'+oObj.aData[0]+'" href="#" onclick="centerTaxi('+oObj.aData[0]+');return false;">'+oObj.aData[1]+'</a>';
 				}
 			});
 		return columns;
@@ -254,6 +247,46 @@ com.em.Taxi.prototype = {
 				error: function(jqXHR, textStatus, errorThrown) {
 					dialogForm.dialog('close');
 					alert.flashError(errorThrown,{header: com.em.Alert.ERROR});
+				}
+			});
+		});
+	}},
+
+	clickToShowTaxi: function(selector) {with (this) {
+		$(selector).bind('click',function(event) {
+			
+			//event.preventDefault();
+			// Begins to get data
+			var action = $(this).attr('href');
+			console.log(action);
+			// Sends request by ajax
+			$.ajax({
+				url: action,
+				type: "POST",
+				dataType: 'json',
+				beforeSend: function(XMLHttpRequest) {
+					processingDisplay(true);
+				},
+
+				success: function(data, textStatus, XMLHttpRequest) {
+					if (data !== null) {
+						console.log(data);
+//	                    deleteMarkers();
+//	                    $(data).each(function() {
+//	                        for (var i = 0; i < data.length; i++) {
+//	                            var item = data[i];
+//	                            var position = new google.maps.LatLng(parseFloat(item.latitud), parseFloat(item.longitud));
+//	                            addMarker(position, item.name);
+//	                            //map.panTo(position);
+//	                            }
+//	                    });
+	                }
+				},
+
+
+
+				error: function(data, textStatus, errorThrown) {
+					console.log(data);
 				}
 			});
 		});

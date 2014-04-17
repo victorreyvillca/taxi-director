@@ -628,30 +628,60 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		return $filters;
 	}
 
+    /**
+	 * Outputs an XHR response containing all positions the taxis.
+	 * @xhrParam int status
+     * @access public
+     */
+    public function dsPositionTaxisAction() {
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+        $status = $this->_getParam('status', -1);
 
-    public function drawTaxisAction() {
-    	$this->_helper->viewRenderer->setNoRender(TRUE);
+        $backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
 
-    	$status = $this->_getParam('status', -1);
+        $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+        $taxis = $taxiRepo->findByStatus(Taxi::WITHOUT_CAREER);
 
-    	$backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
+        $data = array();
+        foreach ($taxis as $taxi) {
+        $route = $backtrackRepo->findLastPositionByTaxi($taxi);
+            if ($route != NULL) {
+                $row = array();
+                $row['latitud'] = $route->getLatitud();
+                $row['longitud'] = $route->getLongitud();
+                $row['name'] = sprintf('Movil %d', $taxi->getNumber());
+                $data[] = $row;
+            }
+        }
 
-    	$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
-    	$taxis = $taxiRepo->findByStatus(Taxi::WITHOUT_CAREER);
+        $this->stdResponse = new stdClass();
+        $this->stdResponse = $data;
+        $this->_helper->json($this->stdResponse);
+    }
 
-    	$data = array();
-    	foreach ($taxis as $taxi) {
-    		$route = $backtrackRepo->findLastPositionByTaxi($taxi);
-    		if ($route != NULL) {
-    			$row = array();
-    			$row['latitud'] = $route->getLatitud();
-    			$row['longitud'] = $route->getLongitud();
-    			$data[] = $row;;
-    		}
-    	}
+    /**
+     * Outputs an XHR response the position the taxi active.
+     * @xhrParam int taxiId
+     * @access public
+     */
+    public function dsPositionTaxiAction() {
+        $this->_helper->viewRenderer->setNoRender(TRUE);
 
-    	$this->stdResponse = new stdClass();
-    	$this->stdResponse = $data;
-    	$this->_helper->json($this->stdResponse);
+        $taxiId = $this->_getParam('taxiId', 0);
+        $taxi = $this->_entityManager->find('Model\Taxi', $taxiId);
+
+        $backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
+        $route = $backtrackRepo->findLastPositionByTaxi($taxi);
+
+        $data = NULL;
+        if ($route != NULL) {
+            $data = array();
+            $data['latitud'] = $route->getLatitud();
+            $data['longitud'] = $route->getLongitud();
+        }
+
+        $this->stdResponse = new stdClass();
+        $this->stdResponse = $data;
+        $this->_helper->json($this->stdResponse);
     }
 }

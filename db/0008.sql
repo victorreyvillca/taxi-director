@@ -42,8 +42,11 @@ INSERT INTO `tblBacktrack` ( `name`, `description`, `created`, `changed`, `creat
 INSERT INTO `rutas` (`rutId`, `linId`, `rutLatitud`, `rutLongitud`, `rutOrden`) VALUES
 
 
+INSERT INTO `tblbacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`created`,`changed`,`createdBy`,`changedBy`,`state`) VALUES 
+	(1, '-17.795920', '-63.118440', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1);
 
-
+	INSERT INTO `tblbacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`created`,`changed`,`createdBy`,`changedBy`,`state`) VALUES 
+	(1, '-17.838500', '-63.118100', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1);
 
 (17676, 2, '-17.795920', '-63.118440', 24),
 (17677, 2, '-17.795460', '-63.118440', 25),
