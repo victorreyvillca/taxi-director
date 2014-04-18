@@ -119,13 +119,6 @@ class Admin_IndexController extends Dis_Controller_Action {
 // 	    $address->setName('fdafda')->setPassenger($pa)->setLabel($label)->setCreated(new DateTime('now'))->setState(TRUE);
 // 	    $this->_entityManager->persist($address);
 // 	    $this->_entityManager->flush();
-
-
-	    $taxi = $this->_entityManager->find('Model\Taxi', 1);
-	    $routeRepo = $this->_entityManager->getRepository('Model\Backtrack');
-	    $routes = $routeRepo->findByTaxi($taxi);
-	    echo count($routes);
-
 	}
 
 	public function actionViewdraw($id) {
