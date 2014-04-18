@@ -25,11 +25,29 @@ class MovilController extends Dis_Controller_Action {
         	switch ($tag) {
         		case 'registrar':
         			//*--- recepcion de datos
-        			$tel = $_POST['tel'];
+        			$phone = $_POST['tel'];
+        			$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+                    if ($taxiRepo->verifyExistPhone($phone)) {
+                        $codeactivation = self::generateKey();
+                        $codeuser = $key = substr(str_shuffle(str_repeat('0123456789', 2)), 0, 5);
+
+                        $response['success'] = 'OK';//vacio en caso de error
+                        $response['codigoactivacion'] = $codeactivation;
+                        $response['codigouser'] = $codeuser;
+
+                        $taxi = $taxiRepo->findByPhone($phone);
+
+                        $taxi
+                            ->setCodeactivation($codeactivation)
+                            ->setCodeuser($codeuser)
+                        ;
+
+                        $this->_entityManager->persist($taxi);
+                        $this->_entityManager->flush();
+        			} else {
+        			    $response['success'] = '';//vacio en caso de error
+        			}
         			//*--- envio de datos
-        			$response["success"] = "Hola Adan estoy en Movil Controller";//vacio en caso de error
-        			$response["codigoactivacion"] = "adsvsdfsvsdvdsvsersdcsSFSbsdfs";
-        			$response["codigouser"] = "98789";
 
         			$this->_helper->json($response);
 
@@ -74,5 +92,25 @@ class MovilController extends Dis_Controller_Action {
         			break;
         	}
         }
+    }
+
+    /**
+     * This method generates the key to request password, and returns if it is not duplicate
+     * @return string (random key)
+     */
+    public static function generateKey() {
+    	$sw = TRUE;
+    	do {
+    		$key = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', 4)), 0, 32);
+    		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+    		$taxi = $taxiRepo->findByCodeactivation($key);
+
+            if ($taxi == NULL) {
+    			$sw = FALSE;
+    			break;
+    		}
+    	} while ($sw);
+
+    	return $key;
     }
 }

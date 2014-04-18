@@ -3,6 +3,7 @@
 namespace Model\Repositories;
 
 use Doctrine\ORM\EntityRepository;
+use Model\Taxi;
 
 /**
  * TaxiRepository
@@ -139,6 +140,24 @@ class TaxiRepository extends EntityRepository {
     }
 
     /**
+     * Returns Taxi model by codeactivation
+     * @param string $codeactivation
+     * @return Taxi
+     */
+    public function findByCodeactivation($codeactivation) {
+        return $this->findOneBy(array('codeactivation' => $codeactivation, 'state' => TRUE));
+    }
+
+    /**
+     * Returns Taxi model by phone
+     * @param string $phone
+     * @return Taxi
+     */
+    public function findByPhone($phone) {
+    	return $this->findOneBy(array('phone' => $phone, 'state' => TRUE));;
+    }
+
+    /**
      * Returns the taxi models by status
      * @param int $status
      * @return array
@@ -172,6 +191,16 @@ class TaxiRepository extends EntityRepository {
      */
     public function verifyExistIdAndNumber($id, $number) {
     	$object = $this->findOneBy(array('id' => $id, 'number' => $number, 'state' => TRUE));
+    	return $object != NULL? TRUE : FALSE;
+    }
+
+    /**
+     * Verifies if the phone already exist it.
+     * @param string $phone
+     * @return boolean
+     */
+    public function verifyExistPhone($phone) {
+    	$object = $this->findOneBy(array('phone' => $phone, 'state' => TRUE));
     	return $object != NULL? TRUE : FALSE;
     }
 }
