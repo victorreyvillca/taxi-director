@@ -98,6 +98,9 @@ class Admin_TaxiController extends Dis_Controller_Action {
     		    if (!$taxiRepo->verifyExistNumber((int)$formData['number'])) {
                     $taxi = new Taxi();
                     $taxi
+                        ->setPhone('79050606')
+                        ->setCodeactivation('abc123')
+                        ->setCodeuser('123465')
                         ->setActive(FALSE)
                         ->setNumber($formData['number'])
                         ->setName(_('Movil'))
@@ -714,5 +717,10 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $this->stdResponse = new stdClass();
         $this->stdResponse = $data;
         $this->_helper->json($this->stdResponse);
+    }
+
+    public function isRegister() {
+        $taxi = $this->_entityManager->find('Model\Taxi', 1);
+        return $taxi;
     }
 }

@@ -14,74 +14,66 @@ class IndexController extends Dis_Controller_Action {
     }
 
     public function indexAction() {
-//         $person = new Person();
-//         $person
-//             ->setSex(1)
-//             ->setState(TRUE)
-//             ->setCreated(new DateTime('now'))
-//             ->setPhonework('fdsfds')
-//             ->setPhonemobil(456465)
-//             ->setPhone('fdafda')
-//             ->setDateOfBirth(new DateTime('now'))
-//             ->setIdentityCard(465465)
-//             ->setLastName('fdsfds')
-//             ->setFirstName('vvdf');
+        if (isset($_POST['tag']) && $_POST['tag'] != '') {
+        	// get tag
+        	$tag = $_POST['tag'];
 
-//         $this->_entityManager->persist($person);
-//         $this->_entityManager->flush();
+        	// response Array
+        	$response = array("success" => "OK");
 
-//         $passenger = new Passenger();
-//         $passenger
-//             ->setAddress('addres')
-//             ->setDescription('fdafda')
-//             ->setSex(1)
-//             ->setState(TRUE)
-//             ->setCreated(new DateTime('now'))
-//             ->setPhonework('fdsfds')
-//             ->setPhonemobil(456465)
-//             ->setPhone('fdafda')
-//             ->setDateOfBirth(new DateTime('now'))
-//             ->setIdentityCard(465465)
-//             ->setLastName('fdsfds')
-//             ->setFirstName('vvdf');
+        	switch ($tag) {
+        		case 'registrar':
+        			//*--- recepcion de datos
+        			$tel = $_POST['tel'];
+        			//*--- envio de datos
+        			$response["success"] = "OK";//vacio en caso de error
+        			$response["codigoactivacion"] = "adsvsdfsvsdvdsvsersdcsSFSbsdfs";
+        			$response["codigouser"] = "98789";
 
-//         $this->_entityManager->persist($passenger);
-//         $this->_entityManager->flush();
+        			echo json_encode($response);
+        			break;
+        		case 'estaactivado':
+        			//*--- recepcion de datos
+        			$tel = $_POST['tel'];
+        			$codigoactivacion = $_POST['codigoactivacion'];
+        			//*--- envio de datos
+        			$response["success"] = "OK";
+        			echo json_encode($response);
+        			break;
+        		case 'envioposicion':
+        			//*--- recepcion de datos
+        			$tel = $_POST['tel'];
+        			$codigoactivacion = $_POST['codigoactivacion'];
+        			$lat = $_POST['lat'];
+        			$long = $_POST['long'];
+        			$tmp = $_POST['tmp'];
+        			$estado = $_POST['estado'];
 
-//         $driver = new Driver();
-//         $driver
-//         ->setAddress('addres')
-// //         ->setDescription('fdafda')
-//         ->setSex(1)
-//         ->setState(TRUE)
-//         ->setCreated(new DateTime('now'))
-//         ->setPhonework('fdsfds')
-//         ->setPhonemobil(456465)
-//         ->setPhone('fdafda')
-//         ->setDateOfBirth(new DateTime('now'))
-//         ->setIdentityCard(465465)
-//         ->setLastName('fdsfds')
-//         ->setFirstName('vvdf');
+        			//*--- envio de datos
+        			$response["success"] = "OK";//vacio en caso de error
+        			$response["peticion"] = "OK"; //si hay una petición para asignar carrera, envía "OK" y esto sólo ocurre cuando el estado enviado por el taxi, sea libre (0). En este momento el taxi deberá cambiar a estado ocupado. En otro caso se envía vacío "". Recordar que la aplicación android debe cambiar de libre a ocupado e, inmediatamente, informar su cambio de estado. Ver el diagráma de estados mostrado arriba.
+        			echo json_encode($response);
+        			break;
+        		case 'cambioestado':
+        			//*--- recepcion de datos
+        			$tel = $_POST['tel'];
+        			$codigoactivacion = $_POST['codigoactivacion'];
+        			$estado = $_POST['estado'];
 
-//         $this->_entityManager->persist($driver);
-//         $this->_entityManager->flush();
+        			//*--- envio de datos
+        			$response["success"] = "OK";//vacio en caso de error
+        			$response["peticion"] = "OK"; //si hay una petición para asignar carrera, envía "OK" y esto sólo ocurre cuando el estado enviado por el taxi, sea libre (0). En este momento el taxi deberá cambiar a estado ocupado. En otro caso se envía vacío "". Recordar que la aplicación android debe cambiar de libre a ocupado e, inmediatamente, informar su cambio de estado. Ver el diagráma de estados mostrado arriba.
 
-//         $role = new Role();
-//         $role->setName('dadda')->setDescription('dad')->setState(TRUE)->setCreated(new DateTime('now'));
-//         $this->_entityManager->persist($role);
-//         $this->_entityManager->flush();
 
-//         $account = new Account();
-//         $account
-//         ->setAccountType(1)
-//         ->setUsername('vvf')->setPassword('dfadf')->setEmail('dada')->setRole('dsad')->setState(TRUE)->setCreated(new DateTime('now'));
+        			echo json_encode($response);
+        			break;
+        	}
+        }
+    }
 
-//         $this->_entityManager->persist($account);
-//         $this->_entityManager->flush();
 
-//         $taxi = new Taxi();
-//         $taxi->setName('movil 2')->setMark('dfafd')->setPlaque('fdafd')->setModel(4564)->setColor('white')->setState(TRUE)->setCreated(new DateTime('now'));
-//         $this->_entityManager->persist($taxi);
-//         $this->_entityManager->flush();
+    public function getTaxi() {
+        $taxi = $this->_entityManager->find('Model\Taxi', 1);
+        return  $taxi;
     }
 }

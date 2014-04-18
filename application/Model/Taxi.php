@@ -67,6 +67,24 @@ class Taxi extends DomainObject {
     private $active;
 
     /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $phone;
+
+    /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $codeactivation;
+
+    /**
+     * @Column(type="string")
+     * @var string
+     */
+    private $codeuser;
+
+    /**
      * @Column(type="integer")
      * @var int
      */
@@ -229,6 +247,54 @@ class Taxi extends DomainObject {
 	 */
 	public function setActive($active) {
 		$this->active = $active;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPhone() {
+		return $this->phone;
+	}
+
+	/**
+	 * @param string $phone
+	 * @return Taxi
+	 */
+	public function setPhone($phone) {
+		$this->phone = $phone;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCodeactivation() {
+		return $this->codeactivation;
+	}
+
+	/**
+	 * @param string $codeactivation
+	 * @return Taxi
+	 */
+	public function setCodeactivation($codeactivation) {
+		$this->codeactivation = $codeactivation;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCodeuser() {
+		return $this->codeuser;
+	}
+
+	/**
+	 * @param string $codeuser
+	 * @return Taxi
+	 */
+	public function setCodeuser($codeuser) {
+		$this->codeuser = $codeuser;
 		return $this;
 	}
 }

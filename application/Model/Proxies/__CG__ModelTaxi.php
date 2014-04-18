@@ -64,10 +64,10 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+            return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'phone', 'codeactivation', 'codeuser', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
         }
 
-        return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+        return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'phone', 'codeactivation', 'codeuser', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
     }
 
     /**
@@ -391,6 +391,72 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', array($active));
 
         return parent::setActive($active);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPhone()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', array());
+
+        return parent::getPhone();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPhone($phone)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', array($phone));
+
+        return parent::setPhone($phone);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCodeactivation()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodeactivation', array());
+
+        return parent::getCodeactivation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCodeactivation($codeactivation)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCodeactivation', array($codeactivation));
+
+        return parent::setCodeactivation($codeactivation);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCodeuser()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodeuser', array());
+
+        return parent::getCodeuser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCodeuser($codeuser)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCodeuser', array($codeuser));
+
+        return parent::setCodeuser($codeuser);
     }
 
     /**
