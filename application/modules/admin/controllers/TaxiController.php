@@ -98,6 +98,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
     		    if (!$taxiRepo->verifyExistNumber((int)$formData['number'])) {
                     $taxi = new Taxi();
                     $taxi
+                        ->setActive(FALSE)
                         ->setNumber($formData['number'])
                         ->setName(_('Movil'))
                         ->setStatus(Taxi::WITHOUT_CAREER)
