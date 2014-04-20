@@ -56,7 +56,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
         foreach ($taxis as $taxiObjetc) {
             $taxiObjetc
                 ->setChanged(new DateTime('now'))
-                ->setActive(FALSE);
+                ->setActiveimage(FALSE);
 
             $this->_entityManager->persist($taxiObjetc);
             $this->_entityManager->flush();
@@ -98,7 +98,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
     		    if (!$taxiRepo->verifyExistNumber((int)$formData['number'])) {
                     $taxi = new Taxi();
                     $taxi
-                        ->setActiveimage(TRUE)
+                        ->setActiveimage(FALSE)
                         ->setPhone('79050606')
                         ->setCodeactivation('abc123')
                         ->setCodeuser('123465')
@@ -695,7 +695,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
             foreach ($taxis as $taxiObjetc) {
                 $taxiObjetc
                     ->setChanged(new DateTime('now'))
-                    ->setActive(FALSE);
+                    ->setActiveimage(FALSE);
 
                 $this->_entityManager->persist($taxiObjetc);
                 $this->_entityManager->flush();
@@ -703,7 +703,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
             $taxi
                 ->setChanged(new DateTime('now'))
-                ->setActive(TRUE);
+                ->setActiveimage(TRUE);
 
             $this->_entityManager->persist($taxi);
             $this->_entityManager->flush();
