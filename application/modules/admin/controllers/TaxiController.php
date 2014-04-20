@@ -664,7 +664,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
                 $row['latitud'] = $route->getLatitud();
                 $row['longitud'] = $route->getLongitud();
                 $row['name'] = sprintf('Movil %d', $taxi->getNumber());
-                $row['active'] = $taxi->getActive();
+                $row['active'] = $taxi->getActiveimage();
                 $data[] = $row;
             }
         }
@@ -712,7 +712,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
             $data['latitud'] = $route->getLatitud();
             $data['longitud'] = $route->getLongitud();
             $data['name'] = sprintf('Movil %d', $taxi->getNumber());
-            $data['active'] = (int)$taxi->getActive();
+            $data['active'] = (int)$taxi->getActiveimage();
         }
 
         $this->stdResponse = new stdClass();
