@@ -202,4 +202,14 @@ class TaxiRepository extends EntityRepository {
     	$object = $this->findOneBy(array('phone' => $phone, 'state' => TRUE));
     	return $object != NULL? TRUE : FALSE;
     }
+
+    /**
+     * Verifies if the id and number already exist it.
+     * @param int $id
+     * @param string $phone
+     */
+    public function verifyExistIdAndPhone($id, $phone) {
+    	$object = $this->findOneBy(array('id' => $id, 'phone' => $phone, 'state' => TRUE));
+    	return $object != NULL? TRUE : FALSE;
+    }
 }

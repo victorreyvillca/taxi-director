@@ -2,7 +2,7 @@
     outline: none;
 }
 body{
-	background: url(../image/login/loginbg.png) #002D55 repeat-x;
+	background: url(../image/login/loginnew.png) #002D55 repeat-x;
 	font-family: Arial;
 	margin:0px;
 }
@@ -10,7 +10,7 @@ body{
 #wrap{
 	background: url(../image/login/bg_pattern.png) no-repeat 50% 50%;
 	min-width: 500px;
-	min-height: 500px;	
+	min-height: 500px;
 }
 
 #content{
@@ -22,9 +22,9 @@ body{
 
 #logo{
 	width: 450px;
-	height: 44px;
+	height: 235px;
 	margin: 0 auto;
-	background: url(../image/login/loginlogo.png) no-repeat center center;
+	background: url(../image/login/logintaxi.png) no-repeat center center;
 }
 
 #loginbox{

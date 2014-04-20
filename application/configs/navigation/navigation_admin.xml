@@ -12,7 +12,7 @@
 			</params>
 			<pages>
 				<about>
-					<label>Acerca de</label>
+					<label>Inicio</label>
 					<module>admin</module>
 					<controller>Index</controller>
 					<action>index</action>

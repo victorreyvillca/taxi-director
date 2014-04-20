@@ -130,6 +130,17 @@ class Dis_Form_Taxi extends Zend_Form {
 		        )
 			))
 
+			->addElement('Text', 'phone', array(
+				'label' => _('Telefono'),
+				'required' => TRUE,
+				'filters' => array(
+                    array('StringTrim')
+				),
+				'validators' => array(
+					array('Digits', FALSE)
+				)
+			))
+
 			->addElement('Text', 'mark', array(
 				'label' => _('Marca'),
 //                 'tabIndex' => $this->tabIndex++,

@@ -96,94 +96,99 @@ class Admin_TaxiController extends Dis_Controller_Action {
                 $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
 
     		    if (!$taxiRepo->verifyExistNumber((int)$formData['number'])) {
-                    $taxi = new Taxi();
-                    $taxi
-                        ->setActiveimage(FALSE)
-                        ->setPhone('79050606')
-                        ->setCodeactivation('abc123')
-                        ->setCodeuser('123465')
-                        ->setActive(FALSE)
-                        ->setNumber($formData['number'])
-                        ->setName(_('Movil'))
-                        ->setStatus(Taxi::WITHOUT_CAREER)
-                        ->setMark($formData['mark'])
-                        ->setPlaque($formData['plaque'])
-                        ->setType($formData['typeMark'])
-                        ->setModel((int)$formData['model'])
-                        ->setColor($formData['color'])
-                        ->setCreated(new DateTime('now'))
-                        ->setState(TRUE)
-        			;
+    		        if (!$taxiRepo->verifyExistPhone($formData['phone'])) {
+                        $taxi = new Taxi();
+                        $taxi
+                            ->setActiveimage(FALSE)
+                            ->setPhone($formData['phone'])
+                            ->setCodeactivation('abc123')
+                            ->setCodeuser('123465')
+                            ->setActive(FALSE)
+                            ->setNumber($formData['number'])
+                            ->setName(_('Movil'))
+                            ->setStatus(Taxi::WITHOUT_CAREER)
+                            ->setMark($formData['mark'])
+                            ->setPlaque($formData['plaque'])
+                            ->setType($formData['typeMark'])
+                            ->setModel((int)$formData['model'])
+                            ->setColor($formData['color'])
+                            ->setCreated(new DateTime('now'))
+                            ->setState(TRUE)
+            			;
 
-        			if ($_FILES['filetaxi']['error'] !== UPLOAD_ERR_NO_FILE) {
-        				if ($_FILES['filetaxi']['error'] == UPLOAD_ERR_OK) {
-        					$fh = fopen($_FILES['filetaxi']['tmp_name'], 'r');
-        					$binary = fread($fh, filesize($_FILES['filetaxi']['tmp_name']));
-        					fclose($fh);
+            			if ($_FILES['filetaxi']['error'] !== UPLOAD_ERR_NO_FILE) {
+            				if ($_FILES['filetaxi']['error'] == UPLOAD_ERR_OK) {
+            					$fh = fopen($_FILES['filetaxi']['tmp_name'], 'r');
+            					$binary = fread($fh, filesize($_FILES['filetaxi']['tmp_name']));
+            					fclose($fh);
 
-        					$mimeType = $_FILES['filetaxi']['type'];
-        					$fileName = $_FILES['filetaxi']['name'];
+            					$mimeType = $_FILES['filetaxi']['type'];
+            					$fileName = $_FILES['filetaxi']['name'];
 
-        					$dataVaultMapper = new Dis_Model_DataVaultMapper();
-        					$dataVault = new Dis_Model_DataVault();
-        					$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
-        					$dataVaultMapper->save($dataVault);
+            					$dataVaultMapper = new Dis_Model_DataVaultMapper();
+            					$dataVault = new Dis_Model_DataVault();
+            					$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
+            					$dataVaultMapper->save($dataVault);
 
-        					$taxi->setPictureId($dataVault->getId());
-        				}
-        			}
+            					$taxi->setPictureId($dataVault->getId());
+            				}
+            			}
 
-        			$this->_entityManager->persist($taxi);
-        			$this->_entityManager->flush();
+            			$this->_entityManager->persist($taxi);
+            			$this->_entityManager->flush();
 
-        			$driver = new Driver();
-        			$driver
-        			     ->setTaxi($taxi)
-                        ->setPhone('132')
-                        ->setPhonemobil(123)
-                        ->setDateOfBirth(new DateTime('now'))
-                        ->setAddress($formData['address'])
-                        ->setSex(1)
-                        ->setIdentityCard($formData['ci'])
-                        ->setLastName($formData['lastName'])
-            			->setFirstName($formData['firstName'])
-            			->setCreated(new DateTime('now'))
-            			->setState(TRUE)
-        			;
+            			$driver = new Driver();
+            			$driver
+            			     ->setTaxi($taxi)
+                            ->setPhone('132')
+                            ->setPhonemobil(123)
+                            ->setDateOfBirth(new DateTime('now'))
+                            ->setAddress($formData['address'])
+                            ->setSex(1)
+                            ->setIdentityCard($formData['ci'])
+                            ->setLastName($formData['lastName'])
+                			->setFirstName($formData['firstName'])
+                			->setCreated(new DateTime('now'))
+                			->setState(TRUE)
+            			;
 
-        			if ($_FILES['filedriver']['error'] !== UPLOAD_ERR_NO_FILE) {
-        				if ($_FILES['filedriver']['error'] == UPLOAD_ERR_OK) {
-        					$fh = fopen($_FILES['filedriver']['tmp_name'], 'r');
-        					$binary = fread($fh, filesize($_FILES['filedriver']['tmp_name']));
-        					fclose($fh);
+            			if ($_FILES['filedriver']['error'] !== UPLOAD_ERR_NO_FILE) {
+            				if ($_FILES['filedriver']['error'] == UPLOAD_ERR_OK) {
+            					$fh = fopen($_FILES['filedriver']['tmp_name'], 'r');
+            					$binary = fread($fh, filesize($_FILES['filedriver']['tmp_name']));
+            					fclose($fh);
 
-        					$mimeType = $_FILES['filedriver']['type'];
-        					$fileName = $_FILES['filedriver']['name'];
+            					$mimeType = $_FILES['filedriver']['type'];
+            					$fileName = $_FILES['filedriver']['name'];
 
-        					$dataVaultMapper = new Dis_Model_DataVaultMapper();
-        					$dataVault = new Dis_Model_DataVault();
-        					$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
-        					$dataVaultMapper->save($dataVault);
+            					$dataVaultMapper = new Dis_Model_DataVaultMapper();
+            					$dataVault = new Dis_Model_DataVault();
+            					$dataVault->setFilename($fileName)->setMimeType($mimeType)->setBinary($binary);
+            					$dataVaultMapper->save($dataVault);
 
-        					$driver->setProfilePictureId($dataVault->getId());
-        				}
-        			}
+            					$driver->setProfilePictureId($dataVault->getId());
+            				}
+            			}
 
-        			$this->_entityManager->persist($driver);
-        			$this->_entityManager->flush();
+            			$this->_entityManager->persist($driver);
+            			$this->_entityManager->flush();
 
-        			$this->_helper->flashMessenger(array('success' => _('Taxi registrado')));
-        			$this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+            			$this->_helper->flashMessenger(array('success' => _('Taxi registrado')));
+            			$this->_helper->redirector('index', 'Taxi', 'admin', array());
+    		        } else {
+    		            $this->_helper->flashMessenger(array('error' => _('Ya existe Telefono registrado')));
+    		            $this->_helper->redirector('index', 'Taxi', 'admin', array());
+    		        }
     		    } else {
                     $this->_helper->flashMessenger(array('error' => _('Ya existe Taxi con ese Numero')));
-                    $this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+                    $this->_helper->redirector('index', 'Taxi', 'admin', array());
     		    }
     		} else {
     		    $this->_helper->flashMessenger(array('error' => _('Los datos no son validados')));
-    			$this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+    			$this->_helper->redirector('index', 'Taxi', 'admin', array());
     		}
     	} else {
-    		$this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+    		$this->_helper->redirector('index', 'Taxi', 'admin', array());
     	}
     }
 
@@ -202,6 +207,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
         if ($taxi != NULL) {
             $form->getElement('taxiId')->setValue($taxi->getId());
             $form->getElement('number')->setValue($taxi->getNumber());
+            $form->getElement('phone')->setValue($taxi->getPhone());
             $form->getElement('mark')->setValue($taxi->getMark());
             $form->getElement('plaque')->setValue($taxi->getPlaque());
             $form->getElement('typeMark')->setValue($taxi->getType());
@@ -268,8 +274,10 @@ class Admin_TaxiController extends Dis_Controller_Action {
                 if ($taxi != NULL) {
                     $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
                     if (!$taxiRepo->verifyExistNumber($formData['number']) || $taxiRepo->verifyExistIdAndNumber($id, $formData['number'])) {
+                        if (!$taxiRepo->verifyExistPhone($formData['phone']) || $taxiRepo->verifyExistIdAndPhone($id, $formData['phone'])) {
                         $taxi
                             ->setNumber($formData['number'])
+                            ->setPhone($formData['phone'])
                             ->setMark($formData['mark'])
                             ->setPlaque($formData['plaque'])
                             ->setType($formData['typeMark'])
@@ -349,21 +357,25 @@ class Admin_TaxiController extends Dis_Controller_Action {
                         $this->_entityManager->flush();
 
                         $this->_helper->flashMessenger(array('success' => _('Taxi editado')));
-                        $this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+                        $this->_helper->redirector('index', 'Taxi', 'admin', array());
+                        } else {
+                            $this->_helper->flashMessenger(array('error' => _('Ya existe El telefono registrado')));
+                            $this->_helper->redirector('index', 'Taxi', 'admin', array());
+                        }
                     } else {
                         $this->_helper->flashMessenger(array('error' => _('Ya existe Taxi con ese numero')));
-                        $this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+                        $this->_helper->redirector('index', 'Taxi', 'admin', array());
                     }
                 } else {
                     $this->_helper->flashMessenger(array('error' => _('Taxi no encontrado')));
-                    $this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+                    $this->_helper->redirector('index', 'Taxi', 'admin', array());
                 }
             } else {
                 $this->_helper->flashMessenger(array('error' => _('Error')));
-                $this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+                $this->_helper->redirector('index', 'Taxi', 'admin', array());
             }
         } else {
-            $this->_helper->redirector('index', 'Taxi', 'admin', array('type'=>'information'));
+            $this->_helper->redirector('index', 'Taxi', 'admin', array());
         }
     }
 

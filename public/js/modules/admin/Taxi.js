@@ -436,6 +436,11 @@ com.em.Taxi.prototype = {
 					required: true,
 					maxlength: 10
 				},
+				'phone':{
+					number: true,
+					required: true,
+					maxlength: 15
+				},
 				'mark':{
 					required: true,
 					maxlength: 45
