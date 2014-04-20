@@ -3,7 +3,6 @@
 namespace Model\Repositories;
 
 use Doctrine\ORM\EntityRepository;
-use Model\Taxi;
 
 /**
  * TaxiRepository
@@ -145,7 +144,7 @@ class TaxiRepository extends EntityRepository {
      * @return Taxi
      */
     public function findByCodeactivation($codeactivation) {
-        return $this->findOneBy(array('codeactivation' => $codeactivation, 'state' => TRUE));
+    	return $this->findOneBy(array('codeactivation' => $codeactivation, 'state' => TRUE));
     }
 
     /**

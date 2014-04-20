@@ -98,6 +98,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
     		    if (!$taxiRepo->verifyExistNumber((int)$formData['number'])) {
                     $taxi = new Taxi();
                     $taxi
+                        ->setActiveimage(TRUE)
                         ->setPhone('79050606')
                         ->setCodeactivation('abc123')
                         ->setCodeuser('123465')

@@ -64,10 +64,10 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'phone', 'codeactivation', 'codeuser', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+            return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'activeimage', 'phone', 'codeactivation', 'codeuser', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
         }
 
-        return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'phone', 'codeactivation', 'codeuser', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+        return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'activeimage', 'phone', 'codeactivation', 'codeuser', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
     }
 
     /**
@@ -391,6 +391,28 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', array($active));
 
         return parent::setActive($active);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getActiveimage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActiveimage', array());
+
+        return parent::getActiveimage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setActiveimage($activeimage)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActiveimage', array($activeimage));
+
+        return parent::setActiveimage($activeimage);
     }
 
     /**

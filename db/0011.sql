@@ -1,0 +1,4 @@
+-- #timestamp <20140420005100>
+
+ALTER TABLE `tblTaxi`
+	ADD COLUMN `activeimage`	BOOL	NOT NULL DEFAULT 0;
