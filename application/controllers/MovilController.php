@@ -28,12 +28,17 @@ class MovilController extends Dis_Controller_Action {
         			$phone = $_POST['tel'];
         			$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
                     if ($taxiRepo->verifyExistPhone($phone)) {
-                        $codeactivation = self::generateKey();
-                        $codeuser = $key = substr(str_shuffle(str_repeat('0123456789', 2)), 0, 5);
+//                         $codeactivation = "ccsadas12321";//self::generateKey();
+//                         $codeuser = "46512";//substr(str_shuffle(str_repeat('123456789', 2)), 0, 5);
 
-                        $response['success'] = 'OK';//vacio en caso de error
-                        $response['codigoactivacion'] = $codeactivation;
-                        $response['codigouser'] = $codeuser;
+//                         $codeactivation = substr(str_shuffle(str_repeat('123456789', 2)), 0, 5);
+                        $codeuser = substr(str_shuffle(str_repeat('123456789', 2)), 0, 5);
+//                         $codeactivation = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789', 4)), 0, 32);
+                        $codeactivation = $this->generateKey();
+
+                        $response["success"] = "OK";//vacio en caso de errorad
+                        $response["codigoactivacion"] = $codeactivation;
+                        $response["codigouser"] = $codeuser;
 
                         $taxi = $taxiRepo->findByPhone($phone);
 
@@ -45,7 +50,7 @@ class MovilController extends Dis_Controller_Action {
                         $this->_entityManager->persist($taxi);
                         $this->_entityManager->flush();
         			} else {
-        			    $response['success'] = '';//vacio en caso de error
+        			    $response["success"] = "";//vacio en caso de error
         			}
         			//*--- envio de datos
 
@@ -57,7 +62,7 @@ class MovilController extends Dis_Controller_Action {
         			$tel = $_POST['tel'];
         			$codigoactivacion = $_POST['codigoactivacion'];
         			//*--- envio de datos
-        			$response["success"] = "OK";
+        			$response["success"] = "";
 
         			$this->_helper->json($response);
 
@@ -98,10 +103,10 @@ class MovilController extends Dis_Controller_Action {
      * This method generates the key to request password, and returns if it is not duplicate
      * @return string (random key)
      */
-    public static function generateKey() {
+    public function generateKey() {
     	$sw = TRUE;
     	do {
-    		$key = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', 4)), 0, 32);
+    		$key = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789', 4)), 0, 32);
     		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
     		$taxi = $taxiRepo->findByCodeactivation($key);
 
