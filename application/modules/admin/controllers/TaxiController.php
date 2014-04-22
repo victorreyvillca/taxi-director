@@ -28,19 +28,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $formFilter = new Admin_Form_SearchFilter();
         $formFilter->getElement('nameFilter')->setLabel(_('Nombre del Movil'));
         $this->view->formFilter = $formFilter;
-
-        $phone = '79050606';
-        $codeactivation = 'w5MAKyRx24FJEcnaIWLUjw39WXXqBfd7';
-        $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
-        $taxi = $taxiRepo->findByPhoneCodigoActivacion($phone, $codeactivation);
-        var_dump($taxi);
-// echo "";
-        if ($taxiRepo->verifyActivavionTaxi($codeactivation,
-        		$phone)) {
-        	echo "valido";
-        } else {
-            echo "no valido";
-        }
     }
 
     /**
