@@ -501,7 +501,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 		$administratorRepo = $this->_entityManager->getRepository('Model\Taxi');
 		$administrators = $administratorRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
-		$total = $administratorRepo->getTotalCount(array());
+		$total = $administratorRepo->getTotalCount($filters);
 
 		$posRecord = $start+1;
 		$data = array();
@@ -589,7 +589,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 		$administratorRepo = $this->_entityManager->getRepository('Model\Taxi');
 		$administrators = $administratorRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
-		$total = $administratorRepo->getTotalCount(array());
+		$total = $administratorRepo->getTotalCount($filters);
 
 		$posRecord = $start+1;
 		$data = array();
@@ -665,12 +665,15 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
         $backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
 
+        $filters = array();
+        $filters[] = array('field' => 'status', 'filter' => $status, 'operator' => '=');
+
         $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
-        $taxis = $taxiRepo->findByStatus(Taxi::WITHOUT_CAREER);
+        $taxis = $taxiRepo->findByCriteria($filters);
 
         $data = array();
         foreach ($taxis as $taxi) {
-        $route = $backtrackRepo->findLastPositionByTaxi($taxi);
+            $route = $backtrackRepo->findLastPositionByTaxi($taxi);
             if ($route != NULL) {
                 $row = array();
                 $row['latitud'] = $route->getLatitud();
@@ -695,6 +698,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $this->_helper->viewRenderer->setNoRender(TRUE);
 
         $taxiId = $this->_getParam('taxiId', 0);
+        $status = $this->_getParam('status', -1);
         $taxi = $this->_entityManager->find('Model\Taxi', $taxiId);
 
         $backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
@@ -703,7 +707,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $data = NULL;
         if ($route != NULL) {
             $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
-            $taxis = $taxiRepo->findByStatus(Taxi::WITHOUT_CAREER);
+            $taxis = $taxiRepo->findByStatus($status);
             foreach ($taxis as $taxiObjetc) {
                 $taxiObjetc
                     ->setChanged(new DateTime('now'))
@@ -730,10 +734,5 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $this->stdResponse = new stdClass();
         $this->stdResponse = $data;
         $this->_helper->json($this->stdResponse);
-    }
-
-    public function isRegister() {
-        $taxi = $this->_entityManager->find('Model\Taxi', 1);
-        return $taxi;
     }
 }

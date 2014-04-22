@@ -81,10 +81,16 @@ class TaxiRepository extends EntityRepository {
         $query = $this->_em->createQueryBuilder();
 
         $condName = "";
+//         foreach ($filters as $filter) {
+//             $condName = "$this->_alias.name LIKE :name AND ";
+//             $query->setParameter($filter['field'], $filter['filter']);
+//         }
+
         foreach ($filters as $filter) {
-            $condName = "$this->_alias.name LIKE :name AND ";
-            $query->setParameter($filter['field'], $filter['filter']);
+        	$condName = "$this->_alias.status = :status AND ";
+        	$query->setParameter($filter['field'], $filter['filter']);
         }
+
 
         $query->select("count($this->_alias.id)")
             ->from($this->_entityName, $this->_alias)

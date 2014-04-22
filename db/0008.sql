@@ -43,6 +43,9 @@ INSERT INTO `tblBacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`cre
 INSERT INTO `tblBacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`created`,`changed`,`createdBy`,`changedBy`,`state`) VALUES 
 	(2, '-17.838500', '-63.118100', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1);
 
+	
+
+	
 (17676, 2, '-17.795920', '-63.118440', 24),
 (17677, 2, '-17.795460', '-63.118440', 25),
 (17678, 2, '-17.794960', '-63.118400', 26),
@@ -365,3 +368,21 @@ INSERT INTO `tblBacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`cre
 (17995, 2, '-17.837980', '-63.223880', 343),
 (17996, 2, '-17.838350', '-63.224170', 344),
 (17997, 2, '-17.838500', '-63.224350', 345);
+
+
+INSERT INTO `tblbacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`created`,`changed`,`createdBy`,`changedBy`,`state`) VALUES 
+	(8, '-17.806210', '-63.118730', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(8, '-17.805740', '-63.118620', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(8, '-17.805280', '-63.118540', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	
+	(9, '-17.804820', '-63.118470', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(9, '-17.804390', '-63.118340', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(9, '-17.803980', '-63.118120', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	
+	(10, '-17.803540', '-63.117890', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(11, '-17.803110', '-63.117640', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(11, '-17.802610', '-63.117590', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	
+	(12, '-17.802400', '-63.118020', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(12, '-17.802380', '-63.118530', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(12, '-17.802190', '-63.118870', '2', NOW(), NOW(), NULL, NULL, NULL, 1);

@@ -1,4 +1,5 @@
-<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Taxi.js","text/javascript");?>
+<?php use Model\Taxi;
+$this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Taxi.js","text/javascript");?>
 <?php $this->headScript()->appendFile($this->baseUrl() . "/js/lib/blueimp-Load-Image/load-image.min.js","text/javascript"); ?>
 <style type="text/css">
 #map-canvas {
@@ -57,33 +58,16 @@ table.zebralist > tbody > tr > td {
 
 	var map;
 	var markers = [];
+	var control;
+	var painter;
 
 	function initialize() {
 		var mapOptions = {center: new google.maps.LatLng(-17.760458, -63.131776),	zoom: 15};
 		map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
-// 		var marker = new google.maps.Marker({
-// 		    position: map.getCenter(),
-// 		    map: map,
-// 		    title: 'Click to zoom'
-// 		  });
-
-
-		var control = setInterval(function(){myTimer()},1000);
-        var painter = setInterval(function(){paintTimer()},4000);
-
-
-//         google.maps.event.addListener(map, 'center_changed', function() {
-//     	    // 3 seconds after the center of the map has changed, pan back to the
-//     	    // marker.
-//     	    window.setTimeout(function() {
-//     	      map.panTo(marker.getPosition());
-//     	    }, 3000);
-//     	  });
+		control = setInterval(function(){myTimer()},1000);
+	    painter = setInterval(function(){paintTimer()},4000);
 	}
-
-
-
 
 	function myTimer() {
 		var d = new Date();
@@ -97,13 +81,6 @@ table.zebralist > tbody > tr > td {
 
 	// Add a marker to the map and push to the array.
 	function addMarker(location, title, active) {
-// 		http://maps.google.com/mapfiles/ms/icons/blue-dot.png
-// 		    http://maps.google.com/mapfiles/ms/icons/red-dot.png
-// 			http://maps.google.com/mapfiles/ms/icons/purple-dot.png
-// 			http://maps.google.com/mapfiles/ms/icons/yellow-dot.png
-// 			http://maps.google.com/mapfiles/ms/icons/green-dot.png
-
-
 	    var marker = new google.maps.Marker({
 	    position: location,
 	    map: map,
@@ -161,7 +138,7 @@ table.zebralist > tbody > tr > td {
             url: action,
             type: "POST",
             dataType: 'json',
-            data: {'taxiId' : 1},
+            data: {'status' : <?php echo Taxi::WITHOUT_CAREER?>},
             success: function(data, textStatus, XMLHttpRequest) {
                 if (data !== null) {
                     deleteMarkers();
@@ -187,7 +164,7 @@ table.zebralist > tbody > tr > td {
             url: action,
             type: "POST",
             dataType: 'json',
-            data: {'taxiId' : taxiId},
+            data: {'taxiId' : taxiId, 'status' : <?php echo Taxi::WITHOUT_CAREER?>},
             success: function(data, textStatus, XMLHttpRequest) {
                 if (data !== null) {
                     var position = new google.maps.LatLng(parseFloat(data.latitud), parseFloat(data.longitud));

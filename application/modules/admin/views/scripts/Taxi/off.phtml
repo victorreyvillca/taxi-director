@@ -1,4 +1,5 @@
-<?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Taxi.js","text/javascript");?>
+<?php use Model\Taxi;
+$this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/Taxi.js","text/javascript");?>
 <?php $this->headScript()->appendFile($this->baseUrl() . "/js/lib/blueimp-Load-Image/load-image.min.js","text/javascript"); ?>
 <style type="text/css">
 #map-canvas {
@@ -37,7 +38,7 @@ table.zebralist > tbody > tr > td {
 	taxi.setUrl({
 		toTable : '<?php echo $this->url(array('action'=>'ds-taxi-entries-off'));?>',
 		toBase : '<?php echo $this->baseUrl(); ?>',
-		toUpdate : '<?php echo $this->url(array('action'=>'edit')); ?>'
+		toUpdate : '<?php echo $this->url(array('action'=>'ds-position-taxi')); ?>'
 	});
 
 	var headers = new Object();
@@ -45,20 +46,128 @@ table.zebralist > tbody > tr > td {
 		'<?php echo $this->translate('Apagados')?>');
 	taxi.setHeaders(headers);
 	// configuration of widgets
-	taxi.configureTable('#tblTaxi', true);
+	taxi.configureTable2('#tblTaxi', true);
 
 	// CRUD
 	taxi.clickToAdd('#create-taxi');
-	taxi.clickToUpdate('#tblTaxi a[id^=update-taxi-]');
+// 	taxi.clickToUpdate('#tblTaxi a[id^=update-taxi-]');
 	taxi.clickToDelete('#delete-taxi');
 });
 
 	var map;
+	var markers = [];
+	var control;
+	var painter;
 
 	function initialize() {
 		var mapOptions = {center: new google.maps.LatLng(-17.760458, -63.131776),	zoom: 15};
 		map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+
+	    painter = setInterval(function(){paintTimer()},4000);
+	}
+
+	function paintTimer() {
+		drawTaxis();
+	}
+
+	// Add a marker to the map and push to the array.
+	function addMarker(location, title, active) {
+	    var marker = new google.maps.Marker({
+	    position: location,
+	    map: map,
+	    title: title,
+//	    icon: new google.maps.MarkerImage("/img/hometaxi.png", new google.maps.Size(32, 40), new google.maps.Point(0, 0), new google.maps.Point(5, 5))
+	    icon: new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+	    });
+	    if (active == 1) {
+	    	marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+	    }
+	    markers.push(marker);
+	}
+
+	// Sets the map on all markers in the array.
+	function setAllMap(map) {
+	    for (var i = 0; i < markers.length; i++) {
+	        markers[i].setMap(map);
+	    }
+	}
+
+	// Removes the markers from the map, but keeps them in the array.
+	function clearMarkers() {
+	    setAllMap(null);
+	}
+
+	// Shows any markers currently in the array.
+	function showMarkers() {
+	    setAllMap(map);
+	}
+
+	// Deletes all markers in the array by removing references to them.
+	function deleteMarkers() {
+	    clearMarkers();
+	    markers = [];
+	}
+
+	// The five markers show a secret message when clicked
+	// but that message is not within the marker's instance data
+	function attachSecretMessage(marker, num) {
+	  var message = ['This', 'is', 'the', 'secret', 'message'];
+	  var infowindow = new google.maps.InfoWindow({
+	    content: message[num]
+	  });
+
+	  google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.open(marker.get('map'), marker);
+	  });
 	}
 
     google.maps.event.addDomListener(window, 'load', initialize);
+
+    function drawTaxis() {
+        var action = '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Taxi', 'action'=>'ds-position-taxis'));?>';
+        $.ajax({
+            url: action,
+            type: "POST",
+            dataType: 'json',
+            data: {'status' : <?php echo Taxi::OFF?>},
+            success: function(data, textStatus, XMLHttpRequest) {
+                if (data !== null) {
+                    deleteMarkers();
+                    $(data).each(function() {
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];
+                            var position = new google.maps.LatLng(parseFloat(item.latitud), parseFloat(item.longitud));
+                            addMarker(position, item.name, item.active);
+                            //map.panTo(position);
+                            }
+                    });
+                }
+            },
+            error: function(data) {
+                console.log('error');
+            }
+        });
+    }
+
+    function centerTaxi(taxiId) {
+    	var action = '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Taxi', 'action'=>'ds-position-taxi'));?>';
+        $.ajax({
+            url: action,
+            type: "POST",
+            dataType: 'json',
+            data: {'taxiId' : taxiId, 'status' : <?php echo Taxi::OFF?>},
+            success: function(data, textStatus, XMLHttpRequest) {
+                if (data !== null) {
+                    var position = new google.maps.LatLng(parseFloat(data.latitud), parseFloat(data.longitud));
+                    //map.panTo(position);
+                    //map.setZoom(20);
+                    map.setCenter(position);
+                    addMarker(position, data.name, data.active);
+                }
+            },
+            error: function(data) {
+            	console.log('error');
+            }
+        });
+    }
 </script>
