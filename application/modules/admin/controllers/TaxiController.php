@@ -545,7 +545,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 		$administratorRepo = $this->_entityManager->getRepository('Model\Taxi');
 		$administrators = $administratorRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
-		$total = $administratorRepo->getTotalCount(array());
+		$total = $administratorRepo->getTotalCount($filters);
 
 		$posRecord = $start+1;
 		$data = array();

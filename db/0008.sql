@@ -386,3 +386,11 @@ INSERT INTO `tblbacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`cre
 	(12, '-17.802400', '-63.118020', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
 	(12, '-17.802380', '-63.118530', '2', NOW(), NOW(), NULL, NULL, NULL, 1),
 	(12, '-17.802190', '-63.118870', '2', NOW(), NOW(), NULL, NULL, NULL, 1);
+	
+	
+INSERT INTO `tblbacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`created`,`changed`,`createdBy`,`changedBy`,`state`) VALUES 
+	(11, '-17.806210', '-63.118730', '1', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(11, '-17.805740', '-63.118610', '1', NOW(), NOW(), NULL, NULL, NULL, 1),
+
+	(13, '-17.802400', '-63.118020', '1', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(13, '-17.802190', '-63.118890', '1', NOW(), NOW(), NULL, NULL, NULL, 1);
