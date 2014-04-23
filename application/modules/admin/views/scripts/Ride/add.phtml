@@ -101,6 +101,11 @@
 					$('#address').val('');
 
 					$('#label option').remove();
+					$.each(data.addressArray, function(i) {
+						$('#label').append($("<option></option>")
+							.attr('value', i)
+							.text(data.addressArray[i]));
+					});
 					com.em.RideAdd.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
 				}
 			},

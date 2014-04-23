@@ -36,11 +36,13 @@ class Admin_RideController extends Dis_Controller_Action {
 	public function addAction() {
 		$this->_helper->layout()->disableLayout();
 
+		$labelRepo = $this->_entityManager->getRepository('Model\Label');
 		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
 		$taxisArray = $taxiRepo->findByStatusArrayNumber(Taxi::WITHOUT_CAREER);
 
 		$form = new Dis_Form_Ride();
 		$form->getElement('taxi')->setMultiOptions($taxisArray);
+		$form->getElement('label')->setMultiOptions($labelRepo->findAllArray());
 
 		$this->view->form = $form;
 	}
@@ -182,8 +184,11 @@ class Admin_RideController extends Dis_Controller_Action {
             $this->stdResponse->success = TRUE;
             $this->stdResponse->addressArray = $addressArray;
 	    } else {
+	        $labelRepo = $this->_entityManager->getRepository('Model\Label');
+
 	        $this->stdResponse = new stdClass();
 	        $this->stdResponse->success = FALSE;
+	        $this->stdResponse->addressArray = $labelRepo->findAllArray();
 	    }
 
 	    $this->stdResponse->data = $data;
