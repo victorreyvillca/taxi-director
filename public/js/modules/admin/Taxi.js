@@ -226,9 +226,10 @@ com.em.Taxi.prototype = {
 							// Sets validator
 							setValidatorForm("#formId");
 							// Opens dialog
-							dialogForm.dialog('open');
+							$('#dialog-form').dialog('open');
+							$('#dialog-form').dialog( "option" , 'buttons', dialogButtons);
 							// Loads buttons for dialog. dialogButtons is defined by ajax
-							dialogForm.dialog( "option" , 'buttons', dialogButtons);
+							$('#dialog-form').dialog( "option" , 'buttons', dialogButtons);
 						}
 					} 
 				},
@@ -238,7 +239,7 @@ com.em.Taxi.prototype = {
 				},
 
 				error: function(jqXHR, textStatus, errorThrown) {
-					dialogForm.dialog('close');
+					$('#dialog-form').dialog('close');
 					alert.flashError(errorThrown,{header : com.em.Alert.ERROR});
 				}
 			});

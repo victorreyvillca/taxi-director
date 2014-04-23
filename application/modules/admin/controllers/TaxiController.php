@@ -84,6 +84,32 @@ class Admin_TaxiController extends Dis_Controller_Action {
     }
 
     /**
+     *
+     * This action shows a form in create mode
+     * @access public
+     */
+    public function adddAction() {
+//         if($this->getRequest()->isXmlHttpRequest()) {
+//         	$this->layout('application/layout/ajax-layout');
+        	$this->_helper->layout()->disableLayout();
+
+        	$form = new Dis_Form_Taxi();
+        	$form->setAction($this->_helper->url('add-save'));
+
+        	$src = '/image/profile/female_or_male_default.jpg';
+        	$form->setSource($src);
+
+        	$srcTaxi = '/image/profile/logo-taxi.png';
+        	$form->setSourceTaxi($srcTaxi);
+
+        	$this->view->form = $form;
+//         }
+
+
+
+    }
+
+    /**
      * Creates a new Taxi
      * @access public
      */
@@ -734,5 +760,9 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $this->stdResponse = new stdClass();
         $this->stdResponse = $data;
         $this->_helper->json($this->stdResponse);
+    }
+
+    public function testAction() {
+
     }
 }
