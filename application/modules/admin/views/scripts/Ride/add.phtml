@@ -150,4 +150,26 @@
 		error: function(jqXHR, textStatus, errorThrown) {}
 	    });
 	});
+
+	$("#taxi").change(function () {
+		this.taxiId = $("#taxi").val();
+
+		$.ajax({
+    		url: '<?php echo $this->url(array('controller'=>'Ride', 'action'=>'ds-taxi-number'));?>',
+    		type: "POST",
+    		dataType: 'json',
+    		data: {'taxiId' : this.taxiId },
+		beforeSend: function(XMLHttpRequest) {
+			return true;
+		},
+
+		success: function(data, textStatus, XMLHttpRequest) {
+			$("#number").val(data.number);
+		},
+
+		complete: function(jqXHR, textStatus) {},
+
+		error: function(jqXHR, textStatus, errorThrown) {}
+	    });
+	});
 </script>

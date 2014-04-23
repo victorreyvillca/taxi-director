@@ -546,6 +546,26 @@ class Admin_RideController extends Dis_Controller_Action {
 	}
 
 	/**
+	 * Outputs an XHR response, the name address of the passengers.
+	 * @access public
+	 */
+	public function dsTaxiNumberAction() {
+		$taxiId = (int)$this->_getParam('taxiId', 0);
+
+		$taxi = $this->_entityManager->find('Model\Taxi', $taxiId);
+
+        $taxiNumber = '';
+        if ($taxi != NULL) {
+        	$taxiNumber = $taxi->getNumber();
+        }
+
+		$this->stdResponse = new stdClass();
+		$this->stdResponse->number = $taxiNumber;
+
+		$this->_helper->json($this->stdResponse);
+	}
+
+	/**
 	 * Changes the name for the passenger
 	 * @access public
 	 */
