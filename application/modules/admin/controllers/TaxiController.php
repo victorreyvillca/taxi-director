@@ -89,24 +89,19 @@ class Admin_TaxiController extends Dis_Controller_Action {
      * @access public
      */
     public function adddAction() {
-//         if($this->getRequest()->isXmlHttpRequest()) {
-//         	$this->layout('application/layout/ajax-layout');
-        	$this->_helper->layout()->disableLayout();
+    	$this->_helper->layout()->disableLayout();
 
-        	$form = new Dis_Form_Taxi();
-        	$form->setAction($this->_helper->url('add-save'));
+    	$form = new Admin_Form_Taxi();
 
-        	$src = '/image/profile/female_or_male_default.jpg';
-        	$form->setSource($src);
+    	$form->setAction($this->_helper->url('add-save'));
 
-        	$srcTaxi = '/image/profile/logo-taxi.png';
-        	$form->setSourceTaxi($srcTaxi);
+    	$src = '/image/profile/female_or_male_default.jpg';
+    	$form->setSource($src);
 
-        	$this->view->form = $form;
-//         }
+    	$srcTaxi = '/image/profile/logo-taxi.png';
+    	$form->setSourceTaxi($srcTaxi);
 
-
-
+    	$this->view->form = $form;
     }
 
     /**
