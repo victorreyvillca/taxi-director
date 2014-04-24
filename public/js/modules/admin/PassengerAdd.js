@@ -266,7 +266,7 @@ com.em.PassengerAdd.prototype = {
 				},
 
 				complete: function(jqXHR, textStatus) {
-					processingDisplay(false);
+//					processingDisplay(false);
 				},
 
 				error: function(jqXHR, textStatus, errorThrown) {
@@ -316,7 +316,7 @@ com.em.PassengerAdd.prototype = {
 				},
 
 				complete: function(jqXHR, textStatus) {
-					processingDisplay(false);
+//					processingDisplay(false);
 				},
 
 				error: function(jqXHR, textStatus, errorThrown) {
