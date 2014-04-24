@@ -195,7 +195,7 @@ class Dis_Form_Taxi extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Taxi/template/TaxiForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/taxi/template/TaxiForm.phtml');
 	}
 
 	/**

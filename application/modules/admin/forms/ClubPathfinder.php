@@ -62,7 +62,7 @@ class Admin_Form_ClubPathfinder extends Zend_Form {
 					'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Pathfinder/template/ClubPathfinderForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/pathfinder/template/ClubPathfinderForm.phtml');
 	}
 
 	/**

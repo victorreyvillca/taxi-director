@@ -40,6 +40,6 @@ class Admin_Form_Category extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Category/template/CategoryForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/category/template/CategoryForm.phtml');
 	}
 }

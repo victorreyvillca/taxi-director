@@ -59,6 +59,6 @@ class Dis_Form_Passenger extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Passenger/template/PassengerForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/passenger/template/PassengerForm.phtml');
 	}
 }

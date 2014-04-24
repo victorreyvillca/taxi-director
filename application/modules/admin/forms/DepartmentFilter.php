@@ -31,6 +31,6 @@ class Admin_Form_DepartmentFilter extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/News/template/DepartmentFilterForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/news/template/DepartmentFilterForm.phtml');
 	}
 }

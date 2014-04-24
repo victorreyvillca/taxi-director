@@ -264,7 +264,7 @@ class Dis_Form_Club extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Club/template/ClubForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/club/template/ClubForm.phtml');
 	}
 
 	/**

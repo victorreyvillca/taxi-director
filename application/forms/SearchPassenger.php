@@ -78,6 +78,6 @@ class Dis_Form_SearchPassenger extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Passenger/template/SearchPassengerForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/passenger/template/SearchPassengerForm.phtml');
 	}
 }

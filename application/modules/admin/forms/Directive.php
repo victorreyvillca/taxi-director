@@ -252,7 +252,7 @@ class Admin_Form_Directive extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Registration/template/DirectiveForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/registration/template/DirectiveForm.phtml');
 	}
 
 	/**

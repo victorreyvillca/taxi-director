@@ -9,17 +9,17 @@
  */
 
 class Admin_Form_CategoryFilter extends Zend_Form {
-	
+
 	public function init() {
 		$this
 			->setAttrib('id', 'formFilterId')
-						
+
 			->addElement('Text', 'nameFilter', array(
 				'label' => _('Name Category')
 			))
 			;
 	}
-	
+
 	public function loadDefaultDecorators() {
 		$this->setDecorators(
 			array(
@@ -27,6 +27,6 @@ class Admin_Form_CategoryFilter extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Category/template/CategoryFilterForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/category/template/CategoryFilterForm.phtml');
 	}
 }

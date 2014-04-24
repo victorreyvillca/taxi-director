@@ -65,7 +65,7 @@ class Dis_Form_Driver extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Driver/template/DriverForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/driver/template/DriverForm.phtml');
 	}
 
 	/**

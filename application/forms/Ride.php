@@ -115,7 +115,7 @@ class Dis_Form_Ride extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Ride/template/RideForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/ride/template/RideForm.phtml');
 	}
 
 	/**

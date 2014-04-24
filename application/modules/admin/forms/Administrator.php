@@ -118,7 +118,7 @@ class Admin_Form_Administrator extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Administrator/template/AdministratorForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/administrator/template/AdministratorForm.phtml');
 	}
 
 	/**

@@ -97,7 +97,7 @@ class Admin_Form_Pastor extends Zend_Form {
 				'ViewScript'
 			)
 		);
-		$this->getDecorator('ViewScript')->setOption('viewScript', '/Pastor/template/PastorForm.phtml');
+		$this->getDecorator('ViewScript')->setOption('viewScript', '/pastor/template/PastorForm.phtml');
 	}
 
 	/**
