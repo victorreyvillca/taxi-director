@@ -80,7 +80,7 @@ class Admin_Form_Directive extends Zend_Form {
                 'decorators' => array(array('ViewHelper'), array('label'), array('HtmlTag', array('tag' => 'div')))
 			))
 
-			->addElement('TextArea', 'address', array(
+			->addElement('Textarea', 'address', array(
 				'label' => _('Direccion'),
 			    'attribs' => array('cols' => 16, 'rows' => 3),
                 'attribs' => array('class' => 'form-poshytip', 'title' => _('Ingrese sus Direccion'), 'autofocus' => ''),

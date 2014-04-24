@@ -52,7 +52,7 @@ class Dis_Form_Driver extends Zend_Form {
 				'required' => TRUE
 			))
 
-			->addElement('TextArea', 'address', array(
+			->addElement('Textarea', 'address', array(
                 'label' => _('Direccion')
 			))
 		;

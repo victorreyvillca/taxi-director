@@ -44,7 +44,7 @@ class Dis_Form_Passenger extends Zend_Form {
 				)
 			))
 
-			->addElement('TextArea', 'address', array(
+			->addElement('Textarea', 'address', array(
                 'label' => _('Descrpcion de la Direccion'),
                 'cols' => 20,
                 'rows' => 2,

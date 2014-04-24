@@ -111,7 +111,7 @@ class Dis_Form_Taxi extends Zend_Form {
 				)
 			))
 
-			->addElement('TextArea', 'address', array(
+			->addElement('Textarea', 'address', array(
 				'label' => _('Direccion'),
 //                 'tabIndex' => $this->tabIndex++,
                 'cols' => '20',

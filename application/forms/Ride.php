@@ -80,13 +80,13 @@ class Dis_Form_Ride extends Zend_Form {
 				'label' => _('Direccion')
 			))
 
-			->addElement('TextArea', 'address', array(
+			->addElement('Textarea', 'address', array(
                 'label' => _('Descrpcion de la Direccion'),
                 'cols' => 18,
                 'rows' => 2
 			))
 
-			->addElement('TextArea', 'note', array(
+			->addElement('Textarea', 'note', array(
                 'label' => _('Note'),
 				'cols' => 18,
 				'rows' => 2

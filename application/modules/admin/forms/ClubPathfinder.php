@@ -39,7 +39,7 @@ class Admin_Form_ClubPathfinder extends Zend_Form {
 				)
 			))
 
-			->addElement('TextArea', 'address', array(
+			->addElement('Textarea', 'address', array(
 				'label' => _('Address'),
 				'cols' =>'40',
 				'rows' =>'4',

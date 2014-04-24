@@ -22,7 +22,7 @@ class Admin_Form_Category extends Zend_Form {
 				)
 			))
 
-			->addElement('TextArea', 'description', array(
+			->addElement('Textarea', 'description', array(
 				'label' => _('Descripcion'),
 				'cols' =>'40',
 				'rows' =>'4',

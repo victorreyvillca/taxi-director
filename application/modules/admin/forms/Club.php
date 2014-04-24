@@ -32,7 +32,7 @@ class Admin_Form_Club extends Zend_Form {
 				)
 			))
 
-			->addElement('TextArea', 'description', array(
+			->addElement('Textarea', 'description', array(
 				'label' => _('Ubicacion'),
 				'cols' =>'40',
 				'rows' =>'4',
