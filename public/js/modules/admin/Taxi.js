@@ -62,18 +62,7 @@ com.em.Taxi.prototype = {
 			$("#datatable-headers").append('<th>'+headers[i]+'</th>');
 		}
 
-//		$("#datatable-headers").append('<th><input type="checkbox" id="check-master" value="0"></th>');
 		$("#datatable-headers").prepend('<th >Id</th>');
-
-		//Adding the event to check-master because it was removed
-//		$("#check-master").bind('click', function() {
-//			var checked = $("#check-master").attr('checked');
-//			if (checked) {
-//				$('#tblTaxi input[id^=check-slave-]').attr('checked', true);
-//			} else {
-//				$('#tblTaxi input[id^=check-slave-]').attr('checked', false);
-//			}
-//		});
 	}},
 
 	/**
@@ -90,7 +79,6 @@ com.em.Taxi.prototype = {
 			"bServerSide"   : true,
 			"sAjaxSource"   : url.toTable,
 			"aoColumns"     : getColumns(),
-//			"sPaginationType" : "full_numbers",
 			"oLanguage": {
 				"sUrl": "/js/lib/jquery-datatables/languages/dataTables.spanish.txt"
 			},
@@ -109,7 +97,7 @@ com.em.Taxi.prototype = {
 
 	configureTable2: function(selector, pdestroy) { with (this) {
 		table = $(selector).dataTable({
-			"bProcessing"   : true,
+			"bProcessing"   : false,
 			"bFilter"       : false,
 			"bSort"         : false,
 			"bInfo"         : false, 
@@ -117,7 +105,6 @@ com.em.Taxi.prototype = {
 			"bServerSide"   : true,
 			"sAjaxSource"   : url.toTable,
 			"aoColumns"     : getColumns2(),
-//			"sPaginationType" : "full_numbers",
 			"oLanguage": {
 				"sUrl": "/js/lib/jquery-datatables/languages/dataTables.spanish.txt"
 			},
@@ -147,7 +134,6 @@ com.em.Taxi.prototype = {
 			"bSercheable": "true",
 			fnRender : function (oObj){
 				return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
-				//return '<a id="update-taxi-'+oObj.aData[0]+'" href="#" onclick="centerTaxi('+oObj.aData[0]+');return false;">'+oObj.aData[1]+'</a>';
 				}
 			});
 		return columns;
@@ -161,7 +147,6 @@ com.em.Taxi.prototype = {
 			"sWidth": "15%",
 			"bSercheable": "true",
 			fnRender : function (oObj){
-//				return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
 				return '<a id="update-taxi-'+oObj.aData[0]+'" href="#" onclick="centerTaxi('+oObj.aData[0]+');return false;">'+oObj.aData[1]+'</a>';
 				}
 			});
@@ -295,46 +280,6 @@ com.em.Taxi.prototype = {
 		});
 	}},
 
-	clickToShowTaxi: function(selector) {with (this) {
-		$(selector).bind('click',function(event) {
-			
-			//event.preventDefault();
-			// Begins to get data
-			var action = $(this).attr('href');
-			console.log(action);
-			// Sends request by ajax
-			$.ajax({
-				url: action,
-				type: "POST",
-				dataType: 'json',
-				beforeSend: function(XMLHttpRequest) {
-					processingDisplay(true);
-				},
-
-				success: function(data, textStatus, XMLHttpRequest) {
-					if (data !== null) {
-						console.log(data);
-//	                    deleteMarkers();
-//	                    $(data).each(function() {
-//	                        for (var i = 0; i < data.length; i++) {
-//	                            var item = data[i];
-//	                            var position = new google.maps.LatLng(parseFloat(item.latitud), parseFloat(item.longitud));
-//	                            addMarker(position, item.name);
-//	                            //map.panTo(position);
-//	                            }
-//	                    });
-	                }
-				},
-
-
-
-				error: function(data, textStatus, errorThrown) {
-					console.log(data);
-				}
-			});
-		});
-	}},
-
 	/**
 	 * Deletes n items
 	 * @param selector
@@ -388,6 +333,13 @@ com.em.Taxi.prototype = {
 			});
 		});
 	}},
+
+	/**
+	 * Repaints the table
+	 */
+	repaintTable: function() {
+		table.fnDraw();
+	},
 
 	/**
 	 * Configures the name autocomplete of the filter

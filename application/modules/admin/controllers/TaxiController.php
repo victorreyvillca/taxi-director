@@ -120,6 +120,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
     		        if (!$taxiRepo->verifyExistPhone($formData['phone'])) {
                         $taxi = new Taxi();
                         $taxi
+                            ->setDateStatus(new DateTime('now'))
                             ->setActiveimage(FALSE)
                             ->setPhone($formData['phone'])
                             ->setCodeactivation('abc123')
@@ -272,6 +273,10 @@ class Admin_TaxiController extends Dis_Controller_Action {
             	$src = '/image/profile/male_default.jpg';
             }
             $form->setSource($src);
+
+            //show active
+            $form->setShowActive(TRUE);
+            $form->getElement('active')->setValue($taxi->getActive());
         } else {
             $this->stdResponse->success = FALSE;
             $this->stdResponse->message = _('The requested record was not found.');
@@ -296,6 +301,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
                     $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
                     if (!$taxiRepo->verifyExistNumber($formData['number']) || $taxiRepo->verifyExistIdAndNumber($id, $formData['number'])) {
                         if (!$taxiRepo->verifyExistPhone($formData['phone']) || $taxiRepo->verifyExistIdAndPhone($id, $formData['phone'])) {
+//                             var_dump($formData); exit;
                         $taxi
                             ->setNumber($formData['number'])
                             ->setPhone($formData['phone'])
@@ -307,6 +313,9 @@ class Admin_TaxiController extends Dis_Controller_Action {
                             ->setChanged(new DateTime('now'))
                         ;
 
+                        if (isset($formData['active'])) {
+                        	$taxi->setActive($formData['active']);
+                        }
                         if ($_FILES['filetaxi']['error'] !== UPLOAD_ERR_NO_FILE) {
                             if ($_FILES['filetaxi']['error'] == UPLOAD_ERR_OK) {
                                 $fh = fopen($_FILES['filetaxi']['tmp_name'], 'r');
@@ -517,24 +526,38 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$limit = $this->_getParam('iDisplayLength', 10);
 		$page = ($start + $limit) / $limit;
 
+		$backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
+
 		$filters = array();
 		$filters[] = array('field' => 'status', 'filter' => Taxi::WITHOUT_CAREER, 'operator' => '=');
 
-		$administratorRepo = $this->_entityManager->getRepository('Model\Taxi');
-		$administrators = $administratorRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
-		$total = $administratorRepo->getTotalCount($filters);
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$taxis = $taxiRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
+		$total = $taxiRepo->getTotalCount($filters);
 
 		$posRecord = $start+1;
 		$data = array();
-		foreach ($administrators as $directive) {
-			$changed = $directive->getChanged();
+		foreach ($taxis as $taxi) {
+			$changed = $taxi->getChanged();
 			if ($changed != NULL) {
 				$changed = $changed->format('d.m.Y');
 			}
 
+			$timeText = '(0 min)';
+			if ($taxi->getDateStatus() != NULL) {
+                $backtracks = $backtrackRepo->findByTaxiAndStatusAndDateStatus($taxi, Taxi::WITHOUT_CAREER, $taxi->getDateStatus());
+                if (count($backtracks) > 0) {
+                    $timenow = $backtracks[0]->getTimenow();
+                    $dateCurrent = new DateTime('now');
+                    $interval = $dateCurrent->diff($timenow);
+//                     $timeText = $interval->format('%h:%i:%s');
+                    $timeText = '(' . $interval->format('%i:%s') . ' min)';
+                }
+			}
+
 			$row = array();
-			$row[] = $directive->getId();
-			$row[] = $directive->getName().' '.$directive->getNumber();
+			$row[] = $taxi->getId();
+			$row[] = $taxi->getName().' '.$taxi->getNumber().' '.$timeText;
 			$data[] = $row;
 			$posRecord++;
 		}

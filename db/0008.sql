@@ -5,17 +5,17 @@ INSERT INTO `tblbacktrack`(`taxiId`,`latitud`,`longitud`,`status`,`timenow`,`cre
 	(1, '-17.805740', '-63.118620', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
 	(1, '-17.805280', '-63.118540', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
 	
-	(1, '-17.804820', '-63.118470', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
-	(1, '-17.804390', '-63.118340', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
-	(1, '-17.803980', '-63.118120', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(2, '-17.804820', '-63.118470', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(2, '-17.804390', '-63.118340', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(2, '-17.803980', '-63.118120', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
 	
-	(1, '-17.803540', '-63.117890', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
-	(1, '-17.803110', '-63.117640', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
-	(1, '-17.802610', '-63.117590', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(3, '-17.803540', '-63.117890', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(3, '-17.803110', '-63.117640', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(3, '-17.802610', '-63.117590', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
 	
-	(1, '-17.802400', '-63.118020', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
-	(1, '-17.802380', '-63.118530', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
-	(1, '-17.802190', '-63.118870', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(4, '-17.802400', '-63.118020', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(4, '-17.802380', '-63.118530', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
+	(4, '-17.802190', '-63.118870', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
 	
 	(1, '-17.801700', '-63.118800', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),
 	(1, '-17.801260', '-63.118800', 'busy', NOW(), NOW(), NULL, NULL, NULL, 1),

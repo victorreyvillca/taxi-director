@@ -75,7 +75,14 @@ class Dis_Form_Taxi extends Zend_Form {
 	 */
 	private $color;
 
+	/**
+	 * @var bool
+	 */
+	private $showActive;
+
 	public function init() {
+	    $this->showActive = FALSE;
+
 		$this
 			->setAttrib('id', 'formId')
 			->setMethod('post')
@@ -185,6 +192,8 @@ class Dis_Form_Taxi extends Zend_Form {
                     array('StringTrim')
 				)
 			))
+
+			->addElement ('checkbox', 'active', array ('label' => _('Activar')))
 		;
 	}
 
@@ -387,6 +396,22 @@ class Dis_Form_Taxi extends Zend_Form {
 	 */
 	public function setColor($color) {
 		$this->color = $color;
+		return $this;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getShowActive() {
+		return $this->showActive;
+	}
+
+	/**
+	 * @param boolean $showActive
+	 * @return Zend_Form
+	 */
+	public function setShowActive($showActive) {
+		$this->showActive = $showActive;
 		return $this;
 	}
 }

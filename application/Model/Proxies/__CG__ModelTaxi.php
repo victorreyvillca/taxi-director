@@ -64,10 +64,10 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'activeimage', 'phone', 'codeactivation', 'codeuser', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+            return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'activeimage', 'phone', 'codeactivation', 'codeuser', 'dateStatus', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
         }
 
-        return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'activeimage', 'phone', 'codeactivation', 'codeuser', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+        return array('__isInitialized__', 'name', 'number', 'mark', 'type', 'model', 'color', 'plaque', 'status', 'active', 'activeimage', 'phone', 'codeactivation', 'codeuser', 'dateStatus', 'pictureId', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
     }
 
     /**
@@ -479,6 +479,28 @@ class Taxi extends \Model\Taxi implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCodeuser', array($codeuser));
 
         return parent::setCodeuser($codeuser);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDateStatus()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateStatus', array());
+
+        return parent::getDateStatus();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDateStatus($dateStatus)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDateStatus', array($dateStatus));
+
+        return parent::setDateStatus($dateStatus);
     }
 
     /**

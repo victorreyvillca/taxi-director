@@ -26,15 +26,14 @@ table.zebralist > tbody > tr > td {
 	<div id="dialog"><!-- Loads ajax dialog form --></div>
 </div>
 
-<p id="demo"></p>
-
 <script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBADa-A2Jqkq2C4ZlgOdZs98dFE0q00_N0&sensor=true">
 </script>
 
 <script type="text/javascript">
+var taxi;
 	$(document).ready(function() {
-	var taxi = new com.em.Taxi();
+	taxi = new com.em.Taxi();
 
 	// network
 	taxi.setUrl({
@@ -52,7 +51,6 @@ table.zebralist > tbody > tr > td {
 
 	// CRUD
 	taxi.clickToAdd('#create-taxi');
-	//taxi.clickToShowTaxi('#tblTaxi a[id^=update-taxi-]');
 	taxi.clickToDelete('#delete-taxi');
 });
 
@@ -65,18 +63,12 @@ table.zebralist > tbody > tr > td {
 		var mapOptions = {center: new google.maps.LatLng(-17.760458, -63.131776),	zoom: 15};
 		map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
-		control = setInterval(function(){myTimer()},1000);
 	    painter = setInterval(function(){paintTimer()},4000);
-	}
-
-	function myTimer() {
-		var d = new Date();
-		var t = d.toLocaleTimeString();
-		document.getElementById('demo').innerHTML = t;
 	}
 
 	function paintTimer() {
 		drawTaxis();
+		taxi.repaintTable();
 	}
 
 	// Add a marker to the map and push to the array.

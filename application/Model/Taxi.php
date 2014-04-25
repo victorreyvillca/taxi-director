@@ -91,6 +91,12 @@ class Taxi extends DomainObject {
     private $codeuser;
 
     /**
+     * @Column(type="datetime")
+     * @var datetime
+     */
+    protected $dateStatus;
+
+    /**
      * @Column(type="integer")
      * @var int
      */
@@ -317,6 +323,22 @@ class Taxi extends DomainObject {
 	 */
 	public function setCodeuser($codeuser) {
 		$this->codeuser = $codeuser;
+		return $this;
+	}
+
+	/**
+	 * @return datetime
+	 */
+	public function getDateStatus() {
+		return $this->dateStatus;
+	}
+
+	/**
+	 * @param datetime $dateStatus
+	 * @return Taxi
+	 */
+	public function setDateStatus($dateStatus) {
+		$this->dateStatus = $dateStatus;
 		return $this;
 	}
 }
