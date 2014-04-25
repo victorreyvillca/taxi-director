@@ -51,7 +51,6 @@
 <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBADa-A2Jqkq2C4ZlgOdZs98dFE0q00_N0&sensor=true">
 </script>
-<p id="demo"></p>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -152,15 +151,10 @@
 //        addLine();
 //        addpuntoalmapa();
 
-		var myVar = setInterval(function(){myTimer()},1000);
+
         var painter = setInterval(function(){paintTimer()},3000);
     }
      var count;
-	function myTimer() {
-		var d = new Date();
-		var t = d.toLocaleTimeString();
-		document.getElementById('demo').innerHTML = t;
-	}
 
 	function paintTimer() {
 		count++;
