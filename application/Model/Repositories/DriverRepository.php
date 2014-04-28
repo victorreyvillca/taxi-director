@@ -21,4 +21,26 @@ class DriverRepository extends EntityRepository {
     public function findByTaxi(Taxi $taxi) {
         return  $this->findOneBy(array('state' => TRUE, 'taxiId' => $taxi->getId()));
     }
+
+    /**
+     * Verifies if the Identity Card already exist it.
+     *
+     * @param int $identityCard
+     * @return boolean
+     */
+    public function verifyExistIdentityCard($identityCard) {
+    	$object = $this->findOneBy(array('identityCard' => $identityCard, 'state' => TRUE));
+    	return $object != NULL ? TRUE : FALSE;
+    }
+
+    /**
+     * Verifies if the id and identity Card already exist it.
+     *
+     * @param int $id
+     * @param int $identityCard
+     */
+    public function verifyExistIdAndIdentityCard ($id, $identityCard) {
+    	$object = $this->findOneBy(array('id' => $id, 'identityCard' => $identityCard, 'state' => TRUE));
+    	return $object != NULL ? TRUE : FALSE;
+    }
 }
