@@ -31,11 +31,12 @@ table.zebralist > tbody > tr > td {
 </script>
 
 <script type="text/javascript">
+var taxiongoing;
 	$(document).ready(function() {
-	var taxi = new com.em.Taxi();
+	taxiongoing = new com.em.Taxi();
 
 	// network
-	taxi.setUrl({
+	taxiongoing.setUrl({
 		toTable : '<?php echo $this->url(array('action'=>'ds-taxi-entries-on-going'));?>',
 		toBase : '<?php echo $this->baseUrl(); ?>',
 		toUpdate : '<?php echo $this->url(array('action'=>'ds-position-taxi')); ?>'
@@ -44,14 +45,14 @@ table.zebralist > tbody > tr > td {
 	var headers = new Object();
 	headers.headerArray = new Array(
 		'<?php echo $this->translate('En Curso')?>');
-	taxi.setHeaders(headers);
+	taxiongoing.setHeaders(headers);
 	// configuration of widgets
-	taxi.configureTable2('#tblTaxi', true);
+	taxiongoing.configureTable2('#tblTaxi', true);
 
 	// CRUD
-	taxi.clickToAdd('#create-taxi');
+	taxiongoing.clickToAdd('#create-taxi');
 // 	taxi.clickToUpdate('#tblTaxi a[id^=update-taxi-]');
-	taxi.clickToDelete('#delete-taxi');
+	taxiongoing.clickToDelete('#delete-taxi');
 });
 
 	var map;
@@ -67,6 +68,7 @@ table.zebralist > tbody > tr > td {
 
 	function paintTimer() {
 		drawTaxis();
+		taxiongoing.repaintTable();
 	}
 
 	// Add a marker to the map and push to the array.

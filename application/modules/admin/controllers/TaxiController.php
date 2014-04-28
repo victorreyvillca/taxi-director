@@ -492,11 +492,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$posRecord = $start+1;
 		$data = array();
 		foreach ($administrators as $directive) {
-			$changed = $directive->getChanged();
-			if ($changed != NULL) {
-				$changed = $changed->format('d.m.Y');
-			}
-
 			$row = array();
 			$row[] = $directive->getId();
 			$row[] = $directive->getName().' '.$directive->getNumber();
@@ -538,11 +533,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$posRecord = $start+1;
 		$data = array();
 		foreach ($taxis as $taxi) {
-			$changed = $taxi->getChanged();
-			if ($changed != NULL) {
-				$changed = $changed->format('d.m.Y');
-			}
-
 			$timeText = '(0 min)';
 			if ($taxi->getDateStatus() != NULL) {
                 $backtracks = $backtrackRepo->findByTaxiAndStatusAndDateStatus($taxi, Taxi::WITHOUT_CAREER, $taxi->getDateStatus());
@@ -550,8 +540,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
                     $timenow = $backtracks[0]->getTimenow();
                     $dateCurrent = new DateTime('now');
                     $interval = $dateCurrent->diff($timenow);
-//                     $timeText = $interval->format('%h:%i:%s');
-                    $timeText = '(' . $interval->format('%i:%s') . ' min)';
+                    $timeText = '(' . $interval->format('%d %h:%i:%s') . ' min)';
                 }
 			}
 
@@ -584,6 +573,8 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$limit = $this->_getParam('iDisplayLength', 10);
 		$page = ($start + $limit) / $limit;
 
+		$backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
+
 		$filters = array();
 		$filters[] = array('field' => 'status', 'filter' => Taxi::ONGOING, 'operator' => '=');
 
@@ -593,15 +584,21 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 		$posRecord = $start+1;
 		$data = array();
-		foreach ($administrators as $directive) {
-			$changed = $directive->getChanged();
-			if ($changed != NULL) {
-				$changed = $changed->format('d.m.Y');
+		foreach ($administrators as $taxi) {
+            $timeText = '(0 min)';
+			if ($taxi->getDateStatus() != NULL) {
+                $backtracks = $backtrackRepo->findByTaxiAndStatusAndDateStatus($taxi, Taxi::ONGOING, $taxi->getDateStatus());
+                if (count($backtracks) > 0) {
+                    $timenow = $backtracks[0]->getTimenow();
+                    $dateCurrent = new DateTime('now');
+                    $interval = $dateCurrent->diff($timenow);
+                    $timeText = '(' . $interval->format('%d %h:%i:%s') . ' min)';
+                }
 			}
 
 			$row = array();
-			$row[] = $directive->getId();
-			$row[] = $directive->getName().' '.$directive->getNumber();
+			$row[] = $taxi->getId();
+			$row[] = $taxi->getName().' '.$taxi->getNumber().' '.$timeText;
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -628,6 +625,8 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$limit = $this->_getParam('iDisplayLength', 10);
 		$page = ($start + $limit) / $limit;
 
+		$backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
+
 		$filters = array();
 		$filters[] = array('field' => 'status', 'filter' => Taxi::OFF, 'operator' => '=');
 
@@ -637,15 +636,21 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 		$posRecord = $start+1;
 		$data = array();
-		foreach ($administrators as $directive) {
-			$changed = $directive->getChanged();
-			if ($changed != NULL) {
-				$changed = $changed->format('d.m.Y');
+		foreach ($administrators as $taxi) {
+            $timeText = '(0 min)';
+			if ($taxi->getDateStatus() != NULL) {
+                $backtracks = $backtrackRepo->findByTaxiAndStatusAndDateStatus($taxi, Taxi::OFF, $taxi->getDateStatus());
+                if (count($backtracks) > 0) {
+                    $timenow = $backtracks[0]->getTimenow();
+                    $dateCurrent = new DateTime('now');
+                    $interval = $dateCurrent->diff($timenow);
+                    $timeText = '(' . $interval->format('%d %h:%i:%s') . ' min)';
+                }
 			}
 
 			$row = array();
-			$row[] = $directive->getId();
-			$row[] = $directive->getName().' '.$directive->getNumber();
+			$row[] = $taxi->getId();
+			$row[] = $taxi->getName().' '.$taxi->getNumber().' '.$timeText;
 			$data[] = $row;
 			$posRecord++;
 		}
