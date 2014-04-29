@@ -396,25 +396,23 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	 */
 	public function dsPassengerAddressAction() {
 	    $passengerId = (int)$this->_getParam('passengerId', 0);
-// 	    var_dump($passengerId);
-//         $labelId = (int)$this->_getParam('labelId', 0);
-// //         var_dump($labelId); exit;
+        $labelId = (int)$this->_getParam('labelId', 0);
 
-//         $label = $this->_entityManager->find('Model\Label', $labelId);
-// 	    $passenger = $this->_entityManager->find('Model\Passenger', $passengerId);
+        $label = $this->_entityManager->find('Model\Label', $labelId);
+	    $passenger = $this->_entityManager->find('Model\Passenger', $passengerId);
 
+	    $nameAddress = '';
+        if ($passenger != NULL) {
+            $addressRepo = $this->_entityManager->getRepository('Model\Address');
+            $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
 
-//         $addressRepo = $this->_entityManager->getRepository('Model\Address');
-//         $address = $addressRepo->findByPassengerAndLabel($passenger, $label);var_dump($address); exit;
+            if ($address != NULL) {
+                $nameAddress = $address->getName();
+            }
+        }
 
-
-// 	    $nameAddress = '';
-// 	    if ($address != NULL) {
-// 	    	$nameAddress = $address->getName();;
-// 	    }
-
-	    $this->stdResponse = new stdClass();
-	    $this->stdResponse->nameAddress = $nameAddress;
+        $this->stdResponse = new stdClass();
+        $this->stdResponse->nameAddress = $nameAddress;
 
 	    $this->_helper->json($this->stdResponse);
 	}

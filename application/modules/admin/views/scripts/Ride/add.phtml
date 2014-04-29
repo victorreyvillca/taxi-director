@@ -1,4 +1,4 @@
-<div id="dialog-form" title="<?php echo $this->translate('Adicionar Pasajero'); ?>" class="header" style="display: none;">
+<div id="dialog-form" title="<?php echo $this->translate('Adicionar Carrera'); ?>" class="header" style="display: none;">
 	<?php echo $this->form; ?>
 </div>
 
@@ -32,14 +32,22 @@
 								$("#phone").parent().append('<label class="error" for="phone" generated="true">'+data.message+'</label>');
 								com.em.RideAdd.prototype.flashError('<?php echo _('El Telefono ya existe')?>', {header: com.em.Alert.ERROR});
 							} else {
-// 								var name = data.messageArray.name;
+								this.name = data.messageArray.name;
+								this.address = data.messageArray.address;
+								this.number = data.messageArray.number;
+							    //console.log(this.name);
 
-// 								if (name != undefined) {
-// 									$('#name').parent().find('.error').remove();
-// 									$('#name').parent().append('<label class="error" for="name" generated="true">'+name.isEmpty+'</label>');
-// 								}
+								if (this.name != undefined) {
+									$('#name').parent().find('.error').remove();
+									$('#name').parent().append('<label class="error" for="name" generated="true">'+this.name.isEmpty+'</label>');
+								}
+
+								if (this.address != undefined) {
+									$('#address').parent().find('.error').remove();
+									$('#address').parent().append('<label class="error" for="address" generated="true">'+this.address.isEmpty+'</label>');
+								}
 							}
-// 							com.em.RideAdd.prototype.flashError(data.message, {header: com.em.Alert.ERROR});
+							com.em.RideAdd.prototype.flashError(data.message, {header: com.em.Alert.ERROR});
 						}
 					}
 				},
@@ -66,7 +74,6 @@
 	});
 
 	function search() {
-// 		alert('pepe ds Search');
 		this.phone = $("#phone").val();
 		$.ajax({
 			url: '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Ride', 'action'=>'ds-search'));?>',
@@ -121,28 +128,20 @@
     }
 
 	$("#label").change(function () {
-		this.labelId = $("#label").val();
+		this.labelId = $('#label').val();
+		this.passengerId = $('#id').val();
 
-		// Sends request by ajax
 		$.ajax({
-		url: '<?php echo $this->url(array('controller'=>'Ride', 'action'=>'ds-ride-address'));?>',
-		type: "POST",
-		dataType: 'json',
-		data: {'labelId' : this.labelId },
+    		url: '<?php echo $this->url(array('controller'=>'Passenger', 'action'=>'ds-passenger-address'));?>',
+    		type: "POST",
+    		dataType: 'json',
+    		data: {'passengerId' : this.passengerId,'labelId' : this.labelId},
 		beforeSend: function(XMLHttpRequest) {
 			return true;
 		},
 
 		success: function(data, textStatus, XMLHttpRequest) {
-			// Removes all options for the select box
-			//$('#region option').remove();
-			// .each loops through the array
-			$.each(data.name, function(i) {
-				//console.log(data.name);
-// 				$('#region').append($("<option></option>")
-// 					.attr("value", i)
-// 					.text(data.regionsArray[i]));
-			});
+			$('#address').val(data.nameAddress);
 		},
 
 		complete: function(jqXHR, textStatus) {},
@@ -154,22 +153,10 @@
 	$("#taxi").change(function () {
 		this.taxiId = $("#taxi").val();
 
-		$.ajax({
-    		url: '<?php echo $this->url(array('controller'=>'Ride', 'action'=>'ds-taxi-number'));?>',
-    		type: "POST",
-    		dataType: 'json',
-    		data: {'taxiId' : this.taxiId },
-		beforeSend: function(XMLHttpRequest) {
-			return true;
-		},
-
-		success: function(data, textStatus, XMLHttpRequest) {
-			$("#number").val(data.number);
-		},
-
-		complete: function(jqXHR, textStatus) {},
-
-		error: function(jqXHR, textStatus, errorThrown) {}
-	    });
+		if (this.taxiId > 0) {
+		    $("#number").val(this.taxiId);
+		} else {
+			$("#number").val('');
+		}
 	});
 </script>

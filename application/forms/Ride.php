@@ -77,13 +77,15 @@ class Dis_Form_Ride extends Zend_Form {
 			))
 
 			->addElement('Select', 'label', array(
-				'label' => _('Direccion')
+				'label' => _('Direccion'),
+                'required' => TRUE
 			))
 
 			->addElement('Textarea', 'address', array(
                 'label' => _('Descrpcion de la Direccion'),
                 'cols' => 18,
-                'rows' => 2
+                'rows' => 2,
+                'required' => TRUE
 			))
 
 			->addElement('Textarea', 'note', array(

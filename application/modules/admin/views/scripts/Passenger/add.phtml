@@ -62,30 +62,21 @@ com.em.PassengerAdd.prototype.configureLabelAuto('input#label');
 		}
 	};
 
-
 	$("#label").change(function () {
-		this.labelId = $("#label").val();
+		this.labelId = $('#label').val();
+		this.passengerId = $('#id').val();
 
-		// Sends request by ajax
 		$.ajax({
 		url: '<?php echo $this->url(array('controller'=>'Passenger', 'action'=>'ds-passenger-address'));?>',
 		type: "POST",
 		dataType: 'json',
-		data: {'labelId' : this.labelId },
+		data: {'passengerId' : this.passengerId,'labelId' : this.labelId},
 		beforeSend: function(XMLHttpRequest) {
 			return true;
 		},
 
 		success: function(data, textStatus, XMLHttpRequest) {
-			// Removes all options for the select box
-			//$('#region option').remove();
-			// .each loops through the array
-			$.each(data.name, function(i) {
-				console.log(data.name);
-// 				$('#region').append($("<option></option>")
-// 					.attr("value", i)
-// 					.text(data.regionsArray[i]));
-			});
+			$('#address').val(data.nameAddress);
 		},
 
 		complete: function(jqXHR, textStatus) {},

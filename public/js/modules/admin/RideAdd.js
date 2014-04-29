@@ -469,9 +469,21 @@ com.em.RideAdd.prototype = {
 		validator = $(selector).validate({
 			rules:{
 				'phone':{
+					number: true,
 					required: true,
-					maxlength: 10
-				}
+					maxlength: 15
+				},
+//				'name':{
+//					required: true,
+//					maxlength: 45
+//				},
+//				'address':{
+//					required: true
+//				},
+//				'number':{
+//					number: true,
+//					required: true
+//				}
 			}
 		});
 	},

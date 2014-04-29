@@ -114,7 +114,7 @@ com.em.PassengerAdd.prototype.dialogButtons = {
 
 			success: function(data, textStatus, XMLHttpRequest) {
 				if (data.success) {
-					com.em.PassengerAdd.prototype.flashError('<?php echo _('Cambio realizado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashSuccess('<?php echo _('Cambio realizado')?>', {header: com.em.Alert.ERROR});
 				} else {
 					com.em.PassengerAdd.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
 				}
@@ -157,7 +157,7 @@ com.em.PassengerAdd.prototype.dialogButtons = {
 							.attr("value", i)
 							.text(data.addressArray[i]));
 					});
-					com.em.PassengerAdd.prototype.flashError('<?php echo _('Etiqueta Eliminado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashSuccess('<?php echo _('Etiqueta Eliminado')?>', {header: com.em.Alert.ERROR});
 				} else {
 					com.em.PassengerAdd.prototype.flashError('<?php echo _('La Etiqueta no se pudo Eliminar')?>', {header: com.em.Alert.ERROR});
 				}
@@ -193,7 +193,7 @@ com.em.PassengerAdd.prototype.dialogButtons = {
 
 			success: function(data, textStatus, XMLHttpRequest) {
 				if (data.success) {
-					com.em.PassengerAdd.prototype.flashError('<?php echo _('Cambio realizado')?>', {header: com.em.Alert.ERROR});
+					com.em.PassengerAdd.prototype.flashSuccess('<?php echo _('Cambio realizado')?>', {header: com.em.Alert.ERROR});
 				} else {
 					com.em.PassengerAdd.prototype.flashError('<?php echo _('Pasajero no encontrado')?>', {header: com.em.Alert.ERROR});
 				}

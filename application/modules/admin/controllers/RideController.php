@@ -67,7 +67,7 @@ class Admin_RideController extends Dis_Controller_Action {
             if ($passengerRepo->verifyExistPhone($formData['phone'])) {
                 $label = $this->_entityManager->find('Model\Label', (int)$formData['label']);
                 $passenger = $this->_entityManager->find('Model\Passenger', (int)$formData['id']);
-                $taxi = $this->_entityManager->find('Model\Taxi', (int)$formData['taxi']);
+                $taxi = $this->_entityManager->find('Model\Taxi', (int)$formData['number']);
 
                 $addressRepo = $this->_entityManager->getRepository('Model\Address');
                 $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
@@ -82,7 +82,6 @@ class Admin_RideController extends Dis_Controller_Action {
                     ->setPassenger($passenger)
                     ->setNotAssignedTime(1)
                     ->setNote($formData['note'])
-                    ->setStatus(1)
                     ->setState(TRUE)
                     ->setCreated(new DateTime('now'))
                 ;
@@ -115,15 +114,69 @@ class Admin_RideController extends Dis_Controller_Action {
 				$this->stdResponse->success = TRUE;
 				$this->stdResponse->message = _('Carrera registrado');
 			} else {
-				$this->stdResponse->success = FALSE;
-				$this->stdResponse->phone_duplicate = TRUE;
-				$this->stdResponse->message = _('El Telefono No existe');
+			    $passenger = new Passenger();
+			    $passenger
+                    ->setSex(1)
+                    ->setLastName('Lastname passenger')
+                    ->setAddress($formData['address'])
+                    ->setDateOfBirth(new DateTime('now'))
+                    ->setCreated(new DateTime('now'))
+                    ->setState(TRUE)
+                    ->setIdentityCard(123)
+                    ->setPhonemobil(123)
+                    ->setPhone($formData['phone'])
+                    ->setFirstName($formData['name'])
+                ;
+
+                $this->_entityManager->persist($passenger);
+                $this->_entityManager->flush();
+
+                $label = $this->_entityManager->find('Model\Label', (int)$formData['label']);
+
+                $address = new Address();
+                $address
+                    ->setName($formData['address'])
+                    ->setPassenger($passenger)
+                    ->setLabel($label)
+                    ->setState(TRUE)
+                    ->setCreated(new DateTime('now'))
+                ;
+
+                $this->_entityManager->persist($address);
+                $this->_entityManager->flush();
+
+                $taxi = $this->_entityManager->find('Model\Taxi', (int)$formData['number']);
+
+                $ride = new Ride();
+                $ride
+                    ->setLabel($label)
+                    ->setPassenger($passenger)
+                    ->setNotAssignedTime(1)
+                    ->setNote($formData['note'])
+                    ->setState(TRUE)
+                    ->setCreated(new DateTime('now'))
+			    ;
+
+			    if ($taxi != NULL) {
+			    	$ride->setStatus(Ride::ONGOING);
+			    	$taxi->setStatus(Taxi::ONGOING);
+			    	$ride->setTaxi($taxi);
+			    } else {
+			    	$ride->setStatus(Ride::NOT_ASSIGNED);
+			    }
+
+			    $this->_entityManager->persist($ride);
+			    $this->_entityManager->flush();
+
+				$this->stdResponse = new stdClass();
+				$this->stdResponse->success = TRUE;
+				$this->stdResponse->message = _('Carrera registrado');
 			}
 		} else {
             $this->stdResponse = new stdClass();
 			$this->stdResponse->success = FALSE;
 			$this->stdResponse->messageArray = $form->getMessages();
-			$this->stdResponse->message = _('The form contains error and is not saved');
+			$this->stdResponse->message = _('El Formulario tiene Errores');
 		}
 		// sends response to client
 		$this->_helper->json($this->stdResponse);
@@ -525,24 +578,26 @@ class Admin_RideController extends Dis_Controller_Action {
 	 * @access public
 	 */
 	public function dsPassengerAddressAction() {
-	    $passengerId = (int)$this->_getParam('passengerId', 0);
+        $passengerId = (int)$this->_getParam('passengerId', 0);
         $labelId = (int)$this->_getParam('labelId', 0);
 
         $label = $this->_entityManager->find('Model\Label', $labelId);
 	    $passenger = $this->_entityManager->find('Model\Passenger', $passengerId);
 
-	    $addressRepo = $this->_entityManager->getRepository('Model\Address');
-	    $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
-
 	    $nameAddress = '';
-	    if ($address != NULL) {
-	    	$nameAddress = $address->getName();;
-	    }
+        if ($passenger != NULL) {
+            $addressRepo = $this->_entityManager->getRepository('Model\Address');
+            $address = $addressRepo->findByPassengerAndLabel($passenger, $label);
 
-	    $this->stdResponse = new stdClass();
-	    $this->stdResponse->nameAddress = $nameAddress;
+            if ($address != NULL) {
+                $nameAddress = $address->getName();
+            }
+        }
 
-	    $this->_helper->json($this->stdResponse);
+        $this->stdResponse = new stdClass();
+        $this->stdResponse->nameAddress = $nameAddress;
+
+        $this->_helper->json($this->stdResponse);
 	}
 
 	/**
