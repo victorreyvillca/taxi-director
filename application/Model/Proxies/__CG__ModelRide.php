@@ -64,10 +64,10 @@ class Ride extends \Model\Ride implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'note', 'notAssignedTime', 'ongoingTime', 'status', 'taxiId', 'taxi', 'passengerId', 'passenger', 'labelId', 'label', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+            return array('__isInitialized__', 'note', 'notAssignedTime', 'ongoingTime', 'status', 'dateStatus', 'taxiId', 'taxi', 'passengerId', 'passenger', 'labelId', 'label', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
         }
 
-        return array('__isInitialized__', 'note', 'notAssignedTime', 'ongoingTime', 'status', 'taxiId', 'taxi', 'passengerId', 'passenger', 'labelId', 'label', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
+        return array('__isInitialized__', 'note', 'notAssignedTime', 'ongoingTime', 'status', 'dateStatus', 'taxiId', 'taxi', 'passengerId', 'passenger', 'labelId', 'label', 'id', 'created', 'changed', 'createdBy', 'changedBy', 'state');
     }
 
     /**
@@ -325,6 +325,28 @@ class Ride extends \Model\Ride implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
 
         return parent::setStatus($status);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDateStatus()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateStatus', array());
+
+        return parent::getDateStatus();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDateStatus($dateStatus)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDateStatus', array($dateStatus));
+
+        return parent::setDateStatus($dateStatus);
     }
 
     /**

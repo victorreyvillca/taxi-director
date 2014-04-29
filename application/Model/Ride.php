@@ -45,6 +45,12 @@ class Ride extends DomainObject {
 	private $status;
 
 	/**
+	 * @Column(type="datetime")
+	 * @var datetime
+	 */
+	protected $dateStatus;
+
+	/**
 	 * Id of the Taxi this model is associated with.
 	 * @Column(type="integer")
 	 * @var int
@@ -198,6 +204,22 @@ class Ride extends DomainObject {
 	 */
 	public function setStatus($status) {
 		$this->status = $status;
+		return $this;
+	}
+
+	/**
+	 * @return datetime
+	 */
+	public function getDateStatus() {
+		return $this->dateStatus;
+	}
+
+	/**
+	 * @param datetime $dateStatus
+	 * @return Ride
+	 */
+	public function setDateStatus($dateStatus) {
+		$this->dateStatus = $dateStatus;
 		return $this;
 	}
 }

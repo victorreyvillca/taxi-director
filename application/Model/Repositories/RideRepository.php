@@ -27,19 +27,19 @@ class RideRepository extends EntityRepository {
      * @return Array Objects
      */
     public function findByCriteria($filters = array(), $limit = NULL, $offset = NULL, $sortColumn = NULL, $sortDirection = NULL) {
-        $query = $this->_em->createQueryBuilder();
+    	$query = $this->_em->createQueryBuilder();
 
-        $condition = "";
-        foreach ($filters as $filter) {
-            $condition = "$this->_alias.status = :status AND ";
-            $query->setParameter($filter['field'], $filter['filter']);
-        }
+    	$condition = "";
+    	foreach ($filters as $filter) {
+    		$condition = "$this->_alias.status = :status AND ";
+    		$query->setParameter($filter['field'], $filter['filter']);
+    	}
 
-        $query->select($this->_alias)
-            ->from($this->_entityName, $this->_alias)
-            ->where("$condition $this->_alias.state = TRUE")
-            ->setFirstResult($offset)
-            ->setMaxResults($limit);
+    	$query->select($this->_alias)
+    	->from($this->_entityName, $this->_alias)
+    	->where("$condition $this->_alias.state = TRUE")
+    	->setFirstResult($offset)
+    	->setMaxResults($limit);
 
     	$sort = '';
     	switch ($sortColumn) {
@@ -75,17 +75,17 @@ class RideRepository extends EntityRepository {
     public function getTotalCount($filters = array()) {
     	$query = $this->_em->createQueryBuilder();
 
-        $condition = "";
-        foreach ($filters as $filter) {
-            $condition = "$this->_alias.status = :status AND ";
-            $query->setParameter($filter['field'], $filter['filter']);
-        }
+    	$condition = "";
+    	foreach ($filters as $filter) {
+    		$condition = "$this->_alias.status = :status AND ";
+    		$query->setParameter($filter['field'], $filter['filter']);
+    	}
 
-        $query->select("count($this->_alias.id)")
-            ->from($this->_entityName, $this->_alias)
-            ->where("$condition $this->_alias.state = TRUE");
+    	$query->select("count($this->_alias.id)")
+    	->from($this->_entityName, $this->_alias)
+    	->where("$condition $this->_alias.state = TRUE");
 
-        return (int)$query->getQuery()->getSingleScalarResult();
+    	return (int)$query->getQuery()->getSingleScalarResult();
     }
 
     /**

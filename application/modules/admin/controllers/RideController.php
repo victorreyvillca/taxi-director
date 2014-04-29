@@ -78,6 +78,7 @@ class Admin_RideController extends Dis_Controller_Action {
 
                 $ride = new Ride();
                 $ride
+                    ->setDateStatus(new DateTime('now'))
                     ->setLabel($label)
                     ->setPassenger($passenger)
                     ->setNotAssignedTime(1)
@@ -149,6 +150,7 @@ class Admin_RideController extends Dis_Controller_Action {
 
                 $ride = new Ride();
                 $ride
+                    ->setDateStatus(new DateTime('now'))
                     ->setLabel($label)
                     ->setPassenger($passenger)
                     ->setNotAssignedTime(1)
