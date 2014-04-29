@@ -102,7 +102,7 @@ com.em.Ride.prototype = {
 	 */
 	configureTable: function(selector, pdestroy) { with (this) {
 		table = $(selector).dataTable({
-			"bProcessing"	: true,
+			"bProcessing"	: false,
 			"bFilter"		: false,
 			"bSort"			: false,
 			"bInfo"			: false, 
@@ -153,6 +153,13 @@ com.em.Ride.prototype = {
 	processingDisplay: function(bShow) {
 		var settings = table.fnSettings();
 		settings.oApi._fnProcessingDisplay(settings, bShow);
+	},
+
+	/**
+	 * Repaints the table
+	 */
+	repaintTable: function() {
+		table.fnDraw();
 	},
 
 	/**

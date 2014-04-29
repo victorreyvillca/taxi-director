@@ -451,11 +451,22 @@ class Admin_RideController extends Dis_Controller_Action {
 		$posRecord = $start+1;
 		$data = array();
 		foreach ($rides as $ride) {
+		    $timeText = '(0 min)';
+		    if ($ride->getDateStatus() != NULL) {
+// 		    	$backtracks = $backtrackRepo->findByTaxiAndStatusAndDateStatus($taxi, Taxi::WITHOUT_CAREER, $taxi->getDateStatus());
+// 		    	if (count($backtracks) > 0) {
+		    		$timenow = $ride->getDateStatus();
+		    		$dateCurrent = new DateTime('now');
+		    		$interval = $dateCurrent->diff($timenow);
+		    		$timeText = '(' . $interval->format('%d %h:%i:%s') . ' min)';
+// 		    	}
+		    }
+
 			$passenger = $ride->getPassenger();
 
 			$row = array();
-			$row[] = $ride->getId();
-			$row[] = $passenger->getPhone();
+			$row[] = $ride->getId().' '. $timeText;
+			$row[] = $passenger->getPhone().' '. $timeText;;
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -490,11 +501,22 @@ class Admin_RideController extends Dis_Controller_Action {
 		$posRecord = $start+1;
 		$data = array();
 		foreach ($rides as $ride) {
+		 $timeText = '(0 min)';
+		    if ($ride->getDateStatus() != NULL) {
+// 		    	$backtracks = $backtrackRepo->findByTaxiAndStatusAndDateStatus($taxi, Taxi::WITHOUT_CAREER, $taxi->getDateStatus());
+// 		    	if (count($backtracks) > 0) {
+		    		$timenow = $ride->getDateStatus();
+		    		$dateCurrent = new DateTime('now');
+		    		$interval = $dateCurrent->diff($timenow);
+		    		$timeText = '(' . $interval->format('%d %h:%i:%s') . ' min)';
+// 		    	}
+		    }
+
 			$passenger = $ride->getPassenger();
 
 			$row = array();
 			$row[] = $ride->getId();
-			$row[] = $passenger->getPhone();
+			$row[] = $passenger->getPhone().' '. $timeText;;
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -745,6 +767,77 @@ class Admin_RideController extends Dis_Controller_Action {
 		    $this->stdResponse->message = _('Cambio No realizado Pasajero no entrado');
 		}
 
+		$this->_helper->json($this->stdResponse);
+	}
+
+	/**
+	 * Outputs an XHR response containing all positions the taxis.
+	 * @xhrParam int status
+	 * @access public
+	 */
+	public function dsPositionTaxisAction() {
+		$this->_helper->viewRenderer->setNoRender(TRUE);
+		$status = $this->_getParam('status', -1);
+
+		$backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
+
+		$filters = array();
+		$filters[] = array('field' => 'status', 'filter' => $status, 'operator' => '=');
+
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$taxis = $taxiRepo->findByCriteria($filters);
+
+		$data = array();
+		foreach ($taxis as $taxi) {
+			$route = $backtrackRepo->findLastPositionByTaxi($taxi);
+			if ($route != NULL) {
+				$row = array();
+				$row['latitud'] = $route->getLatitud();
+				$row['longitud'] = $route->getLongitud();
+				$row['name'] = sprintf('Movil %d', $taxi->getNumber());
+				$row['active'] = $taxi->getActiveimage();
+				$data[] = $row;
+			}
+		}
+
+		$this->stdResponse = new stdClass();
+		$this->stdResponse = $data;
+		$this->_helper->json($this->stdResponse);
+	}
+
+	/**
+	 * Outputs an XHR response containing all positions the taxis.
+	 * @xhrParam int status
+	 * @access public
+	 */
+	public function dsPositionTrajectoryTaxisAction() {
+		$this->_helper->viewRenderer->setNoRender(TRUE);
+		$status = $this->_getParam('status', -1);
+
+		$backtrackRepo = $this->_entityManager->getRepository('Model\Backtrack');
+
+		$filters = array();
+		$filters[] = array('field' => 'status', 'filter' => $status, 'operator' => '=');
+
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$taxis = $taxiRepo->findByCriteria($filters);
+
+
+		$data = array();
+		foreach ($taxis as $taxi) {
+			$route = $backtrackRepo->findLastPositionByTaxi($taxi);
+			if ($route != NULL) {
+				$row = array();
+				$row['latitud'] = $route->getLatitud();
+				$row['longitud'] = $route->getLongitud();
+				$row['name'] = sprintf('Movil %d', $taxi->getNumber());
+				$row['active'] = $taxi->getActiveimage();
+				$data[] = $row;
+			}
+		}
+
+		$this->stdResponse = new stdClass();
+		$this->stdResponse = $data;
 		$this->_helper->json($this->stdResponse);
 	}
 
