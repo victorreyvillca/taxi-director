@@ -100,6 +100,7 @@ class Dis_Form_Ride extends Zend_Form {
 
 			->addElement('Text', 'number', array(
 				'label' => _('Numero de Taxi'),
+                'attribs' => array('size' => 5),
 				'filters' => array(
 					array('StringTrim')
 				),
