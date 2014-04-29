@@ -449,14 +449,11 @@ class Admin_RideController extends Dis_Controller_Action {
 		$posRecord = $start+1;
 		$data = array();
 		foreach ($rides as $ride) {
-			$changed = $ride->getChanged();
-			if ($changed != NULL) {
-				$changed = $changed->format('d.m.Y');
-			}
+			$passenger = $ride->getPassenger();
 
 			$row = array();
 			$row[] = $ride->getId();
-			$row[] = $ride->getNote();
+			$row[] = $passenger->getPhone();
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -491,14 +488,11 @@ class Admin_RideController extends Dis_Controller_Action {
 		$posRecord = $start+1;
 		$data = array();
 		foreach ($rides as $ride) {
-			$changed = $ride->getChanged();
-			if ($changed != NULL) {
-				$changed = $changed->format('d.m.Y');
-			}
+			$passenger = $ride->getPassenger();
 
 			$row = array();
 			$row[] = $ride->getId();
-			$row[] = $ride->getNote();
+			$row[] = $passenger->getPhone();
 			$data[] = $row;
 			$posRecord++;
 		}
