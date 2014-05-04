@@ -317,6 +317,27 @@ com.em.Ride.prototype = {
 							dialogForm.dialog('open');
 							// Loads buttons for dialog. dialogButtons is defined by ajax
 							dialogForm.dialog( "option" , 'buttons' , dialogButtons);
+							
+							//var action = '<?php echo $this->url(array('module'=>'admin', 'controller'=>'Taxi', 'action'=>'ds-position-taxi'));?>';
+							var action = '';
+							$.ajax({
+					            url: action,
+					            type: "POST",
+					            dataType: 'json',
+					            data: {'taxiId' : taxiId, 'status' : 0},
+					            success: function(data, textStatus, XMLHttpRequest) {
+					                if (data !== null) {
+					                    var position = new google.maps.LatLng(parseFloat(data.latitud), parseFloat(data.longitud));
+					                    //map.panTo(position);
+					                    //map.setZoom(20);
+					                    map.setCenter(position);
+					                    addMarker(position, data.name, data.active);
+					                }
+					            },
+					            error: function(data) {
+					            	console.log('error');
+					            }
+					        });
 						}
 					} 
 				},

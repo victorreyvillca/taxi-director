@@ -358,6 +358,8 @@ class Admin_RideController extends Dis_Controller_Action {
 		$form->setOnlyRead(TRUE);
 		$form->getElement('phone')->setRequired(FALSE);
 		$form->getElement('name')->setRequired(FALSE);
+		$form->getElement('label')->setRequired(FALSE);
+		$form->getElement('address')->setRequired(FALSE);
 		$form->getElement('taxi')->setMultiOptions($taxisArray);
 
 		$formData = $this->getRequest()->getPost();
@@ -372,6 +374,7 @@ class Admin_RideController extends Dis_Controller_Action {
                     $ride->setStatus(Ride::ONGOING);
                     $taxi->setStatus(Taxi::ONGOING);
                     $ride->setTaxi($taxi);
+                    $ride->setDateStatus(new DateTime('now'));
                 }
 
 				$this->_entityManager->persist($ride);
@@ -465,7 +468,7 @@ class Admin_RideController extends Dis_Controller_Action {
 			$passenger = $ride->getPassenger();
 
 			$row = array();
-			$row[] = $ride->getId().' '. $timeText;
+			$row[] = $ride->getId();
 			$row[] = $passenger->getPhone().' '. $timeText;;
 			$data[] = $row;
 			$posRecord++;
@@ -847,5 +850,34 @@ class Admin_RideController extends Dis_Controller_Action {
 
 	public function ongoingAction() {
 
+	}
+
+	/**
+	 * Deletes the Carrera
+	 * @access public
+	 */
+	public function deleteAction() {
+	    $this->_helper->viewRenderer->setNoRender(TRUE);
+
+        $rideId = $this->_getParam('rideId', 0);
+        $ride = $this->_entityManager->find('Model\Ride', $rideId);
+
+	    if ($ride != NULL) {
+            $ride->setChanged(new DateTime('now'));
+            $ride->setState(FALSE);
+
+            $this->_entityManager->persist($ride);
+            $this->_entityManager->flush();
+
+            $this->stdResponse = new stdClass();
+            $this->stdResponse->success = TRUE;
+            $this->stdResponse->message = _('Carrera Eliminada');
+	    } else {
+            $this->stdResponse = new stdClass();
+            $this->stdResponse->success = FALSE;
+            $this->stdResponse->message = _('No se pudo Eliminar la Carrera');
+	    }
+
+	    $this->_helper->json($this->stdResponse);
 	}
 }
