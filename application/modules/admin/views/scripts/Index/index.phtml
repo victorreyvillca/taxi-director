@@ -3,37 +3,35 @@
 <?php $this->headScript()->appendFile($this->baseUrl() . "/js/modules/admin/PassengerAdd.js","text/javascript");?>
 <style type="text/css">
 #map-canvas {
-	height: 600px
+	height: 750px
 }
 </style>
 <div style="margin:10px;">
 <div id="cssmenu" style="width: 10%; float: left;">
        <ul>
 <!--             <li><a href='#'><span>Inicio</span></a> -->
-            <li><a href='#'><span>Carreras</span></a>
+            <li><a href='#'><span>CARRERAS</span></a>
             <ul>
-                <li style="background: #83ACFF;">
-                    <a href="/admin/Ride/add" id="create-ride">Nuevo</a>
-                </li>
-                <li style="background: #FFA347;"><a href="/admin/Ride/notassigned">No Asignada</a></li>
-                <li style="background: #FF94B8;"><a href='#'>En Espera</a></li>
-                <li style="background: #75FF75;"><a href="/admin/Ride/ongoing">En Curso</a></li>
+                <li style="background: #E5FFE5;"><a style="color: green;" href="/admin/Ride/add" id="create-ride">NUEVO</a></li>
+                <li style="background: #E5FFE5;"><a style="color: green;" href="/admin/Ride/notassigned">NO ASIGNADA</a></li>
+                <li style="background: #E5FFE5;"><a style="color: green;" href='#'>EN ESPERA</a></li>
+                <li style="background: #E5FFE5;"><a style="color: green;" href="/admin/Ride/ongoing">EN CURSO</a></li>
             </ul>
             </li>
 
-            <li><a href='#'><span>Pasajeros</span></a>
+            <li><a href='#'><span>PASAJEROS</span></a>
             <ul>
-                <li style="background: #E5FFE5;"><a id="create-passenger" href="/admin/Passenger/add">Nuevo</a></li>
-                <li style="background: #E5FFE5;"><a id="search-passenger" href="/admin/Passenger/search">Buscar</a></li>
+                <li style="background: #E5FFE5;"><a id="create-passenger" href="/admin/Passenger/add">NUEVO</a></li>
+                <li style="background: #E5FFE5;"><a id="search-passenger" href="/admin/Passenger/search">BUSCAR</a></li>
             </ul>
             </li>
 
-            <li><a href='#'><span>Taxis</span></a>
+            <li><a href='#'><span>TAXIS</span></a>
             <ul>
-                <li style="background: #83ACFF;"><a href="/admin/Taxi/withoutcareer">Sin Carrera</a></li>
-                <li style="background: #75FF75;"><a href="/admin/Taxi/ongoing">En Curso</a></li>
-                <li style="background: #FFFF66;"><a href="/admin/Taxi/off">Apagados</a></li>
-                <li style="background: #9999FF;"><a href="/admin/Taxi">Alta/Baja</a></li>
+                <li style="background: #E5FFE5;"><a href="/admin/Taxi/withoutcareer">SIN CARRERA</a></li>
+                <li style="background: #E5FFE5;"><a href="/admin/Taxi/ongoing">EN CURSO</a></li>
+                <li style="background: #E5FFE5;"><a href="/admin/Taxi/off">APAGADOS</a></li>
+                <li style="background: #E5FFE5;"><a href="/admin/Taxi">ALTA/BAJA</a></li>
             </ul>
             </li>
         </ul>
