@@ -16,6 +16,3 @@ INSERT INTO `tblAddress`(`name`, `labelId`, `passengerId`, `created`, `changed`,
 	('Urbanizacion los Penocos', 1, 2, NOW(), NULL, 1, NULL, 1),
 	('Roca y Coronado', 2, 2, NOW(), NULL, 1, NULL, 1),
 	('Master Gym', 3, 2, NOW(), NULL, 1, NULL, 1);
-
-INSERT INTO `tblLabel` ( `name`, `description`, `created`, `changed`, `createdBy`, `changedBy`, `state`) VALUES
-	('Tienda Comercial', 'La Etiqueta corresponde a la Tienda Comercial del Pasajero', NOW(), NULL, 1, NULL, 1);
