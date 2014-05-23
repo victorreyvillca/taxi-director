@@ -1,9 +1,8 @@
 <?php
-use Model\Ride;
 /**
- * Form for DIST 3.
+ * Form for TAXI DIRECTOR.
  *
- * @category Dist
+ * @category Taxi
  * @author Victor Villca <victor.villca@people-trust.com>
  * @copyright Copyright (c) 2014 Gisof A/S
  * @license Proprietary

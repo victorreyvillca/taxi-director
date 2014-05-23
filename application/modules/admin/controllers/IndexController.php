@@ -1,19 +1,4 @@
 <?php
-use Model\Area;
-use Model\Position;
-use Model\Mission;
-use Model\Region;
-use Model\District;
-use Model\Church;
-use Model\Club;
-use Model\Picture;
-use Model\PictureNews;
-use Model\Label;
-use Model\Address;
-use Model\Passenger;
-use Model\Taxi;
-
-
 
 /**
  * Controller for DIST 2.
@@ -36,89 +21,7 @@ class Admin_IndexController extends Dis_Controller_Action {
     }
 
 	public function indexAction() {
-//         $position = new Position();
-//         $position->setName('name')->setDescription('des')->setCreated(new DateTime('now'))->setState(TRUE);
 
-//         $this->_entityManager->persist($position);
-//         $this->_entityManager->flush();
-
-
-//         $mission = new Mission();
-//         $mission->setName('name')->setAbreviation('MOB')->setDescription('des')->setCreated(new DateTime('now'))->setState(TRUE);
-
-//         $this->_entityManager->persist($mission);
-//         $this->_entityManager->flush();
-
-
-//         $region = new Region();
-//         $region->setName('name')->setAbreviation('MOB')->setDescription('des')->setMission($mission)->setCreated(new DateTime('now'))->setState(TRUE);
-
-//         $this->_entityManager->persist($region);
-//         $this->_entityManager->flush();
-
-
-//         $district = new District();
-//         $district->setName('Nuevo Palmar')->setDescription('')->setRegion($region)->setCreated(new DateTime('now'))->setState(TRUE);
-
-//         $this->_entityManager->persist($district);
-//         $this->_entityManager->flush();
-
-//         $church = new Church();
-//         $church->setName('Nuevo Palmar')->setDescription('')->setDistrict($district)->setCreated(new DateTime('now'))->setState(TRUE);
-
-//         $this->_entityManager->persist($church);
-//         $this->_entityManager->flush();
-
-//         $area = new Area();
-//         $area->setName('Conquistador')->setDescription('fd')->setCreated(new DateTime('now'))->setState(TRUE);
-
-//         $this->_entityManager->persist($area);
-//         $this->_entityManager->flush();
-
-//         $club = new Club();
-//         $club->setArea($area)->setChurch($church)->setName('Orion Santa Cruz')->setState(TRUE)->setCreated(new DateTime('now'));
-
-//         $this->_entityManager->persist($club);
-//         $this->_entityManager->flush();
-
-//         $picture = new Picture();
-//         $picture->setTitle('my title')->setDescription('des')->setFilename('filename')->setMimeType('mimitype')->setSrc('src')->setState(TRUE)->setCreated(new DateTime('now'))->setCreatedBy(1);
-
-//         $this->_entityManager->persist($picture);
-//         $this->_entityManager->flush();
-
-//         $news = $this->_entityManager->find('Model\News', 1);
-//         $pictureNews = new PictureNews();
-//         $pictureNews->setNews($news)->setTitle('my title')->setFilename('filename')->setMimeType('mimitype')->setSrc('src')->setState(TRUE)->setCreated(new DateTime('now'))->setCreatedBy(1);
-
-//         $this->_entityManager->persist($pictureNews);
-//         $this->_entityManager->flush();
-
-//         $directive = new Directive();
-//         $directive->setTreatment('super mal')->setRanks('Guia mayor')->setPositions('Director')->setYear(22)->setIsActivo(TRUE)->setState(TRUE)->setCreated(new DateTime('now'))->setSex(1)->setPhonemobil(465456)->setPhonework('45646') ->setPhone('45645') ->setDateOfBirth(new DateTime('now')) ->setIdentityCard(59387823)->setLastName('Villca')->setFirstName('Joel');
-
-//         $this->_entityManager->persist($directive);
-//         $this->_entityManager->flush();
-
-// 	    $label = new Label();
-// 	    $label->setName('Casa')->setDescription('La Etiqueta corresponde a la casa')->setCreated(new DateTime('now'))->setState(TRUE);
-// 	    $this->_entityManager->persist($label);
-// 	    $this->_entityManager->flush();
-
-// 	    $pa = new Passenger();
-// 	    $pa->setState(TRUE)->setCreated(new DateTime('now'))->setPhonemobil(456465)->setPhone('700167')->setDateOfBirth(new DateTime('now'))->setSex(1)->setAddress('fdfads')->setIdentityCard(35423)->setLastName('fdaf')->setFirstName('dffd');
-// 	    $this->_entityManager->persist($pa);
-// 	    $this->_entityManager->flush();
-
-// 	    $label = new Label();
-// 	    $label->setName('fdafda')->setCreated(new DateTime('now'))->setState(TRUE);
-// 	    $this->_entityManager->persist($label);
-// 	    $this->_entityManager->flush();
-
-// 	    $address = new Address();
-// 	    $address->setName('fdafda')->setPassenger($pa)->setLabel($label)->setCreated(new DateTime('now'))->setState(TRUE);
-// 	    $this->_entityManager->persist($address);
-// 	    $this->_entityManager->flush();
 	}
 
 	public function actionViewdraw($id) {
