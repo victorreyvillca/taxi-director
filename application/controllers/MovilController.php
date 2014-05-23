@@ -1,6 +1,4 @@
 <?php
-use Model\Backtrack;
-
 /**
  * Controller for Taxi Director.
  *
@@ -9,23 +7,24 @@ use Model\Backtrack;
  * @copyright Copyright (c) 2014 LeaderSoft A/S
  * @license Proprietary
  */
-class MovilController extends Dis_Controller_Action
-{
 
-    public function init ()
+use Model\Backtrack;
+
+class MovilController extends Dis_Controller_Action {
+
+    public function init()
     {
         /* Initialize action controller here */
     }
 
-    public function indexAction ()
-    {
+    public function indexAction() {
         if (isset($_POST['tag']) && $_POST['tag'] != '') {
             // get tag
             $tag = $_POST['tag'];
 
             // response Array
             $response = array(
-                    "success" => ''
+                "success" => ''
             );
 
             switch ($tag) {
@@ -134,15 +133,10 @@ class MovilController extends Dis_Controller_Action
      *
      * @return string (random key)
      */
-    public function generateKey ()
-    {
+    public function generateKey() {
         $sw = TRUE;
         do {
-            $key = substr(
-                    str_shuffle(
-                            str_repeat(
-                                    'ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789',
-                                    4)), 0, 32);
+            $key = substr(str_shuffle(str_repeat('ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789', 4)), 0, 32);
             $taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
             $taxi = $taxiRepo->findByCodeactivation($key);
 
