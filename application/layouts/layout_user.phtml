@@ -1,18 +1,15 @@
-<?php echo $this->doctype(); ?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
-	   <title><?php echo _('TAXI DIRECTOR')?></title>
-		<?php echo $this->headMeta(); ?>
-		<?php echo $this->headTitle(); ?>
-		<link href="/css/input.css" rel="stylesheet" media="screen" type="text/css" />
-		<link href="/css/login.css" rel="stylesheet" media="screen" type="text/css" />
-		<script type="text/javascript" src="/js/lib/jquery/jquery.min.js"></script>
+        <title><?php echo _('TAXI DIRECTOR s')?></title>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="/css/login.css">
 	</head>
 	<body>
-		<div id="wrap">
-			<div id="content">
-				<?php echo $this->layout()->content; ?>
-			</div>
-		</div>
-	</body>
+        <header style="background-color: green; width: 200px; height: 100px; margin: 0 auto;">
+        </header>
+        <section style="margin: 0 auto; background-position: center; width: 500px;">
+            <?php echo $this->layout()->content;?>
+        </section>
+    </body>
 </html>
