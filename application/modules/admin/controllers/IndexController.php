@@ -11,39 +11,8 @@
 
 class Admin_IndexController extends Dis_Controller_Action {
 
-	/**
-	 * (non-PHPdoc)
-	 * @see App_Controller_Action::init()
-	 */
- 	public function init() {
- 		parent::init();
-		$uri = $this->_request->getPathInfo();
-    }
-
 	public function indexAction() {
 
-	}
-
-	public function actionViewdraw($id) {
-
-		$criteria = new CDbCriteria();
-		$criteria->condition = "linId = $id";
-		$dataProvider = new CActiveDataProvider('rutas', array('criteria' => $criteria));
-		$data = array();
-		$i = 0;
-		$iterator = new CDataProviderIterator($dataProvider);
-		foreach ($iterator as $user) {
-			//            echo $user->rutLatitud . "\n";
-			$aux["latitud"] = $user->rutLatitud;
-			$aux["longitud"] = $user->rutLongitud;
-			$data[$i] = $aux; //CJavaScript::jsonEncode($aux);
-
-			$i = $i + 1;
-		}
-// 		//        print_r($data);
-
-// 		echo CJavaScript::jsonEncode($data);
-// 		Yii::app()->end();
 	}
 
 	/**

@@ -13,14 +13,6 @@ use Model\Driver;
 class Admin_TaxiController extends Dis_Controller_Action {
 
     /**
-     * (non-PHPdoc)
-     * @see App_Controller_Action::init()
-     */
-    public function init() {
-    	parent::init();
-    }
-
-    /**
      * Lists all the taxis entries
      * @access public
      */
@@ -81,27 +73,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $form->setSourceTaxi($srcTaxi);
 
         $this->view->form = $form;
-    }
-
-    /**
-     *
-     * This action shows a form in create mode
-     * @access public
-     */
-    public function adddAction() {
-    	$this->_helper->layout()->disableLayout();
-
-    	$form = new Admin_Form_Taxi();
-
-    	$form->setAction($this->_helper->url('add-save'));
-
-    	$src = '/image/profile/female_or_male_default.jpg';
-    	$form->setSource($src);
-
-    	$srcTaxi = '/image/profile/logo-taxi.png';
-    	$form->setSourceTaxi($srcTaxi);
-
-    	$this->view->form = $form;
     }
 
     /**
@@ -482,9 +453,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 	}
 
 	/**
-	 * Outputs an XHR response containing all entries in directives.
-	 * This action serves as a datasource for the read/index view
-	 * @xhrParam int filter_name
+	 * Outputs an XHR response containing all entries taxis
 	 * @xhrParam int iDisplayStart
 	 * @xhrParam int iDisplayLength
 	 */
@@ -496,16 +465,18 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$limit = $this->_getParam('iDisplayLength', 10);
 		$page = ($start + $limit) / $limit;
 
-		$administratorRepo = $this->_entityManager->getRepository('Model\Taxi');
-		$administrators = $administratorRepo->findByCriteria(array(), $limit, $start, $sortCol, $sortDirection);
-		$total = $administratorRepo->getTotalCount(array());
+		$filters = array();
+
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$taxis = $taxiRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
+		$total = $taxiRepo->getTotalCount($filters);
 
 		$posRecord = $start+1;
 		$data = array();
-		foreach ($administrators as $directive) {
+		foreach ($taxis as $taxi) {
 			$row = array();
-			$row[] = $directive->getId();
-			$row[] = $directive->getName().' '.$directive->getNumber();
+			$row[] = $taxi->getId();
+			$row[] = $taxi->getName().' '.$taxi->getNumber();
 			$data[] = $row;
 			$posRecord++;
 		}
@@ -518,9 +489,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 	}
 
     /**
-	 * Outputs an XHR response containing all entries in directives.
-	 * This action serves as a datasource for the read/index view
-	 * @xhrParam int filter_name
+	 * Outputs an XHR response containing all entries taxis without career.
 	 * @xhrParam int iDisplayStart
 	 * @xhrParam int iDisplayLength
 	 */
@@ -570,9 +539,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 	}
 
 	/**
-	 * Outputs an XHR response containing all entries in directives.
-	 * This action serves as a datasource for the read/index view
-	 * @xhrParam int filter_name
+	 * Outputs an XHR response containing all entries taxis on going.
 	 * @xhrParam int iDisplayStart
 	 * @xhrParam int iDisplayLength
 	 */
@@ -589,13 +556,13 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$filters = array();
 		$filters[] = array('field' => 'status', 'filter' => Taxi::ONGOING, 'operator' => '=');
 
-		$administratorRepo = $this->_entityManager->getRepository('Model\Taxi');
-		$administrators = $administratorRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
-		$total = $administratorRepo->getTotalCount($filters);
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$taxis = $taxiRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
+		$total = $taxiRepo->getTotalCount($filters);
 
 		$posRecord = $start+1;
 		$data = array();
-		foreach ($administrators as $taxi) {
+		foreach ($taxis as $taxi) {
             $timeText = '(0 min)';
 			if ($taxi->getDateStatus() != NULL) {
                 $backtracks = $backtrackRepo->findByTaxiAndStatusAndDateStatus($taxi, Taxi::ONGOING, $taxi->getDateStatus());
@@ -622,9 +589,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 	}
 
 	/**
-	 * Outputs an XHR response containing all entries in directives.
-	 * This action serves as a datasource for the read/index view
-	 * @xhrParam int filter_name
+	 * Outputs an XHR response containing all entries taxis off.
 	 * @xhrParam int iDisplayStart
 	 * @xhrParam int iDisplayLength
 	 */
@@ -641,13 +606,13 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$filters = array();
 		$filters[] = array('field' => 'status', 'filter' => Taxi::OFF, 'operator' => '=');
 
-		$administratorRepo = $this->_entityManager->getRepository('Model\Taxi');
-		$administrators = $administratorRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
-		$total = $administratorRepo->getTotalCount($filters);
+		$taxiRepo = $this->_entityManager->getRepository('Model\Taxi');
+		$taxis = $taxiRepo->findByCriteria($filters, $limit, $start, $sortCol, $sortDirection);
+		$total = $taxiRepo->getTotalCount($filters);
 
 		$posRecord = $start+1;
 		$data = array();
-		foreach ($administrators as $taxi) {
+		foreach ($taxis as $taxi) {
             $timeText = '(0 min)';
 			if ($taxi->getDateStatus() != NULL) {
                 $backtracks = $backtrackRepo->findByTaxiAndStatusAndDateStatus($taxi, Taxi::OFF, $taxi->getDateStatus());
@@ -671,47 +636,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
 		$this->stdResponse->iTotalDisplayRecords = $total;
 		$this->stdResponse->aaData = $data;
 		$this->_helper->json($this->stdResponse);
-	}
-
-    /**
-     * Outputs an XHR response, loads the first names of the directives.
-     */
-    public function autocompleteAction() {
-        $filterParams['name'] = $this->_getParam('name_auto', NULL);
-        $filters = $this->getFilters($filterParams);
-
-        $directiveRepo = $this->_entityManager->getRepository('Model\Administrator');
-        $directives = $directiveRepo->findByCriteria($filters);
-
-        $data = array();
-        foreach ($directives as $directive) {
-            $data[] = $directive->getFirstName();
-        }
-
-        $this->stdResponse->items = $data;
-        $this->_helper->json($this->stdResponse);
-    }
-
-    /**
-	 * Returns an associative array where:
-	 * field: name of the table field
-	 * filter: value to match
-	 * operator: the sql operator.
-	 * @param array $filterParams contains the values selected by the user.
-	 * @return array(field, filter, operator)
-	 */
-	private function getFilters($filterParams) {
-		$filters = array ();
-
-		if (empty($filterParams)) {
-			return $filters;
-		}
-
-		if (!empty($filterParams['name'])) {
-			$filters[] = array('field' => 'name', 'filter' => '%'.$filterParams['name'].'%', 'operator' => 'LIKE');
-		}
-
-		return $filters;
 	}
 
     /**
@@ -794,9 +718,5 @@ class Admin_TaxiController extends Dis_Controller_Action {
         $this->stdResponse = new stdClass();
         $this->stdResponse = $data;
         $this->_helper->json($this->stdResponse);
-    }
-
-    public function testAction() {
-
     }
 }

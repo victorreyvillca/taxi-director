@@ -27,6 +27,7 @@ class Admin_RideController extends Dis_Controller_Action {
 	 * @access public
 	 */
 	public function indexAction() {
+
 	}
 
 	/**

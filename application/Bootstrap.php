@@ -77,7 +77,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
     	$this->view->headScript()->appendFile($this->view->baseUrl() . "/js/lib/jquery.alerts-1.1/jquery.alerts.js","text/javascript");
 
-    	$this->view->doctype("XHTML1_STRICT");
+    	$this->view->doctype("HTML5");
     }
 
     /**

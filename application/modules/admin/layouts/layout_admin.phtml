@@ -1,5 +1,5 @@
 <?php echo $this->doctype();?>
-<html>
+<html lang="es">
 	<head>
         <title><?php echo _('TAXI DIRECTOR')?></title>
 		<?php
@@ -18,12 +18,8 @@
 			$this->headLink()->appendStylesheet("/css/siteapp.css");
 // 			//flash messages
 			$this->headLink()->appendStylesheet("/css/flashnotification.css");
-//
-//			$this->headLink()->appendStylesheet("/js/lib/jquery-datatables/css/demo_table.css");
-//			$this->headScript()->appendFile("/js/lib/jquery-datatables/jquery.dataTables.min.js","text/javascript");
-//			$this->headScript()->appendFile("/js/lib/jquery-validate/jquery.validate.min.js","text/javascript");
 		?>
-		<?php //echo $this->jQuery(); ?>
+
 		<?php echo $this->headMeta(); ?>
 		<?php echo $this->headTitle(); ?>
 		<?php echo $this->headLink(); ?>
@@ -31,12 +27,16 @@
 		<?php echo $this->headScript(); ?>
 	</head>
 	<body>
-		<div id="footer" class="noprint">
-			<?php echo $this->partial('footer.phtml'); ?>
-		</div>
-
 		<div id="content">
 			<?php echo $this->layout()->content; ?>
+		</div>
+
+		<div id="footer" class="noprint">
+            <a href="<?php echo $this->url(array('action'=>'logout', 'controller'=>'Auth', 'module'=>'user')); ?>">
+                <span class="left"></span>
+                <?php echo _('Salir')?>
+                <span class="right"></span>
+            </a>
 		</div>
       	<?php echo $this->flashMessages();?>
 	</body>
