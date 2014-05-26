@@ -1,17 +1,23 @@
 <?php echo $this->doctype(); ?>
-<html>
+<html lang="es">
 	<head>
-		<?php echo $this->headMeta(); ?>
-		<?php echo $this->headTitle(); ?>
-		<link href="/css/input.css" rel="stylesheet" media="screen" type="text/css" />
-		<link href="/css/login.css" rel="stylesheet" media="screen" type="text/css" />
-		<script type="text/javascript" src="/js/lib/jquery/jquery.min.js"></script>
+        <title><?php echo _('TAXI DIRECTOR')?></title>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="/css/login.css">
 	</head>
 	<body>
-		<div id="wrap">
-			<div id="content">
-				<?php echo $this->layout()->content; ?>
-			</div>
-		</div>
-	</body>
+        <header>
+        </header>
+        <section>
+            <?php echo $this->layout()->content;?>
+            <article>
+                <form method="post" action="<?php $this->url(array('action' => 'login'));?>" id="login">
+                    <input name="username" id="username" type="text" class="input-text" placeholder="USUSARIO"/>
+                    <input name="password" id="password" type="password" class="input-text" placeholder="CLAVE"/>
+                    <button id="submit" class="submitBtn" type="submit"  name="submit"><span>INGRESE</span></button>
+                    <a href="#" class="button">¿OLVIDASTE TU CLAVE?</a>
+                </form>
+            </article>
+        </section>
+    </body>
 </html>
