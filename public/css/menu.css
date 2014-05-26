@@ -1,0 +1,150 @@
+@CHARSET "UTF-8";
+
+/* Base Styles */
+#cssmenu,
+#cssmenu ul,
+#cssmenu li,
+#cssmenu a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-weight: normal;
+  text-decoration: none;
+  line-height: 1;
+/*   font-family: 'Open Sans', sans-serif; */
+  font-size: 1em;
+  position: relative;
+	
+	font-weight: bold;
+	font-family: "Arial"
+}
+#cssmenu {
+  width: 250px;
+  border-bottom: 4px solid #656659;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+#cssmenu a {
+  line-height: 1.3;
+}
+/* #cssmenu > ul > li:first-child { */
+/*   background: #66665e; */
+/*   background: -moz-linear-gradient(#66665e 0%, #45463d 100%); */
+/*   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #66665e), color-stop(100%, #45463d)); */
+/*   background: -webkit-linear-gradient(#66665e 0%, #45463d 100%); */
+/*   background: linear-gradient(#66665e 0%, #45463d 100%); */
+/*   border: 1px solid #45463d; */
+/*   -webkit-border-radius: 3px 3px 0 0; */
+/*   -moz-border-radius: 3px 3px 0 0; */
+/*   border-radius: 3px 3px 0 0; */
+/* } */
+/* #cssmenu > ul > li:first-child > a { */
+/*   padding: 15px 10px; */
+/*   background: url(menu_images/pattern.png) top left repeat; */
+/*   border: none; */
+/*   border-top: 1px solid #818176; */
+/*   -webkit-border-radius: 3px 3px 0 0; */
+/*   -moz-border-radius: 3px 3px 0 0; */
+/*   border-radius: 3px 3px 0 0; */
+/*   font-family: 'Ubuntu', sans-serif; */
+/*   text-align: center; */
+/*   font-size: 1.2em; */
+/*   font-weight: 300;  */
+/*   text-shadow: 0 -1px 1px #000000; */
+/* } */
+/* #cssmenu > ul > li:first-child > a > span { */
+/*   padding: 0; */
+/* } */
+/* #cssmenu > ul > li:first-child:hover { */
+/*   background: #66665e; */
+/*   background: -moz-linear-gradient(#66665e 0%, #45463d 100%); */
+/*   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #66665e), color-stop(100%, #45463d)); */
+/*   background: -webkit-linear-gradient(#66665e 0%, #45463d 100%); */
+/*   background: linear-gradient(#66665e 0%, #45463d 100%); */
+/* } */
+
+/* victor color del menu father */
+#cssmenu > ul > li {
+/*   background: #e94f31; */
+/*   background: -moz-linear-gradient(#e94f31 0%, #d13516 100%); */
+/*   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e94f31), color-stop(100%, #d13516)); */
+/*   background: -webkit-linear-gradient(#e94f31 0%, #d13516 100%); */
+/*   background: linear-gradient(#e94f31 0%, #d13516 100%); */
+	
+	background-color: #338052;
+/* 	width: 100px; */
+/*   background: linear-gradient(#009966 0%, #009933 100%); */
+	
+}
+/* #cssmenu > ul > li:hover { */
+/*   background: #e84323; */
+/*   background: -moz-linear-gradient(#e84323 0%, #c33115 100%); */
+/*   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e84323), color-stop(100%, #c33115)); */
+/*   background: -webkit-linear-gradient(#e84323 0%, #c33115 100%); */
+/*   background: linear-gradient(#e84323 0%, #c33115 100%); */
+/* } */
+#cssmenu > ul > li > a {
+  font-size: .9em;
+  display: block;
+/*   background: url(menu_images/pattern.png) top left repeat; */
+/*   color: #ffffff; */
+/*   border: 1px solid #ba2f14; */
+  border: 1px solid #E5FFE5;
+  border-top: none;
+
+}
+#cssmenu > ul > li > a > span {
+  display: block;
+  padding: 16px 20px;
+	color: white;
+}
+#cssmenu > ul > li > a:hover {
+  text-decoration: none;
+}
+#cssmenu > ul > li.active {
+  border-bottom: none;
+}
+#cssmenu > ul > li.has-sub > a span {
+/*   background: url(menu_images/icon_plus.png) 96% center no-repeat; */
+}
+#cssmenu > ul > li.has-sub.active > a span {
+/*   background: url(menu_images/icon_minus.png) 96% center no-repeat; */
+}
+
+/* victor */
+#cssmenu ul ul {
+  background: #e2e9d6;
+  display: none;
+
+}
+#cssmenu ul ul li {
+  padding: 0;
+  border-bottom: 2px solid #338052;
+/* 	border-bottom-width: 10px; */
+/* 	width: 100px;  */
+  border-top: none;
+/*   background: #338052; */
+/*   background: -moz-linear-gradient(o#f7f7f7 0%, #ececec 100%); */
+/*   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f7f7f7), color-stop(100%, #ececec)); */
+/*   background: -webkit-linear-gradient(#f7f7f7 0%, #ececec 100%); */
+/*   background: linear-gradient(#f7f7f7 0%, #ececec 100%); */
+}
+#cssmenu ul ul li:last-child {
+/*   border-bottom: none; */
+}
+#cssmenu ul ul a {
+  padding: 16px 16px 10px 20px;
+  display: block;
+  color:#338052;
+  font-size: .8em;
+}
+#cssmenu ul ul a:before {
+  position: absolute;
+  left: 10px;
+}
+#cssmenu ul ul a:hover {
+	color: white;
+	background: #b7cbb1;
+}
