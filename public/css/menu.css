@@ -135,7 +135,7 @@
 /*   border-bottom: none; */
 }
 #cssmenu ul ul a {
-  padding: 16px 16px 10px 20px;
+  padding: 16px 10px 16px 20px;
   display: block;
   color:#338052;
   font-size: .8em;
