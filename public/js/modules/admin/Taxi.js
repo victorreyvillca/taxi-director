@@ -133,8 +133,12 @@ com.em.Taxi.prototype = {
 			"sWidth": "15%",
 			"bSercheable": "true",
 			fnRender : function (oObj){
-				return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
-				}
+				if(oObj.aData[0] > 0) {
+					return '<a id="update-taxi-'+oObj.aData[0]+'" href="'+url.toUpdate+'/id/'+oObj.aData[0]+'">'+oObj.aData[1]+'</a>';
+				} else {
+					return '<a id="create-taxi" href="/admin/Taxi/add">'+oObj.aData[1]+'</a>';
+				}				
+			}
 			});
 		return columns;
 	}},

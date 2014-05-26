@@ -462,7 +462,8 @@ class Admin_RideController extends Dis_Controller_Action {
 		    		$timenow = $ride->getDateStatus();
 		    		$dateCurrent = new DateTime('now');
 		    		$interval = $dateCurrent->diff($timenow);
-		    		$timeText = '(' . $interval->format('%d %h:%i:%s') . ' min)';
+// 		    		$timeText = '(' . $interval->format('%d %h:%i:%s') . ' min)';
+		    		$timeText = '(' . $interval->format('%i') . ' min)';
 // 		    	}
 		    }
 

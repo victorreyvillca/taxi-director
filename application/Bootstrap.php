@@ -52,11 +52,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
     	// jquery core
     	$this->view->headScript()->appendFile($this->view->baseUrl().'/js/lib/jquery/jquery.min.js','text/javascript');
-    	//         $this->view->headScript()->appendFile($this->view->baseUrl().'/js/lib/jquery/jquery-2.0.3.min.js','text/javascript');
 
     	// Jquery ui
-    	//         $this->view->headScript()->appendFile($this->view->baseUrl().'/js/lib/jquery-ui/jquery-ui.min.js','text/javascript');
-    	//         $this->view->headLink()->appendStylesheet($this->view->baseUrl() . "/js/lib/jquery-ui/jquery-ui-themes/themes/ui-lightness/jquery-ui.css");
     	$this->view->headScript()->appendFile($this->view->baseUrl().'/js/lib/jquery-ui/1.9.2/jquery-ui.min.js','text/javascript');
     	$this->view->headLink()->appendStylesheet($this->view->baseUrl() . "/js/lib/jquery-ui/jquery-ui-themes/themes/ui/jquery-ui.css");
 

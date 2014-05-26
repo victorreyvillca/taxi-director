@@ -473,6 +473,7 @@ class Admin_TaxiController extends Dis_Controller_Action {
 
 		$posRecord = $start+1;
 		$data = array();
+
 		foreach ($taxis as $taxi) {
 			$row = array();
 			$row[] = $taxi->getId();

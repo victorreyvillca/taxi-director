@@ -6,16 +6,18 @@
 }
 
 table.zebralist > tbody > tr > td {
-	background-color: #9999FF;
+ 	background-color: #bdd2b4;
+}
+
+table.zebralist > thead > tr > th {
+	padding: 0px 0px 0px 0px;
 }
 </style>
 
-<div style="margin:10px;">
-    <div id="cssmenu" style="width: 10%; float: left;">
-        <a href="/admin" >Volver</a>
-        <br>
-        <br>
-        <?php echo $this->buttonAdd("create-taxi", $this->translate('Nuevo'), $this->url(array('action'=>'add')));?>
+<div style="margin:70px 0px;">
+    <div style="width: 239px; float: left;">
+    <a href="/admin" id="header-taxi">ALTA/BAJA</a>
+    <a href="/admin/Taxi/add" id="create-taxi">NUEVO...</a>
         <?php echo $this->tableList('tblTaxi');?>
     </div>
 
@@ -39,10 +41,6 @@ table.zebralist > tbody > tr > td {
 		toBase : '<?php echo $this->baseUrl(); ?>',
 		toUpdate : '<?php echo $this->url(array('action'=>'edit')); ?>'
 	});
-
-	var headers = new Object();
-	headers.headerArray = new Array(
-		'<?php echo $this->translate('Nuevo')?>');
 
 	taxi.configureTable('#tblTaxi', true);
 

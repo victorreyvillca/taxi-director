@@ -21,7 +21,7 @@
 }
 #cssmenu {
   width: 250px;
-  border-bottom: 4px solid #656659;
+  border-bottom: 0px solid #656659;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -99,6 +99,9 @@
   display: block;
   padding: 16px 20px;
 	color: white;
+	
+	
+	border-bottom: 1px solid #e6e9ec;
 }
 #cssmenu > ul > li > a:hover {
   text-decoration: none;
