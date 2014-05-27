@@ -95,6 +95,7 @@ class Dis_Form_Taxi extends Zend_Form {
 				'label' => _('Nombres'),
 //                 'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
+                'attribs' => array('placeholder' => _('Nombres')),
 				'filters' => array(
 					array('StringTrim')
 				)
@@ -104,6 +105,7 @@ class Dis_Form_Taxi extends Zend_Form {
 				'label' => _('Apellidos'),
 //                 'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
+                'attribs' => array('placeholder' => _('Apellidos')),
 				'filters' => array(
                     array('StringTrim')
 				)
@@ -113,6 +115,7 @@ class Dis_Form_Taxi extends Zend_Form {
 				'label' => _('Cedula de Identidad'),
 //                 'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
+                'attribs' => array('placeholder' => _('Cedula de Identidad')),
 				'validators' => array(
                     array('Digits', false)
 				)
@@ -120,15 +123,17 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Textarea', 'address', array(
 				'label' => _('Direccion'),
+                'attribs' => array('placeholder' => _('Dirección')),
 //                 'tabIndex' => $this->tabIndex++,
                 'cols' => '20',
-                'rows' => '3',
+                'rows' => '2',
 			))
 
 			->addElement('Text', 'number', array(
 				'label' => _('Numero movil'),
 //                 'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
+                'attribs' => array('placeholder' => _('Numero de Taxi')),
 				'filters' => array(
 					array('StringTrim')
 				),
@@ -140,6 +145,7 @@ class Dis_Form_Taxi extends Zend_Form {
 			->addElement('Text', 'phone', array(
 				'label' => _('Telefono'),
 				'required' => TRUE,
+                'attribs' => array('placeholder' => _('Teléfono')),
 				'filters' => array(
                     array('StringTrim')
 				),
@@ -152,6 +158,7 @@ class Dis_Form_Taxi extends Zend_Form {
 				'label' => _('Marca'),
 //                 'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
+                'attribs' => array('placeholder' => _('Marca')),
 				'filters' => array(
 					array('StringTrim')
 				)
@@ -159,6 +166,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'plaque', array(
 				'label' => _('Placa'),
+                'attribs' => array('placeholder' => _('Placa')),
 //                 'tabIndex' => $this->tabIndex++,
 				'required' => TRUE,
 				'filters' => array(
@@ -168,6 +176,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'typeMark', array(
 				'label' => _('Tipo'),
+                'attribs' => array('placeholder' => _('Tipo')),
 //                 'tabIndex' => $this->tabIndex++,
 				'filters' => array(
 					array('StringTrim')
@@ -176,6 +185,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'model', array(
                 'label' => _('Modelo'),
+                'attribs' => array('placeholder' => _('Modelo')),
 //                 'tabIndex' => $this->tabIndex++,
 				'filters' => array(
                     array('StringTrim')
@@ -187,6 +197,7 @@ class Dis_Form_Taxi extends Zend_Form {
 
 			->addElement('Text', 'color', array(
 				'label' => _('Color'),
+                'attribs' => array('placeholder' => _('Color')),
 //                 'tabIndex' => $this->tabIndex++,
 				'filters' => array(
                     array('StringTrim')

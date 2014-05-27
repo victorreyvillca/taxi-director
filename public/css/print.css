@@ -1,9 +1,0 @@
-@CHARSET "UTF-8";
-body {
-	padding: 0;
-}
-
-.noprint {
-	display: none;
-	visibility: hidden; 
-}

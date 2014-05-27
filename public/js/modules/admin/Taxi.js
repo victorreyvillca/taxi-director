@@ -174,8 +174,8 @@ com.em.Taxi.prototype = {
 	configureDialogForm: function(selector) {with (this) {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
-			height: 550,
-			width: 900,
+			height: 525,
+			width: 475,
 			modal: true,
 			close: function(event, ui) {
 				$(this).remove();
