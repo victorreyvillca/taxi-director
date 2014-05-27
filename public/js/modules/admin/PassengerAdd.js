@@ -194,8 +194,8 @@ com.em.PassengerAdd.prototype = {
 	configureDialogForm: function(selector) {with (this) {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
-			height: 150,
-			width: 460,
+			height: 200,
+			width: 210,
 			modal: true,
 			close: function(event, ui) {
 				$(this).remove();
@@ -217,8 +217,8 @@ com.em.PassengerAdd.prototype = {
 	configureDialogAddForm: function(selector) {with (this) {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
-			height: 240,
-			width: 460,
+			height: 300,
+			width: 210,
 			modal: true,
 			close: function(event, ui) {
 				$(this).remove();

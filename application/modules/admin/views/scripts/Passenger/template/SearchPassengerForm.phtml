@@ -3,24 +3,20 @@
 	<table>
 		<tbody>
 			<tr class="odd" >
-				<td><?php echo $this->element->getElement('phone')->renderLabel()?></td>
-				<td><?php echo $this->element->getElement('phone')->renderViewHelper()?></td>
+				<td><?php echo $this->element->getElement('phone')->renderLabel()?><?php echo $this->element->getElement('phone')->renderViewHelper()?></td>
 				<td><?php echo $this->element->getElement('searchButton')->renderViewHelper()?></td>
 			</tr>
 			<tr id="rowname" class="even" style="visibility: hidden;">
-                <td><?php echo $this->element->getElement('firstName')->renderLabel()?></td>
-				<td><?php echo $this->element->getElement('firstName')->renderViewHelper()?></td>
+				<td><?php echo $this->element->getElement('firstName')->renderLabel()?><?php echo $this->element->getElement('firstName')->renderViewHelper()?></td>
 				<td><?php echo $this->element->getElement('changeNameButton')->renderViewHelper()?></td>
 			</tr>
 			<tr id="rowlabel" class="even" style="visibility: hidden;">
-                <td><?php echo $this->element->getElement('label')->renderLabel() ?></td>
-                <td><?php echo $this->element->getElement('label')->renderViewHelper() ?></td>
+                <td><?php echo $this->element->getElement('label')->renderLabel() ?><?php echo $this->element->getElement('label')->renderViewHelper() ?></td>
                 <td><?php echo $this->element->getElement('deleteLabelButton')->renderViewHelper()?></td>
 			</tr>
 
 			<tr id="rowaddress" class="even" style="visibility: hidden;">
-                <td><?php echo $this->element->getElement('address')->renderLabel() ?></td>
-				<td><?php echo $this->element->getElement('address')->renderViewHelper() ?></td>
+				<td><?php echo $this->element->getElement('address')->renderLabel() ?><?php echo $this->element->getElement('address')->renderViewHelper() ?></td>
 				<td><?php echo $this->element->getElement('changeAddressButton')->renderViewHelper()?></td>
 			</tr>
 		</tbody>

@@ -50,3 +50,17 @@ form > table > tbody > tr > td label {
 	font-weight: bold;
 	font-family: "Arial";
 }
+
+.button {
+    background: #338052;
+	color: white;
+	padding: 6px 10px 7px 10px;
+	top: 7px;
+	border: 1px solid #D3D3D3;
+	width: 80px;
+	position: relative;
+}
+
+.button:hover {
+    background: #338042;
+}
