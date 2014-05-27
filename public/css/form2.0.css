@@ -1,5 +1,13 @@
 @CHARSET "UTF-8";
 
+.odd td{
+	background-color: #bbd0b0;
+}
+
+.even td{
+	background-color: #bbd0b0;
+}
+
 form > table {
 	width: 50%;
 /* 	margin: -38px -13px 0px; */
@@ -9,6 +17,10 @@ form > table {
 form > table > tbody > tr {
 	text-align: center;
 	height: 30px;
+}
+
+form > table > tbody > tr > td{
+	text-align: left;
 }
 
 form > table > tbody > tr > td > input {
@@ -22,6 +34,19 @@ form > table > tbody > tr > td > textarea {
 	background: #d3e0c7;
 }
 
+form > table > tbody > tr > td > select {
+	width: 185px;
+	height: 26px;
+	background: #d3e0c7;
+}
+
 form > table > tbody > tr > td > label.error {
 	color: red;
+}
+
+form > table > tbody > tr > td label {
+	color: #338052;
+	text-transform:uppercase;
+	font-weight: bold;
+	font-family: "Arial";
 }

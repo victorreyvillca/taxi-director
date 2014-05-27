@@ -4,28 +4,23 @@
 		<tbody>
             <?php if (!$this->element->getOnlyRead()) {?>
 			<tr class="odd" >
-				<td><?php echo $this->element->getElement('phone')->renderLabel()?></td>
-				<td><?php echo $this->element->getElement('phone')->renderViewHelper()?></td>
+				<td><?php echo $this->element->getElement('phone')->renderLabel()?><?php echo $this->element->getElement('phone')->renderViewHelper()?></td>
 			</tr>
 			<tr class="even">
-				<td><?php echo $this->element->getElement('name')->renderLabel()?></td>
-				<td><?php echo $this->element->getElement('name')->renderViewHelper()?></td>
+				<td><?php echo $this->element->getElement('name')->renderLabel()?><?php echo $this->element->getElement('name')->renderViewHelper()?></td>
 			</tr>
 			<tr class="odd" >
-                <td><?php echo $this->element->getElement('label')->renderLabel()?></td>
-                <td><?php echo $this->element->getElement('label')->renderViewHelper()?></td>
+                <td><?php echo $this->element->getElement('label')->renderLabel()?><?php echo $this->element->getElement('label')->renderViewHelper()?></td>
 			</tr>
 			<tr class="even" >
-                <td><?php echo $this->element->getElement('address')->renderLabel()?></td>
-				<td><?php echo $this->element->getElement('address')->renderViewHelper()?></td>
+				<td><?php echo $this->element->getElement('address')->renderLabel()?><?php echo $this->element->getElement('address')->renderViewHelper()?></td>
 			</tr>
 			<tr class="odd" >
-                <td><?php echo $this->element->getElement('note')->renderLabel()?></td>
-                <td><?php echo $this->element->getElement('note')->renderViewHelper()?></td>
+                <td><?php echo $this->element->getElement('note')->renderLabel()?><?php echo $this->element->getElement('note')->renderViewHelper()?></td>
 			</tr>
 			<tr class="even" >
-                <td><?php echo $this->element->getElement('taxi')->renderLabel()?></td>
                 <td>
+                    <?php echo $this->element->getElement('taxi')->renderLabel()?>
                     <?php echo $this->element->getElement('taxi')->renderViewHelper()?>
                 </td>
                 <td>
@@ -35,31 +30,26 @@
 			<?php
             } else {?>
             <tr class="odd" >
-				<td><?php echo $this->element->getElement('phone')->renderLabel()?></td>
-				<td><?php echo $this->element->getPhone()?></td>
+				<td><?php echo $this->element->getElement('phone')->renderLabel()?><?php echo $this->element->getPhone()?></td>
 			</tr>
 			<tr class="even" >
-				<td><?php echo $this->element->getElement('name')->renderLabel()?></td>
-				<td><?php echo $this->element->getName()?></td>
+				<td><?php echo $this->element->getElement('name')->renderLabel()?><?php echo $this->element->getName()?></td>
 			</tr>
 			<tr class="odd" >
-				<td><?php echo $this->element->getElement('label')->renderLabel()?></td>
-				<td><?php echo $this->element->getLabel()?></td>
+				<td><?php echo $this->element->getElement('label')->renderLabel()?><?php echo $this->element->getLabel()?></td>
 			</tr>
 			<tr class="even" >
-				<td><?php echo $this->element->getElement('address')->renderLabel()?></td>
-				<td><?php echo $this->element->getAddress()?></td>
+				<td><?php echo $this->element->getElement('address')->renderLabel()?><?php echo $this->element->getAddress()?></td>
 			</tr>
 			<tr class="odd" >
-				<td><?php echo $this->element->getElement('note')->renderLabel()?></td>
-				<td><?php echo $this->element->getNote()?></td>
+				<td><?php echo $this->element->getElement('note')->renderLabel()?><?php echo $this->element->getNote()?></td>
 			</tr>
 			<tr class="even" >
-				<td><?php echo $this->element->getElement('taxi')->renderLabel()?></td>
+				<td><?php echo $this->element->getElement('taxi')->renderLabel()?>
 				<?php if ($this->element->getIsResume()) {?>
-                    <td><?php echo $this->element->getTaxi()?></td>
+                    <?php echo $this->element->getTaxi()?>
 				<?php } else {?>
-                    <td><?php echo $this->element->getElement('taxi')->renderViewHelper()?></td>
+                    <?php echo $this->element->getElement('taxi')->renderViewHelper()?></td>
 				<?php }?>
 			</tr>
             <?php }?>

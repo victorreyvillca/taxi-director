@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+
+table.zebralist > tbody > tr > td {
+	background-color: #fcc48f;
+	border-bottom: 2px solid #338052;
+	padding: 14px 10px 14px 20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+table.zebralist > tbody > tr > td > a {
+	color: black;
+	text-decoration: none;
+	font-family: "Arial";
+	padding: 14px 90px 13px 0px;
+/* 	background: red; */
+	font-size: 13px;
+}
+
+table.zebralist > thead > tr > th {
+	text-align:left;
+    padding: 14px 10px 14px 20px;
+	text-transform: uppercase;
+    background: #e2e9d6;
+	color: #338052;
+ 	border-bottom: 2px solid #338052;
+	font-family: "Arial"
+}
+
+table.zebralist > tbody > tr :hover {
+	background-color: #b7cbb1;
+}
+
+div > a#create-taxi {
+	display:inline-block;
+	background:#bbd0b0;
+	text-decoration: none;
+	font-weight: bold;
+	text-transform:uppercase;
+	padding: 12px 150px 18px 20px;
+	color: black;
+	font-family: "Arial";
+}
+
+div > a#create-taxi:hover {
+	background: #b7cbb1;
+}
+
+div > a#header-taxi {
+	display:inline-block;
+	background:#dae4cd;
+	text-decoration: none;
+	font-weight: bold;
+	text-transform:uppercase;
+	padding: 12px 132px 18px 20px;
+	color: black;
+	font-family: "Arial";
+	border-bottom: 2px solid #656659;
+}
+
+div > a#header-taxi:hover {
+	background:#bbd0b0;
+}

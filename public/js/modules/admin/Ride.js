@@ -170,7 +170,7 @@ com.em.Ride.prototype = {
 		dialogForm = $(selector).dialog({
 			autoOpen: false,
 			height: 300,
-			width: 460,
+			width: 360,
 			modal: true,
 			close: function(event, ui) {
 				$(this).remove();
