@@ -27,17 +27,20 @@ form > table > tbody > tr > td > input {
 	width: 180px;
 	height: 20px;
 	background: #d3e0c7;
+	border: 2px solid #338052;
 }
 
 form > table > tbody > tr > td > textarea {
 	width: 180px;
 	background: #d3e0c7;
+	border: 2px solid #338052;
 }
 
 form > table > tbody > tr > td > select {
 	width: 185px;
 	height: 26px;
 	background: #d3e0c7;
+	border: 2px solid #338052;
 }
 
 form > table > tbody > tr > td > label.error {
