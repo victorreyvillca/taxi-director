@@ -1,6 +1,4 @@
 <?php
-use Model\Passenger;
-use Model\Address;
 /**
  * Controller for DIST 3.
  *
@@ -10,6 +8,9 @@ use Model\Address;
  * @license Proprietary
  */
 
+use Model\Passenger;
+use Model\Address;
+
 class Admin_PassengerController extends Dis_Controller_Action {
 
 	/**
@@ -18,16 +19,6 @@ class Admin_PassengerController extends Dis_Controller_Action {
 	 */
 	public function init() {
 		parent::init();
-	}
-
-	/**
-	 * This action shows a paginated list of categories
-	 * @access public
-	 */
-	public function indexAction() {
-		$formFilter = new Admin_Form_SearchFilter();
-		$formFilter->getElement('nameFilter')->setLabel(_('Nombre de categoria'));
-		$this->view->formFilter = $formFilter;
 	}
 
 	/**

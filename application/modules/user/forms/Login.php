@@ -1,6 +1,6 @@
 <?php
 /**
- * Form for DIST 3.
+ * Form for TAXI DIRECTOR.
  *
  * @category Dist
  * @author Victor Villca <victor.villca@people-trust.com>
@@ -12,17 +12,14 @@ class User_Form_Login extends Zend_Form {
 
     public function init() {
 
-        $this->setName("login");
         $this->setMethod('post');
-        $this->setAttrib('class', 'featured-inner object-lead');
 
         $this->addElement('text', 'username', array(
-            'filters'    => array('StringTrim', 'StringToLower'),
+            'filters'    => array('StringTrim'),
             'validators' => array(
                 array('StringLength', FALSE, array(3, 20)),
             ),
-            'required'  => TRUE,
-            'label'     => _('Username:')
+            'required'  => TRUE
         ));
 
         $this->addElement('password', 'password', array(
@@ -30,16 +27,15 @@ class User_Form_Login extends Zend_Form {
             'validators' => array(
                 array('StringLength', false, array(3, 20)),
             ),
-            'required'  => true,
-            'label'     => _('Password:')
+            'required'  => true
         ));
 
         $this->addElement('button', 'buttonlogin', array(
             'type'      => 'submit',
             'required'  => false,
             'ignore'    => true,
-            'label'     => _('Login'),
-            'class'     => 'prominent'
+            'label'     => _('¿OLVIDASTE TU CLAVE?'),
+            'class'     => 'button'
         ));
     }
 

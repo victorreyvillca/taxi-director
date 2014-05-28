@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Controller for DIST 2.
  *
@@ -41,7 +40,6 @@ class Admin_IndexController extends Dis_Controller_Action {
 	    $this->stdResponse = $data;
 	    $this->_helper->json($this->stdResponse);
 	}
-
 
 	public function drawTaxisAction() {
 		$this->_helper->viewRenderer->setNoRender(TRUE);

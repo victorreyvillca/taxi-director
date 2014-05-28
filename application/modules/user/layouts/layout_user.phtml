@@ -11,7 +11,7 @@
         <section>
             <?php echo $this->layout()->content;?>
             <article>
-                <form method="post" action="<?php $this->url(array('action' => 'login'));?>" id="login">
+                <form method="post" action="<?php $this->url(array('action' => 'login'));?>">
                     <input name="username" id="username" type="text" class="input-text" placeholder="USUSARIO"/>
                     <input name="password" id="password" type="password" class="input-text" placeholder="CLAVE"/>
                     <button id="submit" class="submitBtn" type="submit"  name="submit"><span>INGRESE</span></button>

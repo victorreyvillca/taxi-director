@@ -1,8 +1,4 @@
 <?php
-use Model\Passenger;
-use Model\Address;
-use Model\Taxi;
-use Model\Ride;
 /**
  * Controller for DIST 3.
  *
@@ -11,6 +7,11 @@ use Model\Ride;
  * @copyright Copyright (c) 2013 Gisof A/S
  * @license Proprietary
  */
+
+use Model\Passenger;
+use Model\Address;
+use Model\Taxi;
+use Model\Ride;
 
 class Admin_RideController extends Dis_Controller_Action {
 

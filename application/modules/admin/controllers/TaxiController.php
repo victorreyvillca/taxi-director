@@ -17,9 +17,6 @@ class Admin_TaxiController extends Dis_Controller_Action {
      * @access public
      */
     public function indexAction() {
-        $formFilter = new Admin_Form_SearchFilter();
-        $formFilter->getElement('nameFilter')->setLabel(_('Nombre del Movil'));
-        $this->view->formFilter = $formFilter;
     }
 
     /**
