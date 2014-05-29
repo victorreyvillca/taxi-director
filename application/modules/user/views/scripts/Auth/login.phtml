@@ -3,4 +3,4 @@
     if ($this->error == 1) {?>
         <label id="errors">El nombre de Usuario o la Clave no son validos</label>
     <?php }?>
-<a href="#" class="button">¿OLVIDASTE TU CLAVE?</a>
+<a href="<?php echo $this->url(array('controller' => 'Recovery', 'module'=>'default'))?>" class="button">¿OLVIDASTE TU CLAVE?</a>

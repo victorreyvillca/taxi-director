@@ -7,5 +7,6 @@ class IndexController extends Dis_Controller_Action {
     }
 
     public function indexAction() {
+        $this->_helper->redirector(NULL, NULL, 'admin');
     }
 }
