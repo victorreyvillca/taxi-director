@@ -42,9 +42,11 @@ class User_AuthController extends Dis_Controller_Action {
                 } else {
                     $this->view->error = 1;
                 }
+            } else {
+                $this->view->error = 2;
             }
         }
-//		$this->view->form = $form;
+		$this->view->form = $form;
     }
 
     /**

@@ -46,6 +46,10 @@ button#submit{
 	border: 2px solid #338052;
 }
 
+button#submit:hover{
+	cursor: pointer;
+}
+
 form > button{
 	background-color: #c6e4d4;
 	width: 190px;
@@ -100,4 +104,13 @@ a.button {
 	text-transform: uppercase;
 	text-align: center;
 	font-weight: bold;
+}
+
+ul.errorlist {
+	margin:-20px -24px 10px;
+	color: red;
+}
+
+label#errors {
+	color: red;
 }

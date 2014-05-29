@@ -2,9 +2,9 @@
 /**
  * Form for TAXI DIRECTOR.
  *
- * @category Dist
+ * @category Taxi
  * @author Victor Villca <victor.villca@people-trust.com>
- * @copyright Copyright (c) 2013 Gisof A/S
+ * @copyright Copyright (c) 2014 Gisof A/S
  * @license Proprietary
  */
 
@@ -12,14 +12,17 @@ class User_Form_Login extends Zend_Form {
 
     public function init() {
 
-        $this->setMethod('post');
-
         $this->addElement('text', 'username', array(
-            'filters'    => array('StringTrim'),
+            'filters' => array('StringTrim'),
             'validators' => array(
                 array('StringLength', FALSE, array(3, 20)),
             ),
-            'required'  => TRUE
+            'required' => TRUE,
+            'attribs' => array('placeholder' => _('USUARIO'), 'class' => 'input-text'),
+            'decorators' => array(
+                array('ViewHelper'),
+                array('Errors', array('class' => 'errorlist'))
+            )
         ));
 
         $this->addElement('password', 'password', array(
@@ -27,15 +30,20 @@ class User_Form_Login extends Zend_Form {
             'validators' => array(
                 array('StringLength', false, array(3, 20)),
             ),
-            'required'  => true
+            'required'  => TRUE,
+            'attribs' => array('placeholder' => _('CLAVE'), 'class' => 'input-text'),
+            'decorators' => array(
+                    array('ViewHelper'),
+                    array('Errors', array('class' => 'errorlist'))
+            )
         ));
 
-        $this->addElement('button', 'buttonlogin', array(
-            'type'      => 'submit',
-            'required'  => false,
-            'ignore'    => true,
-            'label'     => _('¿OLVIDASTE TU CLAVE?'),
-            'class'     => 'button'
+        $this->addElement('button', 'submit', array(
+            'label' => _('INGRESE'),
+            'type' => 'submit',
+            'decorators' => array(
+                array('ViewHelper')
+            )
         ));
     }
 
